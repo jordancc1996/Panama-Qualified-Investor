@@ -1,0 +1,80 @@
+---
+
+<div class="bar" id="mobile-cta-bar">
+  <p>Get your free assessment</p>
+  <a class="btn btn--gold" href="#book">Book Now <span class="arr">→</span></a>
+</div>
+
+<style>
+  .bar {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    .bar.is-visible {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 80;
+      background: #405363;
+      padding: 0.75rem clamp(1.25rem, 4vw, 3rem);
+      border-top: 1px solid #5d768c;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  }
+
+  p {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    letter-spacing: var(--tracking-ui);
+    font-weight: var(--weight-ui);
+    text-transform: uppercase;
+    color: var(--color-on-navy-dim);
+    margin: 0;
+  }
+
+  .btn {
+    padding: 0.65rem 1.2rem;
+    font-size: var(--text-ui);
+    flex-shrink: 0;
+    background: #fff;
+    color: #405363;
+    border-color: #fff;
+  }
+
+  .btn:hover {
+    background: #f7f7f7;
+    color: #405363;
+    border-color: #f7f7f7;
+  }
+</style>
+
+<script>
+  const bar = document.getElementById('mobile-cta-bar');
+  const hero = document.getElementById('top');
+  const book = document.getElementById('book');
+  if (bar instanceof HTMLElement && hero && book) {
+    let heroIn = true;
+    let bookIn = false;
+    const sync = () => {
+      bar.classList.toggle('is-visible', !heroIn && !bookIn);
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target.id === 'top') heroIn = entry.isIntersecting;
+          if (entry.target.id === 'book') bookIn = entry.isIntersecting;
+        });
+        sync();
+      },
+      { threshold: 0.08 }
+    );
+    io.observe(hero);
+    io.observe(book);
+    sync();
+  }
+</script>

@@ -1,0 +1,444 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const heroImage =
+  'https://images.unsplash.com/photo-1524544187526-2b2855b65f16?w=1920&q=80&auto=format&fit=crop';
+
+const benefits = [
+  {
+    title: 'Territorial Tax System',
+    body: 'Income earned outside Panama is not taxed by Panama. Your Canadian tax obligations continue as normal, but you don\'t layer on a second country\'s income tax.',
+  },
+  {
+    title: 'USD Economy',
+    body: 'Panama uses the US dollar. For Canadians doing business in USD or holding USD-denominated assets, this eliminates currency friction at the residency level.',
+  },
+  {
+    title: 'Faster Than Europe',
+    body: 'Most European golden visa programs take 6 to 18 months. Panama\'s QIV processes in 30 to 60 days — from document submission to provisional permit.',
+  },
+  {
+    title: 'Lower Entry Point',
+    body: 'At $300,000, Panama\'s threshold is lower than Portugal, Malta, Greece, or the UK. And the investment is yours — not a donation or government fee.',
+  },
+  {
+    title: 'No Physical Presence Trap',
+    body: 'Unlike many residency programs, Panama does not require you to spend a minimum number of days in the country each year. Visit once every two years to maintain status.',
+  },
+  {
+    title: 'Familiar Banking',
+    body: 'Panama\'s banking sector is well-developed and accustomed to international clients. Major Canadian banks have correspondent relationships with Panamanian institutions.',
+  },
+];
+
+const routes = [
+  {
+    n: '01',
+    title: 'Titled Real Estate',
+    body: 'Purchase titled property valued at $300,000 or more. Residential, commercial, or land registered in your name.',
+  },
+  {
+    n: '02',
+    title: 'Stocks & Securities',
+    body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange through a licensed local brokerage.',
+  },
+  {
+    n: '03',
+    title: 'Fixed-Term Bank Deposit',
+    body: 'Place $300,000 in a three-year fixed-term deposit at a licensed Panamanian bank. Funds are returned at term end.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How does this interact with Canadian taxes?',
+    a: 'Canada taxes residents on worldwide income. If you maintain Canadian tax residency, your global income continues to be reported to the CRA. However, Panama does not impose its own tax on foreign-sourced income, so you avoid double taxation at the Panama level. If you sever Canadian tax residency, the calculus changes significantly — consult a cross-border tax advisor.',
+  },
+  {
+    q: 'Can I keep my RRSP and TFSA?',
+    a: 'Holding Panamanian residency does not automatically affect your registered accounts. However, if you cease to be a Canadian tax resident, TFSA rules change and RRSP withholding on withdrawals may differ. These are CRA rules, not Panamanian ones. Get specific advice from a Canadian tax professional before making residency changes.',
+  },
+  {
+    q: 'Is Panama politically stable?',
+    a: 'Panama has been a constitutional democracy since 1989 and has had peaceful, democratic transfers of power for over 30 years. The economy is anchored by the Panama Canal, a major international banking sector, and a free trade zone. It is one of the most stable countries in Latin America.',
+  },
+  {
+    q: 'Can my spouse and children be included?',
+    a: 'Yes. Your spouse, dependent children under 25, and parents over 65 can all be included as dependents on a single application at no additional investment requirement.',
+  },
+  {
+    q: 'What about healthcare?',
+    a: 'Panama has both public and private healthcare systems. Many expats use private hospitals in Panama City, which offer high-quality care at a fraction of Canadian or American prices. International health insurance is widely available and affordable.',
+  },
+];
+---
+
+<BaseLayout
+  title="Panama Qualified Investor Visa for Canadians | Residency by Investment"
+  description="How Canadian investors use the Panama QIV for permanent residency. Territorial taxation, faster than European golden visas, $300,000 minimum. 30–60 day processing."
+  ogDescription="How Canadian investors use the Panama QIV for permanent residency. Territorial taxation, faster than European golden visas, $300,000 minimum. 30–60 day processing."
+  path="/canadians"
+>
+  <Navbar />
+  <main id="main">
+    <section class="hero" id="top">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="Panama City skyline with mountains"
+        width="1920"
+        height="1080"
+        loading="eager"
+      />
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy rv">For Canadians</p>
+        <h1 class="rv" style="--rv-delay: 0.1s">
+          A residency that keeps pace with your ambition.
+        </h1>
+        <p class="subtext rv" style="--rv-delay: 0.2s">
+          How Canadian investors and entrepreneurs are using the Panama Qualified Investor Visa to access a dollarized economy with territorial taxation — without the wait times and complexity of European golden visas.
+        </p>
+        <div class="actions rv" style="--rv-delay: 0.3s">
+          <a class="btn btn--gold" href="/#book">
+            Book a Free Assessment <span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">The reality</p>
+            <h2>Why Canadians are exploring residency abroad.</h2>
+          </div>
+          <div class="prose rv" style="--rv-delay: 0.1s">
+            <p>
+              Canada's economic landscape is shifting. Capital gains inclusion rate changes, rising housing costs in major cities, and an increasingly complex tax code are prompting more Canadians to think internationally.
+            </p>
+            <p>
+              For investors and business owners, the math has changed. Higher capital gains taxes reduce the net return on exits, real estate, and portfolio gains. Meanwhile, the cost of living in Vancouver and Toronto now rivals London and New York — without the same access to global financial infrastructure.
+            </p>
+            <p>
+              European golden visas are the traditional alternative, but they come with friction. Portugal's program has been restructured repeatedly. Greece requires physical presence. Malta has a lengthy due diligence process and a price tag well above $300,000. Processing times are measured in months or years, not weeks.
+            </p>
+            <p>
+              Panama offers a cleaner path. A single investment of $300,000, processing in 30 to 60 days, no language requirement, and a territorial tax system that doesn't tax income earned outside the country. For Canadians earning from global investments, remote consulting, or Canadian-registered businesses, this matters.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <p class="eyebrow">Why Panama works for Canadians</p>
+          <h2>A clear path with no surprises.</h2>
+        </div>
+        <div class="cards">
+          {
+            benefits.map((item, i) => (
+              <article class="card rv" style={`--rv-delay: ${i * 0.06}s`}>
+                <p class="card-title">{item.title}</p>
+                <p>{item.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">How the visa works</p>
+            <h2>Three routes to the same residency.</h2>
+          </div>
+          <ol class="routes">
+            {
+              routes.map((route, i) => (
+                <li class="rv" style={`--rv-delay: ${i * 0.06}s`}>
+                  <p class="n">{route.n}</p>
+                  <div>
+                    <p class="route-title">{route.title}</p>
+                    <p>{route.body}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+          <p class="note rv">
+            All routes require a minimum $300,000 investment. Processing takes 30–60 days.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">Common questions</p>
+            <h2>Questions Canadians ask most.</h2>
+          </div>
+          <div class="faq rv" style="--rv-delay: 0.1s">
+            {
+              faqs.map((item) => (
+                <details>
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="wrap">
+        <div class="cta-inner rv">
+          <h2>Ready to explore your options?</h2>
+          <p>15 minutes with an advisor who works specifically with Canadian investors.</p>
+          <a class="btn btn--gold" href="/#book">
+            Book Your Free Assessment <span class="arr">→</span>
+          </a>
+          <p class="cta-mail">
+            Or email us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: var(--header-h);
+    isolation: isolate;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    text-align: center;
+    max-width: var(--measure);
+    width: 100%;
+    margin-inline: auto;
+    padding: 4rem clamp(1.35rem, 5vw, 3rem);
+    box-sizing: border-box;
+  }
+
+  h1 {
+    color: var(--color-on-navy);
+    margin: 1.1rem 0 0;
+    overflow-wrap: break-word;
+  }
+
+  .subtext {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--color-on-navy-dim);
+    margin: 1.5rem auto 0;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+
+  .paper {
+    background: var(--color-paper);
+  }
+
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+
+  .sec-head.left h2 {
+    margin-top: var(--space-eyebrow);
+  }
+
+  .prose p {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--weight-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+    color: var(--color-ink-soft);
+    margin: 0 0 var(--space-paragraph);
+  }
+
+  .prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  .cards {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background: var(--color-paper);
+    border-radius: 16px;
+    padding: 1.25rem 1.35rem;
+  }
+
+  .card-title {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-body);
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+
+  .card p:last-child {
+    margin: 0;
+    font-size: var(--text-small);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-body);
+  }
+
+  .routes {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+  }
+
+  .routes li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .n {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    color: var(--color-navy-600);
+    line-height: 1;
+    min-width: 2.4rem;
+    margin: 0;
+  }
+
+  .route-title {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-body);
+    color: var(--color-ink);
+    margin: 0 0 0.25rem;
+  }
+
+  .routes li p:last-child {
+    margin: 0;
+    color: var(--color-ink-soft);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .note {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    color: var(--color-muted);
+    margin: 1.5rem 0 0;
+    text-align: center;
+    line-height: var(--leading-body);
+  }
+
+  .faq {
+    margin-top: 2.5rem;
+  }
+
+  .cta-band {
+    background: linear-gradient(200deg, #4e6478 0%, #405363 55%, #2d3d4d 100%);
+    padding-block: var(--section-pad);
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .cta-band h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    color: var(--color-on-navy);
+    line-height: var(--leading-heading);
+  }
+
+  .cta-band p:not(.cta-mail) {
+    color: var(--color-on-navy-dim);
+    margin: var(--space-lede) 0 0;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .cta-band .btn {
+    margin-top: 1.5rem;
+  }
+
+  .cta-mail {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-ui);
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 1.25rem;
+    letter-spacing: var(--tracking-ui);
+  }
+
+  .cta-mail a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  @media (min-width: 1024px) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

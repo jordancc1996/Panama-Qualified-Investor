@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const steps = [
+  {
+    title: 'Initial Consultation (Week 1)',
+    body: "A 15-minute assessment call to understand your goals, financial situation, and preferred investment route. We'll confirm eligibility, explain the process in detail, and provide a fixed-fee quote. No obligation, no pressure. By the end of this call, you'll know exactly what the process looks like and what it will cost.",
+  },
+  {
+    title: 'Document Collection (Weeks 1–3)',
+    body: "You'll provide: a valid passport, a police background check from your country of residence (apostilled), a personal reference letter from your bank, proof of income or net worth, a health certificate from a licensed physician, and four passport-style photos. If you're including dependents, their documents are collected in parallel. We provide a detailed checklist and review every document before submission.",
+  },
+  {
+    title: 'Investment Execution (Weeks 2–4)',
+    body: 'Once your documents are in progress, you execute the qualifying investment. For real estate: you select and purchase a property with our vetted partners, and the title is registered in your name. For securities: we connect you with a licensed Panamanian brokerage to open an account and purchase qualifying instruments. For bank deposit: we introduce you to licensed banks offering fixed-term CDs. We coordinate with the relevant institution to ensure the investment meets immigration requirements.',
+  },
+  {
+    title: 'Application Filing (Week 4)',
+    body: "Your complete application package — documents, proof of investment, photographs, and forms — is filed with Panama's Servicio Nacional de Migración. We handle all filings, correspondence, and follow-up with the immigration office. You do not need to be present for the filing.",
+  },
+  {
+    title: 'Biometrics & Provisional Permit (Weeks 4–6)',
+    body: 'You travel to Panama for a biometrics appointment (fingerprints, photograph) at the immigration office. This visit typically takes one business day. Within 30 days of filing, you receive a provisional residency permit (permiso provisional) that gives you full legal residency status while your permanent card is manufactured.',
+  },
+  {
+    title: 'Permanent Residency Card (Weeks 6–10)',
+    body: 'Your permanent residency card (carné de residente permanente) is produced and issued. This is your long-term residency document. With this card, you can open bank accounts, sign contracts, purchase property, and enjoy all the rights of a permanent resident. The card is valid indefinitely — there is no renewal requirement.',
+  },
+];
+
+const docs = [
+  {
+    title: 'Valid Passport',
+    body: 'At least 6 months validity remaining. Color copy of the biographical page.',
+  },
+  {
+    title: 'Police Background Check',
+    body: 'From your country of current residence. Must be apostilled or authenticated. Issued within the last 6 months.',
+  },
+  {
+    title: 'Bank Reference Letter',
+    body: 'A letter from your bank confirming you are a client in good standing. Apostilled.',
+  },
+  {
+    title: 'Proof of Economic Solvency',
+    body: 'Bank statements, investment statements, or income verification demonstrating the source and availability of your investment funds.',
+  },
+  {
+    title: 'Health Certificate',
+    body: 'A basic physical exam confirming you are free of communicable diseases. Can be obtained in Panama or your home country.',
+  },
+  {
+    title: 'Passport Photos',
+    body: 'Four recent passport-style photos (white background).',
+  },
+  {
+    title: 'Proof of Investment',
+    body: 'Title deed (real estate), brokerage statement (securities), or CD certificate (bank deposit) confirming the qualifying investment.',
+  },
+  {
+    title: 'Power of Attorney',
+    body: 'Authorizes your attorney to file on your behalf. Signed and notarized.',
+  },
+];
+
+const title = 'QIV Application Process | Step-by-Step Guide';
+const description =
+  "From first consultation to permanent residency card in 30–60 days. The complete step-by-step process for Panama's Qualified Investor Visa.";
+---
+
+<BaseLayout title={title} description={description} ogDescription={description} path="/process">
+  <Navbar />
+  <main id="main">
+    <section class="page-hero">
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">The process</p>
+        <h1>From first inquiry to residency card.</h1>
+        <p class="subtext">
+          A transparent, step-by-step breakdown of what happens, when, and what you need to prepare.
+        </p>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">Timeline</p>
+            <h2>What to expect, week by week.</h2>
+          </div>
+          <ol class="steps">
+            {
+              steps.map((step, i) => (
+                <li class="rv" style={`--rv-delay: ${i * 0.06}s`}>
+                  <strong>{step.title}</strong>
+                  <p>{step.body}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <p class="eyebrow">Documents required</p>
+          <h2>What you need to prepare.</h2>
+        </div>
+        <div class="doc-grid">
+          {
+            docs.map((item, i) => (
+              <article class="spec-card rv" style={`--rv-delay: ${i * 0.04}s`}>
+                <p class="title">{item.title}</p>
+                <p>{item.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">Costs</p>
+            <h2>What it costs beyond the investment.</h2>
+          </div>
+          <div class="prose rv" style="--rv-delay: 0.1s">
+            <p>
+              The $300,000 is your investment — it's not a fee. You own the asset (property, securities, or deposit) and it remains yours. Separately, there are processing costs that cover government fees, legal representation, and document preparation.
+            </p>
+            <p>
+              Government filing fees typically total $2,000–$3,000 for a primary applicant, with additional fees per dependent. Legal fees vary by firm and complexity but generally range from $5,000–$15,000 for full-service representation. Document authentication (apostille) costs depend on your home country.
+            </p>
+            <p>We provide a complete, itemized fee breakdown during your initial consultation — no hidden costs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="wrap cta-band-inner">
+        <h2>Ready to take the next step?</h2>
+        <a class="btn btn--gold" href="/#book">
+          Book Your Free Assessment <span class="arr">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+
+  .steps {
+    list-style: none;
+    counter-reset: step;
+    margin: 2rem 0 0;
+    padding: 0;
+  }
+
+  .steps li {
+    position: relative;
+    counter-increment: step;
+    padding: 0 0 1.4rem 3rem;
+    border-left: 1px solid var(--color-line);
+    margin-left: 0.95rem;
+  }
+
+  .steps li:last-child {
+    border-left-color: transparent;
+    padding-bottom: 0;
+  }
+
+  .steps li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: -0.95rem;
+    top: -0.15rem;
+    width: 1.9rem;
+    height: 1.9rem;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: var(--color-navy-900);
+    color: var(--color-gold-300);
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-label);
+    letter-spacing: 0.04em;
+  }
+
+  .steps strong {
+    display: block;
+    color: var(--color-ink);
+    font-size: var(--text-body);
+    font-weight: var(--weight-semibold);
+    margin-bottom: 0.35rem;
+  }
+
+  .steps p {
+    margin: 0;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    font-weight: var(--weight-body);
+    color: var(--color-ink-soft);
+  }
+
+  .doc-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .doc-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

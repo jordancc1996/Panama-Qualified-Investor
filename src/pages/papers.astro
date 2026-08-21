@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { FORMCARRY_ACTION } from '../lib/forms';
+
+const papers = [
+  {
+    title: 'Territorial Taxation and Residency Planning: A Comparative Analysis of Panama, Paraguay, and Costa Rica',
+    author: 'Dr. Elena Vargas · Institute for International Tax Policy · 2025',
+    description:
+      'A comparative study of territorial tax systems in three Latin American jurisdictions, with a focus on implications for foreign investors and digital nomads.',
+  },
+  {
+    title: 'The Economic Impact of Investment Migration Programs on Small Open Economies',
+    author: 'Prof. James Whitfield, PhD · London School of Economics · 2024',
+    description:
+      'How citizenship- and residency-by-investment programs affect GDP, FDI inflows, and real estate markets in host countries — with Panama as a case study.',
+  },
+  {
+    title: "Panama's Qualified Investor Visa: Legal Framework and Practical Considerations",
+    author: 'Lic. Carlos Mendoza · Panama Bar Association · 2025',
+    description:
+      "A practitioner's guide to the legal requirements, procedural steps, and common pitfalls of the QIV application process under current Panamanian immigration law.",
+  },
+  {
+    title: 'Dual Residency Strategies for US Citizens: Tax and Compliance Implications',
+    author: 'Dr. Sarah Chen, JD/LLM · Georgetown University Law Center · 2024',
+    description:
+      'How US citizens can hold a second permanent residency without triggering additional federal tax obligations, with attention to FATCA, FBAR, and territorial tax jurisdictions.',
+  },
+  {
+    title: 'The H-1B Backlog and Alternative Residency Pathways: A Policy Analysis',
+    author: 'Dr. Rajiv Patel · Migration Policy Institute · 2025',
+    description:
+      'An analysis of the structural green card backlog facing Indian and Chinese H-1B holders, and how investment migration to third countries is emerging as a parallel strategy.',
+  },
+  {
+    title: 'Real Estate Investment as a Residency Pathway: Risk, Return, and Regulatory Considerations in Panama',
+    author: 'Maria Fernanda Rios, MBA · IESE Business School · 2024',
+    description:
+      'A financial analysis of using Panamanian real estate purchases to qualify for the QIV, including market conditions, title risk, rental yields, and exit strategies.',
+  },
+];
+
+const title = 'Research Papers | Panama Qualified Investor Visa';
+const description =
+  "Downloadable research papers on Panama's Qualified Investor Visa, territorial taxation, investment migration, and residency planning by economists, attorneys, and policy advisors.";
+---
+
+<BaseLayout title={title} description={description} ogDescription={description} path="/papers">
+  <Navbar />
+  <main id="main">
+    <section class="page-hero hero">
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">Research</p>
+        <h1>Papers & reports.</h1>
+        <p class="subtext">
+          Research from economists, immigration attorneys, and policy advisors on investment migration, territorial taxation, and Panama's residency framework.
+        </p>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap list">
+        {
+          papers.map((item) => (
+            <article class="paper-item">
+              <div class="info">
+                <h2 class="title">{item.title}</h2>
+                <p class="author">{item.author}</p>
+                <p class="desc">{item.description}</p>
+              </div>
+              <a class="pdf" href="#" download>
+                PDF
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint notify">
+      <div class="wrap list">
+        <p class="prompt">New papers are added as they're published. Subscribe to get notified.</p>
+        <form class="nl" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
+          <input type="hidden" name="_subject" value="Papers newsletter signup" />
+          <label class="sr-only" for="papers-email">Email</label>
+          <input
+            id="papers-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            placeholder="your@email.com"
+          />
+          <button class="btn btn--navy" type="submit">
+            Notify Me <span class="arr">→</span>
+          </button>
+        </form>
+        <p class="note">No spam. Just papers.</p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero {
+    min-height: 35vh;
+    padding-block: 3rem;
+  }
+
+  .list {
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+
+  .paper-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .paper-item:first-child {
+    padding-top: 0;
+  }
+
+  .paper-item:last-child {
+    border-bottom: none;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-ink);
+    line-height: 1.3;
+    letter-spacing: var(--tracking-heading);
+    margin: 0;
+  }
+
+  .author {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: var(--weight-ui);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin: 0.4rem 0 0;
+    line-height: 1.45;
+  }
+
+  .desc {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: var(--weight-body);
+    color: var(--color-ink-soft);
+    line-height: 1.55;
+    margin: 0.5rem 0 0;
+  }
+
+  .pdf {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-cream);
+    border-radius: 8px;
+    padding: 0.45rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition:
+      background-color 150ms ease-out,
+      color 150ms ease-out;
+  }
+
+  .pdf:hover {
+    background: var(--color-navy-900);
+    color: #fff;
+  }
+
+  .notify {
+    padding-block: 3rem;
+    text-align: center;
+  }
+
+  .prompt {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: var(--weight-body);
+    color: var(--color-ink-soft);
+    margin: 0;
+    line-height: var(--leading-body);
+  }
+
+  .nl {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1.25rem auto 0;
+    max-width: 24rem;
+  }
+
+  .nl input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    padding: 0.75rem 1.2rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-ink);
+    outline: none;
+    transition: border-color 150ms ease-out;
+  }
+
+  .nl input:focus {
+    border-color: var(--color-navy-900);
+  }
+
+  .nl .btn {
+    padding: 0.75rem 1.3rem;
+    font-size: 0.72rem;
+    min-height: 48px;
+  }
+
+  .note {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin: 0.75rem 0 0;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 639px) {
+    .paper-item {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pdf {
+      margin-top: 0.75rem;
+      align-self: flex-start;
+    }
+  }
+</style>

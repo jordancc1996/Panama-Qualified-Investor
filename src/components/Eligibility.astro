@@ -1,0 +1,146 @@
+---
+const cards = [
+  {
+    title: 'Minimum Investment',
+    body: '$300,000 in real estate, securities, or a bank deposit.',
+  },
+  {
+    title: 'Clean Background',
+    body: 'Applicants must pass an Interpol and local background check.',
+  },
+  {
+    title: 'Source of Funds',
+    body: 'You must demonstrate the legitimate origin of your investment capital.',
+  },
+  {
+    title: 'Health Certificate',
+    body: 'A basic medical certificate from a licensed physician.',
+  },
+];
+
+const image = 'https://images.unsplash.com/photo-1639935187474-10940c5be350?w=800&q=80&auto=format&fit=crop';
+---
+
+<section class="section" id="eligibility">
+  <div class="wrap">
+    <div class="layout">
+      <div class="copy">
+        <div class="sec-head rv">
+          <p class="eyebrow">Eligibility</p>
+          <h2>
+            Who qualifies for the <em>Qualified Investor Visa.</em>
+          </h2>
+          <p class="lede">
+            The program is open to citizens of any country. There is no age restriction, no language requirement, and no interview. You must pass a standard background check and demonstrate the source of your investment funds.
+          </p>
+        </div>
+        <div class="specs">
+          {
+            cards.map((card, i) => (
+              <article class="spec rv" style={`--rv-delay: ${0.2 + i * 0.06}s`}>
+                <p class="title">{card.title}</p>
+                <p>{card.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+      <img
+        class="photo rv"
+        style="--rv-delay: 0.15s"
+        src={image}
+        alt="Panoramic view of Panama City with mountains"
+        width="800"
+        height="1000"
+        loading="lazy"
+      />
+    </div>
+    <p class="section-more rv">
+      <a class="cta-link cta-link--ink" href="/eligibility">
+        Check eligibility
+        <span class="ring" aria-hidden="true">→</span>
+      </a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .section {
+    background: var(--color-paper);
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+
+  .layout {
+    display: grid;
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+
+  h2 {
+    margin: var(--space-eyebrow) 0 0;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: #405363;
+  }
+
+  .lede {
+    font-size: var(--text-body);
+    margin: var(--space-lede) 0 0;
+    max-width: var(--measure);
+    line-height: var(--leading-body);
+  }
+
+  .copy .sec-head {
+    text-align: left;
+  }
+
+  .specs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .spec {
+    background: var(--cream-tint);
+    border-radius: 16px;
+    padding: 1.25rem 1.35rem;
+  }
+
+  .title {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-body);
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+
+  .spec p:last-child {
+    margin: 0;
+    font-size: var(--text-small);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-body);
+  }
+
+  .photo {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  @media (min-width: 640px) {
+    .specs {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .layout {
+      grid-template-columns: 1fr 0.85fr;
+      align-items: stretch;
+    }
+  }
+</style>

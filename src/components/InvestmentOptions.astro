@@ -1,0 +1,109 @@
+---
+const routes = [
+  {
+    amount: '$300,000',
+    title: 'Real estate',
+    kicker: 'Most used route',
+    body: 'Purchase Panamanian property free of liens on the qualifying amount. Title may sit in the applicant’s name, a Panama corporation, or a private interest foundation where the applicant is the ultimate beneficiary. Pre-construction is permitted through a licensed trust or a developer bank guarantee.',
+    note: 'Published real estate minimum through 15 October 2026. Confirm the prevailing threshold with counsel before committing capital.',
+    image:
+      'https://images.unsplash.com/photo-1637971405797-ccf327195cb1?w=800&q=80&auto=format&fit=crop',
+    alt: 'Modern high-rise buildings in Panama City',
+  },
+  {
+    amount: '$500,000',
+    title: 'Listed securities',
+    kicker: 'Market route',
+    body: 'Place $500,000 in securities listed on the Bolsa de Valores de Panamá through a brokerage licensed by the Superintendencia del Mercado de Valores. The book must be held for five years.',
+    note: 'Suits investors who prefer a financial asset over property administration.',
+    image:
+      'https://images.unsplash.com/photo-1540610410855-b4c8877b761c?w=800&q=80&auto=format&fit=crop',
+    alt: 'Panama City financial district at night',
+  },
+  {
+    amount: '$750,000',
+    title: 'Bank time deposit',
+    kicker: 'Deposit route',
+    body: 'Hold $750,000 in a fixed-term deposit of at least five years at a bank with a general license authorized to operate in Panama, under supervision of the Superintendencia de Bancos.',
+    note: 'Capital remains in the banking system for the statutory term.',
+    image:
+      'https://images.unsplash.com/photo-1582059983736-eedd5df2212b?w=800&q=80&auto=format&fit=crop',
+    alt: 'Panama City skyline during daytime',
+  },
+];
+---
+
+<section class="section section--navy" id="investment">
+  <div class="wrap">
+    <div class="intro rv">
+      <p class="eyebrow">Capital</p>
+      <h2>Three qualifying investment routes</h2>
+      <p>
+        Each route grants the same immigration result: permanent residency. Choose the asset that matches liquidity, yield, and administration. The investment must be held for five years.
+      </p>
+    </div>
+    <div class="routes">
+      {
+        routes.map((route, i) => (
+          <article class={`pcard rv`} style={`--rv-delay: ${i * 0.1}s`}>
+            <img src={route.image} alt={route.alt} width="800" height="600" loading="lazy" />
+            <div class="pcard-body">
+              <p class="eyebrow">{route.kicker}</p>
+              <p class="amount">{route.amount}</p>
+              <h3>{route.title}</h3>
+              <p>{route.body}</p>
+              <p class="note">{route.note}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    max-width: 40rem;
+    margin-bottom: 3rem;
+  }
+
+  .intro h2 {
+    margin: 1rem 0 1.1rem;
+  }
+
+  .routes {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .amount {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-gold-300);
+    margin: 0.85rem 0 0.15rem;
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    color: var(--color-on-navy);
+    margin-bottom: 0.7rem;
+  }
+
+  .note {
+    color: var(--color-gold-300);
+    font-size: 0.9rem;
+    margin-top: 0.9rem;
+  }
+
+  @media (min-width: 900px) {
+    .routes {
+      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-rows: auto auto;
+    }
+
+    .routes article:nth-child(1) {
+      grid-row: 1 / 3;
+      min-height: 40rem;
+    }
+  }
+</style>

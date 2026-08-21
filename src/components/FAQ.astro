@@ -1,0 +1,109 @@
+---
+const items = [
+  {
+    q: 'What is the Panama Qualified Investor Visa?',
+    a: "It is a permanent residency visa issued by Panama's immigration authority. It grants holders the legal right to live and work in Panama indefinitely, with a pathway to citizenship after five years. The visa requires a minimum investment of $300,000 in qualifying Panamanian assets.",
+  },
+  {
+    q: 'How long does the application process take?',
+    a: 'From initial document preparation to receiving your provisional residency permit, the typical timeline is 30 to 60 days. Your permanent residency card follows shortly after.',
+  },
+  {
+    q: 'Do I need to live in Panama full-time?',
+    a: 'No. There is no minimum physical presence requirement to maintain your residency. However, you must visit Panama at least once every two years to keep your permit active. To qualify for citizenship, you will need to spend more time in the country.',
+  },
+  {
+    q: 'Can I include my family in the application?',
+    a: 'Yes. Your spouse, dependent children under 25, and parents over 65 can all be included as dependents on a single application.',
+  },
+  {
+    q: 'Is there a language requirement?',
+    a: 'No. Unlike many European golden visa programs, the Panama Qualified Investor Visa has no language test or cultural integration exam.',
+  },
+  {
+    q: 'What happens to my investment?',
+    a: 'For real estate, you own the property outright and can sell it after maintaining it for the required period. For bank deposits, the funds are returned to you at the end of the three-year term. For securities, you hold the investment and can manage it through your brokerage.',
+  },
+  {
+    q: 'Can I work in Panama with this visa?',
+    a: 'Yes. Permanent residency grants you the legal right to work in Panama without needing a separate work permit.',
+  },
+  {
+    q: "What is Panama's tax system?",
+    a: 'Panama uses a territorial tax system. Only income earned within Panama is subject to Panamanian income tax. Foreign-sourced income — whether from investments, employment, or business activities abroad — is not taxed.',
+  },
+];
+---
+
+<section class="section bg-cream-tint" id="faq">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Frequently asked questions</p>
+      <h2>Everything you <em>need to know.</em></h2>
+    </div>
+    <div class="faq rv" style="--rv-delay: 0.1s">
+      {
+        items.map((item) => (
+          <details>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+    <div class="after rv">
+      <p>Still have questions? We'll answer them on a quick call.</p>
+      <a class="btn btn--outline-navy" href="#book">
+        Schedule a Call <span class="arr">→</span>
+      </a>
+    </div>
+    <p class="section-more rv">
+      <a class="cta-link cta-link--ink" href="/faq">
+        View all questions
+        <span class="ring" aria-hidden="true">→</span>
+      </a>
+    </p>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+})} />
+
+<style>
+  .section {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+
+  .wrap {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head {
+    margin-bottom: 2.5rem;
+  }
+
+  .after {
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+
+  .after p {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--weight-body);
+    color: var(--color-ink-soft);
+    margin: 0;
+  }
+
+  .after .btn {
+    margin-top: 1rem;
+  }
+</style>

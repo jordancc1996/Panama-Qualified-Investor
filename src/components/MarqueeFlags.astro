@@ -1,0 +1,30 @@
+---
+const items = [
+  'United States',
+  'Canada',
+  'United Kingdom',
+  'Germany',
+  'France',
+  'Switzerland',
+  'Brazil',
+  'Colombia',
+  'Mexico',
+  'Israel',
+  'Australia',
+  'Singapore',
+];
+const loop = [...items, ...items];
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    {
+      loop.map((item) => (
+        <div class="marquee-item">
+          <span class="marquee-dot"></span>
+          {item}
+        </div>
+      ))
+    }
+  </div>
+</div>

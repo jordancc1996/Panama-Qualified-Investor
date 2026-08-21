@@ -1,0 +1,444 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const heroImage =
+  'https://images.unsplash.com/photo-1582059983736-eedd5df2212b?w=1920&q=80&auto=format&fit=crop';
+
+const benefits = [
+  {
+    title: 'Territorial Tax = Foreign Income Untaxed',
+    body: 'If your company is incorporated outside Panama and your revenue comes from global customers, Panama doesn\'t tax it. Period. No exit tax, no capital gains tax on foreign assets.',
+  },
+  {
+    title: 'Americas Time Zone',
+    body: 'Panama is EST (UTC-5). You overlap with New York, San Francisco, São Paulo, and Mexico City. Take a morning call with Europe and an afternoon call with the West Coast.',
+  },
+  {
+    title: 'No Minimum Stay',
+    body: 'Fly in for a week, fly out for a month. Panama doesn\'t require 183 days. Maintain your residency with a visit once every two years.',
+  },
+  {
+    title: 'Crypto-Friendly Banking',
+    body: 'Panama has no specific cryptocurrency legislation, meaning crypto is not prohibited. Several local banks and fintech platforms work with digital asset holders. OTC desks operate in Panama City.',
+  },
+  {
+    title: 'SAS Formation Available',
+    body: 'Panama offers the Sociedad Anónima Simplificada (SAS), a streamlined corporate structure similar to a US LLC. Useful for founders who want a local entity for banking or contracts.',
+  },
+  {
+    title: 'Cost of Living Advantage',
+    body: 'A one-bedroom in Panama City\'s best neighborhoods runs $1,200–$1,800/month. A comparable apartment in San Francisco or New York costs 3–4x more. Coworking spaces start at $150/month.',
+  },
+];
+
+const routes = [
+  {
+    n: '01',
+    title: 'Titled Real Estate',
+    body: 'Purchase titled property valued at $300,000 or more. Residential, commercial, or land registered in your name.',
+  },
+  {
+    n: '02',
+    title: 'Stocks & Securities',
+    body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange through a licensed local brokerage.',
+  },
+  {
+    n: '03',
+    title: 'Fixed-Term Bank Deposit',
+    body: 'Place $300,000 in a three-year fixed-term deposit at a licensed Panamanian bank. Funds are returned at term end.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Can I run my company from Panama?',
+    a: 'Yes. Permanent residency gives you the legal right to work in Panama. You can manage a remote company, take calls, and operate your business from here. If your company is incorporated outside Panama and earns revenue from outside Panama, that income is not subject to Panamanian tax.',
+  },
+  {
+    q: 'What about my US company — does this change anything?',
+    a: 'Holding Panamanian residency does not change the tax treatment of your US C-corp or LLC. The company continues to be taxed where it\'s incorporated. What may change is your personal tax situation depending on where you are a tax resident. Consult a cross-border tax advisor before making moves.',
+  },
+  {
+    q: 'Is the internet reliable enough for remote work?',
+    a: 'Panama City has fiber internet widely available, with speeds of 100–500 Mbps common in modern apartments and coworking spaces. Starlink is also available as a backup. The infrastructure is significantly better than most of Central America and the Caribbean.',
+  },
+  {
+    q: 'Can I bring my team or hire locally?',
+    a: 'Your permanent residency gives you the right to work and hire in Panama. Local talent is available in tech, marketing, and operations. Panama City also has a growing expat tech community, particularly in the banking and fintech sectors.',
+  },
+  {
+    q: 'What\'s the social scene like for founders?',
+    a: 'Panama City has a growing community of international entrepreneurs, particularly in fintech, crypto, and consulting. There are regular meetups, coworking spaces, and a small but active startup ecosystem. It\'s not Berlin or Austin — but it\'s not isolated either.',
+  },
+];
+---
+
+<BaseLayout
+  title="Panama Qualified Investor Visa for Tech Founders | Strategic Residency"
+  description="How remote-first founders use the Panama QIV as a strategic home base. Zero tax on foreign income, Americas time zone, crypto-friendly. From $300,000."
+  ogDescription="How remote-first founders use the Panama QIV as a strategic home base. Zero tax on foreign income, Americas time zone, crypto-friendly. From $300,000."
+  path="/tech-founders"
+>
+  <Navbar />
+  <main id="main">
+    <section class="hero" id="top">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="Modern Panama City high-rises"
+        width="1920"
+        height="1080"
+        loading="eager"
+      />
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy rv">For Tech Founders</p>
+        <h1 class="rv" style="--rv-delay: 0.1s">
+          Base your life somewhere that matches how you build.
+        </h1>
+        <p class="subtext rv" style="--rv-delay: 0.2s">
+          How remote-first founders, startup CEOs, and Web3 builders are using the Panama Qualified Investor Visa to establish a strategic home base — with zero tax on foreign income and direct flights to both US coasts.
+        </p>
+        <div class="actions rv" style="--rv-delay: 0.3s">
+          <a class="btn btn--gold" href="/#book">
+            Book a Free Assessment <span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">The reality</p>
+            <h2>When your company is everywhere, your residency still has to be somewhere.</h2>
+          </div>
+          <div class="prose rv" style="--rv-delay: 0.1s">
+            <p>
+              If you're building a remote-first company, you've already decoupled work from location. Your team is distributed. Your customers are global. Your cap table might span three countries. But your personal residency — where you're legally domiciled, where you pay taxes, where your passport and bank accounts are anchored — is still tied to a single jurisdiction.
+            </p>
+            <p>
+              For many founders, that jurisdiction is the US. And the US is a fine place to build a company — but it's an expensive place to be a tax resident if your income comes from a Delaware C-corp, a Cayman fund, or equity in a Singapore entity. You're taxed on worldwide income regardless of where the money is earned or where you physically sit.
+            </p>
+            <p>
+              Some founders have moved to Dubai, Lisbon, or Singapore. But each comes with trade-offs. Dubai has no income tax but limited banking for crypto. Portugal keeps restructuring its NHR regime. Singapore is expensive and requires physical presence.
+            </p>
+            <p>
+              Panama sits in the sweet spot. It's in the Americas. It's dollarized. It has territorial taxation. It has modern financial infrastructure. And it doesn't ask you to spend 183 days a year proving you live there.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <p class="eyebrow">Why Panama works for founders</p>
+          <h2>Designed for how you already operate.</h2>
+        </div>
+        <div class="cards">
+          {
+            benefits.map((item, i) => (
+              <article class="card rv" style={`--rv-delay: ${i * 0.06}s`}>
+                <p class="card-title">{item.title}</p>
+                <p>{item.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">How the visa works</p>
+            <h2>Three routes to the same residency.</h2>
+          </div>
+          <ol class="routes">
+            {
+              routes.map((route, i) => (
+                <li class="rv" style={`--rv-delay: ${i * 0.06}s`}>
+                  <p class="n">{route.n}</p>
+                  <div>
+                    <p class="route-title">{route.title}</p>
+                    <p>{route.body}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+          <p class="note rv">
+            All routes require a minimum $300,000 investment. Processing takes 30–60 days.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">Common questions</p>
+            <h2>Questions founders ask most.</h2>
+          </div>
+          <div class="faq rv" style="--rv-delay: 0.1s">
+            {
+              faqs.map((item) => (
+                <details>
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="wrap">
+        <div class="cta-inner rv">
+          <h2>Ready to explore your options?</h2>
+          <p>15 minutes with an advisor who works specifically with tech founders and remote CEOs.</p>
+          <a class="btn btn--gold" href="/#book">
+            Book Your Free Assessment <span class="arr">→</span>
+          </a>
+          <p class="cta-mail">
+            Or email us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: var(--header-h);
+    isolation: isolate;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    text-align: center;
+    max-width: var(--measure);
+    width: 100%;
+    margin-inline: auto;
+    padding: 4rem clamp(1.35rem, 5vw, 3rem);
+    box-sizing: border-box;
+  }
+
+  h1 {
+    color: var(--color-on-navy);
+    margin: 1.1rem 0 0;
+    overflow-wrap: break-word;
+  }
+
+  .subtext {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--color-on-navy-dim);
+    margin: 1.5rem auto 0;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+
+  .paper {
+    background: var(--color-paper);
+  }
+
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+
+  .sec-head.left h2 {
+    margin-top: var(--space-eyebrow);
+  }
+
+  .prose p {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--weight-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+    color: var(--color-ink-soft);
+    margin: 0 0 var(--space-paragraph);
+  }
+
+  .prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  .cards {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background: var(--color-paper);
+    border-radius: 16px;
+    padding: 1.25rem 1.35rem;
+  }
+
+  .card-title {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-body);
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+
+  .card p:last-child {
+    margin: 0;
+    font-size: var(--text-small);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-body);
+  }
+
+  .routes {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+  }
+
+  .routes li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .n {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    color: var(--color-navy-600);
+    line-height: 1;
+    min-width: 2.4rem;
+    margin: 0;
+  }
+
+  .route-title {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-body);
+    color: var(--color-ink);
+    margin: 0 0 0.25rem;
+  }
+
+  .routes li p:last-child {
+    margin: 0;
+    color: var(--color-ink-soft);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .note {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    color: var(--color-muted);
+    margin: 1.5rem 0 0;
+    text-align: center;
+    line-height: var(--leading-body);
+  }
+
+  .faq {
+    margin-top: 2.5rem;
+  }
+
+  .cta-band {
+    background: linear-gradient(200deg, #4e6478 0%, #405363 55%, #2d3d4d 100%);
+    padding-block: var(--section-pad);
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .cta-band h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    color: var(--color-on-navy);
+    line-height: var(--leading-heading);
+  }
+
+  .cta-band p:not(.cta-mail) {
+    color: var(--color-on-navy-dim);
+    margin: var(--space-lede) 0 0;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .cta-band .btn {
+    margin-top: 1.5rem;
+  }
+
+  .cta-mail {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-ui);
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 1.25rem;
+    letter-spacing: var(--tracking-ui);
+  }
+
+  .cta-mail a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  @media (min-width: 1024px) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

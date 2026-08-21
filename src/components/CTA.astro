@@ -1,0 +1,174 @@
+---
+import { FORMCARRY_ACTION } from '../lib/forms';
+
+const cards = [
+  {
+    icon: '📋',
+    title: 'Download the Checklist',
+    body: 'A printable PDF with every document, cost, and step you need to prepare before applying.',
+    href: '#',
+    link: 'Get the PDF →',
+  },
+  {
+    icon: '💬',
+    title: 'Join the WhatsApp Group',
+    body: 'Connect with other Americans, Canadians, and tech founders who have gone through the process or are currently applying.',
+    href: 'https://wa.me/',
+    link: 'Join the group →',
+  },
+];
+---
+
+<section class="section section--navy" id="apply">
+  <div class="wrap">
+    <div class="copy rv">
+      <p class="eyebrow">Next steps</p>
+      <h2>Have questions? Here's <em>how to go deeper.</em></h2>
+      <p>This guide covers the essentials, but every situation is different. Here are your next steps.</p>
+    </div>
+    <div class="cards">
+      {
+        cards.map((card, i) => (
+          <article class="action rv" style={`--rv-delay: ${i * 0.08}s`}>
+            <span class="icon" aria-hidden="true">{card.icon}</span>
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+            <a class="cta-link--cream" href={card.href} target={card.href.startsWith('http') ? '_blank' : undefined} rel={card.href.startsWith('http') ? 'noreferrer' : undefined}>
+              {card.link}
+            </a>
+          </article>
+        ))
+      }
+      <article class="action rv" style="--rv-delay: 0.16s">
+        <span class="icon" aria-hidden="true">📧</span>
+        <h3>Get Updates by Email</h3>
+        <p>
+          We send one email per month with policy changes, new investment options, and real applicant experiences. No spam.
+        </p>
+        <form class="newsletter" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
+          <input type="hidden" name="_subject" value="Panama Qualified Investor Visa newsletter" />
+          <label class="sr-only" for="newsletter-email">Email</label>
+          <input
+            id="newsletter-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            placeholder="your@email.com"
+          />
+          <button class="btn btn--gold btn--sm" type="submit">
+            Subscribe <span class="arr">→</span>
+          </button>
+        </form>
+      </article>
+    </div>
+    <p class="fine">We respect your inbox. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<style>
+  .copy {
+    text-align: center;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .copy h2 {
+    margin: 1rem 0 1.15rem;
+  }
+
+  .copy h2 em {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.80);
+  }
+
+  .cards {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 56rem;
+    margin: 2.5rem auto 0;
+  }
+
+  .action {
+    background: rgba(64, 83, 99, 0.5);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .icon {
+    display: block;
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  h3 {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--color-on-navy);
+    margin: 0 0 0.5rem;
+  }
+
+  .action p {
+    font-size: 0.88rem;
+    color: var(--color-on-navy-dim);
+    margin: 0 0 1rem;
+  }
+
+  .newsletter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .newsletter input {
+    flex: 1 1 10rem;
+    font-family: var(--font-sans);
+    font-size: 0.94rem;
+    color: var(--color-on-navy);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    border-radius: 999px;
+    padding: 0.7rem 1.1rem;
+    outline: none;
+    min-width: 0;
+  }
+
+  .newsletter input:focus {
+    border-color: #405363;
+  }
+
+  .fine {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 1.5rem 0 0;
+    text-align: center;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .cards {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,95 @@
+---
+const rows = [
+  {
+    label: 'Minimum capital',
+    panama: '$300,000 real estate (published through 15 Oct 2026)',
+    portugal: 'Fund subscription, currently well above $300,000',
+    greece: 'Real estate bands from €250,000, location-dependent',
+    caribbean: 'Donation or real estate, typically $200,000+',
+  },
+  {
+    label: 'Status granted',
+    panama: 'Permanent residency on approval',
+    portugal: 'Temporary residency, renewed on a schedule',
+    greece: 'Five-year residency permit, renewable',
+    caribbean: 'Citizenship by investment (passport)',
+  },
+  {
+    label: 'Processing',
+    panama: '30 business days statutory; often 30 to 90 in practice',
+    portugal: 'Several months, AIMA backlog-dependent',
+    greece: 'Several months after property completion',
+    caribbean: '3 to 6 months typical',
+  },
+  {
+    label: 'Physical stay',
+    panama: 'None required to keep PR',
+    portugal: 'Minimum stay days per cycle',
+    greece: 'None for the golden visa permit',
+    caribbean: 'None',
+  },
+  {
+    label: 'Tax system',
+    panama: 'Territorial; USD economy',
+    portugal: 'Worldwide if tax resident, unless a regime applies',
+    greece: 'Worldwide if tax resident; non-dom option exists',
+    caribbean: 'Varies by island; no Schengen',
+  },
+  {
+    label: 'Citizenship path',
+    panama: 'Naturalization after 5 years of legal residence',
+    portugal: 'Naturalization on a longer statutory clock',
+    greece: 'Naturalization not tied to the golden visa term',
+    caribbean: 'Immediate citizenship',
+  },
+];
+---
+
+<section class="section section--paper" id="investment-compare">
+  <div class="wrap">
+    <div class="intro rv">
+      <p class="eyebrow">Placement</p>
+      <h2>How Panama sits against other investor residencies</h2>
+      <p>
+        Figures below are orientation, not offers. This guide places Panama against Portugal, Greece, and Caribbean programs that change by statute and circular. Verify each column in that jurisdiction before acting.
+      </p>
+    </div>
+    <div class="table-scroll rv">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th class="is-featured">Panama QIV</th>
+            <th>Portugal GV</th>
+            <th>Greece GV</th>
+            <th>Caribbean CBI</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((row) => (
+              <tr>
+                <td>{row.label}</td>
+                <td class="is-featured">{row.panama}</td>
+                <td>{row.portugal}</td>
+                <td>{row.greece}</td>
+                <td>{row.caribbean}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    max-width: 42rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .intro h2 {
+    margin: 1rem 0 1.1rem;
+  }
+</style>

@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const general = [
+  {
+    q: 'What is the Panama Qualified Investor Visa?',
+    a: 'A permanent residency visa requiring a minimum $300,000 investment in Panamanian real estate, securities, or a bank deposit. It grants the holder the right to live and work in Panama indefinitely, with a path to citizenship after five years.',
+  },
+  {
+    q: 'Is this a temporary or permanent visa?',
+    a: 'Permanent. You receive a provisional permit within 30 days, followed by a permanent residency card. There is no renewal requirement — the residency is indefinite.',
+  },
+  {
+    q: 'How long does the process take?',
+    a: '30 to 60 days from document submission to provisional permit. The permanent card follows within a few additional weeks.',
+  },
+  {
+    q: 'Can I include my family?',
+    a: 'Yes. Spouse, children under 25, and parents over 65 are included at no additional investment.',
+  },
+  {
+    q: 'Do I need to live in Panama full-time?',
+    a: 'No. Visit once every two years to maintain your residency. There is no minimum days-per-year requirement.',
+  },
+  {
+    q: 'Is there a language requirement?',
+    a: 'No. No Spanish test or cultural exam of any kind.',
+  },
+  {
+    q: 'Can I work in Panama?',
+    a: 'Yes. Permanent residency grants full work authorization.',
+  },
+  {
+    q: 'Can I eventually get citizenship?',
+    a: 'Yes. After five continuous years of permanent residency, you can apply for naturalization. Panama allows dual citizenship.',
+  },
+];
+
+const financial = [
+  {
+    q: "What does Panama's territorial tax system mean for me?",
+    a: 'Only income earned within Panama is taxed. Foreign-sourced income — investments, remote salaries, overseas business profits — is not subject to Panamanian income tax.',
+  },
+  {
+    q: 'Is the $300,000 a fee or an investment?',
+    a: 'An investment. You own the asset. Real estate is yours to sell. Bank deposits are returned after 3 years. Securities stay in your brokerage account.',
+  },
+  {
+    q: 'What are the total costs beyond the investment?',
+    a: 'Government fees run $2,000–$3,000. Legal fees range from $5,000–$15,000 depending on complexity. Document authentication costs vary by country.',
+  },
+  {
+    q: 'Can I use a mortgage for the real estate route?',
+    a: 'The $300,000 must be a direct investment. Mortgaged properties may qualify if your equity meets the threshold, but this varies — confirm with your attorney.',
+  },
+  {
+    q: 'What about US taxes? Do I still pay the IRS?',
+    a: 'Yes. The US taxes citizens on worldwide income regardless of residency. Panama residency does not change your US tax obligations, but Panama does not add a second tax layer.',
+  },
+  {
+    q: 'Are there ongoing costs to maintain residency?',
+    a: 'No government renewal fees. You maintain your qualifying investment and visit Panama once every two years. That\'s it.',
+  },
+];
+
+const practical = [
+  {
+    q: 'Is Panama safe?',
+    a: 'Panama City is comparable to most major Latin American cities. Expat neighborhoods (Punta Pacífica, Costa del Este, Casco Viejo) are generally safe. Common-sense precautions apply. Panama has not experienced political violence or civil conflict in decades.',
+  },
+  {
+    q: "What's the healthcare situation?",
+    a: 'Panama has excellent private hospitals in Panama City, including Johns Hopkins-affiliated Punta Pacífica Hospital. Many doctors are US or European trained. Costs are 40–70% lower than the US. International health insurance is available and affordable.',
+  },
+  {
+    q: "How's the internet?",
+    a: 'Fiber internet is widely available in Panama City, with speeds of 100–500 Mbps. Starlink is available as a backup. Sufficient for remote work, video calls, and streaming.',
+  },
+  {
+    q: 'Can I drive with my foreign license?',
+    a: 'You can use your foreign license for 90 days. After that, you can exchange it for a Panamanian license — the process is straightforward for permanent residents.',
+  },
+  {
+    q: 'What about schooling for children?',
+    a: 'Panama City has multiple international schools offering American, British, and IB curricula. Tuition ranges from $5,000–$15,000 per year depending on the school.',
+  },
+  {
+    q: 'Is English spoken?',
+    a: "Widely in business, banking, and healthcare. Panama's history with the Canal Zone means English proficiency is higher than most Latin American countries. In daily life outside expat areas, basic Spanish helps.",
+  },
+];
+
+const allFaqs = [...general, ...financial, ...practical];
+
+const title = 'Panama Qualified Investor Visa FAQ | All Your Questions Answered';
+const description =
+  'Answers to every common question about Panama\'s QIV — taxes, costs, timeline, family, citizenship, and more.';
+---
+
+<BaseLayout title={title} description={description} ogDescription={description} path="/faq">
+  <Navbar />
+  <main id="main">
+    <section class="page-hero">
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">FAQ</p>
+        <h1>Every question, answered.</h1>
+        <p class="subtext">If it's not here, ask us directly.</p>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">General</p>
+            <h2>About the program.</h2>
+          </div>
+          <div class="faq rv" style="--rv-delay: 0.1s">
+            {
+              general.map((item) => (
+                <details>
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">Financial</p>
+            <h2>Money, taxes, and costs.</h2>
+          </div>
+          <div class="faq rv" style="--rv-delay: 0.1s">
+            {
+              financial.map((item) => (
+                <details>
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">Practical</p>
+            <h2>Living in Panama.</h2>
+          </div>
+          <div class="faq rv" style="--rv-delay: 0.1s">
+            {
+              practical.map((item) => (
+                <details>
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="wrap cta-band-inner">
+        <h2>Ready to take the next step?</h2>
+        <a class="btn btn--gold" href="/#book">
+          Book Your Free Assessment <span class="arr">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: allFaqs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+})} />
+
+<style>
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head.left {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+</style>

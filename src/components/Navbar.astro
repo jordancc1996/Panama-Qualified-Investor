@@ -1,0 +1,255 @@
+---
+const links = [
+  { href: '/visa', label: 'The Visa' },
+  { href: '/benefits', label: 'Benefits' },
+  { href: '/who-its-for', label: "Who It's For" },
+  { href: '/process', label: 'Process' },
+  { href: '/eligibility', label: 'Eligibility' },
+  { href: '/faq', label: 'FAQ' },
+  { href: '/papers', label: 'Papers' },
+];
+---
+
+<header class="navbar" id="navbar">
+  <div class="wrap inner">
+    <a class="brand" href="/">
+      <svg class="mark" width="36" height="40" viewBox="0 0 36 40" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M18 1.2c4.4 3 9.2 4.5 14.8 4.5v14.2c0 8.8-5.7 16-14.8 19.6C8.9 35.9 3.2 28.7 3.2 19.9V5.7C8.8 5.7 13.6 4.2 18 1.2Z"
+        ></path>
+        <path
+          fill="none"
+          stroke="var(--color-paper)"
+          stroke-width="1.2"
+          d="M18 8.2c2.6 1.6 5.4 2.4 8.6 2.4v8.4c0 5-3.2 9.2-8.6 11.3-5.4-2.1-8.6-6.3-8.6-11.3V10.6c3.2 0 6-0.8 8.6-2.4Z"
+        ></path>
+      </svg>
+      <span class="brand-name">Panama Qualified Investor</span>
+    </a>
+
+    <nav class="links" aria-label="Primary">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+
+    <a class="btn btn--navy cta" href="/#book">
+      Free Assessment <span class="arr">→</span>
+    </a>
+
+    <button class="burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span class="sr-only">Open menu</span>
+    </button>
+  </div>
+
+  <div class="overlay" id="mobile-nav" data-nav-panel>
+    <button class="close" type="button" data-nav-close aria-label="Close menu">✕</button>
+    <nav class="overlay-links" aria-label="Mobile">
+      {
+        links.map((link) => (
+          <a href={link.href} data-nav-close>
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <a class="btn btn--navy" href="/#book" data-nav-close>
+      Free Assessment <span class="arr">→</span>
+    </a>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    height: var(--header-h);
+    background: #fff;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 2;
+  }
+
+  .mark {
+    width: 36px;
+    height: 40px;
+    color: var(--color-ink);
+    display: block;
+  }
+
+  .brand-name {
+    font-family: var(--font-sans);
+    font-size: var(--text-ui);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-ink);
+    padding-top: 0.35rem;
+    border-top: 1px solid var(--color-line);
+    margin-top: 0.35rem;
+    line-height: var(--leading-ui);
+  }
+
+  .links {
+    display: none;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .links a {
+    font-family: var(--font-sans);
+    font-size: var(--text-ui);
+    font-weight: var(--weight-ui);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    padding: 1rem 0.9rem;
+    transition: color 150ms ease-out;
+  }
+
+  .links a:hover {
+    color: var(--color-navy-900);
+  }
+
+  .cta {
+    display: none;
+    z-index: 2;
+  }
+
+  .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .burger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--color-ink);
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: var(--color-paper);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .overlay.is-open {
+    display: flex;
+  }
+
+  .close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    border: 0;
+    background: transparent;
+    color: var(--color-ink);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.35rem;
+  }
+
+  .overlay-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .overlay-links a {
+    font-family: var(--font-sans);
+    font-size: clamp(1.2rem, 4vw, 1.4rem);
+    font-weight: var(--weight-semibold);
+    color: var(--color-ink);
+    letter-spacing: var(--tracking-body);
+    line-height: var(--leading-ui);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (min-width: 768px) {
+    .cta {
+      display: inline-flex;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .links {
+      display: flex;
+    }
+
+    .burger,
+    .overlay {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const panel = document.querySelector('[data-nav-panel]');
+  if (toggle instanceof HTMLButtonElement && panel instanceof HTMLElement) {
+    const setOpen = (open: boolean) => {
+      panel.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    toggle.addEventListener('click', () => {
+      setOpen(!panel.classList.contains('is-open'));
+    });
+    panel.querySelectorAll('[data-nav-close]').forEach((el) => {
+      el.addEventListener('click', () => setOpen(false));
+    });
+    window.addEventListener('resize', () => {
+      if (window.matchMedia('(min-width: 1024px)').matches) setOpen(false);
+    });
+  }
+</script>

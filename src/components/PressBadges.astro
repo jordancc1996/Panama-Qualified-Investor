@@ -1,0 +1,77 @@
+---
+const marks = [
+  { k: 'Decree 722', v: '2020' },
+  { k: 'Decree 193', v: '2024' },
+  { k: 'Migración', v: 'Permanent residency' },
+  { k: 'Currency', v: 'United States dollar' },
+  { k: 'Hold period', v: 'Five years' },
+];
+---
+
+<section class="press section--cream" aria-label="Program authority">
+  <div class="wrap press-row">
+    <p class="kicker">Established under Panamanian law</p>
+    <ul>
+      {
+        marks.map((mark) => (
+          <li class="rv">
+            <span>{mark.k}</span>
+            <strong>{mark.v}</strong>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .press {
+    padding-block: 2.4rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .press-row {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.5rem;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  span {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--color-ink);
+    font-size: 0.95rem;
+  }
+
+  @media (min-width: 900px) {
+    .press-row {
+      grid-template-columns: 180px 1fr;
+      align-items: center;
+    }
+
+    ul {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+</style>

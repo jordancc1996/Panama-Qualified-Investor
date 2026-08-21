@@ -1,0 +1,444 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const heroImage =
+  'https://images.unsplash.com/photo-1668294633496-c8b9baae35c3?w=1920&q=80&auto=format&fit=crop';
+
+const benefits = [
+  {
+    title: 'No Country Quotas',
+    body: 'Unlike the US green card system, Panama\'s QIV has no per-country limits. Indian, Chinese, and all other nationals are processed identically on the same timeline.',
+  },
+  {
+    title: 'No Employer Dependency',
+    body: 'Your Panamanian residency belongs to you, not your employer. If you change jobs, get laid off, or start a company, your Panama status is unaffected.',
+  },
+  {
+    title: '30–60 Day Processing',
+    body: 'Not 10 years. Not 5 years. The entire process from document submission to provisional permit takes 30 to 60 days.',
+  },
+  {
+    title: 'H-1B Status Unaffected',
+    body: 'Obtaining Panamanian residency has zero impact on your H-1B visa, your PERM filing, your I-140, or your position in the green card queue. It\'s a completely separate jurisdiction.',
+  },
+  {
+    title: 'A Home You Actually Own',
+    body: 'After years of temporary status in the US, Panama gives you something permanent. Legal residency that doesn\'t expire, doesn\'t require renewal, and leads to citizenship in 5 years.',
+  },
+  {
+    title: 'Family Coverage',
+    body: 'Your spouse and dependent children are included in the same application. Your spouse receives their own residency permit with full work authorization in Panama — no EAD drama.',
+  },
+];
+
+const routes = [
+  {
+    n: '01',
+    title: 'Titled Real Estate',
+    body: 'Purchase titled property valued at $300,000 or more. Residential, commercial, or land registered in your name.',
+  },
+  {
+    n: '02',
+    title: 'Stocks & Securities',
+    body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange through a licensed local brokerage.',
+  },
+  {
+    n: '03',
+    title: 'Fixed-Term Bank Deposit',
+    body: 'Place $300,000 in a three-year fixed-term deposit at a licensed Panamanian bank. Funds are returned at term end.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Does getting Panama residency affect my H-1B or green card case?',
+    a: 'No. Panamanian residency is a completely separate jurisdiction. It does not appear in USCIS records, does not affect your H-1B status, and does not change your priority date or position in the green card queue. US immigration law does not penalize you for holding residency in another country.',
+  },
+  {
+    q: 'Can I do this while I\'m still in the US on an H-1B?',
+    a: 'Yes. Most of the process can be done remotely — document preparation, background checks, and investment setup. You will need to travel to Panama for the biometrics appointment and to finalize the application, which typically requires a 3–5 day trip.',
+  },
+  {
+    q: 'What if I get my green card later — do I lose the Panama residency?',
+    a: 'No. The two are independent. You can hold both US permanent residency (green card) and Panamanian permanent residency simultaneously. Many people maintain dual residency as part of a broader international strategy.',
+  },
+  {
+    q: 'Is $300,000 realistic on an H-1B salary?',
+    a: 'It depends on your specific situation. Many H-1B holders in tech, finance, and healthcare have savings, vested equity, or investment portfolios that meet the threshold. The bank deposit route means the money is not spent — it\'s held in a fixed-term deposit and returned to you after three years.',
+  },
+  {
+    q: 'My spouse is on H-4 and can\'t work. Does Panama help?',
+    a: 'Yes. As a dependent on your Panama QIV application, your spouse receives their own permanent residency permit with full work authorization in Panama. This is independent of H-4 or EAD status in the US.',
+  },
+];
+---
+
+<BaseLayout
+  title="Panama Qualified Investor Visa for H-1B Holders | Backup Residency Plan"
+  description="Skip the green card backlog. Panama's QIV grants permanent residency in 30–60 days. No country quotas, no employer dependency. $300,000 investment."
+  ogDescription="Skip the green card backlog. Panama's QIV grants permanent residency in 30–60 days. No country quotas, no employer dependency. $300,000 investment."
+  path="/h1b"
+>
+  <Navbar />
+  <main id="main">
+    <section class="hero" id="top">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="Dense Panama City skyline"
+        width="1920"
+        height="1080"
+        loading="eager"
+      />
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy rv">For H-1B Visa Holders</p>
+        <h1 class="rv" style="--rv-delay: 0.1s">
+          A permanent residency that doesn't depend on a queue, a sponsor, or a lottery.
+        </h1>
+        <p class="subtext rv" style="--rv-delay: 0.2s">
+          How H-1B holders — especially those facing decade-long green card backlogs — are using the Panama Qualified Investor Visa as a parallel path to permanent legal status outside the US.
+        </p>
+        <div class="actions rv" style="--rv-delay: 0.3s">
+          <a class="btn btn--gold" href="/#book">
+            Book a Free Assessment <span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">The reality</p>
+            <h2>The green card backlog is a structural problem — not a temporary one.</h2>
+          </div>
+          <div class="prose rv" style="--rv-delay: 0.1s">
+            <p>
+              If you're on an H-1B visa, you already know the numbers. The employment-based green card backlog for Indian nationals is estimated at 100+ years at current processing rates. For Chinese nationals, it's 10–15 years. Even for other nationalities, EB-2 and EB-3 wait times have stretched beyond what most professionals planned for when they first came to the US.
+            </p>
+            <p>
+              During that wait, your status is tied to your employer. You can't freely change jobs without restarting parts of the process. You can't start your own company in any practical way. Your spouse may or may not have work authorization depending on the current EAD policy. And if you're laid off, you have 60 days to find a new sponsor or leave the country.
+            </p>
+            <p>
+              This isn't a system that's going to be fixed quickly. Immigration reform has been promised for decades and delivered in fragments. The rational response is not to wait — it's to build a backup.
+            </p>
+            <p>
+              Panama's Qualified Investor Visa has nothing to do with the US immigration system. There's no country-specific quota, no employer sponsorship, no lottery, and no queue. You invest $300,000, submit your documents, and receive a provisional permit in 30 to 60 days. Your H-1B status is completely unaffected.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <p class="eyebrow">Why Panama works for H-1B holders</p>
+          <h2>Independence from a broken queue.</h2>
+        </div>
+        <div class="cards">
+          {
+            benefits.map((item, i) => (
+              <article class="card rv" style={`--rv-delay: ${i * 0.06}s`}>
+                <p class="card-title">{item.title}</p>
+                <p>{item.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">How the visa works</p>
+            <h2>Three routes to the same residency.</h2>
+          </div>
+          <ol class="routes">
+            {
+              routes.map((route, i) => (
+                <li class="rv" style={`--rv-delay: ${i * 0.06}s`}>
+                  <p class="n">{route.n}</p>
+                  <div>
+                    <p class="route-title">{route.title}</p>
+                    <p>{route.body}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+          <p class="note rv">
+            All routes require a minimum $300,000 investment. Processing takes 30–60 days.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left rv">
+            <p class="eyebrow">Common questions</p>
+            <h2>Questions H-1B holders ask most.</h2>
+          </div>
+          <div class="faq rv" style="--rv-delay: 0.1s">
+            {
+              faqs.map((item) => (
+                <details>
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="wrap">
+        <div class="cta-inner rv">
+          <h2>Ready to explore your options?</h2>
+          <p>15 minutes with an advisor who specializes in immigration backup plans for H-1B holders.</p>
+          <a class="btn btn--gold" href="/#book">
+            Book Your Free Assessment <span class="arr">→</span>
+          </a>
+          <p class="cta-mail">
+            Or email us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: var(--header-h);
+    isolation: isolate;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    text-align: center;
+    max-width: var(--measure);
+    width: 100%;
+    margin-inline: auto;
+    padding: 4rem clamp(1.35rem, 5vw, 3rem);
+    box-sizing: border-box;
+  }
+
+  h1 {
+    color: var(--color-on-navy);
+    margin: 1.1rem 0 0;
+    overflow-wrap: break-word;
+  }
+
+  .subtext {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--color-on-navy-dim);
+    margin: 1.5rem auto 0;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+
+  .paper {
+    background: var(--color-paper);
+  }
+
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+
+  .sec-head.left h2 {
+    margin-top: var(--space-eyebrow);
+  }
+
+  .prose p {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--weight-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+    color: var(--color-ink-soft);
+    margin: 0 0 var(--space-paragraph);
+  }
+
+  .prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  .cards {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background: var(--color-paper);
+    border-radius: 16px;
+    padding: 1.25rem 1.35rem;
+  }
+
+  .card-title {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-body);
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+
+  .card p:last-child {
+    margin: 0;
+    font-size: var(--text-small);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-body);
+  }
+
+  .routes {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+  }
+
+  .routes li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .n {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    color: var(--color-navy-600);
+    line-height: 1;
+    min-width: 2.4rem;
+    margin: 0;
+  }
+
+  .route-title {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-body);
+    color: var(--color-ink);
+    margin: 0 0 0.25rem;
+  }
+
+  .routes li p:last-child {
+    margin: 0;
+    color: var(--color-ink-soft);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .note {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    color: var(--color-muted);
+    margin: 1.5rem 0 0;
+    text-align: center;
+    line-height: var(--leading-body);
+  }
+
+  .faq {
+    margin-top: 2.5rem;
+  }
+
+  .cta-band {
+    background: linear-gradient(200deg, #4e6478 0%, #405363 55%, #2d3d4d 100%);
+    padding-block: var(--section-pad);
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .cta-band h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    color: var(--color-on-navy);
+    line-height: var(--leading-heading);
+  }
+
+  .cta-band p:not(.cta-mail) {
+    color: var(--color-on-navy-dim);
+    margin: var(--space-lede) 0 0;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .cta-band .btn {
+    margin-top: 1.5rem;
+  }
+
+  .cta-mail {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-ui);
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 1.25rem;
+    letter-spacing: var(--tracking-ui);
+  }
+
+  .cta-mail a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  @media (min-width: 1024px) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

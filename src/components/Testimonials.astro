@@ -1,0 +1,94 @@
+---
+const quotes = [
+  {
+    role: 'U.S. founder, age 44',
+    route: 'Real estate route',
+    quote:
+      'The filing was a title package and a funds trail, not a points interview. Permanent residency arrived as a single status, not a temporary card that had to be converted.',
+  },
+  {
+    role: 'Canadian family office principal',
+    route: 'Securities route',
+    quote:
+      'We did not want another property to administer. The brokerage book met the decree, sat in USD, and kept the immigration result identical to the real estate path.',
+  },
+  {
+    role: 'EU entrepreneur, dual household',
+    route: 'Real estate route',
+    quote:
+      'Dollar title in a territorial-tax jurisdiction, with no day-count to keep the card, was the reason for Panama over a European golden visa that still demanded presence.',
+  },
+];
+---
+
+<section class="section section--cream" id="profiles">
+  <div class="wrap">
+    <div class="intro rv">
+      <p class="eyebrow">Applicant profiles</p>
+      <h2>How the route is typically used</h2>
+      <p>
+        Composite sketches based on common filing patterns. They are not client testimonials and are not a representation of results.
+      </p>
+    </div>
+    <div class="grid">
+      {
+        quotes.map((item, i) => (
+          <article class="bcard rv" style={`--rv-delay: ${i * 0.08}s`}>
+            <p class="kicker">{item.route}</p>
+            <blockquote>
+              <p>{item.quote}</p>
+              <footer>{item.role}</footer>
+            </blockquote>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    max-width: 40rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .intro h2 {
+    margin: 1rem 0 1.1rem;
+  }
+
+  .grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .bcard {
+    padding: 1.8rem 1.55rem 1.7rem;
+  }
+
+  blockquote {
+    margin: 0.9rem 0 0;
+  }
+
+  blockquote p {
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1.45;
+    letter-spacing: -0.015em;
+  }
+
+  footer {
+    margin-top: 1.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 900px) {
+    .grid {
+      grid-template-columns: 1.2fr 0.9fr 0.9fr;
+    }
+  }
+</style>

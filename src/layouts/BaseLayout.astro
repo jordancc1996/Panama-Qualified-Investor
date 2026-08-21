@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogDescription?: string;
+  path?: string;
+}
+
+const {
+  title = 'Panama Qualified Investor Visa | The Complete Guide',
+  description = 'Everything Americans, Canadians, tech founders, and H-1B holders need to know about the Panama Qualified Investor Visa. $300,000 investment, permanent residency, zero tax on foreign income, path to citizenship in 5 years.',
+  ogDescription = 'The definitive guide to obtaining permanent residency in Panama through the Qualified Investor Visa. Real estate, securities, or bank deposit routes from $300,000.',
+  path = '',
+} = Astro.props;
+
+const canonical = `https://panamaqualifiedinvestor.com${path}`;
+const ogImage =
+  'https://images.unsplash.com/photo-1632505702897-cc41b0ba3b64?w=1200&q=80&auto=format&fit=crop';
+const fontHref =
+  'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Panama Qualified Investor" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preload" as="style" href={fontHref} />
+    <link href={fontHref} rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <script is:inline>
+      (() => {
+        const reveal = () => {
+          const nodes = document.querySelectorAll('.rv:not(.in-view)');
+          if (!nodes.length) return;
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            nodes.forEach((el) => el.classList.add('in-view'));
+            return;
+          }
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('in-view');
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.16, rootMargin: '0px 0px -8% 0px' }
+          );
+          nodes.forEach((el) => io.observe(el));
+        };
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', reveal);
+        } else {
+          reveal();
+        }
+      })();
+    </script>
+  </body>
+</html>

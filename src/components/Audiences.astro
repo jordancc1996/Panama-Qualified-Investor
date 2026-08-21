@@ -1,0 +1,112 @@
+---
+const audiences = [
+  {
+    kicker: 'Americans',
+    title: 'A tax-efficient Plan B outside the US',
+    body: "Whether you're hedging against political uncertainty, diversifying your residency portfolio, or looking for a dollar-denominated base with zero tax on foreign income — Panama's QIV gives you permanent residency without renouncing US citizenship. No FATCA complications on the residency itself, and the territorial tax system means your US-sourced income is only taxed by the IRS, not Panama.",
+    cta: 'See how other Americans have qualified →',
+    href: '/americans',
+  },
+  {
+    kicker: 'Canadians',
+    title: 'Residency in a stable, dollarized economy',
+    body: "Canada's capital gains changes and rising cost of living are pushing more Canadians to explore residency abroad. Panama's Qualified Investor Visa offers permanent residency with no minimum stay requirement, a territorial tax system that doesn't tax foreign income, and a familiar banking infrastructure. The $300,000 entry point is lower than most European golden visas.",
+    cta: 'Talk to an advisor who works with Canadians →',
+    href: '/canadians',
+  },
+  {
+    kicker: 'Tech founders & remote CEOs',
+    title: 'Build from anywhere, base somewhere strategic',
+    body: 'If your company is remote-first or you\'re between rounds, Panama offers legitimate residency in a timezone that overlaps with both US coasts, a territorial tax system ideal for foreign-incorporated entities, and a modern financial hub with direct flights to Miami, New York, and San Francisco. No language test, no cultural exam, and your family can be included.',
+    cta: 'Book a founder-focused consultation →',
+    href: '/tech-founders',
+  },
+  {
+    kicker: 'H-1B visa holders',
+    title: "Permanent residency that doesn't depend on your employer",
+    body: "The US green card backlog for Indian and Chinese nationals can stretch 10 to 20+ years. Panama's QIV grants permanent residency in 30 to 60 days with no country-specific quotas, no employer sponsorship, and no lottery. It's not a replacement for your US immigration case — it's a parallel path that gives you a permanent legal home while you wait.",
+    cta: 'Get a free H-1B backup plan assessment →',
+    href: '/h1b',
+  },
+];
+---
+
+<section class="section bg-cream-tint" id="audiences">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Who this is for</p>
+      <h2>Four groups rethinking <em>where they hold residency.</em></h2>
+    </div>
+    <div class="grid">
+      {
+        audiences.map((item, i) => (
+          <article class="bcard card rv" style={`--rv-delay: ${i * 0.1}s`}>
+            <p class="kicker">{item.kicker}</p>
+            <h3>{item.title}</h3>
+            <p class="body">{item.body}</p>
+            <a class="cta-link cta-link--ink" href={item.href}>
+              {item.cta.replace(' →', '')}
+              <span class="ring" aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+    <p class="section-more rv">
+      <a class="cta-link cta-link--ink" href="/who-its-for">
+        Find your path
+        <span class="ring" aria-hidden="true">→</span>
+      </a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .section {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+
+  .grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    padding: 1.35rem 1.4rem;
+  }
+
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: var(--weight-ui);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: #405363;
+    margin: 0;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: var(--weight-semibold);
+    color: var(--color-ink);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+    margin: 0.6rem 0 0.5rem;
+  }
+
+  .card .body {
+    margin: 0;
+    font-size: var(--text-body);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-body);
+    font-weight: var(--weight-body);
+  }
+
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
