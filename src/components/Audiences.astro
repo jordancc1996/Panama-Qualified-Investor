@@ -40,14 +40,14 @@ const audiences = [
     <div class="grid audience-grid">
       {
         audiences.map((item, i) => (
-          <article class="bcard card">
+          <a href={item.href} class="bcard card">
             <p class="kicker" set:html={item.kicker} />
             <h3>{item.title}</h3>
             <p class="body">{item.body}</p>
-            <a class="cta-link cta-link--ink" href={item.href}>
+            <span class="cta-link cta-link--ink card-link">
               {item.cta.replace(' →', '')}
-            </a>
-          </article>
+            </span>
+          </a>
         ))
       }
     </div>
@@ -106,5 +106,28 @@ const audiences = [
     .grid {
       grid-template-columns: 1fr 1fr;
     }
+  }
+
+  a.bcard {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  a.bcard:hover {
+    border-color: var(--color-navy-900);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+
+  a.bcard:hover .kicker {
+    color: var(--color-navy-900);
+  }
+
+  a.bcard:hover .card-link {
+    color: var(--color-navy-900);
+    text-decoration: underline;
   }
 </style>

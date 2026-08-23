@@ -20,11 +20,11 @@ const heroImage =
     <a class="hero-cta" href="/#book">
       Speak with an Advisor<span>→</span>
     </a>
-  </div>
-  <div class="scroll-hint" aria-hidden="true">
-    <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
-      <path d="M1 1L10 10L19 1" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"></path>
-    </svg>
+    <div class="scroll-hint" aria-hidden="true">
+      <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+        <path d="M1 1L10 10L19 1" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"></path>
+      </svg>
+    </div>
   </div>
 </section>
 
@@ -32,7 +32,7 @@ const heroImage =
   .hero {
     position: relative;
     min-height: calc(100dvh - var(--header-h));
-    overflow: hidden;
+    overflow: visible;
     margin-top: var(--header-h);
     isolation: isolate;
     scroll-margin-top: calc(var(--header-h) + 1rem);
@@ -62,6 +62,8 @@ const heroImage =
   }
 
   .content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -137,44 +139,18 @@ const heroImage =
     }
   }
 
-  .scroll-hint {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: softBounce 2.5s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  @keyframes softBounce {
-    0%,
-    100% {
-      transform: translateX(-50%) translateY(0);
-    }
-    50% {
-      transform: translateX(-50%) translateY(6px);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-hint {
-      animation: none;
-    }
-  }
 </style>
 
-<script>
-  const hint = document.querySelector('.scroll-hint');
-  const hero = document.querySelector('.hero');
-  if (hint instanceof HTMLElement && hero) {
-    const obs = new IntersectionObserver(
-      ([e]) => {
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hint = document.querySelector('.scroll-hint');
+    const hero = document.querySelector('.hero');
+    if (hint && hero) {
+      const obs = new IntersectionObserver(([e]) => {
         hint.style.opacity = e.isIntersecting ? '1' : '0';
         hint.style.transition = 'opacity 0.3s';
-      },
-      { threshold: 0.5 }
-    );
-    obs.observe(hero);
-  }
+      }, { threshold: 0.5 });
+      obs.observe(hero);
+    }
+  });
 </script>

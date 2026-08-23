@@ -8,7 +8,7 @@ const audiences = [
   {
     kicker: 'Americans',
     title: 'A tax-efficient Plan B outside the US',
-    body: "Whether you're hedging against political uncertainty, diversifying your residency portfolio, or looking for a dollar-denominated base with zero tax on foreign income, Panama's QIV gives you permanent residency without renouncing US citizenship. No FATCA complications on the residency itself, and the <a href=\"/benefits\">territorial tax system</a> means your US-sourced income is only taxed by the IRS, not Panama.",
+    body: "Whether you're hedging against political uncertainty, diversifying your residency portfolio, or looking for a dollar-denominated base with zero tax on foreign income, Panama's QIV gives you permanent residency without renouncing US citizenship. No FATCA complications on the residency itself, and the territorial tax system means your US-sourced income is only taxed by the IRS, not Panama.",
     cta: 'See how other Americans have qualified',
     href: '/americans',
   },
@@ -58,14 +58,14 @@ const description =
         <div class="grid audience-grid">
           {
             audiences.map((item, i) => (
-              <article class="bcard card">
+              <a href={item.href} class="bcard card">
                 <p class="kicker" set:html={item.kicker} />
                 <h3>{item.title}</h3>
                 <p class="body" set:html={item.body} />
-                <a class="cta-link cta-link--ink" href={item.href}>
+                <span class="cta-link cta-link--ink card-link">
                   {item.cta.replace(' →', '')}
-                </a>
-              </article>
+                </span>
+              </a>
             ))
           }
         </div>
@@ -155,5 +155,28 @@ const description =
     .grid {
       grid-template-columns: 1fr 1fr;
     }
+  }
+
+  a.bcard {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  a.bcard:hover {
+    border-color: var(--color-navy-900);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+
+  a.bcard:hover .kicker {
+    color: var(--color-navy-900);
+  }
+
+  a.bcard:hover .card-link {
+    color: var(--color-navy-900);
+    text-decoration: underline;
   }
 </style>

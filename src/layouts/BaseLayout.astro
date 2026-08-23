@@ -54,39 +54,41 @@ const fontHref =
     <a class="skip-link" href="#main">Skip to content</a>
     {!isHome && <div class="scroll-progress" aria-hidden="true"></div>}
     <slot />
-    <script>
-      const bar = document.querySelector('.scroll-progress');
-      if (bar instanceof HTMLElement) {
-        window.addEventListener(
-          'scroll',
-          () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-            bar.style.width = progress + '%';
-          },
-          { passive: true }
-        );
-      }
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const bar = document.querySelector('.scroll-progress');
+        if (bar) {
+          window.addEventListener(
+            'scroll',
+            () => {
+              const scrollTop = window.scrollY;
+              const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+              const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+              bar.style.width = progress + '%';
+            },
+            { passive: true }
+          );
+        }
 
-      if (window.innerWidth < 768) {
-        document.querySelectorAll('.audience-grid, .pcard-grid, .spec-grid, .cta-cards').forEach((grid) => {
-          const lastCard = grid.lastElementChild;
-          if (lastCard) {
-            const obs = new IntersectionObserver(
-              ([e]) => {
-                if (e.isIntersecting) {
-                  (grid as HTMLElement).style.maskImage = 'none';
-                  (grid as HTMLElement).style.webkitMaskImage = 'none';
-                  obs.disconnect();
-                }
-              },
-              { threshold: 0.8 }
-            );
-            obs.observe(lastCard);
-          }
-        });
-      }
+        if (window.innerWidth < 768) {
+          document.querySelectorAll('.audience-grid, .pcard-grid, .spec-grid, .cta-cards').forEach((grid) => {
+            const lastCard = grid.lastElementChild;
+            if (lastCard) {
+              const obs = new IntersectionObserver(
+                ([e]) => {
+                  if (e.isIntersecting) {
+                    grid.style.maskImage = 'none';
+                    grid.style.webkitMaskImage = 'none';
+                    obs.disconnect();
+                  }
+                },
+                { threshold: 0.8 }
+              );
+              obs.observe(lastCard);
+            }
+          });
+        }
+      });
     </script>
   </body>
 </html>
