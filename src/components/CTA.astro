@@ -21,7 +21,7 @@ const cards = [
 
 <section class="section section--navy" id="apply">
   <div class="wrap">
-    <div class="copy rv">
+    <div class="copy">
       <p class="eyebrow">Next steps</p>
       <h2>Have questions? Here's <em>how to go deeper.</em></h2>
       <p>This guide covers the essentials, but every situation is different. Here are your next steps.</p>
@@ -29,7 +29,7 @@ const cards = [
     <div class="cards">
       {
         cards.map((card, i) => (
-          <article class="action rv" style={`--rv-delay: ${i * 0.08}s`}>
+          <article class="action">
             <span class="icon" aria-hidden="true">{card.icon}</span>
             <h3>{card.title}</h3>
             <p>{card.body}</p>
@@ -39,7 +39,7 @@ const cards = [
           </article>
         ))
       }
-      <article class="action rv" style="--rv-delay: 0.16s">
+      <article class="action">
         <span class="icon" aria-hidden="true">📧</span>
         <h3>Get Updates by Email</h3>
         <p>
@@ -47,6 +47,7 @@ const cards = [
         </p>
         <form class="newsletter" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
           <input type="hidden" name="_subject" value="Panama Qualified Investor Visa newsletter" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
           <label class="sr-only" for="newsletter-email">Email</label>
           <input
             id="newsletter-email"
@@ -54,10 +55,10 @@ const cards = [
             type="email"
             autocomplete="email"
             required
-            placeholder="your@email.com"
+            placeholder="Enter your email"
           />
           <button class="btn btn--gold btn--sm" type="submit">
-            Subscribe <span class="arr">→</span>
+            Subscribe
           </button>
         </form>
       </article>
@@ -90,12 +91,16 @@ const cards = [
   }
 
   .action {
-    background: rgba(64, 83, 99, 0.5);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 16px;
+    background: var(--color-navy-800);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
     padding: 1.5rem;
     text-align: center;
+    transition: box-shadow 150ms ease-out;
+  }
+
+  .action:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .icon {
@@ -130,18 +135,23 @@ const cards = [
   .newsletter input {
     flex: 1 1 10rem;
     font-family: var(--font-sans);
-    font-size: 0.94rem;
+    font-size: 0.88rem;
     color: var(--color-on-navy);
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.42);
-    border-radius: 999px;
-    padding: 0.7rem 1.1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
     outline: none;
     min-width: 0;
   }
 
+  .newsletter input::placeholder {
+    color: var(--color-muted);
+  }
+
   .newsletter input:focus {
-    border-color: #405363;
+    border-color: var(--color-navy-900);
+    box-shadow: none;
   }
 
   .fine {

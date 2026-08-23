@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 
 const heroImage =
   'https://images.unsplash.com/photo-1587759301533-ae42d7065a80?w=1920&q=80&auto=format&fit=crop';
@@ -29,7 +30,7 @@ const benefits = [
   },
   {
     title: 'Familiar Legal System',
-    body: 'Panama\'s legal framework for property ownership and business formation is well-established. US investors have operated here for over a century — since the Canal.',
+    body: 'Panama\'s legal framework for property ownership and business formation is well-established. US investors have operated here for over a century, since the Canal.',
   },
 ];
 
@@ -41,7 +42,7 @@ const routes = [
   },
   {
     n: '02',
-    title: 'Stocks & Securities',
+    title: 'Stocks <span class="amp">&amp;</span> Securities',
     body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange through a licensed local brokerage.',
   },
   {
@@ -54,7 +55,7 @@ const routes = [
 const faqs = [
   {
     q: 'Do I still have to pay US taxes if I move to Panama?',
-    a: 'Yes. The US taxes citizens on worldwide income regardless of where they live. However, Panama does not add a second layer of taxation. Your US tax situation stays the same — you don\'t gain a new tax burden, and you may qualify for the Foreign Earned Income Exclusion or Foreign Tax Credit depending on your situation.',
+    a: 'Yes. The US taxes citizens on worldwide income regardless of where they live. However, Panama does not add a second layer of taxation. Your US tax situation stays the same. You don\'t gain a new tax burden, and you may qualify for the Foreign Earned Income Exclusion or Foreign Tax Credit depending on your situation.',
   },
   {
     q: 'Does this affect my Social Security or Medicare?',
@@ -70,7 +71,7 @@ const faqs = [
   },
   {
     q: 'Is $300,000 refundable if I change my mind?',
-    a: 'It depends on the route. A bank deposit is returned after the three-year term. Real estate can be sold after the required holding period. Securities remain in your brokerage and can be traded. The investment is yours — it\'s not a fee paid to the government.',
+    a: 'It depends on the route. A bank deposit is returned after the three-year term. Real estate can be sold after the required holding period. Securities remain in your brokerage and can be traded. The investment is yours. It\'s not a fee paid to the government.',
   },
 ];
 ---
@@ -93,16 +94,16 @@ const faqs = [
         loading="eager"
       />
       <div class="content">
-        <p class="eyebrow eyebrow--on-navy rv">For Americans</p>
-        <h1 class="rv" style="--rv-delay: 0.1s">
+        <p class="eyebrow eyebrow--on-navy">For Americans</p>
+        <h1>
           A tax-efficient Plan B that doesn't require giving anything up.
         </h1>
-        <p class="subtext rv" style="--rv-delay: 0.2s">
-          How US citizens and residents are using the Panama Qualified Investor Visa to secure permanent residency abroad — without renouncing citizenship, triggering new tax obligations, or leaving their lives behind.
+        <p class="subtext">
+          How US citizens and residents are using the <a href="/visa">Panama Qualified Investor Visa</a> to secure permanent residency abroad, without renouncing citizenship, triggering new tax obligations, or leaving their lives behind.
         </p>
-        <div class="actions rv" style="--rv-delay: 0.3s">
+        <div class="actions">
           <a class="btn btn--gold" href="/#book">
-            Book a Free Assessment <span class="arr">→</span>
+            Speak with an Advisor
           </a>
         </div>
       </div>
@@ -111,22 +112,22 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">The reality</p>
             <h2>Why more Americans are looking beyond US borders.</h2>
           </div>
-          <div class="prose rv" style="--rv-delay: 0.1s">
+          <div class="prose">
             <p>
-              The conversation has shifted. Five years ago, second residency was something ultra-high-net-worth families discussed with their wealth managers. Today, it's founders, tech workers, remote professionals, and retirees asking the same question: what's my backup plan?
+              The conversation has shifted. Five years ago, second residency was something ultra-high-net-worth families discussed with their wealth managers. Today, it's <a href="/who-its-for">founders, tech workers, remote professionals</a>, and retirees asking the same question: what's my backup plan?
             </p>
             <p>
-              The reasons vary. Some are watching the political landscape and want optionality. Others are thinking about retirement in a lower-cost, dollar-denominated economy. Many are simply diversifying — the same way they diversify their investments, they want to diversify where they have the legal right to live.
+              The reasons vary. Some are watching the political landscape and want optionality. Others are thinking about retirement in a lower-cost, dollar-denominated economy. Many are simply diversifying: the same way they diversify their investments, they want to diversify where they have the legal right to live.
             </p>
             <p>
-              The challenge for Americans is that most international residency programs create tax complications. The US taxes its citizens on worldwide income regardless of where they live, so moving abroad doesn't reduce your tax burden unless you renounce citizenship — which most people don't want to do.
+              The challenge for Americans is that most international residency programs create tax complications. The US taxes its citizens on worldwide income regardless of where they live, so moving abroad doesn't reduce your tax burden unless you renounce citizenship, which most people don't want to do.
             </p>
             <p>
-              Panama is different. Its territorial tax system only taxes income earned inside Panama. If you're an American living in Panama on investment income, remote work for a US company, or capital gains from US markets, Panama doesn't tax any of it. You still file with the IRS as you always have, but you don't add a second country's tax authority on top of it.
+              Panama is different. Its <a href="/benefits">territorial tax system</a> only taxes income earned inside Panama. If you're an American living in Panama on investment income, remote work for a US company, or capital gains from US markets, Panama doesn't tax any of it. You still file with the IRS as you always have, but you don't add a second country's tax authority on top of it.
             </p>
           </div>
         </div>
@@ -135,14 +136,14 @@ const faqs = [
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Why Panama works for Americans</p>
           <h2>Built for your situation.</h2>
         </div>
-        <div class="cards">
+        <div class="cards cta-cards">
           {
             benefits.map((item, i) => (
-              <article class="card rv" style={`--rv-delay: ${i * 0.06}s`}>
+              <article class="card">
                 <p class="card-title">{item.title}</p>
                 <p>{item.body}</p>
               </article>
@@ -155,25 +156,25 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">How the visa works</p>
             <h2>Three routes to the same residency.</h2>
           </div>
           <ol class="routes">
             {
               routes.map((route, i) => (
-                <li class="rv" style={`--rv-delay: ${i * 0.06}s`}>
+                <li>
                   <p class="n">{route.n}</p>
                   <div>
-                    <p class="route-title">{route.title}</p>
+                    <p class="route-title" set:html={route.title} />
                     <p>{route.body}</p>
                   </div>
                 </li>
               ))
             }
           </ol>
-          <p class="note rv">
-            All routes require a minimum $300,000 investment. Processing takes 30–60 days.
+          <p class="note">
+            All routes require a minimum $300,000 investment. <a href="/process">Processing takes 30–60 days</a>.
           </p>
         </div>
       </div>
@@ -182,11 +183,11 @@ const faqs = [
     <section class="section bg-cream-tint">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Common questions</p>
             <h2>Questions Americans ask most.</h2>
           </div>
-          <div class="faq rv" style="--rv-delay: 0.1s">
+          <div class="faq">
             {
               faqs.map((item) => (
                 <details>
@@ -202,11 +203,11 @@ const faqs = [
 
     <section class="cta-band">
       <div class="wrap">
-        <div class="cta-inner rv">
+        <div class="cta-inner">
           <h2>Ready to explore your options?</h2>
           <p>15 minutes with an advisor who works specifically with American clients.</p>
           <a class="btn btn--gold" href="/#book">
-            Book Your Free Assessment <span class="arr">→</span>
+            Speak with an Advisor
           </a>
           <p class="cta-mail">
             Or email us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>
@@ -214,6 +215,7 @@ const faqs = [
         </div>
       </div>
     </section>
+    <TopCTA />
   </main>
   <Footer />
 </BaseLayout>
@@ -321,8 +323,14 @@ const faqs = [
 
   .card {
     background: var(--color-paper);
-    border-radius: 16px;
-    padding: 1.25rem 1.35rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-line);
+    padding: 1.5rem;
+    transition: box-shadow 150ms ease-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .card-title {

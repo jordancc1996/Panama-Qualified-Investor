@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 
 const heroImage =
   'https://images.unsplash.com/photo-1668294633496-c8b9baae35c3?w=1920&q=80&auto=format&fit=crop';
@@ -9,7 +10,7 @@ const heroImage =
 const benefits = [
   {
     title: 'No Country Quotas',
-    body: 'Unlike the US green card system, Panama\'s QIV has no per-country limits. Indian, Chinese, and all other nationals are processed identically on the same timeline.',
+    body: 'Unlike the <a href="/papers">US green card system</a>, Panama\'s QIV has no per-country limits. Indian, Chinese, and all other nationals are processed identically on the same timeline.',
   },
   {
     title: 'No Employer Dependency',
@@ -25,11 +26,11 @@ const benefits = [
   },
   {
     title: 'A Home You Actually Own',
-    body: 'After years of temporary status in the US, Panama gives you something permanent. Legal residency that doesn\'t expire, doesn\'t require renewal, and leads to citizenship in 5 years.',
+    body: 'After years of temporary status in the US, Panama gives you something permanent. <a href="/benefits">Legal residency that doesn\'t expire</a>, doesn\'t require renewal, and leads to citizenship in 5 years.',
   },
   {
     title: 'Family Coverage',
-    body: 'Your spouse and dependent children are included in the same application. Your spouse receives their own residency permit with full work authorization in Panama — no EAD drama.',
+    body: 'Your spouse and dependent children are included in the same application. Your spouse receives their own residency permit with full work authorization in Panama: no EAD drama.',
   },
 ];
 
@@ -41,7 +42,7 @@ const routes = [
   },
   {
     n: '02',
-    title: 'Stocks & Securities',
+    title: 'Stocks <span class="amp">&amp;</span> Securities',
     body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange through a licensed local brokerage.',
   },
   {
@@ -58,15 +59,15 @@ const faqs = [
   },
   {
     q: 'Can I do this while I\'m still in the US on an H-1B?',
-    a: 'Yes. Most of the process can be done remotely — document preparation, background checks, and investment setup. You will need to travel to Panama for the biometrics appointment and to finalize the application, which typically requires a 3–5 day trip.',
+    a: 'Yes. Most of the process can be done remotely: document preparation, background checks, and investment setup. You will need to travel to Panama for the biometrics appointment and to finalize the application, which typically requires a 3–5 day trip.',
   },
   {
-    q: 'What if I get my green card later — do I lose the Panama residency?',
+    q: 'What if I get my green card later? Do I lose the Panama residency?',
     a: 'No. The two are independent. You can hold both US permanent residency (green card) and Panamanian permanent residency simultaneously. Many people maintain dual residency as part of a broader international strategy.',
   },
   {
     q: 'Is $300,000 realistic on an H-1B salary?',
-    a: 'It depends on your specific situation. Many H-1B holders in tech, finance, and healthcare have savings, vested equity, or investment portfolios that meet the threshold. The bank deposit route means the money is not spent — it\'s held in a fixed-term deposit and returned to you after three years.',
+    a: 'It depends on your specific situation. Many H-1B holders in tech, finance, and healthcare have savings, vested equity, or investment portfolios that meet the threshold. The bank deposit route means the money is not spent. It\'s held in a fixed-term deposit and returned to you after three years.',
   },
   {
     q: 'My spouse is on H-4 and can\'t work. Does Panama help?',
@@ -93,16 +94,16 @@ const faqs = [
         loading="eager"
       />
       <div class="content">
-        <p class="eyebrow eyebrow--on-navy rv">For H-1B Visa Holders</p>
-        <h1 class="rv" style="--rv-delay: 0.1s">
+        <p class="eyebrow eyebrow--on-navy">For H-1B Visa Holders</p>
+        <h1>
           A permanent residency that doesn't depend on a queue, a sponsor, or a lottery.
         </h1>
-        <p class="subtext rv" style="--rv-delay: 0.2s">
-          How H-1B holders — especially those facing decade-long green card backlogs — are using the Panama Qualified Investor Visa as a parallel path to permanent legal status outside the US.
+        <p class="subtext">
+          How H-1B holders, especially those facing decade-long green card backlogs, are using the <a href="/visa">Panama Qualified Investor Visa</a> as a parallel path to permanent legal status outside the US.
         </p>
-        <div class="actions rv" style="--rv-delay: 0.3s">
+        <div class="actions">
           <a class="btn btn--gold" href="/#book">
-            Book a Free Assessment <span class="arr">→</span>
+            Speak with an Advisor
           </a>
         </div>
       </div>
@@ -111,22 +112,22 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">The reality</p>
-            <h2>The green card backlog is a structural problem — not a temporary one.</h2>
+            <h2>The green card backlog is a structural problem, not a temporary one.</h2>
           </div>
-          <div class="prose rv" style="--rv-delay: 0.1s">
+          <div class="prose">
             <p>
-              If you're on an H-1B visa, you already know the numbers. The employment-based green card backlog for Indian nationals is estimated at 100+ years at current processing rates. For Chinese nationals, it's 10–15 years. Even for other nationalities, EB-2 and EB-3 wait times have stretched beyond what most professionals planned for when they first came to the US.
+              If you're on an H-1B visa, you already know the numbers. The employment-based green card backlog for Indian nationals is estimated at 100+ years at current processing rates. For Chinese nationals, it's 10–15 years. <a href="/who-its-for">Even for other nationalities</a>, EB-2 and EB-3 wait times have stretched beyond what most professionals planned for when they first came to the US.
             </p>
             <p>
               During that wait, your status is tied to your employer. You can't freely change jobs without restarting parts of the process. You can't start your own company in any practical way. Your spouse may or may not have work authorization depending on the current EAD policy. And if you're laid off, you have 60 days to find a new sponsor or leave the country.
             </p>
             <p>
-              This isn't a system that's going to be fixed quickly. Immigration reform has been promised for decades and delivered in fragments. The rational response is not to wait — it's to build a backup.
+              This isn't a system that's going to be fixed quickly. Immigration reform has been promised for decades and delivered in fragments. The rational response is not to wait. It's to build a backup.
             </p>
             <p>
-              Panama's Qualified Investor Visa has nothing to do with the US immigration system. There's no country-specific quota, no employer sponsorship, no lottery, and no queue. You invest $300,000, submit your documents, and receive a provisional permit in 30 to 60 days. Your H-1B status is completely unaffected.
+              Panama's Qualified Investor Visa has nothing to do with the US immigration system. There's <a href="/eligibility">no country-specific quota</a>, no employer sponsorship, no lottery, and no queue. You invest $300,000, submit your documents, and receive a provisional permit in 30 to 60 days. Your H-1B status is completely unaffected.
             </p>
           </div>
         </div>
@@ -135,16 +136,16 @@ const faqs = [
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Why Panama works for H-1B holders</p>
           <h2>Independence from a broken queue.</h2>
         </div>
-        <div class="cards">
+        <div class="cards cta-cards">
           {
             benefits.map((item, i) => (
-              <article class="card rv" style={`--rv-delay: ${i * 0.06}s`}>
+              <article class="card">
                 <p class="card-title">{item.title}</p>
-                <p>{item.body}</p>
+                <p set:html={item.body} />
               </article>
             ))
           }
@@ -155,25 +156,25 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">How the visa works</p>
             <h2>Three routes to the same residency.</h2>
           </div>
           <ol class="routes">
             {
               routes.map((route, i) => (
-                <li class="rv" style={`--rv-delay: ${i * 0.06}s`}>
+                <li>
                   <p class="n">{route.n}</p>
                   <div>
-                    <p class="route-title">{route.title}</p>
+                    <p class="route-title" set:html={route.title} />
                     <p>{route.body}</p>
                   </div>
                 </li>
               ))
             }
           </ol>
-          <p class="note rv">
-            All routes require a minimum $300,000 investment. Processing takes 30–60 days.
+          <p class="note">
+            All routes require a minimum $300,000 investment. <a href="/process">Processing takes 30–60 days</a>.
           </p>
         </div>
       </div>
@@ -182,11 +183,11 @@ const faqs = [
     <section class="section bg-cream-tint">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Common questions</p>
             <h2>Questions H-1B holders ask most.</h2>
           </div>
-          <div class="faq rv" style="--rv-delay: 0.1s">
+          <div class="faq">
             {
               faqs.map((item) => (
                 <details>
@@ -202,11 +203,11 @@ const faqs = [
 
     <section class="cta-band">
       <div class="wrap">
-        <div class="cta-inner rv">
+        <div class="cta-inner">
           <h2>Ready to explore your options?</h2>
           <p>15 minutes with an advisor who specializes in immigration backup plans for H-1B holders.</p>
           <a class="btn btn--gold" href="/#book">
-            Book Your Free Assessment <span class="arr">→</span>
+            Speak with an Advisor
           </a>
           <p class="cta-mail">
             Or email us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>
@@ -214,6 +215,7 @@ const faqs = [
         </div>
       </div>
     </section>
+    <TopCTA />
   </main>
   <Footer />
 </BaseLayout>
@@ -321,8 +323,14 @@ const faqs = [
 
   .card {
     background: var(--color-paper);
-    border-radius: 16px;
-    padding: 1.25rem 1.35rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-line);
+    padding: 1.5rem;
+    transition: box-shadow 150ms ease-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .card-title {

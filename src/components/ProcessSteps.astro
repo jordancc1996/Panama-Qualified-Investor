@@ -2,15 +2,15 @@
 const steps = [
   {
     title: 'Initial Research',
-    body: 'Assess your goals, financial situation, and timeline. Determine which investment route suits you best — real estate, securities, or bank deposit.',
+    body: 'Assess your goals, financial situation, and timeline. Determine which investment route suits you best: real estate, securities, or bank deposit.',
   },
   {
     title: 'Document Preparation',
-    body: 'Prepare your complete application package: apostilled background checks, financial statements, passport copies, health certificate, and proof of investment funds.',
+    body: 'Prepare your complete application package: <a href="/eligibility">apostilled background checks</a>, financial statements, passport copies, health certificate, and proof of investment funds.',
   },
   {
     title: 'Investment Execution',
-    body: 'Make your qualifying investment — purchase property, open a brokerage account, or place a fixed-term deposit. Work with local banks, brokers, and notaries.',
+    body: 'Make your qualifying investment: purchase property, open a brokerage account, or place a fixed-term deposit. Work with local banks, brokers, and notaries.',
   },
   {
     title: 'Application Submission',
@@ -30,31 +30,30 @@ const steps = [
 <section class="section bg-cream-tint" id="process">
   <div class="wrap">
     <div class="inner">
-      <div class="sec-head rv">
+      <div class="sec-head">
         <p class="eyebrow">The process</p>
-        <h2>From first inquiry to <em>residency card.</em></h2>
+        <h2>From first inquiry to residency card.</h2>
       </div>
       <ol class="steps">
         {
           steps.map((step, i) => (
-            <li class="rv" style={`--rv-delay: ${i * 0.06}s`}>
+            <li>
               <strong>{step.title}</strong>
-              <p>{step.body}</p>
+              <p set:html={step.body} />
             </li>
           ))
         }
       </ol>
-      <div class="start rv">
+      <div class="start">
         <p class="eyebrow eyebrow--on-navy">Ready to start?</p>
         <p class="claim">Most applicants go from first call to provisional permit in under 60 days.</p>
         <a class="btn btn--gold" href="#book">
-          Book Your Free Assessment <span class="arr">→</span>
+          Speak with an Advisor
         </a>
       </div>
-      <p class="section-more rv">
+      <p class="section-more">
         <a class="cta-link cta-link--ink" href="/process">
           See the full process
-          <span class="ring" aria-hidden="true">→</span>
         </a>
       </p>
     </div>
@@ -100,7 +99,7 @@ const steps = [
     height: 1.9rem;
     display: grid;
     place-items: center;
-    border-radius: 999px;
+    border-radius: 6px;
     background: var(--color-navy-900);
     color: var(--color-gold-300);
     font-family: var(--font-sans);
@@ -126,7 +125,7 @@ const steps = [
 
   .start {
     background: var(--color-navy-900);
-    border-radius: 16px;
+    border-radius: 6px;
     padding: 1.5rem 1.8rem;
     margin-top: 2.5rem;
     text-align: center;

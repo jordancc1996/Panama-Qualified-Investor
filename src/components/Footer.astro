@@ -13,7 +13,7 @@ const resources = [
   { href: '/faq', label: 'FAQ' },
   { href: '/who-its-for', label: "Who It's For" },
   { href: '/#why', label: 'About Panama' },
-  { href: '/#book', label: 'Free Assessment' },
+  { href: '/#book', label: 'Speak to an Advisor' },
 ];
 const company = [
   { href: '#', label: 'About' },
@@ -46,8 +46,9 @@ const company = [
         <p class="nl-kicker">Monthly updates</p>
         <form class="nl" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
           <input type="hidden" name="_subject" value="Newsletter signup" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
           <label class="sr-only" for="footer-email">Email</label>
-          <input id="footer-email" name="email" type="email" autocomplete="email" required placeholder="your@email.com" />
+          <input id="footer-email" name="email" type="email" autocomplete="email" required placeholder="Enter your email" />
           <button type="submit" aria-label="Subscribe">→</button>
         </form>
         <p class="nl-note">No spam. Unsubscribe anytime.</p>
@@ -132,7 +133,7 @@ const company = [
   .nl-kicker {
     font-family: var(--font-sans);
     font-size: var(--text-label);
-    letter-spacing: var(--tracking-label);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #fff;
     margin: 1.5rem 0 0.6rem;
@@ -145,25 +146,30 @@ const company = [
   }
 
   .nl input {
-    background: transparent;
-    border: 1px solid var(--color-line-dark);
-    border-radius: 999px;
-    padding: 0.6rem 1rem;
-    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    font-size: 0.88rem;
     color: var(--color-on-navy);
     width: 100%;
     max-width: 14rem;
     outline: none;
   }
 
+  .nl input::placeholder {
+    color: var(--color-muted);
+  }
+
   .nl input:focus {
     border-color: #fff;
+    box-shadow: none;
   }
 
   .nl button {
     background: #fff;
     color: #405363;
-    border-radius: 999px;
+    border-radius: 4px;
     width: 2rem;
     height: 2rem;
     display: grid;
@@ -182,7 +188,7 @@ const company = [
     font-family: var(--font-sans);
     font-size: var(--text-caption);
     color: rgba(255, 255, 255, 0.72);
-    letter-spacing: var(--tracking-ui);
+    letter-spacing: 0.06em;
     margin: 0.5rem 0 0;
   }
 
@@ -208,7 +214,7 @@ const company = [
     font-family: var(--font-sans);
     font-size: var(--text-label);
     font-weight: var(--weight-semibold);
-    letter-spacing: var(--tracking-label);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #fff;
     margin: 0 0 1.5rem;
@@ -241,7 +247,7 @@ const company = [
   .bottom a {
     font-family: var(--font-sans);
     font-size: var(--text-caption);
-    letter-spacing: var(--tracking-ui);
+    letter-spacing: 0.06em;
     margin: 0;
     text-transform: uppercase;
   }

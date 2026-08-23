@@ -25,19 +25,19 @@ const image = 'https://images.unsplash.com/photo-1639935187474-10940c5be350?w=80
   <div class="wrap">
     <div class="layout">
       <div class="copy">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Eligibility</p>
           <h2>
             Who qualifies for the <em>Qualified Investor Visa.</em>
           </h2>
           <p class="lede">
-            The program is open to citizens of any country. There is no age restriction, no language requirement, and no interview. You must pass a standard background check and demonstrate the source of your investment funds.
+            The program is open to <a href="/who-its-for">citizens of any country</a>. There is no age restriction, no language requirement, and no interview. You must pass a standard background check and demonstrate the source of your investment funds.
           </p>
         </div>
-        <div class="specs">
+        <div class="specs spec-grid">
           {
             cards.map((card, i) => (
-              <article class="spec rv" style={`--rv-delay: ${0.2 + i * 0.06}s`}>
+              <article class="spec">
                 <p class="title">{card.title}</p>
                 <p>{card.body}</p>
               </article>
@@ -46,8 +46,7 @@ const image = 'https://images.unsplash.com/photo-1639935187474-10940c5be350?w=80
         </div>
       </div>
       <img
-        class="photo rv"
-        style="--rv-delay: 0.15s"
+        class="photo"
         src={image}
         alt="Panoramic view of Panama City with mountains"
         width="800"
@@ -55,10 +54,9 @@ const image = 'https://images.unsplash.com/photo-1639935187474-10940c5be350?w=80
         loading="lazy"
       />
     </div>
-    <p class="section-more rv">
+    <p class="section-more">
       <a class="cta-link cta-link--ink" href="/eligibility">
         Check eligibility
-        <span class="ring" aria-hidden="true">→</span>
       </a>
     </p>
   </div>
@@ -81,14 +79,13 @@ const image = 'https://images.unsplash.com/photo-1639935187474-10940c5be350?w=80
 
   h2 em {
     font-style: italic;
-    color: #405363;
   }
 
   .lede {
-    font-size: var(--text-body);
+    font-size: 1.05rem;
     margin: var(--space-lede) 0 0;
     max-width: var(--measure);
-    line-height: var(--leading-body);
+    line-height: 1.7;
   }
 
   .copy .sec-head {
@@ -104,8 +101,14 @@ const image = 'https://images.unsplash.com/photo-1639935187474-10940c5be350?w=80
 
   .spec {
     background: var(--cream-tint);
-    border-radius: 16px;
-    padding: 1.25rem 1.35rem;
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    padding: 1.5rem;
+    transition: box-shadow 150ms ease-out;
+  }
+
+  .spec:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .title {
@@ -128,7 +131,7 @@ const image = 'https://images.unsplash.com/photo-1639935187474-10940c5be350?w=80
     height: 100%;
     min-height: 400px;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: 4px;
   }
 
   @media (min-width: 640px) {

@@ -2,23 +2,24 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 
 const general = [
   {
     q: 'What is the Panama Qualified Investor Visa?',
-    a: 'A permanent residency visa requiring a minimum $300,000 investment in Panamanian real estate, securities, or a bank deposit. It grants the holder the right to live and work in Panama indefinitely, with a path to citizenship after five years.',
+    a: 'A permanent residency visa requiring a <a href="/visa">minimum $300,000 investment</a> in Panamanian real estate, securities, or a bank deposit. It grants the holder the right to live and work in Panama indefinitely, with a path to citizenship after five years.',
   },
   {
     q: 'Is this a temporary or permanent visa?',
-    a: 'Permanent. You receive a provisional permit within 30 days, followed by a permanent residency card. There is no renewal requirement — the residency is indefinite.',
+    a: 'Permanent. You receive a provisional permit within 30 days, followed by a permanent residency card. There is no renewal requirement. The residency is indefinite.',
   },
   {
     q: 'How long does the process take?',
-    a: '30 to 60 days from document submission to provisional permit. The permanent card follows within a few additional weeks.',
+    a: '<a href="/process">30 to 60 days</a> from document submission to provisional permit. The permanent card follows within a few additional weeks.',
   },
   {
     q: 'Can I include my family?',
-    a: 'Yes. Spouse, children under 25, and parents over 65 are included at no additional investment.',
+    a: 'Yes. Spouse, <a href="/eligibility">children under 25</a>, and parents over 65 are included at no additional investment.',
   },
   {
     q: 'Do I need to live in Panama full-time?',
@@ -41,7 +42,7 @@ const general = [
 const financial = [
   {
     q: "What does Panama's territorial tax system mean for me?",
-    a: 'Only income earned within Panama is taxed. Foreign-sourced income — investments, remote salaries, overseas business profits — is not subject to Panamanian income tax.',
+    a: 'Only income earned within Panama is taxed. <a href="/benefits">Foreign-sourced income</a>, investments, remote salaries, overseas business profits, is not subject to Panamanian income tax.',
   },
   {
     q: 'Is the $300,000 a fee or an investment?',
@@ -53,11 +54,11 @@ const financial = [
   },
   {
     q: 'Can I use a mortgage for the real estate route?',
-    a: 'The $300,000 must be a direct investment. Mortgaged properties may qualify if your equity meets the threshold, but this varies — confirm with your attorney.',
+    a: 'The $300,000 must be a direct investment. <a href="/papers">Mortgaged properties may qualify</a> if your equity meets the threshold, but this varies. Confirm with your attorney.',
   },
   {
     q: 'What about US taxes? Do I still pay the IRS?',
-    a: 'Yes. The US taxes citizens on worldwide income regardless of residency. Panama residency does not change your US tax obligations, but Panama does not add a second tax layer.',
+    a: 'Yes. The US taxes citizens on worldwide income regardless of residency. Panama residency does not change your <a href="/americans">US tax obligations</a>, but Panama does not add a second tax layer.',
   },
   {
     q: 'Are there ongoing costs to maintain residency?',
@@ -80,7 +81,7 @@ const practical = [
   },
   {
     q: 'Can I drive with my foreign license?',
-    a: 'You can use your foreign license for 90 days. After that, you can exchange it for a Panamanian license — the process is straightforward for permanent residents.',
+    a: 'You can use your foreign license for 90 days. After that, you can exchange it for a Panamanian license. The process is straightforward for permanent residents.',
   },
   {
     q: 'What about schooling for children?',
@@ -96,7 +97,7 @@ const allFaqs = [...general, ...financial, ...practical];
 
 const title = 'Panama Qualified Investor Visa FAQ | All Your Questions Answered';
 const description =
-  'Answers to every common question about Panama\'s QIV — taxes, costs, timeline, family, citizenship, and more.';
+  'Answers to every common question about Panama\'s QIV: taxes, costs, timeline, family, citizenship, and more.';
 ---
 
 <BaseLayout title={title} description={description} ogDescription={description} path="/faq">
@@ -113,16 +114,16 @@ const description =
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">General</p>
             <h2>About the program.</h2>
           </div>
-          <div class="faq rv" style="--rv-delay: 0.1s">
+          <div class="faq">
             {
               general.map((item) => (
                 <details>
                   <summary>{item.q}</summary>
-                  <p>{item.a}</p>
+                  <p set:html={item.a} />
                 </details>
               ))
             }
@@ -134,16 +135,16 @@ const description =
     <section class="section bg-cream-tint">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Financial</p>
             <h2>Money, taxes, and costs.</h2>
           </div>
-          <div class="faq rv" style="--rv-delay: 0.1s">
+          <div class="faq">
             {
               financial.map((item) => (
                 <details>
                   <summary>{item.q}</summary>
-                  <p>{item.a}</p>
+                  <p set:html={item.a} />
                 </details>
               ))
             }
@@ -155,16 +156,16 @@ const description =
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Practical</p>
             <h2>Living in Panama.</h2>
           </div>
-          <div class="faq rv" style="--rv-delay: 0.1s">
+          <div class="faq">
             {
               practical.map((item) => (
                 <details>
                   <summary>{item.q}</summary>
-                  <p>{item.a}</p>
+                  <p set:html={item.a} />
                 </details>
               ))
             }
@@ -177,10 +178,11 @@ const description =
       <div class="wrap cta-band-inner">
         <h2>Ready to take the next step?</h2>
         <a class="btn btn--gold" href="/#book">
-          Book Your Free Assessment <span class="arr">→</span>
+          Speak with an Advisor
         </a>
       </div>
     </section>
+    <TopCTA />
   </main>
   <Footer />
 </BaseLayout>
@@ -191,7 +193,7 @@ const description =
   mainEntity: allFaqs.map((item) => ({
     '@type': 'Question',
     name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a },
+    acceptedAnswer: { '@type': 'Answer', text: item.a.replace(/<[^>]*>/g, '') },
   })),
 })} />
 

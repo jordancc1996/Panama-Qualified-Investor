@@ -2,11 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 
 const requirements = [
   {
     title: 'Minimum $300,000 Investment',
-    body: 'In one of three qualifying categories: titled real estate, listed securities, or a fixed-term bank deposit. The investment must be in your name.',
+    body: 'In one of <a href="/visa">three qualifying categories</a>: titled real estate, listed securities, or a fixed-term bank deposit. The investment must be in your name.',
   },
   {
     title: 'Clean Criminal Background',
@@ -14,7 +15,7 @@ const requirements = [
   },
   {
     title: 'Proof of Legitimate Funds',
-    body: 'You must demonstrate the source of your investment capital — employment income, business profits, investment returns, inheritance, or asset sales.',
+    body: 'You must demonstrate the source of your investment capital: employment income, business profits, investment returns, inheritance, or asset sales.',
   },
   {
     title: 'Valid Passport',
@@ -45,7 +46,7 @@ const notRequired = [
   },
   {
     title: 'No Nationality Quotas',
-    body: 'Every country is treated equally. No per-country caps, no priority dates, no backlogs.',
+    body: 'Every country is treated equally. <a href="/h1b">No per-country caps</a>, no priority dates, no backlogs.',
   },
   {
     title: 'No Minimum Stay',
@@ -68,7 +69,7 @@ const description =
     <section class="page-hero">
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">Eligibility</p>
-        <h1>Who qualifies — and who doesn't.</h1>
+        <h1>Who qualifies, and who doesn't.</h1>
         <p class="subtext">
           The QIV is designed to be accessible, but there are clear requirements. Here's the full picture.
         </p>
@@ -77,16 +78,16 @@ const description =
 
     <section class="section paper">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Requirements</p>
           <h2>What you must have.</h2>
         </div>
         <div class="two-grid">
           {
             requirements.map((item, i) => (
-              <article class="spec-card rv" style={`--rv-delay: ${i * 0.05}s`}>
+              <article class="spec-card">
                 <p class="title">{item.title}</p>
-                <p>{item.body}</p>
+                <p set:html={item.body} />
               </article>
             ))
           }
@@ -96,16 +97,16 @@ const description =
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">What you don't need</p>
           <h2>Barriers that don't exist here.</h2>
         </div>
         <div class="three-grid">
           {
             notRequired.map((item, i) => (
-              <article class="spec-card rv" style={`--rv-delay: ${i * 0.05}s`}>
+              <article class="spec-card">
                 <p class="title">{item.title}</p>
-                <p>{item.body}</p>
+                <p set:html={item.body} />
               </article>
             ))
           }
@@ -116,17 +117,17 @@ const description =
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Family</p>
             <h2>Who can be included.</h2>
           </div>
-          <div class="prose rv" style="--rv-delay: 0.1s">
+          <div class="prose">
             <p>Your application can include the following dependents at no additional investment requirement:</p>
             <p>
-              Your legal spouse — married or common-law, depending on applicable law. Your dependent children under the age of 25 — biological or legally adopted. Your parents or your spouse's parents over the age of 65.
+              Your legal spouse, married or common-law, depending on applicable law. Your dependent children under the age of 25, biological or legally adopted. Your parents or your spouse's parents over the age of 65.
             </p>
             <p>
-              Each dependent receives their own permanent residency card with full rights to live and work in Panama. Dependent documents (passport, background check, health certificate) must be submitted alongside yours. There is no limit on the number of qualifying dependents.
+              Each dependent receives their own permanent residency card with <a href="/benefits">full rights to live and work</a> in Panama. Dependent documents (passport, background check, health certificate) must be submitted alongside yours. There is no limit on the number of qualifying dependents.
             </p>
           </div>
         </div>
@@ -136,16 +137,16 @@ const description =
     <section class="section bg-cream-tint">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Disqualifiers</p>
             <h2>Who does not qualify.</h2>
           </div>
-          <div class="prose rv" style="--rv-delay: 0.1s">
+          <div class="prose">
             <p>
               The following will disqualify an application: a serious criminal conviction (felony-level offenses, fraud, money laundering, drug trafficking, terrorism); inability to demonstrate a legitimate source of funds; an active Interpol red notice; existing legal proceedings in Panama; or providing false or forged documents.
             </p>
             <p>
-              Minor infractions (traffic violations, misdemeanors) generally do not disqualify applicants, but each case is assessed individually. If you have concerns about your background, raise them during the initial consultation — before investing time or money in the process.
+              Minor infractions (traffic violations, misdemeanors) generally do not disqualify applicants, but each case is assessed individually. If you have concerns about your background, raise them during the <a href="/process">initial consultation</a>, before investing time or money in the process.
             </p>
           </div>
         </div>
@@ -156,10 +157,11 @@ const description =
       <div class="wrap cta-band-inner">
         <h2>Ready to take the next step?</h2>
         <a class="btn btn--gold" href="/#book">
-          Book Your Free Assessment <span class="arr">→</span>
+          Speak with an Advisor
         </a>
       </div>
     </section>
+    <TopCTA />
   </main>
   <Footer />
 </BaseLayout>

@@ -9,14 +9,14 @@ const stats = [
 
 <section class="section" id="why">
   <div class="wrap">
-    <div class="sec-head rv">
+    <div class="sec-head">
       <p class="eyebrow">Why Panama</p>
       <h2>A strategic base for <em>global investors.</em></h2>
       <p class="lede">
-        Panama sits at the crossroads of the Americas — a dollarized economy, territorial tax system, and one of the fastest-growing financial hubs in Latin America. The Qualified Investor Visa is the country's premium residency pathway.
+        Panama sits at the crossroads of the Americas: a dollarized economy, territorial tax system, and one of the fastest-growing financial hubs in Latin America. <a href="/visa">The Qualified Investor Visa</a> is the country's premium residency pathway.
       </p>
     </div>
-    <div class="stats rv" style="--rv-delay: 0.15s">
+    <div class="stats">
       {
         stats.map((stat) => (
           <div class="stat">
@@ -26,16 +26,15 @@ const stats = [
         ))
       }
     </div>
-    <div class="soft-cta rv">
+    <div class="soft-cta">
       <p>See if you qualify in under 2 minutes.</p>
       <a class="btn btn--navy" href="#book">
-        Check Your Eligibility <span class="arr">→</span>
+        Check Your Eligibility
       </a>
     </div>
-    <p class="section-more rv">
+    <p class="section-more">
       <a class="cta-link cta-link--ink" href="/visa">
         Explore the visa
-        <span class="ring" aria-hidden="true">→</span>
       </a>
     </p>
   </div>
@@ -48,11 +47,11 @@ const stats = [
   }
 
   .lede {
-    font-size: var(--text-body);
+    font-size: 1.05rem;
     color: var(--color-ink-soft);
     max-width: var(--measure);
-    margin: var(--space-lede) auto 0;
-    line-height: var(--leading-body);
+    margin: var(--space-lede) 0 0;
+    line-height: 1.7;
   }
 
   .stats {
@@ -62,7 +61,7 @@ const stats = [
     margin-top: 3rem;
     background: var(--color-line);
     border: 1px solid var(--color-line);
-    border-radius: 16px;
+    border-radius: 6px;
     overflow: hidden;
   }
 
@@ -105,7 +104,7 @@ const stats = [
 
   .soft-cta {
     margin-top: 2.5rem;
-    text-align: center;
+    text-align: left;
   }
 
   .soft-cta p {

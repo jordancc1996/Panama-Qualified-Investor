@@ -30,18 +30,18 @@ const items = [
   },
   {
     q: "What is Panama's tax system?",
-    a: 'Panama uses a territorial tax system. Only income earned within Panama is subject to Panamanian income tax. Foreign-sourced income — whether from investments, employment, or business activities abroad — is not taxed.',
+    a: 'Panama uses a territorial tax system. Only income earned within Panama is subject to Panamanian income tax. Foreign-sourced income, whether from investments, employment, or business activities abroad, is not taxed.',
   },
 ];
 ---
 
 <section class="section bg-cream-tint" id="faq">
   <div class="wrap">
-    <div class="sec-head rv">
+    <div class="sec-head">
       <p class="eyebrow">Frequently asked questions</p>
-      <h2>Everything you <em>need to know.</em></h2>
+      <h2>Everything you need to know.</h2>
     </div>
-    <div class="faq rv" style="--rv-delay: 0.1s">
+    <div class="faq">
       {
         items.map((item) => (
           <details>
@@ -51,16 +51,15 @@ const items = [
         ))
       }
     </div>
-    <div class="after rv">
+    <div class="after">
       <p>Still have questions? We'll answer them on a quick call.</p>
       <a class="btn btn--outline-navy" href="#book">
-        Schedule a Call <span class="arr">→</span>
+        Speak with an Advisor
       </a>
     </div>
-    <p class="section-more rv">
+    <p class="section-more">
       <a class="cta-link cta-link--ink" href="/faq">
         View all questions
-        <span class="ring" aria-hidden="true">→</span>
       </a>
     </p>
   </div>
@@ -88,6 +87,7 @@ const items = [
 
   .sec-head {
     margin-bottom: 2.5rem;
+    text-align: center;
   }
 
   .after {

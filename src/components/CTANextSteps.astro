@@ -20,19 +20,22 @@ const expect = [
 <section class="cta" id="book">
   <img class="bg" src={bg} alt="Panama City skyline at sunset" width="1920" height="1080" loading="lazy" />
   <div class="wrap content">
-    <div class="form-col rv">
+    <div class="form-col">
       <h2>Book your <em>free assessment</em></h2>
       <p class="sub">
-        15 minutes with an advisor who specializes in your situation. No obligation, no pressure — just clarity on whether the QIV is right for you.
+        15 minutes with an advisor who specializes in your situation. No obligation, no pressure, just clarity on whether the QIV is right for you.
       </p>
       <form class="form" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
         <input type="hidden" name="_subject" value="Free assessment request" />
-        <label class="sr-only" for="full-name">Full Name</label>
-        <input id="full-name" name="name" type="text" autocomplete="name" required placeholder="Your full name" />
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <label class="sr-only" for="book_first_name">First name</label>
+        <input id="book_first_name" name="first_name" type="text" required placeholder="Enter your first name" />
+        <label class="sr-only" for="book_last_name">Last name</label>
+        <input id="book_last_name" name="last_name" type="text" required placeholder="Enter your last name" />
         <label class="sr-only" for="book-email">Email</label>
-        <input id="book-email" name="email" type="email" autocomplete="email" required placeholder="your@email.com" />
+        <input id="book-email" name="email" type="email" autocomplete="email" required placeholder="Enter your email" />
         <label class="sr-only" for="book-phone">Phone / WhatsApp</label>
-        <input id="book-phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 (555) 000-0000" />
+        <input id="book-phone" name="phone" type="tel" autocomplete="tel" placeholder="Enter your phone number" />
         <label class="sr-only" for="situation">I am a...</label>
         <select id="situation" name="situation" required>
           <option value="" disabled selected>Select your situation</option>
@@ -51,12 +54,12 @@ const expect = [
           <option value="exploring">Just exploring for now</option>
         </select>
         <button class="btn btn--gold" type="submit">
-          Book My Free Assessment <span class="arr">→</span>
+          Speak with an Advisor
         </button>
       </form>
       <p class="fine">Your information is confidential. We respond within one business day.</p>
     </div>
-    <div class="trust-col rv" style="--rv-delay: 0.1s">
+    <div class="trust-col">
       <div class="stats">
         {
           stats.map((stat) => (
@@ -92,6 +95,12 @@ const expect = [
         </div>
       </div>
     </div>
+  </div>
+  <div class="continue-cue" aria-hidden="true">
+    <span class="continue-cue-text">Continue</span>
+    <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+      <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1" stroke-linecap="round"></path>
+    </svg>
   </div>
 </section>
 
@@ -150,7 +159,6 @@ const expect = [
 
   h2 em {
     font-style: italic;
-    color: rgba(255, 255, 255, 0.80);
   }
 
   .sub {
@@ -172,23 +180,24 @@ const expect = [
   .form input,
   .form select {
     width: 100%;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    border-radius: 999px;
-    padding: 0.85rem 1.4rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
     color: var(--color-on-navy);
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 0.88rem;
     outline: none;
   }
 
   .form input::placeholder {
-    color: rgba(255, 255, 255, 0.62);
+    color: var(--color-muted);
   }
 
   .form input:focus,
   .form select:focus {
-    border-color: #405363;
+    border-color: var(--color-navy-900);
+    box-shadow: none;
   }
 
   .form select {
@@ -216,7 +225,7 @@ const expect = [
     font-family: var(--font-sans);
     font-size: var(--text-caption);
     color: rgba(255, 255, 255, 0.72);
-    letter-spacing: var(--tracking-ui);
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     margin: 1rem 0 0;
   }
@@ -258,15 +267,16 @@ const expect = [
   }
 
   .expect {
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    padding: 1.25rem 1.4rem;
+    background: var(--color-navy-800);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 1.5rem;
   }
 
   .expect-kicker {
     font-family: var(--font-sans);
     font-size: var(--text-label);
-    letter-spacing: var(--tracking-label);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #fff;
     margin: 0 0 0.75rem;

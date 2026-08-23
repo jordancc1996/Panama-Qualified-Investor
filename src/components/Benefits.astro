@@ -8,7 +8,7 @@ const benefits = [
   {
     n: '02',
     title: 'Zero Tax on Foreign Income',
-    body: "Panama's territorial tax system means income earned outside Panama is not taxed — period.",
+    body: "Panama's <a href=\"/benefits\">territorial tax system</a> means income earned outside Panama is not taxed, period.",
   },
   {
     n: '03',
@@ -40,7 +40,7 @@ const image =
   <div class="wrap">
     <div class="layout">
       <img
-        class="photo rv"
+        class="photo"
         src={image}
         alt="Casco Viejo historic quarter, Panama City"
         width="800"
@@ -48,20 +48,20 @@ const image =
         loading="lazy"
       />
       <div class="copy">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Your benefits</p>
           <h2>
-            What the Qualified Investor Visa <em>actually</em> buys you.
+            What the Qualified Investor Visa actually buys you.
           </h2>
         </div>
         <ol>
           {
             benefits.map((item, i) => (
-              <li class="rv" style={`--rv-delay: ${i * 0.15}s`}>
+              <li>
                 <span class="num">{item.n}</span>
                 <div>
                   <p class="title">{item.title}</p>
-                  <p class="desc">{item.body}</p>
+                  <p class="desc" set:html={item.body} />
                 </div>
               </li>
             ))
@@ -69,10 +69,9 @@ const image =
         </ol>
       </div>
     </div>
-    <p class="section-more rv">
+    <p class="section-more">
       <a class="cta-link cta-link--ink" href="/benefits">
         See all benefits
-        <span class="ring" aria-hidden="true">→</span>
       </a>
     </p>
   </div>
@@ -94,7 +93,7 @@ const image =
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: 4px;
   }
 
   h2 {
@@ -102,11 +101,6 @@ const image =
     font-size: var(--text-h2);
     font-weight: var(--weight-bold);
     margin: var(--space-eyebrow) 0 0.5rem;
-  }
-
-  h2 em {
-    font-style: italic;
-    color: #405363;
   }
 
   .copy .sec-head {

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 
 const taxCards = [
   {
@@ -37,7 +38,7 @@ const lifestyle = [
   },
   {
     title: 'Affordable Living',
-    body: 'A high quality of life at 40–60% less than comparable US or Canadian cities. Housing, dining, healthcare, and domestic help are significantly cheaper.',
+    body: 'A high quality of life at 40–60% less than comparable US or <a href="/canadians">Canadian cities</a>. Housing, dining, healthcare, and domestic help are significantly cheaper.',
   },
   {
     title: 'English Widely Spoken',
@@ -62,35 +63,35 @@ const description =
         <p class="eyebrow eyebrow--on-navy">Benefits</p>
         <h1>What permanent residency in Panama gives you.</h1>
         <p class="subtext">
-          Beyond the residency card — the practical, financial, and lifestyle advantages of being a Panamanian permanent resident.
+          Beyond the residency card: the practical, financial, and lifestyle advantages of being a Panamanian permanent resident.
         </p>
       </div>
     </section>
 
     <section class="section paper">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Tax advantages</p>
           <h2>A territorial tax system built for global earners.</h2>
         </div>
         <div class="split">
-          <div class="prose rv">
+          <div class="prose">
             <p>
-              Panama uses a territorial tax system. This means only income earned within Panama's borders is subject to Panamanian income tax. Foreign-sourced income — including investment returns, dividends, capital gains, rental income from foreign properties, consulting fees from overseas clients, and salary from foreign employers — is completely exempt.
+              Panama uses a <a href="/papers">territorial tax system</a>. This means only income earned within Panama's borders is subject to Panamanian income tax. Foreign-sourced income, including investment returns, dividends, capital gains, rental income from foreign properties, consulting fees from overseas clients, and salary from foreign employers, is completely exempt.
             </p>
             <p>
               This is not a special incentive or a temporary tax holiday. It is how Panama's tax code has always worked. The territorial principle applies to all residents equally, whether you are Panamanian-born or a naturalized citizen.
             </p>
             <p>
-              For investors, entrepreneurs, and remote workers whose income is generated outside Panama, this means you can be a legal, permanent resident of a stable country without adding a second layer of income taxation. You still pay taxes where you are a tax citizen (e.g., the US or Canada), but Panama does not pile on.
+              For investors, entrepreneurs, and <a href="/tech-founders">remote workers</a> whose income is generated outside Panama, this means you can be a legal, permanent resident of a stable country without adding a second layer of income taxation. You still pay taxes where you are a tax citizen (e.g., the US or Canada), but Panama does not pile on.
             </p>
           </div>
           <div class="stack">
             {
               taxCards.map((item, i) => (
-                <article class="spec-card rv" style={`--rv-delay: ${i * 0.06}s`}>
+                <article class="spec-card">
                   <p class="title">{item.title}</p>
-                  <p>{item.body}</p>
+                  <p set:html={item.body} />
                 </article>
               ))
             }
@@ -101,16 +102,16 @@ const description =
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Lifestyle</p>
           <h2>What daily life looks like.</h2>
         </div>
         <div class="life-grid">
           {
             lifestyle.map((item, i) => (
-              <article class="spec-card rv" style={`--rv-delay: ${i * 0.06}s`}>
+              <article class="spec-card">
                 <p class="title">{item.title}</p>
-                <p>{item.body}</p>
+                <p set:html={item.body} />
               </article>
             ))
           }
@@ -121,19 +122,19 @@ const description =
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
-            <p class="eyebrow">Family & legal</p>
+          <div class="sec-head left">
+            <p class="eyebrow">Family <span class="amp">&amp;</span> legal</p>
             <h2>Benefits that extend to your family.</h2>
           </div>
-          <div class="prose rv" style="--rv-delay: 0.1s">
+          <div class="prose">
             <p>
-              Your QIV application can include your spouse, dependent children under 25, and parents over 65 — all on a single application with no additional investment required. Each dependent receives their own permanent residency card with full rights to live and work in Panama.
+              Your QIV application can include your spouse, <a href="/eligibility">dependent children under 25</a>, and parents over 65, all on a single application with no additional investment required. Each dependent receives their own permanent residency card with full rights to live and work in Panama.
             </p>
             <p>
               Permanent residency also gives you access to Panama's banking system, the ability to form a Panamanian corporation (Sociedad Anónima) or simplified company (SAS), and the legal standing to purchase property, sign contracts, and access the court system.
             </p>
             <p>
-              After five years, the path to citizenship opens. Panamanian citizenship includes a passport with visa-free access to 140+ countries, voting rights, and the ability to pass citizenship to future children born in Panama. Panama allows dual citizenship — no renunciation required.
+              After five years, the <a href="/visa">path to citizenship</a> opens. Panamanian citizenship includes a passport with visa-free access to 140+ countries, voting rights, and the ability to pass citizenship to future children born in Panama. Panama allows dual citizenship. No renunciation required.
             </p>
           </div>
         </div>
@@ -144,10 +145,11 @@ const description =
       <div class="wrap cta-band-inner">
         <h2>Ready to take the next step?</h2>
         <a class="btn btn--gold" href="/#book">
-          Book Your Free Assessment <span class="arr">→</span>
+          Speak with an Advisor
         </a>
       </div>
     </section>
+    <TopCTA />
   </main>
   <Footer />
 </BaseLayout>

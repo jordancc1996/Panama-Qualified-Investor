@@ -30,20 +30,20 @@ the 5-location keyword check before being committed.
 
 PRIMARY TARGET KEYWORD must appear in ALL FIVE locations:
 
-1. TITLE — starts with keyword, format "[Keyword] - [Angle]",
+1. TITLE: starts with keyword, format "[Keyword] - [Angle]",
  no em dashes, no site name
-2. META TITLE — same as title + " | [Site Name]"
-3. META DESCRIPTION — keyword in first 5-7 words, 150-160 chars,
+2. META TITLE: same as title + " | [Site Name]"
+3. META DESCRIPTION: keyword in first 5-7 words, 150-160 chars,
  one specific number/date/dollar amount, no em dashes
-4. URL/SLUG — reflects the keyword (never change existing slugs
+4. URL/SLUG: reflects the keyword (never change existing slugs
  without explicit approval)
-5. FIRST SENTENCE of intro/opening — keyword in first 10 words,
+5. FIRST SENTENCE of intro/opening: keyword in first 10 words,
  specific and informative, no em dashes
 
 ### Workflow for Every New Article
 
-STEP 1: Identify primary keyword — show it to the human
-STEP 2: Check all 5 locations — show this table:
+STEP 1: Identify primary keyword. Show it to the human
+STEP 2: Check all 5 locations. Show this table:
  Keyword: [keyword]
  Title ✓/✗ | MetaTitle ✓/✗ | Description ✓/✗ | Slug ✓/✗ | Intro ✓/✗
 STEP 3: Fix all ✗ before writing the file

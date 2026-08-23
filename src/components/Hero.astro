@@ -13,31 +13,18 @@ const heroImage =
     loading="eager"
   />
   <div class="content">
-    <p class="eyebrow eyebrow--on-navy rv">Panama Qualified Investor</p>
-    <h1 class="rv" style="--rv-delay: 0.1s">
-      The complete guide to Panama's <em>Qualified Investor Visa.</em>
-    </h1>
-    <p class="subtext rv" style="--rv-delay: 0.2s">
-      Everything Americans, Canadians, tech founders, and H-1B holders need to know about obtaining permanent residency in Panama through a $300,000 investment — tax implications, timelines, eligibility, and what life actually looks like on the ground.
+    <h1>The complete guide to Panama's Qualified Investor Visa.</h1>
+    <p class="subtext">
+      Everything Americans, Canadians, tech founders, and H-1B holders need to know about obtaining permanent residency in Panama through a $300,000 investment: tax implications, timelines, eligibility, and what life actually looks like on the ground.
     </p>
-    <div class="actions rv" style="--rv-delay: 0.3s">
-      <a class="btn btn--gold" href="#book">
-        Book a Free Assessment <span class="arr">→</span>
-      </a>
-      <a class="btn btn--outline-cream" href="#program">
-        Read the Full Guide <span class="arr">↓</span>
-      </a>
-      <a class="text-link" href="#audiences">Who Is This For?</a>
-    </div>
-    <div class="gold-rule rv" style="--rv-delay: 0.35s"></div>
-    <p class="trust rv" style="--rv-delay: 0.4s">
-      Updated for 2026 · sourced from Panama's Servicio Nacional de Migración and practicing immigration attorneys.
-    </p>
-    <div class="proof rv" style="--rv-delay: 0.45s">
-      <p><span>✓</span> 30–60 day processing</p>
-      <p><span>✓</span> No language requirement</p>
-      <p><span>✓</span> $300,000 minimum investment</p>
-    </div>
+    <a class="hero-cta" href="/#book">
+      Speak with an Advisor<span>→</span>
+    </a>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+      <path d="M1 1L10 10L19 1" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"></path>
+    </svg>
   </div>
 </section>
 
@@ -45,9 +32,6 @@ const heroImage =
   .hero {
     position: relative;
     min-height: calc(100dvh - var(--header-h));
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
     margin-top: var(--header-h);
     isolation: isolate;
@@ -69,127 +53,128 @@ const heroImage =
     inset: 0;
     z-index: -1;
     background: linear-gradient(
-      to top,
-      rgba(45, 61, 77, 0.96) 16%,
-      rgba(45, 61, 77, 0.72) 50%,
-      rgba(45, 61, 77, 0.38)
+      to top right,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.5) 35%,
+      rgba(0, 0, 0, 0.1) 100%
     );
     pointer-events: none;
   }
 
   .content {
-    text-align: center;
-    max-width: var(--measure);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+    min-height: calc(100dvh - var(--header-h));
     width: 100%;
-    margin-inline: auto;
-    padding: 4rem clamp(1.35rem, 5vw, 3rem);
+    max-width: var(--wrap-max);
+    margin: 0;
+    padding-inline: clamp(1.35rem, 4vw, 3rem);
+    padding-bottom: clamp(5rem, 10vw, 8rem);
     box-sizing: border-box;
   }
 
   h1 {
     font-family: var(--font-display);
-    font-size: var(--text-h1);
-    font-weight: var(--weight-bold);
-    color: var(--color-on-navy);
-    line-height: var(--leading-display);
-    letter-spacing: var(--tracking-heading);
-    margin: 1.1rem 0 0;
-    overflow-wrap: break-word;
-  }
-
-  h1 em {
-    font-style: italic;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.80);
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(3rem, 7vw, 5rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: #fff;
+    max-width: 780px;
+    text-wrap: balance;
+    margin: 0;
   }
 
   .subtext {
     font-family: var(--font-sans);
-    font-size: var(--text-body);
-    line-height: var(--leading-body);
-    font-weight: var(--weight-body);
-    color: var(--color-on-navy-dim);
-    max-width: var(--measure);
-    margin: 1.5rem auto 0;
+    font-weight: 400;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 480px;
+    margin: 0.9rem 0 0;
   }
 
-  .actions {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  .hero-cta {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2.5rem;
-  }
-
-  .gold-rule {
-    max-width: 600px;
-    width: 100%;
-    margin: 3rem auto 0;
-  }
-
-  .trust {
+    gap: 0.5rem;
+    background: #f5f0eb;
+    color: #1a1a1a;
     font-family: var(--font-sans);
-    font-size: var(--text-caption);
-    font-weight: var(--weight-ui);
-    letter-spacing: var(--tracking-label);
+    font-size: 0.65rem;
+    font-weight: 600;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.72);
-    max-width: 52ch;
-    margin: 2.5rem auto 0;
-    text-align: center;
-    line-height: 1.6;
+    letter-spacing: 0.14em;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    margin-top: 1.75rem;
+    transition: background-color 150ms ease-out;
   }
 
-  .text-link {
-    font-family: var(--font-sans);
-    font-size: var(--text-ui);
-    font-weight: var(--weight-ui);
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.86);
+  .hero-cta span {
+    margin-left: 0.25rem;
   }
 
-  .text-link:hover {
-    text-decoration: underline;
+  .hero-cta:hover {
+    background: #fff;
+    color: #1a1a1a;
   }
 
-  .proof {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 2rem;
-  }
+  @media (max-width: 767px) {
+    .content {
+      padding-bottom: 3rem;
+    }
 
-  .proof p {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    font-family: var(--font-sans);
-    font-size: var(--text-caption);
-    font-weight: var(--weight-ui);
-    letter-spacing: var(--tracking-ui);
-    color: var(--color-on-navy-dim);
-  }
-
-  .proof span {
-    color: rgba(255, 255, 255, 0.7);
-    margin-right: 0.4rem;
-  }
-
-  @media (min-width: 768px) {
-    .proof {
-      flex-direction: row;
-      gap: 2rem;
+    .subtext {
+      max-width: 100%;
     }
   }
 
-  @media (min-width: 1024px) {
-    .actions {
-      flex-direction: row;
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: softBounce 2.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  @keyframes softBounce {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-hint {
+      animation: none;
     }
   }
 </style>
+
+<script>
+  const hint = document.querySelector('.scroll-hint');
+  const hero = document.querySelector('.hero');
+  if (hint instanceof HTMLElement && hero) {
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        hint.style.opacity = e.isIntersecting ? '1' : '0';
+        hint.style.transition = 'opacity 0.3s';
+      },
+      { threshold: 0.5 }
+    );
+    obs.observe(hero);
+  }
+</script>

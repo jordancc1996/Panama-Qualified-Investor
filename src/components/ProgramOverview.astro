@@ -4,7 +4,7 @@ const routes = [
     n: '01',
     kicker: 'Real estate',
     title: 'Titled Real Estate',
-    body: 'Purchase property with clear title valued at $300,000 or more. Residential, commercial, or land — the asset must be registered in your name.',
+    body: 'Purchase property with clear title valued at $300,000 or more. Residential, commercial, or land. The asset must be registered in your name.',
     image: 'https://images.unsplash.com/photo-1637971405797-ccf327195cb1?w=800&q=80&auto=format&fit=crop',
     alt: 'Modern high-rise buildings in Panama City',
     href: '#investment',
@@ -12,7 +12,7 @@ const routes = [
   {
     n: '02',
     kicker: 'Securities',
-    title: 'Stocks & Securities',
+    title: 'Stocks <span class="amp">&amp;</span> Securities',
     body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange through a licensed local brokerage. Equities, bonds, or funds qualify.',
     image: 'https://images.unsplash.com/photo-1540610410855-b4c8877b761c?w=800&q=80&auto=format&fit=crop',
     alt: 'Panama City financial district at night',
@@ -30,7 +30,7 @@ const routes = [
 
 <section class="section" id="program">
   <div class="wrap">
-    <div class="sec-head rv">
+    <div class="sec-head">
       <p class="eyebrow eyebrow--on-navy">The program</p>
       <h2>Three routes to Panamanian <em>residency.</em></h2>
       <p class="lede">
@@ -40,20 +40,19 @@ const routes = [
         Program terms and investment thresholds can change. Current requirements are valid as of 2026.
       </p>
     </div>
-    <div class="grid">
+    <div class="grid pcard-grid">
       {
         routes.map((route, i) => (
-          <article class="pcard rv" style={`--rv-delay: ${i * 0.1}s`}>
+          <article class="pcard">
             <img src={route.image} alt={route.alt} width="800" height="600" loading="lazy" />
             <div class="pcard-body">
               <p class="num">{route.n}</p>
               <p class="kicker">{route.kicker}</p>
-              <h3>{route.title}</h3>
+              <h3 set:html={route.title} />
               <p class="body">{route.body}</p>
               {route.href && (
                 <a class="cta-link" href={route.href}>
                   Learn more
-                  <span class="ring" aria-hidden="true">→</span>
                 </a>
               )}
             </div>
@@ -61,12 +60,17 @@ const routes = [
         ))
       }
     </div>
-    <p class="section-more rv">
+    <p class="section-more">
       <a class="cta-link cta-link--cream" href="/visa">
         View full program details
-        <span class="ring" aria-hidden="true">→</span>
       </a>
     </p>
+  </div>
+  <div class="continue-cue" aria-hidden="true">
+    <span class="continue-cue-text">Continue</span>
+    <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+      <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1" stroke-linecap="round"></path>
+    </svg>
   </div>
 </section>
 
@@ -80,21 +84,17 @@ const routes = [
     color: var(--color-on-navy);
   }
 
-  .sec-head h2 em {
-    color: rgba(255, 255, 255, 0.80);
-  }
-
   .lede {
     color: var(--color-on-navy-dim);
     max-width: var(--measure);
-    margin: var(--space-lede) auto 0;
-    font-size: var(--text-body);
+    margin: var(--space-lede) 0 0;
+    font-size: 1.05rem;
   }
 
   .note {
     font-family: var(--font-sans);
     font-size: var(--text-label);
-    letter-spacing: var(--tracking-label);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-gold-300);
     margin: 0.75rem 0 0;
@@ -118,7 +118,7 @@ const routes = [
     font-family: var(--font-sans);
     font-size: var(--text-label);
     font-weight: var(--weight-ui);
-    letter-spacing: var(--tracking-label);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-on-navy-dim);
     margin: 0 0 0.45rem;

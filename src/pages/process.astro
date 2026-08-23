@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 
 const steps = [
   {
@@ -10,23 +11,23 @@ const steps = [
   },
   {
     title: 'Document Collection (Weeks 1–3)',
-    body: "You'll provide: a valid passport, a police background check from your country of residence (apostilled), a personal reference letter from your bank, proof of income or net worth, a health certificate from a licensed physician, and four passport-style photos. If you're including dependents, their documents are collected in parallel. We provide a detailed checklist and review every document before submission.",
+    body: "You'll provide: a valid passport, a <a href=\"/eligibility\">police background check</a> from your country of residence (apostilled), a personal reference letter from your bank, proof of income or net worth, a health certificate from a licensed physician, and four passport-style photos. If you're including dependents, their documents are collected in parallel. We provide a detailed checklist and review every document before submission.",
   },
   {
     title: 'Investment Execution (Weeks 2–4)',
-    body: 'Once your documents are in progress, you execute the qualifying investment. For real estate: you select and purchase a property with our vetted partners, and the title is registered in your name. For securities: we connect you with a licensed Panamanian brokerage to open an account and purchase qualifying instruments. For bank deposit: we introduce you to licensed banks offering fixed-term CDs. We coordinate with the relevant institution to ensure the investment meets immigration requirements.',
+    body: 'Once your documents are in progress, you execute the <a href="/visa">qualifying investment</a>. For real estate: you select and purchase a property with our vetted partners, and the title is registered in your name. For securities: we connect you with a licensed Panamanian brokerage to open an account and purchase qualifying instruments. For bank deposit: we introduce you to licensed banks offering fixed-term CDs. We coordinate with the relevant institution to ensure the investment meets immigration requirements.',
   },
   {
     title: 'Application Filing (Week 4)',
-    body: "Your complete application package — documents, proof of investment, photographs, and forms — is filed with Panama's Servicio Nacional de Migración. We handle all filings, correspondence, and follow-up with the immigration office. You do not need to be present for the filing.",
+    body: "Your complete application package, documents, proof of investment, photographs, and forms, is filed with Panama's Servicio Nacional de Migración. We handle all filings, correspondence, and follow-up with the immigration office. You do not need to be present for the filing.",
   },
   {
-    title: 'Biometrics & Provisional Permit (Weeks 4–6)',
+    title: 'Biometrics <span class="amp">&amp;</span> Provisional Permit (Weeks 4–6)',
     body: 'You travel to Panama for a biometrics appointment (fingerprints, photograph) at the immigration office. This visit typically takes one business day. Within 30 days of filing, you receive a provisional residency permit (permiso provisional) that gives you full legal residency status while your permanent card is manufactured.',
   },
   {
     title: 'Permanent Residency Card (Weeks 6–10)',
-    body: 'Your permanent residency card (carné de residente permanente) is produced and issued. This is your long-term residency document. With this card, you can open bank accounts, sign contracts, purchase property, and enjoy all the rights of a permanent resident. The card is valid indefinitely — there is no renewal requirement.',
+    body: 'Your permanent residency card (carné de residente permanente) is produced and issued. This is your long-term residency document. With this card, you can open bank accounts, sign contracts, purchase property, and enjoy all the <a href="/benefits">rights of a permanent resident</a>. The card is valid indefinitely. There is no renewal requirement.',
   },
 ];
 
@@ -86,16 +87,16 @@ const description =
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Timeline</p>
             <h2>What to expect, week by week.</h2>
           </div>
           <ol class="steps">
             {
               steps.map((step, i) => (
-                <li class="rv" style={`--rv-delay: ${i * 0.06}s`}>
-                  <strong>{step.title}</strong>
-                  <p>{step.body}</p>
+                <li>
+                  <strong set:html={step.title} />
+                  <p set:html={step.body} />
                 </li>
               ))
             }
@@ -106,14 +107,14 @@ const description =
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Documents required</p>
           <h2>What you need to prepare.</h2>
         </div>
         <div class="doc-grid">
           {
             docs.map((item, i) => (
-              <article class="spec-card rv" style={`--rv-delay: ${i * 0.04}s`}>
+              <article class="spec-card">
                 <p class="title">{item.title}</p>
                 <p>{item.body}</p>
               </article>
@@ -126,18 +127,18 @@ const description =
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Costs</p>
             <h2>What it costs beyond the investment.</h2>
           </div>
-          <div class="prose rv" style="--rv-delay: 0.1s">
+          <div class="prose">
             <p>
-              The $300,000 is your investment — it's not a fee. You own the asset (property, securities, or deposit) and it remains yours. Separately, there are processing costs that cover government fees, legal representation, and document preparation.
+              The $300,000 is your investment. It's not a fee. You own the asset (property, securities, or deposit) and it remains yours. Separately, there are processing costs that cover government fees, legal representation, and document preparation.
             </p>
             <p>
               Government filing fees typically total $2,000–$3,000 for a primary applicant, with additional fees per dependent. Legal fees vary by firm and complexity but generally range from $5,000–$15,000 for full-service representation. Document authentication (apostille) costs depend on your home country.
             </p>
-            <p>We provide a complete, itemized fee breakdown during your initial consultation — no hidden costs.</p>
+            <p>We provide a complete, itemized fee breakdown during your initial consultation: no hidden costs.</p>
           </div>
         </div>
       </div>
@@ -147,10 +148,11 @@ const description =
       <div class="wrap cta-band-inner">
         <h2>Ready to take the next step?</h2>
         <a class="btn btn--gold" href="/#book">
-          Book Your Free Assessment <span class="arr">→</span>
+          Speak with an Advisor
         </a>
       </div>
     </section>
+    <TopCTA />
   </main>
   <Footer />
 </BaseLayout>
@@ -194,7 +196,7 @@ const description =
     height: 1.9rem;
     display: grid;
     place-items: center;
-    border-radius: 999px;
+    border-radius: 6px;
     background: var(--color-navy-900);
     color: var(--color-gold-300);
     font-family: var(--font-sans);

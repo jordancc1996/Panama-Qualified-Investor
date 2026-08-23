@@ -12,7 +12,9 @@ import Eligibility from '../components/Eligibility.astro';
 import FAQ from '../components/FAQ.astro';
 import CTANextSteps from '../components/CTANextSteps.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 import MobileCTABar from '../components/MobileCTABar.astro';
+import SectionDivider from '../components/SectionDivider.astro';
 ---
 
 <BaseLayout>
@@ -20,14 +22,18 @@ import MobileCTABar from '../components/MobileCTABar.astro';
   <main id="main">
     <Hero />
     <WhyPanama />
+    <SectionDivider />
     <Audiences />
     <Benefits />
     <ProgramOverview />
     <InvestmentTable />
+    <SectionDivider />
     <ProcessSteps />
     <Eligibility />
+    <SectionDivider />
     <FAQ />
     <CTANextSteps />
+    <TopCTA />
   </main>
   <Footer />
   <MobileCTABar />

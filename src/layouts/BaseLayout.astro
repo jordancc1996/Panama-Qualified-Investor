@@ -16,6 +16,7 @@ const {
 } = Astro.props;
 
 const canonical = `https://panamaqualifiedinvestor.com${path}`;
+const isHome = !path || path === '/';
 const ogImage =
   'https://images.unsplash.com/photo-1632505702897-cc41b0ba3b64?w=1200&q=80&auto=format&fit=crop';
 const fontHref =
@@ -51,35 +52,41 @@ const fontHref =
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    {!isHome && <div class="scroll-progress" aria-hidden="true"></div>}
     <slot />
-    <script is:inline>
-      (() => {
-        const reveal = () => {
-          const nodes = document.querySelectorAll('.rv:not(.in-view)');
-          if (!nodes.length) return;
-          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            nodes.forEach((el) => el.classList.add('in-view'));
-            return;
-          }
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add('in-view');
-                  io.unobserve(entry.target);
+    <script>
+      const bar = document.querySelector('.scroll-progress');
+      if (bar instanceof HTMLElement) {
+        window.addEventListener(
+          'scroll',
+          () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            bar.style.width = progress + '%';
+          },
+          { passive: true }
+        );
+      }
+
+      if (window.innerWidth < 768) {
+        document.querySelectorAll('.audience-grid, .pcard-grid, .spec-grid, .cta-cards').forEach((grid) => {
+          const lastCard = grid.lastElementChild;
+          if (lastCard) {
+            const obs = new IntersectionObserver(
+              ([e]) => {
+                if (e.isIntersecting) {
+                  (grid as HTMLElement).style.maskImage = 'none';
+                  (grid as HTMLElement).style.webkitMaskImage = 'none';
+                  obs.disconnect();
                 }
-              });
-            },
-            { threshold: 0.16, rootMargin: '0px 0px -8% 0px' }
-          );
-          nodes.forEach((el) => io.observe(el));
-        };
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', reveal);
-        } else {
-          reveal();
-        }
-      })();
+              },
+              { threshold: 0.8 }
+            );
+            obs.observe(lastCard);
+          }
+        });
+      }
     </script>
   </body>
 </html>

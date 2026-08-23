@@ -3,7 +3,7 @@ const audiences = [
   {
     kicker: 'Americans',
     title: 'A tax-efficient Plan B outside the US',
-    body: "Whether you're hedging against political uncertainty, diversifying your residency portfolio, or looking for a dollar-denominated base with zero tax on foreign income — Panama's QIV gives you permanent residency without renouncing US citizenship. No FATCA complications on the residency itself, and the territorial tax system means your US-sourced income is only taxed by the IRS, not Panama.",
+    body: "Whether you're hedging against political uncertainty, diversifying your residency portfolio, or looking for a dollar-denominated base with zero tax on foreign income, Panama's QIV gives you permanent residency without renouncing US citizenship. No FATCA complications on the residency itself, and the territorial tax system means your US-sourced income is only taxed by the IRS, not Panama.",
     cta: 'See how other Americans have qualified →',
     href: '/americans',
   },
@@ -15,7 +15,7 @@ const audiences = [
     href: '/canadians',
   },
   {
-    kicker: 'Tech founders & remote CEOs',
+    kicker: 'Tech founders <span class="amp">&amp;</span> remote CEOs',
     title: 'Build from anywhere, base somewhere strategic',
     body: 'If your company is remote-first or you\'re between rounds, Panama offers legitimate residency in a timezone that overlaps with both US coasts, a territorial tax system ideal for foreign-incorporated entities, and a modern financial hub with direct flights to Miami, New York, and San Francisco. No language test, no cultural exam, and your family can be included.',
     cta: 'Book a founder-focused consultation →',
@@ -24,7 +24,7 @@ const audiences = [
   {
     kicker: 'H-1B visa holders',
     title: "Permanent residency that doesn't depend on your employer",
-    body: "The US green card backlog for Indian and Chinese nationals can stretch 10 to 20+ years. Panama's QIV grants permanent residency in 30 to 60 days with no country-specific quotas, no employer sponsorship, and no lottery. It's not a replacement for your US immigration case — it's a parallel path that gives you a permanent legal home while you wait.",
+    body: "The US green card backlog for Indian and Chinese nationals can stretch 10 to 20+ years. Panama's QIV grants permanent residency in 30 to 60 days with no country-specific quotas, no employer sponsorship, and no lottery. It's not a replacement for your US immigration case. It's a parallel path that gives you a permanent legal home while you wait.",
     cta: 'Get a free H-1B backup plan assessment →',
     href: '/h1b',
   },
@@ -33,29 +33,27 @@ const audiences = [
 
 <section class="section bg-cream-tint" id="audiences">
   <div class="wrap">
-    <div class="sec-head rv">
+    <div class="sec-head">
       <p class="eyebrow">Who this is for</p>
-      <h2>Four groups rethinking <em>where they hold residency.</em></h2>
+      <h2>Four groups rethinking where they hold residency.</h2>
     </div>
-    <div class="grid">
+    <div class="grid audience-grid">
       {
         audiences.map((item, i) => (
-          <article class="bcard card rv" style={`--rv-delay: ${i * 0.1}s`}>
-            <p class="kicker">{item.kicker}</p>
+          <article class="bcard card">
+            <p class="kicker" set:html={item.kicker} />
             <h3>{item.title}</h3>
             <p class="body">{item.body}</p>
             <a class="cta-link cta-link--ink" href={item.href}>
               {item.cta.replace(' →', '')}
-              <span class="ring" aria-hidden="true">→</span>
             </a>
           </article>
         ))
       }
     </div>
-    <p class="section-more rv">
+    <p class="section-more">
       <a class="cta-link cta-link--ink" href="/who-its-for">
         Find your path
-        <span class="ring" aria-hidden="true">→</span>
       </a>
     </p>
   </div>
@@ -73,14 +71,14 @@ const audiences = [
   }
 
   .card {
-    padding: 1.35rem 1.4rem;
+    padding: 1.5rem;
   }
 
   .kicker {
     font-family: var(--font-sans);
     font-size: var(--text-label);
     font-weight: var(--weight-ui);
-    letter-spacing: var(--tracking-label);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #405363;
     margin: 0;

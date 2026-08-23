@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 
 const heroImage =
   'https://images.unsplash.com/photo-1582059983736-eedd5df2212b?w=1920&q=80&auto=format&fit=crop';
@@ -41,7 +42,7 @@ const routes = [
   },
   {
     n: '02',
-    title: 'Stocks & Securities',
+    title: 'Stocks <span class="amp">&amp;</span> Securities',
     body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange through a licensed local brokerage.',
   },
   {
@@ -57,7 +58,7 @@ const faqs = [
     a: 'Yes. Permanent residency gives you the legal right to work in Panama. You can manage a remote company, take calls, and operate your business from here. If your company is incorporated outside Panama and earns revenue from outside Panama, that income is not subject to Panamanian tax.',
   },
   {
-    q: 'What about my US company — does this change anything?',
+    q: 'What about my US company? Does this change anything?',
     a: 'Holding Panamanian residency does not change the tax treatment of your US C-corp or LLC. The company continues to be taxed where it\'s incorporated. What may change is your personal tax situation depending on where you are a tax resident. Consult a cross-border tax advisor before making moves.',
   },
   {
@@ -70,7 +71,7 @@ const faqs = [
   },
   {
     q: 'What\'s the social scene like for founders?',
-    a: 'Panama City has a growing community of international entrepreneurs, particularly in fintech, crypto, and consulting. There are regular meetups, coworking spaces, and a small but active startup ecosystem. It\'s not Berlin or Austin — but it\'s not isolated either.',
+    a: 'Panama City has a growing community of international entrepreneurs, particularly in fintech, crypto, and consulting. There are regular meetups, coworking spaces, and a small but active startup ecosystem. It\'s not Berlin or Austin, but it\'s not isolated either.',
   },
 ];
 ---
@@ -93,16 +94,16 @@ const faqs = [
         loading="eager"
       />
       <div class="content">
-        <p class="eyebrow eyebrow--on-navy rv">For Tech Founders</p>
-        <h1 class="rv" style="--rv-delay: 0.1s">
+        <p class="eyebrow eyebrow--on-navy">For Tech Founders</p>
+        <h1>
           Base your life somewhere that matches how you build.
         </h1>
-        <p class="subtext rv" style="--rv-delay: 0.2s">
-          How remote-first founders, startup CEOs, and Web3 builders are using the Panama Qualified Investor Visa to establish a strategic home base — with zero tax on foreign income and direct flights to both US coasts.
+        <p class="subtext">
+          How remote-first founders, startup CEOs, and Web3 builders are using the <a href="/visa">Panama Qualified Investor Visa</a> to establish a strategic home base, with zero tax on foreign income and direct flights to both US coasts.
         </p>
-        <div class="actions rv" style="--rv-delay: 0.3s">
+        <div class="actions">
           <a class="btn btn--gold" href="/#book">
-            Book a Free Assessment <span class="arr">→</span>
+            Speak with an Advisor
           </a>
         </div>
       </div>
@@ -111,22 +112,22 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">The reality</p>
             <h2>When your company is everywhere, your residency still has to be somewhere.</h2>
           </div>
-          <div class="prose rv" style="--rv-delay: 0.1s">
+          <div class="prose">
             <p>
-              If you're building a remote-first company, you've already decoupled work from location. Your team is distributed. Your customers are global. Your cap table might span three countries. But your personal residency — where you're legally domiciled, where you pay taxes, where your passport and bank accounts are anchored — is still tied to a single jurisdiction.
+              If you're building a remote-first company, you've already decoupled work from location. Your team is distributed. Your customers are global. Your cap table might span three countries. But your personal residency, where you're legally domiciled, where you pay taxes, where your passport and bank accounts are anchored, is still tied to a single jurisdiction.
             </p>
             <p>
-              For many founders, that jurisdiction is the US. And the US is a fine place to build a company — but it's an expensive place to be a tax resident if your income comes from a Delaware C-corp, a Cayman fund, or equity in a Singapore entity. You're taxed on worldwide income regardless of where the money is earned or where you physically sit.
+              For many founders, <a href="/americans">that jurisdiction is the US</a>. And the US is a fine place to build a company, but it's an expensive place to be a tax resident if your income comes from a Delaware C-corp, a Cayman fund, or equity in a Singapore entity. You're taxed on worldwide income regardless of where the money is earned or where you physically sit.
             </p>
             <p>
               Some founders have moved to Dubai, Lisbon, or Singapore. But each comes with trade-offs. Dubai has no income tax but limited banking for crypto. Portugal keeps restructuring its NHR regime. Singapore is expensive and requires physical presence.
             </p>
             <p>
-              Panama sits in the sweet spot. It's in the Americas. It's dollarized. It has territorial taxation. It has modern financial infrastructure. And it doesn't ask you to spend 183 days a year proving you live there.
+              Panama sits in the sweet spot. It's in the Americas. It's dollarized. It has <a href="/benefits">territorial taxation</a>. It has modern financial infrastructure. And it doesn't ask you to spend 183 days a year proving you live there.
             </p>
           </div>
         </div>
@@ -135,14 +136,14 @@ const faqs = [
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Why Panama works for founders</p>
           <h2>Designed for how you already operate.</h2>
         </div>
-        <div class="cards">
+        <div class="cards cta-cards">
           {
             benefits.map((item, i) => (
-              <article class="card rv" style={`--rv-delay: ${i * 0.06}s`}>
+              <article class="card">
                 <p class="card-title">{item.title}</p>
                 <p>{item.body}</p>
               </article>
@@ -155,25 +156,25 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">How the visa works</p>
             <h2>Three routes to the same residency.</h2>
           </div>
           <ol class="routes">
             {
               routes.map((route, i) => (
-                <li class="rv" style={`--rv-delay: ${i * 0.06}s`}>
+                <li>
                   <p class="n">{route.n}</p>
                   <div>
-                    <p class="route-title">{route.title}</p>
+                    <p class="route-title" set:html={route.title} />
                     <p>{route.body}</p>
                   </div>
                 </li>
               ))
             }
           </ol>
-          <p class="note rv">
-            All routes require a minimum $300,000 investment. Processing takes 30–60 days.
+          <p class="note">
+            All routes require a minimum $300,000 investment. <a href="/process">Processing takes 30–60 days</a>.
           </p>
         </div>
       </div>
@@ -182,11 +183,11 @@ const faqs = [
     <section class="section bg-cream-tint">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Common questions</p>
             <h2>Questions founders ask most.</h2>
           </div>
-          <div class="faq rv" style="--rv-delay: 0.1s">
+          <div class="faq">
             {
               faqs.map((item) => (
                 <details>
@@ -202,11 +203,11 @@ const faqs = [
 
     <section class="cta-band">
       <div class="wrap">
-        <div class="cta-inner rv">
+        <div class="cta-inner">
           <h2>Ready to explore your options?</h2>
           <p>15 minutes with an advisor who works specifically with tech founders and remote CEOs.</p>
           <a class="btn btn--gold" href="/#book">
-            Book Your Free Assessment <span class="arr">→</span>
+            Speak with an Advisor
           </a>
           <p class="cta-mail">
             Or email us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>
@@ -214,6 +215,7 @@ const faqs = [
         </div>
       </div>
     </section>
+    <TopCTA />
   </main>
   <Footer />
 </BaseLayout>
@@ -321,8 +323,14 @@ const faqs = [
 
   .card {
     background: var(--color-paper);
-    border-radius: 16px;
-    padding: 1.25rem 1.35rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-line);
+    padding: 1.5rem;
+    transition: box-shadow 150ms ease-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .card-title {

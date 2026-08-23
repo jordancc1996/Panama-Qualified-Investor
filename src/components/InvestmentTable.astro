@@ -10,7 +10,7 @@ const rows = [
   {
     route: 'Real Estate',
     min: '$300,000',
-    lock: 'None — own the property',
+    lock: 'None: own the property',
     key: "Titled property, registered in applicant's name",
     timeline: '30–60 days',
     management: 'Property maintenance, taxes, tenants',
@@ -29,14 +29,14 @@ const rows = [
     lock: '3-year fixed term',
     key: 'Licensed Panamanian bank',
     timeline: '30–60 days',
-    management: 'None — fully passive',
+    management: 'None: fully passive',
   },
 ];
 ---
 
 {
   embedded ? (
-    <div class="table-wrap rv" style="--rv-delay: 0.1s">
+    <div class="table-wrap">
       <table class:list={[showManagement && 'wide']}>
         <thead>
           <tr>
@@ -67,11 +67,11 @@ const rows = [
   ) : (
     <section class="section" id="investment">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Investment requirements</p>
-          <h2>What qualifies — and <em>what it costs.</em></h2>
+          <h2>What qualifies, and what it costs.</h2>
         </div>
-        <div class="table-wrap rv" style="--rv-delay: 0.1s">
+        <div class="table-wrap">
           <table>
             <thead>
               <tr>
@@ -98,7 +98,7 @@ const rows = [
           </table>
         </div>
         <p class="note">
-          All amounts in USD. Processing times are estimates and may vary. The investment must be maintained for the duration of the residency.
+          All amounts in USD. <a href="/process">Processing times are estimates</a> and may vary. The investment must be maintained for the duration of the residency.
         </p>
       </div>
     </section>
@@ -117,7 +117,7 @@ const rows = [
 
   .table-wrap {
     overflow-x: auto;
-    border-radius: 14px;
+    border-radius: 4px;
     border: 1px solid var(--color-line);
   }
 
@@ -137,7 +137,7 @@ const rows = [
     font-family: var(--font-sans);
     font-size: var(--text-label);
     font-weight: var(--weight-semibold);
-    letter-spacing: var(--tracking-label);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     text-align: left;
     padding: 0.7rem 1rem;

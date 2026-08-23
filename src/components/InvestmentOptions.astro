@@ -35,7 +35,7 @@ const routes = [
 
 <section class="section section--navy" id="investment">
   <div class="wrap">
-    <div class="intro rv">
+    <div class="intro">
       <p class="eyebrow">Capital</p>
       <h2>Three qualifying investment routes</h2>
       <p>
@@ -45,7 +45,7 @@ const routes = [
     <div class="routes">
       {
         routes.map((route, i) => (
-          <article class={`pcard rv`} style={`--rv-delay: ${i * 0.1}s`}>
+          <article class="pcard">
             <img src={route.image} alt={route.alt} width="800" height="600" loading="lazy" />
             <div class="pcard-body">
               <p class="eyebrow">{route.kicker}</p>

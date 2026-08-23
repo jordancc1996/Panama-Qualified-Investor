@@ -23,7 +23,7 @@ const quotes = [
 
 <section class="section section--cream" id="profiles">
   <div class="wrap">
-    <div class="intro rv">
+    <div class="intro">
       <p class="eyebrow">Applicant profiles</p>
       <h2>How the route is typically used</h2>
       <p>
@@ -33,7 +33,7 @@ const quotes = [
     <div class="grid">
       {
         quotes.map((item, i) => (
-          <article class="bcard rv" style={`--rv-delay: ${i * 0.08}s`}>
+          <article class="bcard">
             <p class="kicker">{item.route}</p>
             <blockquote>
               <p>{item.quote}</p>
@@ -81,7 +81,7 @@ const quotes = [
     margin-top: 1.2rem;
     font-family: var(--font-mono);
     font-size: 0.68rem;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-muted);
   }

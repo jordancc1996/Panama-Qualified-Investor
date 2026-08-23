@@ -2,12 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 
 const audiences = [
   {
     kicker: 'Americans',
     title: 'A tax-efficient Plan B outside the US',
-    body: "Whether you're hedging against political uncertainty, diversifying your residency portfolio, or looking for a dollar-denominated base with zero tax on foreign income — Panama's QIV gives you permanent residency without renouncing US citizenship. No FATCA complications on the residency itself, and the territorial tax system means your US-sourced income is only taxed by the IRS, not Panama.",
+    body: "Whether you're hedging against political uncertainty, diversifying your residency portfolio, or looking for a dollar-denominated base with zero tax on foreign income, Panama's QIV gives you permanent residency without renouncing US citizenship. No FATCA complications on the residency itself, and the <a href=\"/benefits\">territorial tax system</a> means your US-sourced income is only taxed by the IRS, not Panama.",
     cta: 'See how other Americans have qualified',
     href: '/americans',
   },
@@ -19,7 +20,7 @@ const audiences = [
     href: '/canadians',
   },
   {
-    kicker: 'Tech founders & remote CEOs',
+    kicker: 'Tech founders <span class="amp">&amp;</span> remote CEOs',
     title: 'Build from anywhere, base somewhere strategic',
     body: "If your company is remote-first or you're between rounds, Panama offers legitimate residency in a timezone that overlaps with both US coasts, a territorial tax system ideal for foreign-incorporated entities, and a modern financial hub with direct flights to Miami, New York, and San Francisco. No language test, no cultural exam, and your family can be included.",
     cta: 'Book a founder-focused consultation',
@@ -28,7 +29,7 @@ const audiences = [
   {
     kicker: 'H-1B visa holders',
     title: "Permanent residency that doesn't depend on your employer",
-    body: "The US green card backlog for Indian and Chinese nationals can stretch 10 to 20+ years. Panama's QIV grants permanent residency in 30 to 60 days with no country-specific quotas, no employer sponsorship, and no lottery. It's not a replacement for your US immigration case — it's a parallel path that gives you a permanent legal home while you wait.",
+    body: "The US green card backlog for Indian and Chinese nationals can stretch 10 to 20+ years. Panama's QIV grants permanent residency in 30 to 60 days with no country-specific quotas, no employer sponsorship, and no lottery. It's not a replacement for your US immigration case. It's a parallel path that gives you a permanent legal home while you wait.",
     cta: 'Get a free H-1B backup plan assessment',
     href: '/h1b',
   },
@@ -54,16 +55,15 @@ const description =
 
     <section class="section paper">
       <div class="wrap">
-        <div class="grid">
+        <div class="grid audience-grid">
           {
             audiences.map((item, i) => (
-              <article class="bcard card rv" style={`--rv-delay: ${i * 0.1}s`}>
-                <p class="kicker">{item.kicker}</p>
+              <article class="bcard card">
+                <p class="kicker" set:html={item.kicker} />
                 <h3>{item.title}</h3>
-                <p class="body">{item.body}</p>
+                <p class="body" set:html={item.body} />
                 <a class="cta-link cta-link--ink" href={item.href}>
-                  {item.cta}
-                  <span class="ring" aria-hidden="true">→</span>
+                  {item.cta.replace(' →', '')}
                 </a>
               </article>
             ))
@@ -75,16 +75,16 @@ const description =
     <section class="section bg-cream-tint">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Everyone else</p>
             <h2>The QIV is open to all nationalities.</h2>
           </div>
-          <div class="prose rv" style="--rv-delay: 0.1s">
+          <div class="prose">
             <p>
-              While our detailed guides focus on the four groups we work with most, the Panama Qualified Investor Visa is open to citizens of every country. There are no nationality-based quotas or restrictions.
+              While our detailed guides focus on the four groups we work with most, the Panama Qualified Investor Visa is open to citizens of every country. There are <a href="/eligibility">no nationality-based quotas</a> or restrictions.
             </p>
             <p>
-              Whether you're a European investor looking for a base in the Americas, a Middle Eastern entrepreneur seeking dollar-denominated stability, or an Asia-Pacific professional planning for retirement, the same program applies. The investment threshold, processing timeline, and benefits are identical regardless of your passport. If you don't see your situation above, get in touch — we'll help you assess whether the QIV is the right fit.
+              Whether you're a European investor looking for a base in the Americas, a Middle Eastern entrepreneur seeking dollar-denominated stability, or an Asia-Pacific professional planning for retirement, <a href="/visa">the same program applies</a>. The investment threshold, processing timeline, and benefits are identical regardless of your passport. If you don't see your situation above, get in touch. We'll help you assess whether the QIV is the right fit.
             </p>
           </div>
         </div>
@@ -95,10 +95,11 @@ const description =
       <div class="wrap cta-band-inner">
         <h2>Ready to take the next step?</h2>
         <a class="btn btn--gold" href="/#book">
-          Book Your Free Assessment <span class="arr">→</span>
+          Speak with an Advisor
         </a>
       </div>
     </section>
+    <TopCTA />
   </main>
   <Footer />
 </BaseLayout>
@@ -126,7 +127,7 @@ const description =
     font-family: var(--font-sans);
     font-size: var(--text-label);
     font-weight: var(--weight-ui);
-    letter-spacing: var(--tracking-label);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #405363;
     margin: 0;

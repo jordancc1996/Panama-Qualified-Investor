@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 import { FORMCARRY_ACTION } from '../lib/forms';
 
 const papers = [
@@ -9,19 +10,19 @@ const papers = [
     title: 'Territorial Taxation and Residency Planning: A Comparative Analysis of Panama, Paraguay, and Costa Rica',
     author: 'Dr. Elena Vargas · Institute for International Tax Policy · 2025',
     description:
-      'A comparative study of territorial tax systems in three Latin American jurisdictions, with a focus on implications for foreign investors and digital nomads.',
+      'A comparative study of <a href="/benefits">territorial tax systems</a> in three Latin American jurisdictions, with a focus on implications for foreign investors and digital nomads.',
   },
   {
     title: 'The Economic Impact of Investment Migration Programs on Small Open Economies',
     author: 'Prof. James Whitfield, PhD · London School of Economics · 2024',
     description:
-      'How citizenship- and residency-by-investment programs affect GDP, FDI inflows, and real estate markets in host countries — with Panama as a case study.',
+      'How citizenship- and residency-by-investment programs affect GDP, FDI inflows, and real estate markets in host countries, with Panama as a case study.',
   },
   {
     title: "Panama's Qualified Investor Visa: Legal Framework and Practical Considerations",
     author: 'Lic. Carlos Mendoza · Panama Bar Association · 2025',
     description:
-      "A practitioner's guide to the legal requirements, procedural steps, and common pitfalls of the QIV application process under current Panamanian immigration law.",
+      "A practitioner's guide to the legal requirements, procedural steps, and common pitfalls of the <a href=\"/visa\">QIV application process</a> under current Panamanian immigration law.",
   },
   {
     title: 'Dual Residency Strategies for US Citizens: Tax and Compliance Implications',
@@ -33,7 +34,7 @@ const papers = [
     title: 'The H-1B Backlog and Alternative Residency Pathways: A Policy Analysis',
     author: 'Dr. Rajiv Patel · Migration Policy Institute · 2025',
     description:
-      'An analysis of the structural green card backlog facing Indian and Chinese H-1B holders, and how investment migration to third countries is emerging as a parallel strategy.',
+      'An analysis of the structural green card backlog facing <a href="/h1b">Indian and Chinese H-1B holders</a>, and how investment migration to third countries is emerging as a parallel strategy.',
   },
   {
     title: 'Real Estate Investment as a Residency Pathway: Risk, Return, and Regulatory Considerations in Panama',
@@ -54,7 +55,7 @@ const description =
     <section class="page-hero hero">
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">Research</p>
-        <h1>Papers & reports.</h1>
+        <h1>Papers <span class="amp">&amp;</span> reports.</h1>
         <p class="subtext">
           Research from economists, immigration attorneys, and policy advisors on investment migration, territorial taxation, and Panama's residency framework.
         </p>
@@ -69,7 +70,7 @@ const description =
               <div class="info">
                 <h2 class="title">{item.title}</h2>
                 <p class="author">{item.author}</p>
-                <p class="desc">{item.description}</p>
+                <p class="desc" set:html={item.description} />
               </div>
               <a class="pdf" href="#" download>
                 PDF
@@ -85,6 +86,7 @@ const description =
         <p class="prompt">New papers are added as they're published. Subscribe to get notified.</p>
         <form class="nl" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
           <input type="hidden" name="_subject" value="Papers newsletter signup" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
           <label class="sr-only" for="papers-email">Email</label>
           <input
             id="papers-email"
@@ -92,15 +94,16 @@ const description =
             type="email"
             autocomplete="email"
             required
-            placeholder="your@email.com"
+            placeholder="Enter your email"
           />
           <button class="btn btn--navy" type="submit">
-            Notify Me <span class="arr">→</span>
+            Notify Me
           </button>
         </form>
         <p class="note">No spam. Just papers.</p>
       </div>
     </section>
+    <TopCTA />
   </main>
   <Footer />
 </BaseLayout>
@@ -168,7 +171,7 @@ const description =
     align-items: center;
     justify-content: center;
     background: var(--color-cream);
-    border-radius: 8px;
+    border-radius: 6px;
     padding: 0.45rem 0.85rem;
     font-family: var(--font-mono);
     font-size: 0.62rem;
@@ -213,15 +216,19 @@ const description =
   .nl input {
     flex: 1;
     min-width: 0;
-    background: transparent;
+    background: #fff;
     border: 1px solid var(--color-line);
-    border-radius: 999px;
-    padding: 0.75rem 1.2rem;
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 0.88rem;
     color: var(--color-ink);
     outline: none;
     transition: border-color 150ms ease-out;
+  }
+
+  .nl input::placeholder {
+    color: var(--color-muted);
   }
 
   .nl input:focus {

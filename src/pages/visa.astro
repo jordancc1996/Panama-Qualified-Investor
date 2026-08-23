@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
 import InvestmentTable from '../components/InvestmentTable.astro';
 
 const routes = [
@@ -12,13 +13,13 @@ const routes = [
   },
   {
     n: '02',
-    title: 'Stocks & Securities',
+    title: 'Stocks <span class="amp">&amp;</span> Securities',
     body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange (Bolsa de Valores de Panamá) through a licensed local brokerage. Eligible instruments include equities, corporate bonds, government bonds, and investment funds. The investment must be maintained for the duration of your residency. Dividends and capital gains from the securities may be subject to Panamanian tax depending on the instrument.',
   },
   {
     n: '03',
     title: 'Fixed-Term Bank Deposit',
-    body: 'Deposit $300,000 or more in a three-year fixed-term certificate of deposit (CD) at a licensed Panamanian bank. The deposit earns interest at the prevailing rate and the principal is returned to you at the end of the term. This is the most straightforward route — no property management, no brokerage selection, just a bank deposit.',
+    body: 'Deposit $300,000 or more in a three-year fixed-term certificate of deposit (CD) at a licensed Panamanian bank. The deposit earns interest at the prevailing rate and the principal is returned to you at the end of the term. This is the most straightforward route: no property management, no brokerage selection, just a bank deposit.',
   },
 ];
 
@@ -33,7 +34,7 @@ const description =
     <section class="page-hero">
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">The visa</p>
-        <h1>Panama's Qualified Investor Visa — explained.</h1>
+        <h1>Panama's Qualified Investor Visa: explained.</h1>
         <p class="subtext">
           A complete breakdown of the program, its three investment routes, and what permanent residency in Panama actually means in practice.
         </p>
@@ -43,19 +44,19 @@ const description =
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Overview</p>
             <h2>What is the Qualified Investor Visa?</h2>
           </div>
-          <div class="prose rv" style="--rv-delay: 0.1s">
+          <div class="prose">
             <p>
-              The Qualified Investor Visa (Visa de Inversionista Calificado) is a permanent residency permit issued by Panama's National Immigration Service (Servicio Nacional de Migración). It was established to attract foreign investment into Panama's economy by offering a direct path to permanent residency for individuals who make a qualifying investment of at least $300,000.
+              The Qualified Investor Visa (Visa de Inversionista Calificado) is a permanent residency permit issued by Panama's National Immigration Service (Servicio Nacional de Migración). It was established to attract foreign investment into Panama's economy by offering a <a href="/process">direct path to permanent residency</a> for individuals who make a qualifying investment of at least $300,000.
             </p>
             <p>
-              Unlike temporary visas or tourist permits, the QIV grants permanent legal status from day one. Holders can live, work, start a business, open bank accounts, and access Panama's healthcare and education systems. After five years of residency, QIV holders become eligible to apply for Panamanian citizenship and a passport.
+              Unlike temporary visas or tourist permits, the QIV grants permanent legal status from day one. Holders can live, work, start a business, open bank accounts, and access Panama's <a href="/benefits">healthcare and education systems</a>. After five years of residency, QIV holders become eligible to apply for Panamanian citizenship and a passport.
             </p>
             <p>
-              The program is open to citizens of any country. There are no nationality-based quotas, no language requirements, no cultural integration exams, and no interview. The primary requirement is the investment itself, along with standard documentation and a clean background check.
+              The program is open to citizens of any country. There are no nationality-based quotas, no language requirements, no cultural integration exams, and no interview. The primary requirement is the investment itself, along with standard documentation and a <a href="/eligibility">clean background check</a>.
             </p>
           </div>
         </div>
@@ -64,16 +65,16 @@ const description =
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Investment routes</p>
           <h2>Three ways to qualify.</h2>
         </div>
         <div class="route-grid">
           {
             routes.map((item, i) => (
-              <article class="spec-card rv" style={`--rv-delay: ${i * 0.06}s`}>
+              <article class="spec-card">
                 <p class="n">{item.n}</p>
-                <p class="title">{item.title}</p>
+                <p class="title" set:html={item.title} />
                 <p>{item.body}</p>
               </article>
             ))
@@ -84,7 +85,7 @@ const description =
 
     <section class="section paper">
       <div class="wrap">
-        <div class="sec-head rv">
+        <div class="sec-head">
           <p class="eyebrow">Side by side</p>
           <h2>Comparing the three routes.</h2>
         </div>
@@ -95,13 +96,13 @@ const description =
     <section class="section bg-cream-tint">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left rv">
+          <div class="sec-head left">
             <p class="eyebrow">Beyond residency</p>
             <h2>From permanent resident to citizen.</h2>
           </div>
-          <div class="prose rv" style="--rv-delay: 0.1s">
+          <div class="prose">
             <p>
-              After holding permanent residency for five consecutive years, you become eligible to apply for Panamanian citizenship through naturalization. The process requires demonstrating ties to the country — which can include property ownership, economic activity, or family connections — and passing a basic exam on Panamanian history and civics conducted in Spanish.
+              After holding permanent residency for five consecutive years, you become eligible to apply for Panamanian citizenship through naturalization. The process requires demonstrating ties to the country, which can include property ownership, economic activity, or family connections, and passing a basic exam on Panamanian history and civics conducted in Spanish.
             </p>
             <p>
               Panamanian citizenship grants you a passport that provides visa-free or visa-on-arrival access to over 140 countries, including the European Schengen Area, the United Kingdom, and most of Latin America and Asia. Panama allows dual citizenship, so you are not required to renounce your existing nationality.
@@ -115,10 +116,11 @@ const description =
       <div class="wrap cta-band-inner">
         <h2>Ready to take the next step?</h2>
         <a class="btn btn--gold" href="/#book">
-          Book Your Free Assessment <span class="arr">→</span>
+          Speak with an Advisor
         </a>
       </div>
     </section>
+    <TopCTA />
   </main>
   <Footer />
 </BaseLayout>
