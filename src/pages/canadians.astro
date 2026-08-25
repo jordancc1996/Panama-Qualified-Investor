@@ -3,9 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
+import PreferredSourcesCTA from '../components/PreferredSourcesCTA.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 
-const heroImage =
-  'https://images.unsplash.com/photo-1524544187526-2b2855b65f16?w=1920&q=80&auto=format&fit=crop';
+const heroImage = '/images/hero-canadians.webp';
+const heroWidth = 682;
+const heroHeight = 1024;
 
 const benefits = [
   {
@@ -78,8 +81,8 @@ const faqs = [
 
 <BaseLayout
   title="Panama Qualified Investor Visa for Canadians | Residency by Investment"
-  description="How Canadian investors use the Panama QIV for permanent residency. Territorial taxation, faster than European golden visas, $300,000 minimum. 30–60 day processing."
-  ogDescription="How Canadian investors use the Panama QIV for permanent residency. Territorial taxation, faster than European golden visas, $300,000 minimum. 30–60 day processing."
+  description="How Canadian investors use the Panama QIV for permanent residency. Territorial taxation, faster than European visas, $300,000 minimum. 30–60 day processing."
+  ogDescription="How Canadian investors use the Panama QIV for permanent residency. Territorial taxation, faster than European visas, $300,000 minimum. 30–60 day processing."
   path="/canadians"
 >
   <Navbar />
@@ -88,15 +91,17 @@ const faqs = [
       <img
         class="hero-bg"
         src={heroImage}
-        alt="Panama City skyline with mountains"
-        width="1920"
-        height="1080"
+        alt="Panamanian flag framed by palm fronds"
+        width={heroWidth}
+        height={heroHeight}
         loading="eager"
+        fetchpriority="high"
+        decoding="async"
       />
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">For Canadians</p>
         <h1>
-          A residency that keeps pace with your ambition.
+          The Panama Qualified Investor Visa for Canadians: a residency that keeps pace with your ambition.
         </h1>
         <p class="subtext">
           How Canadian investors and entrepreneurs are using the <a href="/visa">Panama Qualified Investor Visa</a> to access a dollarized economy with territorial taxation, without the wait times and complexity of European golden visas.
@@ -108,6 +113,7 @@ const faqs = [
         </div>
       </div>
     </section>
+    <MonthlyUpdates />
 
     <section class="section paper">
       <div class="wrap">
@@ -133,6 +139,7 @@ const faqs = [
         </div>
       </div>
     </section>
+    <PreferredSourcesCTA />
 
     <section class="section bg-cream-tint">
       <div class="wrap">
@@ -215,7 +222,7 @@ const faqs = [
         </div>
       </div>
     </section>
-    <TopCTA />
+    <TopCTA showPreferredSources={false} />
   </main>
   <Footer />
 </BaseLayout>
@@ -239,6 +246,7 @@ const faqs = [
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 72% center;
   }
 
   .hero::after {

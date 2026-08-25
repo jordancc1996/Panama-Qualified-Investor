@@ -1,0 +1,31 @@
+---
+interface Props {
+  variant?: 'on-light' | 'on-dark';
+  priority?: boolean;
+}
+
+const { variant = 'on-light', priority = false } = Astro.props;
+const src = variant === 'on-dark' ? '/logo-on-dark.webp' : '/logo.webp';
+---
+
+<img
+  class="site-logo"
+  src={src}
+  alt="Panama Qualified Investor"
+  width="735"
+  height="144"
+  decoding={priority ? 'sync' : 'async'}
+  loading={priority ? 'eager' : 'lazy'}
+  fetchpriority={priority ? 'high' : 'auto'}
+/>
+
+<style>
+  .site-logo {
+    display: block;
+    width: auto;
+    height: 42px;
+    max-width: min(220px, 58vw);
+    object-fit: contain;
+    object-position: left center;
+  }
+</style>

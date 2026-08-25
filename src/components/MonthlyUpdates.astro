@@ -1,0 +1,106 @@
+---
+import { FORMCARRY_ACTION } from '../lib/forms';
+---
+
+<section class="monthly">
+  <div class="wrap">
+    <p class="nl-kicker">Monthly updates</p>
+    <form class="nl" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
+      <input type="hidden" name="_subject" value="Newsletter signup" />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      <label class="sr-only" for="monthly-email">Email</label>
+      <input id="monthly-email" name="email" type="email" autocomplete="email" required placeholder="Enter your email" />
+      <button type="submit" aria-label="Subscribe">→</button>
+    </form>
+    <p class="nl-note">No spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<style>
+  .monthly {
+    background: linear-gradient(200deg, #4e6478 0%, #405363 55%, #2d3d4d 100%);
+    color: var(--color-on-navy-dim);
+    padding: 2.25rem 0;
+  }
+
+  .nl-kicker {
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 0.6rem;
+  }
+
+  .nl {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+  }
+
+  .nl input {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    font-size: 0.88rem;
+    color: var(--color-on-navy);
+    width: 100%;
+    max-width: 14rem;
+    outline: none;
+  }
+
+  .nl input::placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+
+  .nl input:focus {
+    border-color: #fff;
+    box-shadow: none;
+    color: var(--color-on-navy);
+  }
+
+  .nl input:focus::placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+
+  .nl button {
+    background: #fff;
+    color: #405363;
+    border-radius: 4px;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    font-size: 0.82rem;
+    cursor: pointer;
+    border: none;
+    flex-shrink: 0;
+  }
+
+  .nl button:hover {
+    background: #f7f7f7;
+  }
+
+  .nl-note {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    color: rgba(255, 255, 255, 0.72);
+    letter-spacing: 0.06em;
+    margin: 0.5rem 0 0;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

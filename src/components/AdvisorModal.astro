@@ -1,0 +1,407 @@
+---
+import { FORMCARRY_ACTION } from '../lib/forms';
+
+const tiers = [
+  { value: '300000-500000-real-estate', label: '$300,000 – $500,000 (Real Estate)' },
+  { value: '500000-750000-stock-market', label: '$500,000 – $750,000 (Stock Market)' },
+  { value: '750000-fixed-term-deposit', label: '$750,000+ (Fixed-Term Deposit)' },
+  { value: 'not-sure', label: 'Not sure yet' },
+];
+---
+
+<div class="shell" id="advisor-modal-shell" aria-hidden="true" inert>
+  <div class="backdrop" data-advisor-dismiss></div>
+  <div
+    class="panel"
+    id="advisor-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="advisor-modal-title"
+    aria-describedby="advisor-modal-lede"
+  >
+    <button class="x" type="button" data-advisor-dismiss aria-label="Close">✕</button>
+    <h2 id="advisor-modal-title">Speak with an Advisor</h2>
+    <p class="lede" id="advisor-modal-lede">
+      15 minutes to review your situation and whether the Qualified Investor Visa is a fit.
+    </p>
+
+    <form class="form" id="advisor-form" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8" novalidate>
+      <input type="hidden" name="_subject" value="Speak with an Advisor" />
+      <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off" />
+
+      <div class="field">
+        <label for="advisor-name">Name</label>
+        <input id="advisor-name" name="name" type="text" autocomplete="name" required />
+        <p class="err" id="advisor-name-error" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="advisor-email">Email address</label>
+        <input id="advisor-email" name="email" type="email" autocomplete="email" required />
+        <p class="err" id="advisor-email-error" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="advisor-phone">Phone number</label>
+        <input id="advisor-phone" name="phone" type="tel" autocomplete="tel" required />
+        <p class="err" id="advisor-phone-error" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="advisor-amount">Ideal investment amount</label>
+        <select id="advisor-amount" name="investment_amount" required>
+          <option value="" disabled selected>Select a range</option>
+          {tiers.map((tier) => <option value={tier.value}>{tier.label}</option>)}
+        </select>
+        <p class="err" id="advisor-amount-error" hidden></p>
+      </div>
+
+      <p class="form-err" id="advisor-form-error" hidden></p>
+      <button class="submit" type="submit" id="advisor-submit">Send</button>
+    </form>
+
+    <p class="thanks" id="advisor-thanks" hidden tabindex="-1">
+      Thanks. Someone from our team will reach out shortly.
+    </p>
+  </div>
+</div>
+
+<style>
+  .shell {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .shell.is-open {
+    display: flex;
+  }
+
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(45, 61, 77, 0.72);
+  }
+
+  .panel {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 28rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    padding: 1.75rem 1.5rem 1.5rem;
+  }
+
+  .x {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    border: 0;
+    background: transparent;
+    color: var(--color-ink);
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.35rem;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.8vw, 1.65rem);
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--color-ink);
+    margin: 0 2rem 0.65rem 0;
+    letter-spacing: 0;
+  }
+
+  .lede {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--color-muted);
+    margin: 0 0 1.35rem;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .gotcha {
+    display: none;
+  }
+
+  .field label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    color: var(--color-ink);
+    outline: none;
+  }
+
+  .field input:focus,
+  .field select:focus {
+    border-color: var(--color-navy-900);
+  }
+
+  .field input[aria-invalid='true'],
+  .field select[aria-invalid='true'] {
+    border-color: #c0392b;
+  }
+
+  .field select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--color-navy-900) 50%),
+      linear-gradient(135deg, var(--color-navy-900) 50%, transparent 50%);
+    background-position: calc(100% - 18px), calc(100% - 13px);
+    background-repeat: no-repeat;
+    background-size: 5px 5px, 5px 5px;
+  }
+
+  .err,
+  .form-err {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: #c0392b;
+    margin: 0.35rem 0 0;
+  }
+
+  .submit {
+    width: 100%;
+    margin-top: 0.35rem;
+    background: var(--color-navy-900);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .submit:hover:not(:disabled) {
+    background: var(--color-navy-800);
+  }
+
+  .submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .thanks {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-ink);
+    margin: 0.5rem 0 0;
+  }
+</style>
+
+<script>
+  const FOCUSABLE =
+    'a[href], button:not([disabled]), input:not([disabled]):not([tabindex="-1"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  const shell = document.getElementById('advisor-modal-shell');
+  const panel = document.getElementById('advisor-modal');
+  const form = document.getElementById('advisor-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('advisor-submit') as HTMLButtonElement | null;
+  const thanks = document.getElementById('advisor-thanks');
+  const formError = document.getElementById('advisor-form-error');
+
+  if (shell instanceof HTMLElement && panel instanceof HTMLElement && form && submitBtn && thanks) {
+    let lastFocus: HTMLElement | null = null;
+
+    const fields = [
+      {
+        el: document.getElementById('advisor-name') as HTMLInputElement,
+        err: document.getElementById('advisor-name-error'),
+        check: (el: HTMLInputElement) => (el.value.trim() ? '' : 'Enter your name.'),
+      },
+      {
+        el: document.getElementById('advisor-email') as HTMLInputElement,
+        err: document.getElementById('advisor-email-error'),
+        check: (el: HTMLInputElement) => {
+          if (!el.value.trim()) return 'Enter your email address.';
+          if (!el.checkValidity()) return 'Enter a valid email address.';
+          return '';
+        },
+      },
+      {
+        el: document.getElementById('advisor-phone') as HTMLInputElement,
+        err: document.getElementById('advisor-phone-error'),
+        check: (el: HTMLInputElement) => (el.value.trim() ? '' : 'Enter your phone number.'),
+      },
+      {
+        el: document.getElementById('advisor-amount') as HTMLSelectElement,
+        err: document.getElementById('advisor-amount-error'),
+        check: (el: HTMLSelectElement) => (el.value ? '' : 'Select an investment range.'),
+      },
+    ];
+
+    const setError = (el: HTMLInputElement | HTMLSelectElement, err: HTMLElement | null, message: string) => {
+      if (!err) return;
+      const invalid = Boolean(message);
+      el.setAttribute('aria-invalid', String(invalid));
+      if (invalid) {
+        err.hidden = false;
+        err.textContent = message;
+        el.setAttribute('aria-describedby', err.id);
+      } else {
+        err.hidden = true;
+        err.textContent = '';
+        el.removeAttribute('aria-describedby');
+      }
+    };
+
+    const focusables = () =>
+      [...panel.querySelectorAll<HTMLElement>(FOCUSABLE)].filter(
+        (el) => !el.hasAttribute('disabled') && el.tabIndex !== -1 && el.offsetParent !== null
+      );
+
+    const closeMobileNav = () => {
+      const overlay = document.querySelector<HTMLElement>('[data-nav-panel]');
+      const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+      overlay?.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    };
+
+    const open = (trigger: HTMLElement) => {
+      lastFocus = trigger;
+      closeMobileNav();
+      form.hidden = false;
+      thanks.hidden = true;
+      if (formError) {
+        formError.hidden = true;
+        formError.textContent = '';
+      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send';
+      shell.classList.add('is-open');
+      shell.removeAttribute('aria-hidden');
+      shell.inert = false;
+      document.body.style.overflow = 'hidden';
+      const first = document.getElementById('advisor-name') as HTMLElement | null;
+      (first ?? focusables()[0])?.focus();
+    };
+
+    const close = () => {
+      shell.classList.remove('is-open');
+      shell.setAttribute('aria-hidden', 'true');
+      shell.inert = true;
+      document.body.style.overflow = '';
+      lastFocus?.focus();
+    };
+
+    const onKey = (event: KeyboardEvent) => {
+      if (!shell.classList.contains('is-open')) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const nodes = focusables();
+      if (nodes.length === 0) return;
+      const first = nodes[0];
+      const last = nodes[nodes.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.querySelectorAll<HTMLElement>('[data-advisor-open]').forEach((btn) => {
+      btn.addEventListener('click', () => open(btn));
+    });
+
+    shell.querySelectorAll('[data-advisor-dismiss]').forEach((el) => {
+      el.addEventListener('click', () => close());
+    });
+
+    document.addEventListener('keydown', onKey);
+
+    fields.forEach(({ el, err, check }) => {
+      if (!el || !err) return;
+      el.addEventListener('blur', () => setError(el, err, check(el)));
+      el.addEventListener('input', () => {
+        if (el.getAttribute('aria-invalid') === 'true') setError(el, err, check(el));
+      });
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      let firstInvalid: HTMLElement | null = null;
+      fields.forEach(({ el, err, check }) => {
+        if (!el) return;
+        const message = check(el);
+        setError(el, err, message);
+        if (message && !firstInvalid) firstInvalid = el;
+      });
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      const data = new FormData(form);
+      const fullName = String(data.get('name') || '').trim();
+      const parts = fullName.split(/\s+/);
+      data.set('first_name', parts[0] || fullName);
+      data.set('last_name', parts.slice(1).join(' ') || parts[0] || '');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending';
+      if (formError) {
+        formError.hidden = true;
+        formError.textContent = '';
+      }
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+        });
+        if (!res.ok) throw new Error('submit-failed');
+        form.hidden = true;
+        thanks.hidden = false;
+        thanks.focus();
+      } catch {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send';
+        if (formError) {
+          formError.hidden = false;
+          formError.textContent = 'The message could not be sent. Please try again.';
+        }
+      }
+    });
+  }
+</script>

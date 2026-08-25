@@ -1,5 +1,12 @@
 ---
 import { FORMCARRY_ACTION } from '../lib/forms';
+import PreferredSourcesCTA from './PreferredSourcesCTA.astro';
+
+interface Props {
+  showPreferredSources?: boolean;
+}
+
+const { showPreferredSources = true } = Astro.props;
 ---
 
 <section class="top-cta">
@@ -61,6 +68,7 @@ import { FORMCARRY_ACTION } from '../lib/forms';
     </div>
   </div>
 </section>
+{showPreferredSources && <PreferredSourcesCTA />}
 
 <style>
   .top-cta {

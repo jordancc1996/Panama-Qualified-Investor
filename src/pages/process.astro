@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 
 const steps = [
   {
@@ -68,7 +69,7 @@ const docs = [
 
 const title = 'QIV Application Process | Step-by-Step Guide';
 const description =
-  "From first consultation to permanent residency card in 30–60 days. The complete step-by-step process for Panama's Qualified Investor Visa.";
+  "From first consultation to permanent residency card in 30–60 days. The complete step-by-step application process for Panama's Qualified Investor Visa.";
 ---
 
 <BaseLayout title={title} description={description} ogDescription={description} path="/process">
@@ -77,12 +78,13 @@ const description =
     <section class="page-hero">
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">The process</p>
-        <h1>From first inquiry to residency card.</h1>
+        <h1>The Panama Qualified Investor Visa process: from first inquiry to residency card.</h1>
         <p class="subtext">
-          A transparent, step-by-step breakdown of what happens, when, and what you need to prepare.
+          A transparent, step-by-step breakdown of the Qualified Investor Visa process: what happens, when, and what you need to prepare.
         </p>
       </div>
     </section>
+    <MonthlyUpdates />
 
     <section class="section paper">
       <div class="wrap">

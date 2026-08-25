@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 
 const taxCards = [
   {
@@ -52,7 +53,7 @@ const lifestyle = [
 
 const title = 'Benefits of the Panama Qualified Investor Visa';
 const description =
-  "Zero tax on foreign income, dollar economy, no language requirement, family inclusion, path to citizenship. Every benefit of Panama's QIV explained.";
+  "Zero tax on foreign income, dollar economy, no language requirement, family inclusion, path to citizenship. Every benefit of Panama's QIV explained in full.";
 ---
 
 <BaseLayout title={title} description={description} ogDescription={description} path="/benefits">
@@ -61,12 +62,13 @@ const description =
     <section class="page-hero">
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">Benefits</p>
-        <h1>What permanent residency in Panama gives you.</h1>
+        <h1>What the Panama Qualified Investor Visa gives you.</h1>
         <p class="subtext">
-          Beyond the residency card: the practical, financial, and lifestyle advantages of being a Panamanian permanent resident.
+          Beyond the Qualified Investor Visa residency card: the practical, financial, and lifestyle advantages of being a Panamanian permanent resident.
         </p>
       </div>
     </section>
+    <MonthlyUpdates />
 
     <section class="section paper">
       <div class="wrap">

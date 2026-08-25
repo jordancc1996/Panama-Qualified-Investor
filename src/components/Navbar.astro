@@ -1,4 +1,7 @@
 ---
+import Logo from './Logo.astro';
+import AdvisorModal from './AdvisorModal.astro';
+
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const links = [
@@ -9,40 +12,33 @@ const links = [
   { href: '/eligibility', label: 'Eligibility' },
   { href: '/faq', label: 'FAQ' },
   { href: '/papers', label: 'Papers' },
-  { href: '/#book', label: 'Speak to an Advisor', emphasis: true },
 ];
 ---
 
 <header class="navbar" id="navbar">
   <div class="wrap inner">
     <a class="brand" href="/">
-      <svg class="mark" width="32" height="32" viewBox="0 0 36 40" aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M18 1.2c4.4 3 9.2 4.5 14.8 4.5v14.2c0 8.8-5.7 16-14.8 19.6C8.9 35.9 3.2 28.7 3.2 19.9V5.7C8.8 5.7 13.6 4.2 18 1.2Z"
-        ></path>
-        <path
-          fill="none"
-          stroke="var(--color-paper)"
-          stroke-width="1.2"
-          d="M18 8.2c2.6 1.6 5.4 2.4 8.6 2.4v8.4c0 5-3.2 9.2-8.6 11.3-5.4-2.1-8.6-6.3-8.6-11.3V10.6c3.2 0 6-0.8 8.6-2.4Z"
-        ></path>
-      </svg>
-      <span class="brand-name">Panama Qualified Investor</span>
+      <Logo priority />
     </a>
 
     <div class="end">
       <nav class="links" aria-label="Primary">
         {
           links.map((link) => (
-            <a
-              href={link.href}
-              class:list={[link.emphasis && 'emphasis', path === link.href && 'is-active']}
-            >
+            <a href={link.href} class:list={[path === link.href && 'is-active']}>
               {link.label}
             </a>
           ))
         }
+        <button
+          class="emphasis"
+          type="button"
+          data-advisor-open
+          aria-haspopup="dialog"
+          aria-controls="advisor-modal"
+        >
+          Speak to an Advisor
+        </button>
       </nav>
 
       <button class="burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
@@ -57,17 +53,26 @@ const links = [
   <div class="overlay" id="mobile-nav" data-nav-panel>
     <button class="close" type="button" data-nav-close aria-label="Close menu">✕</button>
     <nav class="overlay-links" aria-label="Mobile">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            data-nav-close
-            class:list={[link.emphasis && 'emphasis', path === link.href && 'is-active']}
-          >
-            {link.label}
-          </a>
-        ))
-      }
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              data-nav-close
+              class:list={[path === link.href && 'is-active']}
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <button
+          class="emphasis"
+          type="button"
+          data-advisor-open
+          aria-haspopup="dialog"
+          aria-controls="advisor-modal"
+        >
+          Speak to an Advisor
+        </button>
     </nav>
   </div>
 </header>
@@ -109,32 +114,9 @@ const links = [
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.6rem;
     z-index: 2;
     flex-shrink: 0;
     margin: 0;
-  }
-
-  .mark {
-    width: 32px;
-    height: 32px;
-    color: var(--color-ink);
-    display: block;
-    flex-shrink: 0;
-  }
-
-  .brand-name {
-    font-family: var(--font-sans);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-ink);
-    padding-top: 0;
-    margin-top: 0;
-    border-top: none;
-    line-height: 1.2;
-    white-space: nowrap;
   }
 
   .end {
@@ -157,37 +139,63 @@ const links = [
 
   .links a {
     font-family: var(--font-sans);
-    font-size: 0.95rem;
-    font-weight: 450;
-    color: #4b4b4b;
+    font-size: 1rem;
+    font-weight: var(--weight-ui);
+    color: var(--color-link);
     text-transform: none;
-    letter-spacing: 0;
-    padding: 0 0.85rem;
+    letter-spacing: 0.03em;
+    padding: 0 0.7rem;
     height: 80px;
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
-    border-bottom: 2px solid transparent;
+    position: relative;
     box-sizing: border-box;
-    margin-bottom: -1px;
     flex-shrink: 0;
-    transition:
-      color 150ms ease-out,
-      border-color 150ms ease-out,
-      background-color 150ms ease-out;
+    transition: color 150ms ease-out;
   }
 
-  .links a:hover:not(.emphasis),
+  .links a:not(.emphasis)::after {
+    content: "";
+    position: absolute;
+    left: 0.55rem;
+    right: 0.55rem;
+    bottom: 0;
+    height: 2px;
+    background: var(--color-navy-950);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 150ms ease-out, background-color 150ms ease-out;
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .links a:hover:not(.emphasis) {
+    color: var(--color-link-hover);
+  }
+
+  .links a:hover:not(.emphasis)::after {
+    transform: scaleX(1);
+    background: var(--color-link-hover);
+  }
+
   .links a.is-active:not(.emphasis) {
-    color: var(--color-ink);
-    border-bottom-color: var(--color-ink);
+    color: var(--color-navy-950);
+    font-weight: var(--weight-semibold);
   }
 
-  .links a.emphasis {
+  .links a.is-active:not(.emphasis)::after {
+    transform: scaleX(1);
+    background: var(--color-navy-950);
+  }
+
+  .links a.emphasis,
+  .links button.emphasis {
     height: auto;
     margin-left: 0.5rem;
     margin-bottom: 0;
     padding: 0.5rem 1.1rem;
+    font-family: var(--font-sans);
     font-size: 0.78rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -196,22 +204,30 @@ const links = [
     border: 1.5px solid var(--color-ink);
     border-radius: 4px;
     background: transparent;
+    cursor: pointer;
   }
 
   .links a.emphasis:hover,
-  .links a.emphasis.is-active {
+  .links a.emphasis.is-active,
+  .links button.emphasis:hover {
     background: var(--color-ink);
     color: #fff;
     border-color: var(--color-ink);
   }
 
   @media (max-width: 1280px) {
-    .links a {
-      font-size: 0.85rem;
-      padding: 0 0.6rem;
+    .links a:not(.emphasis) {
+      font-size: 0.95rem;
+      padding: 0 0.5rem;
     }
 
-    .links a.emphasis {
+    .links a:not(.emphasis)::after {
+      left: 0.4rem;
+      right: 0.4rem;
+    }
+
+    .links a.emphasis,
+    .links button.emphasis {
       font-size: 0.78rem;
       padding: 0.5rem 1.1rem;
     }
@@ -273,7 +289,8 @@ const links = [
     align-items: center;
   }
 
-  .overlay-links a {
+  .overlay-links a,
+  .overlay-links button {
     font-family: var(--font-sans);
     font-size: 1.1rem;
     font-weight: 500;
@@ -283,8 +300,14 @@ const links = [
     padding: 0.75rem 0;
   }
 
-  .overlay-links a.emphasis,
-  .overlay-links a.is-active {
+  .overlay-links button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .overlay-links a.is-active,
+  .overlay-links button.emphasis {
     font-weight: 600;
   }
 
@@ -332,3 +355,5 @@ const links = [
     });
   }
 </script>
+
+<AdvisorModal />

@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 import { FORMCARRY_ACTION } from '../lib/forms';
 
 const papers = [
@@ -44,9 +45,9 @@ const papers = [
   },
 ];
 
-const title = 'Research Papers | Panama Qualified Investor Visa';
+const title = 'Panama Qualified Investor Visa Research Papers';
 const description =
-  "Downloadable research papers on Panama's Qualified Investor Visa, territorial taxation, investment migration, and residency planning by economists, attorneys, and policy advisors.";
+  "Panama Qualified Investor Visa research papers on territorial taxation, investment migration, and residency planning by economists. Updated for 2026 investors.";
 ---
 
 <BaseLayout title={title} description={description} ogDescription={description} path="/papers">
@@ -55,12 +56,13 @@ const description =
     <section class="page-hero hero">
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">Research</p>
-        <h1>Papers <span class="amp">&amp;</span> reports.</h1>
+        <h1>Panama Qualified Investor Visa research papers <span class="amp">&amp;</span> reports.</h1>
         <p class="subtext">
-          Research from economists, immigration attorneys, and policy advisors on investment migration, territorial taxation, and Panama's residency framework.
+          Panama Qualified Investor Visa research from economists, immigration attorneys, and policy advisors on investment migration, territorial taxation, and Panama's residency framework.
         </p>
       </div>
     </section>
+    <MonthlyUpdates />
 
     <section class="section paper">
       <div class="wrap list">

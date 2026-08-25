@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
+import PreferredSourcesCTA from '../components/PreferredSourcesCTA.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 
 const audiences = [
   {
@@ -37,7 +39,7 @@ const audiences = [
 
 const title = "Who Is the Panama QIV For? | Americans, Canadians, Founders, H-1B";
 const description =
-  'The Panama Qualified Investor Visa serves Americans, Canadians, tech founders, and H-1B holders. Find the guide for your situation.';
+  'The Panama Qualified Investor Visa serves Americans, Canadians, tech founders, and H-1B holders. Find the guide for your situation. Updated for 2026 investors.';
 ---
 
 <BaseLayout title={title} description={description} ogDescription={description} path="/who-its-for">
@@ -46,12 +48,13 @@ const description =
     <section class="page-hero">
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">Who it's for</p>
-        <h1>Find the guide written for your situation.</h1>
+        <h1>Who is the Panama Qualified Investor Visa for? Find the guide written for your situation.</h1>
         <p class="subtext">
           The QIV works differently depending on where you're coming from. We've written a detailed guide for each group.
         </p>
       </div>
     </section>
+    <MonthlyUpdates />
 
     <section class="section paper">
       <div class="wrap">
@@ -71,6 +74,7 @@ const description =
         </div>
       </div>
     </section>
+    <PreferredSourcesCTA />
 
     <section class="section bg-cream-tint">
       <div class="wrap">
@@ -99,7 +103,7 @@ const description =
         </a>
       </div>
     </section>
-    <TopCTA />
+    <TopCTA showPreferredSources={false} />
   </main>
   <Footer />
 </BaseLayout>

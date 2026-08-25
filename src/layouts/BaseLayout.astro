@@ -10,7 +10,7 @@ interface Props {
 
 const {
   title = 'Panama Qualified Investor Visa | The Complete Guide',
-  description = 'Everything Americans, Canadians, tech founders, and H-1B holders need to know about the Panama Qualified Investor Visa. $300,000 investment, permanent residency, zero tax on foreign income, path to citizenship in 5 years.',
+  description = 'Everything Americans, Canadians, tech founders, and H-1B holders need to know about the Panama Qualified Investor Visa. $300,000, zero tax on foreign income.',
   ogDescription = 'The definitive guide to obtaining permanent residency in Panama through the Qualified Investor Visa. Real estate, securities, or bank deposit routes from $300,000.',
   path = '',
 } = Astro.props;
@@ -28,7 +28,7 @@ const fontHref =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="canonical" href={canonical} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
@@ -46,8 +46,11 @@ const fontHref =
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://news.google.com" crossorigin />
+    <link rel="preload" as="image" href="/logo.webp" type="image/webp" fetchpriority="high" />
     <link rel="preload" as="style" href={fontHref} />
     <link href={fontHref} rel="stylesheet" />
+    <script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
     <title>{title}</title>
   </head>
   <body>

@@ -190,14 +190,32 @@ const expect = [
     outline: none;
   }
 
+  /* Inputs sit on a dark photo; --color-muted (#5c5e62) is for light surfaces
+     and disappears here. Match the select’s on-navy white and add a slightly
+     more opaque fill so type stays readable over any part of the image. */
+  .form input {
+    background: rgba(255, 255, 255, 0.16);
+    color: var(--color-on-navy);
+  }
+
   .form input::placeholder {
-    color: var(--color-muted);
+    color: var(--color-on-navy);
+    opacity: 1;
   }
 
   .form input:focus,
   .form select:focus {
     border-color: var(--color-navy-900);
     box-shadow: none;
+  }
+
+  .form input:focus {
+    color: var(--color-on-navy);
+  }
+
+  .form input:focus::placeholder {
+    color: var(--color-on-navy);
+    opacity: 1;
   }
 
   .form select {
@@ -252,7 +270,7 @@ const expect = [
   .n {
     font-family: var(--font-display);
     font-size: clamp(1.5rem, 4vw, 1.85rem);
-    color: #7a94a8;
+    color: #ffffff;
     line-height: 1;
     min-width: 4rem;
     margin: 0;

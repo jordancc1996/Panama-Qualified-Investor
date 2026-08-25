@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 
 const general = [
   {
@@ -97,7 +98,7 @@ const allFaqs = [...general, ...financial, ...practical];
 
 const title = 'Panama Qualified Investor Visa FAQ | All Your Questions Answered';
 const description =
-  'Answers to every common question about Panama\'s QIV: taxes, costs, timeline, family, citizenship, and more.';
+  'Answers to every common question about Panama\'s QIV: taxes, costs, timeline, family, citizenship, and more. Updated for 2026 investors and applicants.';
 ---
 
 <BaseLayout title={title} description={description} ogDescription={description} path="/faq">
@@ -106,10 +107,11 @@ const description =
     <section class="page-hero">
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">FAQ</p>
-        <h1>Every question, answered.</h1>
-        <p class="subtext">If it's not here, ask us directly.</p>
+        <h1>Panama Qualified Investor Visa FAQ: every question, answered.</h1>
+        <p class="subtext">If your Panama Qualified Investor Visa question isn't here, ask us directly.</p>
       </div>
     </section>
+    <MonthlyUpdates />
 
     <section class="section paper">
       <div class="wrap">

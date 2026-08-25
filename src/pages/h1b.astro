@@ -3,9 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
+import PreferredSourcesCTA from '../components/PreferredSourcesCTA.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 
-const heroImage =
-  'https://images.unsplash.com/photo-1668294633496-c8b9baae35c3?w=1920&q=80&auto=format&fit=crop';
+const heroImage = '/images/hero-h1b.webp';
+const heroWidth = 682;
+const heroHeight = 1024;
 
 const benefits = [
   {
@@ -78,8 +81,8 @@ const faqs = [
 
 <BaseLayout
   title="Panama Qualified Investor Visa for H-1B Holders | Backup Residency Plan"
-  description="Skip the green card backlog. Panama's QIV grants permanent residency in 30–60 days. No country quotas, no employer dependency. $300,000 investment."
-  ogDescription="Skip the green card backlog. Panama's QIV grants permanent residency in 30–60 days. No country quotas, no employer dependency. $300,000 investment."
+  description="H-1B holders can skip the green card backlog. Panama's QIV grants permanent residency in 30–60 days. No country quotas, no employer dependency. $300,000."
+  ogDescription="H-1B holders can skip the green card backlog. Panama's QIV grants permanent residency in 30–60 days. No country quotas, no employer dependency. $300,000."
   path="/h1b"
 >
   <Navbar />
@@ -88,15 +91,17 @@ const faqs = [
       <img
         class="hero-bg"
         src={heroImage}
-        alt="Dense Panama City skyline"
-        width="1920"
-        height="1080"
+        alt="Panamanian flag on a flagpole among palm trees"
+        width={heroWidth}
+        height={heroHeight}
         loading="eager"
+        fetchpriority="high"
+        decoding="async"
       />
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">For H-1B Visa Holders</p>
         <h1>
-          A permanent residency that doesn't depend on a queue, a sponsor, or a lottery.
+          The Panama Qualified Investor Visa for H-1B holders: a permanent residency that doesn't depend on a queue, a sponsor, or a lottery.
         </h1>
         <p class="subtext">
           How H-1B holders, especially those facing decade-long green card backlogs, are using the <a href="/visa">Panama Qualified Investor Visa</a> as a parallel path to permanent legal status outside the US.
@@ -108,6 +113,7 @@ const faqs = [
         </div>
       </div>
     </section>
+    <MonthlyUpdates />
 
     <section class="section paper">
       <div class="wrap">
@@ -133,6 +139,7 @@ const faqs = [
         </div>
       </div>
     </section>
+    <PreferredSourcesCTA />
 
     <section class="section bg-cream-tint">
       <div class="wrap">
@@ -215,7 +222,7 @@ const faqs = [
         </div>
       </div>
     </section>
-    <TopCTA />
+    <TopCTA showPreferredSources={false} />
   </main>
   <Footer />
 </BaseLayout>
@@ -239,6 +246,7 @@ const faqs = [
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 68% 40%;
   }
 
   .hero::after {
