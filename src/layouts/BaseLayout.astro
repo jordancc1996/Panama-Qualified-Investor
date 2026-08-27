@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title?: string;
@@ -78,6 +79,7 @@ const structuredData = {
     <a class="skip-link" href="#main">Skip to content</a>
     {!isHome && <div class="scroll-progress" aria-hidden="true"></div>}
     <slot />
+    <Footer />
     <script>
       import '../scripts/scrollAnimations.ts';
     </script>
