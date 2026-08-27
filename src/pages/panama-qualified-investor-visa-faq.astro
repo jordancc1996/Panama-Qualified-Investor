@@ -3,210 +3,104 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
+import CtaBand from '../components/CtaBand.astro';
 import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
+import { allFaqs, financialFaq, practicalFaq } from '../data/full-faq';
 
-const general = [
-  {
-    q: 'What is the Panama Qualified Investor Visa?',
-    a: 'A permanent residency visa requiring a <a href="/visa">minimum $300,000 investment</a> in Panamanian real estate, securities, or a bank deposit. It grants the holder the right to live and work in Panama indefinitely, with a path to citizenship after five years.',
-  },
-  {
-    q: 'Is this a temporary or permanent visa?',
-    a: 'Permanent. You receive a provisional permit within 30 days, followed by a permanent residency card. There is no renewal requirement. The residency is indefinite.',
-  },
-  {
-    q: 'How long does the process take?',
-    a: '<a href="/process">30 to 60 days</a> from document submission to provisional permit. The permanent card follows within a few additional weeks.',
-  },
-  {
-    q: 'Can I include my family?',
-    a: 'Yes. Spouse, <a href="/eligibility">children under 25</a>, and parents over 65 are included at no additional investment.',
-  },
-  {
-    q: 'Do I need to live in Panama full-time?',
-    a: 'No. Visit once every two years to maintain your residency. There is no minimum days-per-year requirement.',
-  },
-  {
-    q: 'Is there a language requirement?',
-    a: 'No. No Spanish test or cultural exam of any kind.',
-  },
-  {
-    q: 'Can I work in Panama?',
-    a: 'Yes. Permanent residency grants full work authorization.',
-  },
-  {
-    q: 'Can I eventually get citizenship?',
-    a: 'Yes. After five continuous years of permanent residency, you can apply for naturalization. Panama allows dual citizenship.',
-  },
-];
+const heroImage = '/images/hero-faq.webp';
+const heroWidth = 682;
+const heroHeight = 1024;
 
-const financial = [
-  {
-    q: "What does Panama's territorial tax system mean for me?",
-    a: 'Only income earned within Panama is taxed. <a href="/benefits">Foreign-sourced income</a>, investments, remote salaries, overseas business profits, is not subject to Panamanian income tax.',
-  },
-  {
-    q: 'Is the $300,000 a fee or an investment?',
-    a: 'An investment. You own the asset. Real estate is yours to sell. Bank deposits are returned after 3 years. Securities stay in your brokerage account.',
-  },
-  {
-    q: 'What are the total costs beyond the investment?',
-    a: 'Government fees run $2,000–$3,000. Legal fees range from $5,000–$15,000 depending on complexity. Document authentication costs vary by country.',
-  },
-  {
-    q: 'Can I use a mortgage for the real estate route?',
-    a: 'The $300,000 must be a direct investment. <a href="/papers">Mortgaged properties may qualify</a> if your equity meets the threshold, but this varies. Confirm with your attorney.',
-  },
-  {
-    q: 'What about US taxes? Do I still pay the IRS?',
-    a: 'Yes. The US taxes citizens on worldwide income regardless of residency. Panama residency does not change your <a href="/americans">US tax obligations</a>, but Panama does not add a second tax layer.',
-  },
-  {
-    q: 'Are there ongoing costs to maintain residency?',
-    a: 'No government renewal fees. You maintain your qualifying investment and visit Panama once every two years. That\'s it.',
-  },
-];
-
-const practical = [
-  {
-    q: 'Is Panama safe?',
-    a: 'Panama City is comparable to most major Latin American cities. Expat neighborhoods (Punta Pacífica, Costa del Este, Casco Viejo) are generally safe. Common-sense precautions apply. Panama has not experienced political violence or civil conflict in decades.',
-  },
-  {
-    q: "What's the healthcare situation?",
-    a: 'Panama has excellent private hospitals in Panama City, including Johns Hopkins-affiliated Punta Pacífica Hospital. Many doctors are US or European trained. Costs are 40–70% lower than the US. International health insurance is available and affordable.',
-  },
-  {
-    q: "How's the internet?",
-    a: 'Fiber internet is widely available in Panama City, with speeds of 100–500 Mbps. Starlink is available as a backup. Sufficient for remote work, video calls, and streaming.',
-  },
-  {
-    q: 'Can I drive with my foreign license?',
-    a: 'You can use your foreign license for 90 days. After that, you can exchange it for a Panamanian license. The process is straightforward for permanent residents.',
-  },
-  {
-    q: 'What about schooling for children?',
-    a: 'Panama City has multiple international schools offering American, British, and IB curricula. Tuition ranges from $5,000–$15,000 per year depending on the school.',
-  },
-  {
-    q: 'Is English spoken?',
-    a: "Widely in business, banking, and healthcare. Panama's history with the Canal Zone means English proficiency is higher than most Latin American countries. In daily life outside expat areas, basic Spanish helps.",
-  },
-];
-
-const allFaqs = [...general, ...financial, ...practical];
-
-const title = 'Panama Qualified Investor Visa FAQ | All Your Questions Answered';
+const title = 'Panama Qualified Investor Visa FAQ - Common questions for 2026 applicants | Panama Qualified Investor';
 const description =
-  'Answers to every common question about Panama\'s QIV: taxes, costs, timeline, family, citizenship, and more. Updated for 2026 investors and applicants.';
+  'Panama Qualified Investor Visa FAQ covers the $300,000 real estate minimum, rising to $500,000 on October 15, 2026, plus taxes, family, and processing.';
 ---
 
-<BaseLayout title={title} description={description} ogDescription={description} path="/faq">
+<BaseLayout title={title} description={description} ogDescription={description} path="/panama-qualified-investor-visa-faq">
   <Navbar />
   <main id="main">
     <section class="page-hero">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="A Panamanian flag on a tall pole against a bright overcast sky, framed by palm fronds"
+        width={heroWidth}
+        height={heroHeight}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">FAQ</p>
         <h1>Panama Qualified Investor Visa FAQ: every question, answered.</h1>
-        <p class="subtext">If your Panama Qualified Investor Visa question isn't here, ask us directly.</p>
+        <p class="subtext">Panama Qualified Investor Visa FAQ answers questions on taxes, family, costs, and citizenship.</p>
       </div>
     </section>
     <MonthlyUpdates />
 
-    <section class="section paper">
-      <div class="wrap">
-        <div class="narrow">
-          <div class="sec-head left">
-            <p class="eyebrow">General</p>
-            <h2>About the program.</h2>
-          </div>
-          <div class="faq">
-            {
-              general.map((item) => (
-                <details>
-                  <summary>{item.q}</summary>
-                  <p set:html={item.a} />
-                </details>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </section>
+    <ProgramFAQSection id="faq-general" background="cream" align="start" />
 
-    <section class="section bg-cream-tint">
-      <div class="wrap">
-        <div class="narrow">
-          <div class="sec-head left">
-            <p class="eyebrow">Financial</p>
-            <h2>Money, taxes, and costs.</h2>
-          </div>
-          <div class="faq">
-            {
-              financial.map((item) => (
-                <details>
-                  <summary>{item.q}</summary>
-                  <p set:html={item.a} />
-                </details>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </section>
+    <FAQSection
+      id="faq-financial"
+      items={financialFaq}
+      eyebrow="Financial"
+      heading="Money, taxes, and costs."
+      background="paper"
+      align="start"
+    />
+    <FAQSection
+      id="faq-practical"
+      items={practicalFaq}
+      eyebrow="Practical"
+      heading="Living in Panama."
+      background="cream"
+      align="start"
+    />
 
-    <section class="section paper">
-      <div class="wrap">
-        <div class="narrow">
-          <div class="sec-head left">
-            <p class="eyebrow">Practical</p>
-            <h2>Living in Panama.</h2>
-          </div>
-          <div class="faq">
-            {
-              practical.map((item) => (
-                <details>
-                  <summary>{item.q}</summary>
-                  <p set:html={item.a} />
-                </details>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-band">
-      <div class="wrap cta-band-inner">
-        <h2>Ready to take the next step?</h2>
-        <a class="btn btn--gold" href="/#book">
-          Speak with an Advisor
-        </a>
-      </div>
-    </section>
+    <CtaBand />
     <TopCTA />
   </main>
+  <FaqJsonLd items={allFaqs} />
   <Footer />
 </BaseLayout>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: allFaqs.map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a.replace(/<[^>]*>/g, '') },
-  })),
-})} />
-
 <style>
-  .narrow {
-    max-width: var(--measure);
-    margin-inline: auto;
+  .page-hero {
+    overflow: hidden;
+    isolation: isolate;
+    background: none;
+    min-height: 70vh;
   }
 
-  .sec-head.left {
-    text-align: left;
-    margin-bottom: 1.5rem;
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% 45%;
+  }
+
+  .page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
   }
 </style>

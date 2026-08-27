@@ -3,8 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
-import PreferredSourcesCTA from '../components/PreferredSourcesCTA.astro';
 import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
 
 const heroImage = '/images/hero-canadians.webp';
 const heroWidth = 682;
@@ -21,37 +24,19 @@ const benefits = [
   },
   {
     title: 'Faster Than Europe',
-    body: 'Most European golden visa programs take 6 to 18 months. Panama\'s QIV processes in 30 to 60 days: from document submission to provisional permit.',
+    body: 'Most European golden visa programs take 6 to 18 months. Panama processing is 30 to 90 days from document submission to provisional permit.',
   },
   {
     title: 'Lower Entry Point',
-    body: 'At $300,000, Panama\'s threshold is lower than Portugal, Malta, Greece, or the UK. And the investment is yours, not a donation or government fee.',
+    body: 'At the current $300,000 real estate minimum, Panama\'s threshold is lower than Portugal, Malta, Greece, or the UK. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. And the investment is yours, not a donation or government fee.',
   },
   {
     title: 'No Physical Presence Trap',
-    body: 'Unlike many residency programs, Panama does not require you to spend a minimum number of days in the country each year. Visit once every two years to maintain status.',
+    body: 'Unlike many residency programs, Panama does not enforce a strict minimum stay requirement, though maintaining some periodic presence is recommended.',
   },
   {
     title: 'Familiar Banking',
     body: 'Panama\'s banking sector is well-developed and accustomed to international clients. Major Canadian banks have correspondent relationships with Panamanian institutions.',
-  },
-];
-
-const routes = [
-  {
-    n: '01',
-    title: 'Titled Real Estate',
-    body: 'Purchase titled property valued at $300,000 or more. Residential, commercial, or land registered in your name.',
-  },
-  {
-    n: '02',
-    title: 'Stocks <span class="amp">&amp;</span> Securities',
-    body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange through a licensed local brokerage.',
-  },
-  {
-    n: '03',
-    title: 'Fixed-Term Bank Deposit',
-    body: 'Place $300,000 in a three-year fixed-term deposit at a licensed Panamanian bank. Funds are returned at term end.',
   },
 ];
 
@@ -69,10 +54,6 @@ const faqs = [
     a: 'Panama has been a constitutional democracy since 1989 and has had peaceful, democratic transfers of power for over 30 years. The economy is anchored by the Panama Canal, a major international banking sector, and a free trade zone. It is one of the most stable countries in Latin America.',
   },
   {
-    q: 'Can my spouse and children be included?',
-    a: 'Yes. Your spouse, <a href="/eligibility">dependent children under 25</a>, and parents over 65 can all be included as dependents on a single application at no additional investment requirement.',
-  },
-  {
     q: 'What about healthcare?',
     a: 'Panama has both public and private healthcare systems. Many expats use private hospitals in Panama City, which offer high-quality care at a fraction of Canadian or American prices. International health insurance is widely available and affordable.',
   },
@@ -81,8 +62,8 @@ const faqs = [
 
 <BaseLayout
   title="Panama Qualified Investor Visa for Canadians | Residency by Investment"
-  description="How Canadian investors use the Panama QIV for permanent residency. Territorial taxation, faster than European visas, $300,000 minimum. 30–60 day processing."
-  ogDescription="How Canadian investors use the Panama QIV for permanent residency. Territorial taxation, faster than European visas, $300,000 minimum. 30–60 day processing."
+  description="How Canadian investors use the Panama QIV for permanent residency. Territorial taxation. Current real estate minimum $300,000, rising to $500,000 on October 15, 2026."
+  ogDescription="How Canadian investors use the Panama QIV for permanent residency. Territorial taxation. Current real estate minimum $300,000, rising to $500,000 on October 15, 2026."
   path="/canadians"
 >
   <Navbar />
@@ -104,7 +85,7 @@ const faqs = [
           The Panama Qualified Investor Visa for Canadians: a residency that keeps pace with your ambition.
         </h1>
         <p class="subtext">
-          How Canadian investors and entrepreneurs are using the <a href="/visa">Panama Qualified Investor Visa</a> to access a dollarized economy with territorial taxation, without the wait times and complexity of European golden visas.
+          How Canadian investors and entrepreneurs are using the <a href="/panama-qualified-investor-visa-2026">Panama Qualified Investor Visa</a> to access a dollarized economy with territorial taxation, without the wait times and complexity of European golden visas.
         </p>
         <div class="actions">
           <a class="btn btn--gold" href="/#book">
@@ -118,7 +99,7 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left">
+          <div class="sec-head left scroll-reveal">
             <p class="eyebrow">The reality</p>
             <h2>Why Canadians are exploring residency abroad.</h2>
           </div>
@@ -130,24 +111,23 @@ const faqs = [
               For investors and business owners, the math has changed. Higher capital gains taxes reduce the net return on exits, real estate, and portfolio gains. Meanwhile, the cost of living in Vancouver and Toronto now rivals London and New York, without the same access to global financial infrastructure.
             </p>
             <p>
-              <a href="/benefits">European golden visas</a> are the traditional alternative, but they come with friction. Portugal's program has been restructured repeatedly. Greece requires physical presence. Malta has a lengthy due diligence process and a price tag well above $300,000. Processing times are measured in months or years, not weeks.
+              <a href="/panama-qualified-investor-visa-benefits">European golden visas</a> are the traditional alternative, but they come with friction. Portugal's program has been restructured repeatedly. Greece requires physical presence. Malta has a lengthy due diligence process and a price tag well above $300,000. Processing times are measured in months or years, not weeks.
             </p>
             <p>
-              Panama offers a cleaner path. A single investment of $300,000, <a href="/process">processing in 30 to 60 days</a>, no language requirement, and a territorial tax system that doesn't tax income earned outside the country. For Canadians earning from global investments, remote consulting, or Canadian-registered businesses, this matters.
+              Panama offers a cleaner path. A real estate investment of $300,000. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. <a href="/panama-qualified-investor-visa-process-2026">Processing is 30 to 90 days from document submission to provisional permit</a>. There is no language requirement, and a territorial tax system that doesn't tax income earned outside the country. For Canadians earning from global investments, remote consulting, or Canadian-registered businesses, this matters.
             </p>
           </div>
         </div>
       </div>
     </section>
-    <PreferredSourcesCTA />
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head scroll-reveal">
           <p class="eyebrow">Why Panama works for Canadians</p>
           <h2>A clear path with no surprises.</h2>
         </div>
-        <div class="cards cta-cards">
+        <div class="cards cta-cards scroll-reveal" data-reveal="stagger">
           {
             benefits.map((item, i) => (
               <article class="card">
@@ -163,67 +143,52 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left">
+          <div class="sec-head left scroll-reveal">
             <p class="eyebrow">How the visa works</p>
             <h2>Three routes to the same residency.</h2>
           </div>
-          <ol class="routes">
-            {
-              routes.map((route, i) => (
-                <li>
-                  <p class="n">{route.n}</p>
-                  <div>
-                    <p class="route-title" set:html={route.title} />
-                    <p>{route.body}</p>
-                  </div>
-                </li>
-              ))
-            }
-          </ol>
+          <InvestmentDeadlineNote />
+          <p class="route-pointer">
+            The Qualified Investor Visa has three paths: real estate, listed securities from $500,000, or a $750,000 fixed-term deposit. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>.
+          </p>
           <p class="note">
-            All routes require a minimum $300,000 investment. Processing takes 30–60 days.
+            Processing is 30 to 90 days from document submission to provisional permit. See the <a href="/panama-qualified-investor-visa-process-2026">process</a>.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section bg-cream-tint">
-      <div class="wrap">
-        <div class="narrow">
-          <div class="sec-head left">
-            <p class="eyebrow">Common questions</p>
-            <h2>Questions Canadians ask most.</h2>
-          </div>
-          <div class="faq">
-            {
-              faqs.map((item) => (
-                <details>
-                  <summary>{item.q}</summary>
-                  <p set:html={item.a} />
-                </details>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <FAQSection
+      items={faqs}
+      eyebrow="Common questions"
+      heading="Questions Canadians ask most."
+      id="page-faq"
+      background="cream"
+    />
+    <ProgramFAQSection background="paper" />
     <section class="cta-band">
       <div class="wrap">
         <div class="cta-inner">
           <h2>Ready to explore your options?</h2>
           <p>15 minutes with an advisor who works specifically with Canadian investors.</p>
-          <a class="btn btn--gold" href="/#book">
+          <button
+            class="btn btn--gold"
+            type="button"
+            data-advisor-contact-open
+            aria-haspopup="dialog"
+            aria-controls="advisor-contact-modal"
+          >
             Speak with an Advisor
-          </a>
+          </button>
           <p class="cta-mail">
             Or email us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>
           </p>
         </div>
       </div>
     </section>
-    <TopCTA showPreferredSources={false} />
+    <TopCTA />
   </main>
+  <FaqJsonLd items={faqs} />
   <Footer />
 </BaseLayout>
 
@@ -356,42 +321,12 @@ const faqs = [
     line-height: var(--leading-body);
   }
 
-  .routes {
-    list-style: none;
-    margin: 2rem 0 0;
-    padding: 0;
-  }
-
-  .routes li {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    padding: 1.35rem 0;
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  .n {
-    font-family: var(--font-display);
-    font-size: var(--text-h3);
-    color: var(--color-navy-600);
-    line-height: 1;
-    min-width: 2.4rem;
-    margin: 0;
-  }
-
-  .route-title {
+  .route-pointer {
     font-family: var(--font-sans);
-    font-weight: var(--weight-semibold);
     font-size: var(--text-body);
-    color: var(--color-ink);
-    margin: 0 0 0.25rem;
-  }
-
-  .routes li p:last-child {
-    margin: 0;
     color: var(--color-ink-soft);
-    font-size: var(--text-body);
     line-height: var(--leading-body);
+    margin: 1.5rem 0 0;
   }
 
   .note {
@@ -401,10 +336,6 @@ const faqs = [
     margin: 1.5rem 0 0;
     text-align: center;
     line-height: var(--leading-body);
-  }
-
-  .faq {
-    margin-top: 2.5rem;
   }
 
   .cta-band {

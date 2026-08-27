@@ -1,76 +1,14 @@
----
-const benefits = [
-  {
-    n: '01',
-    title: 'Permanent Residency',
-    body: 'Full legal residency in Panama from day one. Live, work, and invest without restriction.',
-  },
-  {
-    n: '02',
-    title: 'Zero Tax on Foreign Income',
-    body: "Panama's <a href=\"/benefits\">territorial tax system</a> means income earned outside Panama is not taxed, period.",
-  },
-  {
-    n: '03',
-    title: 'No Language Requirement',
-    body: 'Unlike European golden visas, the Panama QIV has no Spanish language test or cultural exam.',
-  },
-  {
-    n: '04',
-    title: 'Path to Citizenship',
-    body: 'After five years of residency, you become eligible for Panamanian citizenship and passport.',
-  },
-  {
-    n: '05',
-    title: 'Include Your Family',
-    body: 'Spouse, dependents under 25, and parents over 65 can all be included in your application.',
-  },
-  {
-    n: '06',
-    title: 'Dollar-Based Economy',
-    body: 'No currency risk. Panama uses the US dollar as its official currency.',
-  },
-];
-
-const image =
-  'https://images.unsplash.com/photo-1656781313303-51379444b553?w=800&q=80&auto=format&fit=crop';
----
-
 <section class="section" id="benefits">
   <div class="wrap">
-    <div class="layout">
-      <img
-        class="photo"
-        src={image}
-        alt="Casco Viejo historic quarter, Panama City"
-        width="800"
-        height="1000"
-        loading="lazy"
-      />
-      <div class="copy">
-        <div class="sec-head">
-          <p class="eyebrow">Your benefits</p>
-          <h2>
-            What the Qualified Investor Visa actually buys you.
-          </h2>
-        </div>
-        <ol>
-          {
-            benefits.map((item, i) => (
-              <li>
-                <span class="num">{item.n}</span>
-                <div>
-                  <p class="title">{item.title}</p>
-                  <p class="desc" set:html={item.body} />
-                </div>
-              </li>
-            ))
-          }
-        </ol>
-      </div>
+    <div class="sec-head scroll-reveal">
+      <p class="eyebrow">Your benefits</p>
+      <h2>What approval actually provides.</h2>
+      <p class="lede">
+        The visa grants permanent legal status from day one: the right to live and work in Panama, a territorial tax system that does not tax foreign-sourced income, and no language or cultural exam. After five years of residency, holders may apply for citizenship. Spouse, dependent children, and qualifying parents can typically be included.
+      </p>
     </div>
     <p class="section-more">
-      <a class="cta-link cta-link--ink" href="/benefits">
+      <a class="cta-link cta-link--ink" href="/panama-qualified-investor-visa-benefits">
         See all benefits
       </a>
     </p>
@@ -83,76 +21,11 @@ const image =
     scroll-margin-top: calc(var(--header-h) + 1rem);
   }
 
-  .layout {
-    display: grid;
-    gap: clamp(2rem, 4vw, 4rem);
-    align-items: center;
-  }
-
-  .photo {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-
-  h2 {
-    font-family: var(--font-display);
-    font-size: var(--text-h2);
-    font-weight: var(--weight-bold);
-    margin: var(--space-eyebrow) 0 0.5rem;
-  }
-
-  .copy .sec-head {
-    text-align: left;
-  }
-
-  ol {
-    list-style: none;
-    margin: 0.5rem 0 0;
-    padding: 0;
-  }
-
-  li {
-    display: flex;
-    gap: 1rem;
-    padding-block: 1.2rem;
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  li:last-child {
-    border-bottom: 0;
-  }
-
-  .num {
-    font-family: var(--font-display);
-    font-size: clamp(1.65rem, 4vw, 2.1rem);
-    color: #7a94a8;
-    line-height: 1;
-    flex-shrink: 0;
-    width: 2.5rem;
-  }
-
-  .title {
-    font-family: var(--font-sans);
-    font-weight: var(--weight-semibold);
-    font-size: var(--text-body);
-    color: var(--color-ink);
-    margin: 0 0 0.25rem;
-  }
-
-  .desc {
-    font-family: var(--font-sans);
-    font-size: var(--text-small);
+  .lede {
+    font-size: 1.05rem;
     color: var(--color-ink-soft);
-    line-height: var(--leading-body);
-    font-weight: var(--weight-body);
-    margin: 0;
-  }
-
-  @media (min-width: 1024px) {
-    .layout {
-      grid-template-columns: 1.05fr 0.95fr;
-    }
+    max-width: var(--measure);
+    margin: var(--space-lede) 0 0;
+    line-height: 1.7;
   }
 </style>

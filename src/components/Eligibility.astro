@@ -1,61 +1,14 @@
----
-const cards = [
-  {
-    title: 'Minimum Investment',
-    body: '$300,000 in real estate, securities, or a bank deposit.',
-  },
-  {
-    title: 'Clean Background',
-    body: 'Applicants must pass an Interpol and local background check.',
-  },
-  {
-    title: 'Source of Funds',
-    body: 'You must demonstrate the legitimate origin of your investment capital.',
-  },
-  {
-    title: 'Health Certificate',
-    body: 'A basic medical certificate from a licensed physician.',
-  },
-];
-
-const image = 'https://images.unsplash.com/photo-1639935187474-10940c5be350?w=800&q=80&auto=format&fit=crop';
----
-
 <section class="section" id="eligibility">
   <div class="wrap">
-    <div class="layout">
-      <div class="copy">
-        <div class="sec-head">
-          <p class="eyebrow">Eligibility</p>
-          <h2>
-            Who qualifies for the <em>Qualified Investor Visa.</em>
-          </h2>
-          <p class="lede">
-            The program is open to <a href="/who-its-for">citizens of any country</a>. There is no age restriction, no language requirement, and no interview. You must pass a standard background check and demonstrate the source of your investment funds.
-          </p>
-        </div>
-        <div class="specs spec-grid">
-          {
-            cards.map((card, i) => (
-              <article class="spec">
-                <p class="title">{card.title}</p>
-                <p>{card.body}</p>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-      <img
-        class="photo"
-        src={image}
-        alt="Panoramic view of Panama City with mountains"
-        width="800"
-        height="1000"
-        loading="lazy"
-      />
+    <div class="sec-head scroll-reveal">
+      <p class="eyebrow">Eligibility</p>
+      <h2>Who qualifies.</h2>
+      <p class="lede">
+        The program is open to citizens of any country. There is no age restriction, no language requirement, and no interview. Applicants must make a qualifying investment, pass a standard background check, and document the legitimate origin of the funds.
+      </p>
     </div>
     <p class="section-more">
-      <a class="cta-link cta-link--ink" href="/eligibility">
+      <a class="cta-link cta-link--ink" href="/panama-qualified-investor-visa-eligibility">
         Check eligibility
       </a>
     </p>
@@ -68,82 +21,11 @@ const image = 'https://images.unsplash.com/photo-1639935187474-10940c5be350?w=80
     scroll-margin-top: calc(var(--header-h) + 1rem);
   }
 
-  .layout {
-    display: grid;
-    gap: clamp(2rem, 4vw, 4rem);
-  }
-
-  h2 {
-    margin: var(--space-eyebrow) 0 0;
-  }
-
-  h2 em {
-    font-style: italic;
-  }
-
   .lede {
     font-size: 1.05rem;
-    margin: var(--space-lede) 0 0;
-    max-width: var(--measure);
-    line-height: 1.7;
-  }
-
-  .copy .sec-head {
-    text-align: left;
-  }
-
-  .specs {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-
-  .spec {
-    background: var(--cream-tint);
-    border: 1px solid var(--color-line);
-    border-radius: 6px;
-    padding: 1.5rem;
-    transition: box-shadow 150ms ease-out;
-  }
-
-  .spec:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-
-  .title {
-    font-family: var(--font-sans);
-    font-weight: var(--weight-semibold);
-    font-size: var(--text-body);
-    color: var(--color-ink);
-    margin: 0 0 0.5rem;
-  }
-
-  .spec p:last-child {
-    margin: 0;
-    font-size: var(--text-small);
     color: var(--color-ink-soft);
-    line-height: var(--leading-body);
-  }
-
-  .photo {
-    width: 100%;
-    height: 100%;
-    min-height: 400px;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-
-  @media (min-width: 640px) {
-    .specs {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .layout {
-      grid-template-columns: 1fr 0.85fr;
-      align-items: stretch;
-    }
+    max-width: var(--measure);
+    margin: var(--space-lede) 0 0;
+    line-height: 1.7;
   }
 </style>

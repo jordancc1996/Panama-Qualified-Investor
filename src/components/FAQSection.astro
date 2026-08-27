@@ -1,0 +1,60 @@
+---
+import FAQAccordion from './FAQAccordion.astro';
+import type { FaqItem } from '../data/program-faq';
+
+interface Props {
+  items: FaqItem[];
+  heading?: string;
+  eyebrow?: string;
+  lede?: string;
+  id?: string;
+  background?: 'paper' | 'cream';
+  /** `start` matches ProgramFAQSection/Eligibility: measure-width column, left-aligned in `.wrap`. */
+  align?: 'center' | 'start';
+}
+
+const {
+  items,
+  heading = 'Common questions',
+  eyebrow = 'FAQ',
+  lede,
+  id = 'page-faq',
+  background = 'cream',
+  align = 'center',
+} = Astro.props;
+
+const sectionClass = background === 'paper' ? 'section paper' : 'section bg-cream-tint';
+const columnClass = align === 'start' ? 'faq-column faq-column--start' : 'faq-column faq-column--center';
+---
+
+<section class={sectionClass} id={id}>
+  <div class="wrap">
+    <div class={columnClass}>
+      <div class="sec-head left scroll-reveal">
+        <p class="eyebrow">{eyebrow}</p>
+        <h2>{heading}</h2>
+        {lede && <p class="lede">{lede}</p>}
+      </div>
+      <FAQAccordion items={items} idPrefix={id} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .sec-head.left {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  .sec-head h2 {
+    text-wrap: wrap;
+  }
+
+  .lede {
+    font-size: 1.05rem;
+    color: var(--color-ink-soft);
+    max-width: var(--measure);
+    margin: var(--space-lede) 0 0;
+    line-height: 1.7;
+  }
+</style>

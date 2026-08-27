@@ -1,62 +1,17 @@
----
-const steps = [
-  {
-    title: 'Initial Research',
-    body: 'Assess your goals, financial situation, and timeline. Determine which investment route suits you best: real estate, securities, or bank deposit.',
-  },
-  {
-    title: 'Document Preparation',
-    body: 'Prepare your complete application package: <a href="/eligibility">apostilled background checks</a>, financial statements, passport copies, health certificate, and proof of investment funds.',
-  },
-  {
-    title: 'Investment Execution',
-    body: 'Make your qualifying investment: purchase property, open a brokerage account, or place a fixed-term deposit. Work with local banks, brokers, and notaries.',
-  },
-  {
-    title: 'Application Submission',
-    body: "Your application is submitted to Panama's National Immigration Service (Servicio Nacional de Migración). All filings and correspondence are handled by your legal team.",
-  },
-  {
-    title: 'Provisional Permit',
-    body: 'Within 30 days, you receive a provisional residency permit. This gives you legal status while the permanent card is processed.',
-  },
-  {
-    title: 'Permanent Residency Card',
-    body: 'Your permanent residency card (carné de residente permanente) is issued. You can live, work, and invest in Panama indefinitely.',
-  },
-];
----
-
 <section class="section bg-cream-tint" id="process">
   <div class="wrap">
-    <div class="inner">
-      <div class="sec-head">
-        <p class="eyebrow">The process</p>
-        <h2>From first inquiry to residency card.</h2>
-      </div>
-      <ol class="steps">
-        {
-          steps.map((step, i) => (
-            <li>
-              <strong>{step.title}</strong>
-              <p set:html={step.body} />
-            </li>
-          ))
-        }
-      </ol>
-      <div class="start">
-        <p class="eyebrow eyebrow--on-navy">Ready to start?</p>
-        <p class="claim">Most applicants go from first call to provisional permit in under 60 days.</p>
-        <a class="btn btn--gold" href="#book">
-          Speak with an Advisor
-        </a>
-      </div>
-      <p class="section-more">
-        <a class="cta-link cta-link--ink" href="/process">
-          See the full process
-        </a>
+    <div class="sec-head scroll-reveal">
+      <p class="eyebrow">The process</p>
+      <h2>From first inquiry to residency card.</h2>
+      <p class="lede">
+        Applications are filed with Panama's National Immigration Service. Processing is 30 to 90 days from document submission to provisional permit. A short in-country trip is typically required for biometrics. The step-by-step sequence and document list are on the process page.
       </p>
     </div>
+    <p class="section-more">
+      <a class="cta-link cta-link--ink" href="/panama-qualified-investor-visa-process-2026">
+        See the full process
+      </a>
+    </p>
   </div>
 </section>
 
@@ -65,82 +20,11 @@ const steps = [
     scroll-margin-top: calc(var(--header-h) + 1rem);
   }
 
-  .inner {
+  .lede {
+    font-size: 1.05rem;
+    color: var(--color-ink-soft);
     max-width: var(--measure);
-    margin-inline: auto;
-  }
-
-  .steps {
-    list-style: none;
-    counter-reset: step;
-    margin: 2rem 0;
-    padding: 0;
-  }
-
-  .steps li {
-    position: relative;
-    counter-increment: step;
-    padding: 0 0 1.4rem 3rem;
-    border-left: 1px solid var(--color-line);
-    margin-left: 0.95rem;
-  }
-
-  .steps li:last-child {
-    border-left-color: transparent;
-    padding-bottom: 0;
-  }
-
-  .steps li::before {
-    content: counter(step, decimal-leading-zero);
-    position: absolute;
-    left: -0.95rem;
-    top: -0.15rem;
-    width: 1.9rem;
-    height: 1.9rem;
-    display: grid;
-    place-items: center;
-    border-radius: 6px;
-    background: var(--color-navy-900);
-    color: var(--color-gold-300);
-    font-family: var(--font-sans);
-    font-weight: var(--weight-semibold);
-    font-size: var(--text-label);
-    letter-spacing: 0.04em;
-  }
-
-  .steps strong {
-    display: block;
-    color: var(--color-ink);
-    font-size: var(--text-body);
-    font-weight: var(--weight-semibold);
-    margin-bottom: 0.2rem;
-  }
-
-  .steps p {
-    margin: 0;
-    font-size: var(--text-body);
-    line-height: var(--leading-body);
-    font-weight: var(--weight-body);
-  }
-
-  .start {
-    background: var(--color-navy-900);
-    border-radius: 6px;
-    padding: 1.5rem 1.8rem;
-    margin-top: 2.5rem;
-    text-align: center;
-  }
-
-  .claim {
-    font-family: var(--font-sans);
-    font-size: var(--text-h3);
-    font-weight: var(--weight-ui);
-    color: var(--color-on-navy);
-    line-height: var(--leading-heading);
-    margin: 0.75rem 0 0;
-  }
-
-  .start .btn {
-    margin-top: 1.25rem;
+    margin: var(--space-lede) 0 0;
+    line-height: 1.7;
   }
 </style>

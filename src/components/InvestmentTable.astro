@@ -9,26 +9,26 @@ const { embedded = false, showManagement = false } = Astro.props;
 const rows = [
   {
     route: 'Real Estate',
-    min: '$300,000',
+    min: '$300,000; $500,000 from Oct 15, 2026',
     lock: 'None: own the property',
     key: "Titled property, registered in applicant's name",
-    timeline: '30–60 days',
+    timeline: '30 to 90 days to provisional permit',
     management: 'Property maintenance, taxes, tenants',
   },
   {
     route: 'Securities',
-    min: '$300,000',
+    min: '$500,000',
     lock: 'Held for duration of visa',
     key: 'Through licensed Panamanian brokerage',
-    timeline: '30–60 days',
+    timeline: '30 to 90 days to provisional permit',
     management: 'Portfolio monitoring through brokerage',
   },
   {
     route: 'Bank Deposit',
-    min: '$300,000',
-    lock: '3-year fixed term',
+    min: '$750,000',
+    lock: '5-year fixed term',
     key: 'Licensed Panamanian bank',
-    timeline: '30–60 days',
+    timeline: '30 to 90 days to provisional permit',
     management: 'None: fully passive',
   },
 ];
@@ -36,7 +36,7 @@ const rows = [
 
 {
   embedded ? (
-    <div class="table-wrap">
+    <div class="table-wrap scroll-reveal">
       <table class:list={[showManagement && 'wide']}>
         <thead>
           <tr>
@@ -67,38 +67,17 @@ const rows = [
   ) : (
     <section class="section" id="investment">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head scroll-reveal">
           <p class="eyebrow">Investment requirements</p>
           <h2>What qualifies, and what it costs.</h2>
+          <p class="lede">
+            Real estate is the lowest cash outlay. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. Securities require $500,000 held for the duration of residency. The bank deposit is $750,000 locked for five years. Lock-in periods, timelines, and ongoing management sit side by side on the visa page.
+          </p>
         </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Route</th>
-                <th>Minimum Investment</th>
-                <th>Lock-in Period</th>
-                <th>Key Requirement</th>
-                <th>Timeline</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                rows.map((row) => (
-                  <tr>
-                    <td class="route">{row.route}</td>
-                    <td>{row.min}</td>
-                    <td>{row.lock}</td>
-                    <td>{row.key}</td>
-                    <td>{row.timeline}</td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-        <p class="note">
-          All amounts in USD. <a href="/process">Processing times are estimates</a> and may vary. The investment must be maintained for the duration of the residency.
+        <p class="section-more">
+          <a class="cta-link cta-link--ink" href="/panama-qualified-investor-visa-2026#investment-routes">
+            Compare the three routes
+          </a>
         </p>
       </div>
     </section>
@@ -111,8 +90,12 @@ const rows = [
     scroll-margin-top: calc(var(--header-h) + 1rem);
   }
 
-  .sec-head {
-    margin-bottom: 2.5rem;
+  .lede {
+    font-size: 1.05rem;
+    color: var(--color-ink-soft);
+    max-width: var(--measure);
+    margin: var(--space-lede) 0 0;
+    line-height: 1.7;
   }
 
   .table-wrap {
@@ -158,13 +141,5 @@ const rows = [
   .route {
     font-weight: var(--weight-bold);
     color: var(--color-ink);
-  }
-
-  .note {
-    font-size: var(--text-caption);
-    color: var(--color-muted);
-    margin: 1rem 0 0;
-    line-height: var(--leading-body);
-    max-width: var(--measure);
   }
 </style>

@@ -1,0 +1,395 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
+
+const heroImage = '/images/hero-crypto-investors.webp';
+const heroWidth = 819;
+const heroHeight = 1024;
+
+const benefits = [
+  {
+    title: 'Crypto-Derived Capital',
+    body: 'Realized crypto gains can fund the qualifying investment the same way other lawful investment returns or asset sales can. There is no separate crypto category.',
+  },
+  {
+    title: 'Same Source-of-Funds Standard',
+    body: 'Documentation requirements are the ones on the eligibility page: employment income, business profits, investment returns, inheritance, or asset sales. Crypto is not carved out.',
+  },
+  {
+    title: 'Territorial Taxation',
+    body: 'Panama taxes income earned inside Panama. Foreign-sourced income, including gains realized outside the country, is not taxed by Panama.',
+  },
+  {
+    title: 'Dollar-Denominated',
+    body: 'Panama uses the US dollar as its official currency. No conversion fees, no currency risk, no surprises on your bank statements.',
+  },
+  {
+    title: 'Three Investment Routes',
+    body: 'Titled real estate, listed securities from $500,000, or a $750,000 fixed-term bank deposit. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. The same routes available to every other applicant.',
+  },
+  {
+    title: 'No Language Test',
+    body: 'There is no Spanish exam, no cultural integration requirement, and no interview. The investment and standard documentation are the primary filters.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Can I use crypto gains as my source of funds?',
+    a: 'Yes, in the same way you would use other lawful investment returns or proceeds from an asset sale. You still need to demonstrate the source of your investment capital. See the <a href="/panama-qualified-investor-visa-eligibility">eligibility</a> page for the documentation Panama actually requires. This page does not add crypto-specific rules on top of that.',
+  },
+  {
+    q: 'Do I need to convert crypto before I apply?',
+    a: 'The qualifying investment is titled real estate, listed securities, or a bank deposit, so the capital has to be available to complete that purchase. How you move realized crypto into that form is a banking and tax question for your own advisors, not a separate visa category.',
+  },
+  {
+    q: 'Will Panama tax my crypto?',
+    a: 'Panama generally uses a territorial tax system. Income earned within Panama is generally taxed there. Foreign-sourced crypto gains generally are not. Confirm how this applies to your situation with a qualified tax professional. Your tax position in the country where you are a tax resident does not change because you hold Panamanian residency.',
+  },
+  {
+    q: 'Can I keep managing wallets and exchanges from outside Panama?',
+    a: 'Yes. Residency is not a requirement to sit in-country while you manage wallets, exchanges, or a remote trading setup.',
+  },
+  {
+    q: 'If I place realized crypto into a qualifying asset, is that capital refundable?',
+    a: 'Once realized crypto is placed into a qualifying asset, the hold and return rules apply to that asset, not to the original tokens. A bank deposit is returned after the five-year term. Real estate can be sold after the required holding period. Securities remain in your brokerage. None of this is a government fee. The $300,000 real estate investment minimum is scheduled to rise to $500,000 on October 15, 2026.',
+  },
+];
+---
+
+<BaseLayout
+  title="Panama Qualified Investor Visa for Crypto Investors | Source of Funds"
+  description="Panama Qualified Investor Visa for crypto investors using realized gains as source of funds. $300,000 real estate minimum, rising to $500,000 on October 15, 2026."
+  ogDescription="Panama Qualified Investor Visa for crypto investors using realized gains as source of funds. $300,000 real estate minimum, rising to $500,000 on October 15, 2026."
+  path="/crypto-investors"
+>
+  <Navbar />
+  <main id="main">
+    <section class="hero" id="top">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="Panama City skyline and the Bridge of the Americas across the water"
+        width={heroWidth}
+        height={heroHeight}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">For Crypto Investors</p>
+        <h1>
+          The Panama Qualified Investor Visa for Crypto Investors: residency funded with capital you already realized.
+        </h1>
+        <p class="subtext">
+          How crypto investors are using the <a href="/panama-qualified-investor-visa-2026">Panama Qualified Investor Visa</a> to place crypto-derived capital into a qualifying investment.
+        </p>
+        <div class="actions">
+          <a class="btn btn--gold" href="/#book">
+            Speak with an Advisor
+          </a>
+        </div>
+      </div>
+    </section>
+    <MonthlyUpdates />
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">The reality</p>
+            <h2>Crypto wealth still has to sit somewhere as a qualifying asset.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              A large crypto position is not, by itself, a residency application. The <a href="/panama-qualified-investor-visa-2026">Panama Qualified Investor Visa</a> is built around a qualifying investment in titled real estate, listed securities, or a fixed-term bank deposit. Realized crypto gains can fund that investment the same way proceeds from a business sale or a conventional portfolio can.
+            </p>
+            <p>
+              Source-of-funds documentation applies to crypto gains the same way it applies to any other lawful income source. Panama asks you to show where the capital came from: employment income, business profits, investment returns, inheritance, or asset sales. There is no separate crypto rule set on this site. The requirements are the ones already listed under <a href="/panama-qualified-investor-visa-eligibility">eligibility</a>.
+            </p>
+            <p>
+              What changes for this audience is the starting point of the capital, not the visa itself. You still complete one of the three investment routes, file the same application, and receive the same permanent residency. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026.
+            </p>
+            <p>
+              Panama's <a href="/panama-qualified-investor-visa-benefits">territorial tax system</a> is the structural reason crypto investors look here. Income earned inside Panama can be taxed there. Foreign-sourced income is not. You still file where you are a tax resident, but Panama does not add a second layer on gains realized outside the country.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="sec-head scroll-reveal">
+          <p class="eyebrow">Why Panama works for crypto investors</p>
+          <h2>Built for your situation.</h2>
+        </div>
+        <div class="cards cta-cards scroll-reveal" data-reveal="stagger">
+          {
+            benefits.map((item, i) => (
+              <article class="card">
+                <p class="card-title">{item.title}</p>
+                <p>{item.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">How the visa works</p>
+            <h2>Three routes to the same residency.</h2>
+          </div>
+          <InvestmentDeadlineNote />
+          <p class="route-pointer">
+            The Qualified Investor Visa has three paths: real estate, listed securities from $500,000, or a $750,000 fixed-term deposit. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>.
+          </p>
+          <p class="note">
+            Processing is 30 to 90 days from document submission to provisional permit. See the <a href="/panama-qualified-investor-visa-process-2026">process</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <FAQSection
+      items={faqs}
+      eyebrow="Common questions"
+      heading="Questions crypto investors ask most."
+      id="page-faq"
+      background="cream"
+    />
+    <ProgramFAQSection background="paper" />
+    <section class="cta-band">
+      <div class="wrap">
+        <div class="cta-inner">
+          <h2>Ready to explore your options?</h2>
+          <p>15 minutes with an advisor who works specifically with crypto investors.</p>
+          <button
+            class="btn btn--gold"
+            type="button"
+            data-advisor-contact-open
+            aria-haspopup="dialog"
+            aria-controls="advisor-contact-modal"
+          >
+            Speak with an Advisor
+          </button>
+          <p class="cta-mail">
+            Or email us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+    <TopCTA />
+  </main>
+  <FaqJsonLd items={faqs} />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: var(--header-h);
+    isolation: isolate;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 72% center;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    text-align: center;
+    max-width: var(--measure);
+    width: 100%;
+    margin-inline: auto;
+    padding: 4rem clamp(1.35rem, 5vw, 3rem);
+    box-sizing: border-box;
+  }
+
+  h1 {
+    color: var(--color-on-navy);
+    margin: 1.1rem 0 0;
+    overflow-wrap: break-word;
+  }
+
+  .subtext {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--color-on-navy-dim);
+    margin: 1.5rem auto 0;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+
+  .paper {
+    background: var(--color-paper);
+  }
+
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+
+  .sec-head.left h2 {
+    margin-top: var(--space-eyebrow);
+  }
+
+  .prose p {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--weight-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+    color: var(--color-ink-soft);
+    margin: 0 0 var(--space-paragraph);
+  }
+
+  .prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  .cards {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background: var(--color-paper);
+    border-radius: 6px;
+    border: 1px solid var(--color-line);
+    padding: 1.5rem;
+    transition: box-shadow 150ms ease-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-title {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-body);
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+
+  .card p:last-child {
+    margin: 0;
+    font-size: var(--text-small);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-body);
+  }
+
+  .route-pointer {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-body);
+    margin: 1.5rem 0 0;
+  }
+
+  .note {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    color: var(--color-muted);
+    margin: 1.5rem 0 0;
+    text-align: center;
+    line-height: var(--leading-body);
+  }
+
+  .cta-band {
+    background: linear-gradient(200deg, #4e6478 0%, #405363 55%, #2d3d4d 100%);
+    padding-block: var(--section-pad);
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .cta-band h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    color: var(--color-on-navy);
+    line-height: var(--leading-heading);
+  }
+
+  .cta-band p:not(.cta-mail) {
+    color: var(--color-on-navy-dim);
+    margin: var(--space-lede) 0 0;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .cta-band .btn {
+    margin-top: 1.5rem;
+  }
+
+  .cta-mail {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-ui);
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 1.25rem;
+    letter-spacing: var(--tracking-ui);
+  }
+
+  .cta-mail a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  @media (min-width: 1024px) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

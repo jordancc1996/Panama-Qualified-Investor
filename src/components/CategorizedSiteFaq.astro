@@ -1,0 +1,21 @@
+---
+import FAQSection from './FAQSection.astro';
+import ProgramFAQSection from './ProgramFAQSection.astro';
+import { faqGroups } from '../data/full-faq';
+
+const otherGroups = faqGroups.filter((group) => group.id !== 'faq-general');
+---
+
+<ProgramFAQSection id="faq-general" background="cream" align="start" />
+{
+  otherGroups.map((group) => (
+    <FAQSection
+      id={group.id}
+      items={group.items}
+      eyebrow={group.eyebrow}
+      heading={group.heading}
+      background={group.background}
+      align="start"
+    />
+  ))
+}

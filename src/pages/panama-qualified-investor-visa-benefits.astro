@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
+import CtaBand from '../components/CtaBand.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+import { faqBank } from '../data/faq-bank';
+
+const pageFaqs = faqBank.taxesBankingAndBusiness.filter((item) =>
+  [
+    'Does Panama tax worldwide income?',
+    'Can a resident open a bank account in Panama?',
+    'Can a permanent resident operate a business in Panama?',
+  ].includes(item.q),
+);
+
+const taxCards = [
+  {
+    title: 'Territorial Tax, Foreign Income',
+    body: 'Income earned within Panama is generally taxed there. Foreign-sourced income generally is not. Confirm how this applies to your situation with a qualified tax professional.',
+  },
+  {
+    title: 'Foreign Capital Gains',
+    body: 'Gains from foreign stocks, crypto, and property sales generally are not taxed in Panama. Confirm how this applies to your situation with a qualified tax professional.',
+  },
+  {
+    title: 'No Inheritance Tax',
+    body: 'Panama does not levy estate or inheritance tax on foreign-held assets.',
+  },
+  {
+    title: 'Low Local Rates',
+    body: 'Income earned within Panama is taxed at progressive rates of 0–25%, with a generous personal exemption.',
+  },
+];
+
+const lifestyle = [
+  {
+    title: 'Dollar Economy',
+    body: 'No currency conversion. Panama uses the US dollar as its official currency. Your bank accounts, rent, and groceries are all in USD.',
+  },
+  {
+    title: 'Modern Infrastructure',
+    body: 'Panama City has fiber internet, international hospitals, a new metro system, and one of the busiest airports in the Americas.',
+  },
+  {
+    title: 'Direct Flights',
+    body: 'Tocumen Airport connects to Miami (2.5 hrs), New York (5 hrs), Houston (4 hrs), Madrid (10 hrs), and most Latin American capitals.',
+  },
+  {
+    title: 'Affordable Living',
+    body: 'A high quality of life at 40–60% less than comparable US or <a href="/canadians">Canadian cities</a>. Housing, dining, healthcare, and domestic help are significantly cheaper.',
+  },
+  {
+    title: 'English Widely Spoken',
+    body: "Panama's history with the Canal Zone means English is widely spoken in business, banking, healthcare, and the expat community.",
+  },
+  {
+    title: 'Tropical Location',
+    body: 'Panama has a tropical climate on the isthmus between North and South America, which is one reason some residents use it as a long-term base.',
+  },
+];
+
+const heroImage = '/images/hero-benefits.webp';
+const heroWidth = 1024;
+const heroHeight = 682;
+
+const title = 'Panama Qualified Investor Visa Benefits';
+const description =
+  "Panama Qualified Investor Visa Benefits cover how Panama's territorial tax system treats foreign income, a dollar economy, and citizenship after five years.";
+---
+
+<BaseLayout title={title} description={description} ogDescription={description} path="/panama-qualified-investor-visa-benefits">
+  <Navbar />
+  <main id="main">
+    <section class="page-hero">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="Panamanian flags flying in a row under an overcast sky, one flag sharp in the foreground"
+        width={heroWidth}
+        height={heroHeight}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">Benefits</p>
+        <h1>Panama Qualified Investor Visa Benefits</h1>
+        <p class="subtext">
+          Beyond the Qualified Investor Visa residency card: the practical, financial, and lifestyle advantages of being a Panamanian permanent resident.
+        </p>
+      </div>
+    </section>
+    <MonthlyUpdates />
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="sec-head scroll-reveal">
+          <p class="eyebrow">Tax advantages</p>
+          <h2>A territorial tax system built for global earners.</h2>
+        </div>
+        <div class="split">
+          <div class="prose">
+            <p>
+              Panama generally uses a territorial tax system. Income earned within Panama's borders is generally subject to Panamanian income tax. Foreign-sourced income, including investment returns, dividends, capital gains, rental income from foreign properties, consulting fees from overseas clients, and salary from foreign employers, generally is not. Confirm how this applies to your situation with a qualified tax professional.
+            </p>
+            <p>
+              This is not a special incentive or a temporary tax holiday. It is how Panama's tax code has always worked. The territorial principle applies to all residents equally, whether you are Panamanian-born or a naturalized citizen.
+            </p>
+            <p>
+              For investors, entrepreneurs, and <a href="/tech-founders">remote workers</a> whose income is generated outside Panama, this generally means you can be a legal, permanent resident of a stable country without Panama adding a second income-tax layer on that foreign-sourced income. You still pay taxes where you are a tax resident (for example, the US or Canada).
+            </p>
+          </div>
+          <div class="stack scroll-reveal" data-reveal="stagger">
+            {
+              taxCards.map((item, i) => (
+                <article class="spec-card">
+                  <p class="title">{item.title}</p>
+                  <p set:html={item.body} />
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="sec-head scroll-reveal">
+          <p class="eyebrow">Lifestyle</p>
+          <h2>What daily life looks like.</h2>
+        </div>
+        <div class="life-grid scroll-reveal" data-reveal="stagger">
+          {
+            lifestyle.map((item, i) => (
+              <article class="spec-card">
+                <p class="title">{item.title}</p>
+                <p set:html={item.body} />
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Family <span class="amp">&amp;</span> legal</p>
+            <h2>Benefits that extend to your family.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Your QIV application can include your spouse, <a href="/panama-qualified-investor-visa-eligibility">dependent children</a>, and qualifying parents, typically on a single application with no additional investment required. Exact dependent eligibility should be confirmed with an attorney. Each dependent receives their own permanent residency card with full rights to live and work in Panama.
+            </p>
+            <p>
+              Permanent residency also gives you access to Panama's banking system, the ability to form a Panamanian corporation (Sociedad Anónima) or simplified company (SAS), and the legal standing to purchase property, sign contracts, and access the court system.
+            </p>
+            <p>
+              After five years, the <a href="/panama-qualified-investor-visa-2026">path to citizenship</a> opens. Panamanian citizenship includes a passport that offers strong global mobility, voting rights, and the ability to pass citizenship to future children born in Panama. Panama allows dual citizenship. No renunciation required.
+            </p>
+            <p>
+              The qualifying investment and the government fees charged on top of it are itemized on the <a href="/panama-qualified-investor-visa-cost">cost</a> page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FAQSection
+      items={pageFaqs}
+      eyebrow="Common questions"
+      heading="Tax, banking, and work in practice."
+      id="page-faq"
+      background="cream"
+    />
+    <ProgramFAQSection background="paper" />
+    <CtaBand />
+    <TopCTA />
+  </main>
+  <FaqJsonLd items={pageFaqs} />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    overflow: hidden;
+    isolation: isolate;
+    background: none;
+    min-height: 70vh;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 58% 40%;
+  }
+
+  .page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+
+  .split {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .stack {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .life-grid {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .split {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .life-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>

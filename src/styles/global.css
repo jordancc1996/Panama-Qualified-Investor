@@ -346,6 +346,20 @@ h3 em {
   background: var(--color-cream-tint);
 }
 
+/* FAQ measure column. Lives in global CSS so it cannot drift from stale per-component Vite HMR. */
+.faq-column {
+  max-width: var(--measure);
+  width: 100%;
+}
+
+.faq-column--center {
+  margin-inline: auto;
+}
+
+.faq-column--start {
+  margin-inline: 0 auto;
+}
+
 .section--navy {
   background: var(--color-navy-950);
   color: var(--color-on-navy-dim);
@@ -826,17 +840,9 @@ h3 em {
   border-bottom: 1px solid var(--color-line);
 }
 
-.faq summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 1.35rem 2.4rem 1.35rem 0;
-  position: relative;
-  font-family: var(--font-sans);
-  font-weight: var(--weight-semibold);
-  font-size: var(--text-body);
-  line-height: 1.45;
-  letter-spacing: var(--tracking-body);
-  color: var(--color-ink);
+.faq summary:focus-visible {
+  outline: 2px solid #405363;
+  outline-offset: 4px;
 }
 
 .faq summary::-webkit-details-marker {

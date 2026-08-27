@@ -1,27 +1,29 @@
 ---
 import Logo from './Logo.astro';
+import PreferredSourcesCTA from './PreferredSourcesCTA.astro';
 
 const year = new Date().getFullYear();
 const program = [
-  { href: '/visa', label: 'The Visa' },
-  { href: '/benefits', label: 'Benefits' },
-  { href: '/process', label: 'Process' },
-  { href: '/eligibility', label: 'Eligibility' },
-  { href: '/visa', label: 'Investment Options' },
+  { href: '/panama-qualified-investor-visa-2026', label: 'The Visa' },
+  { href: '/panama-qualified-investor-visa-benefits', label: 'Benefits' },
+  { href: '/panama-qualified-investor-visa-process-2026', label: 'Process' },
+  { href: '/panama-qualified-investor-visa-eligibility', label: 'Eligibility' },
+  { href: '/panama-qualified-investor-visa-cost', label: 'Cost' },
+  { href: '/panama-qualified-investor-visa-2026#investment-routes', label: 'Investment Options' },
 ];
 const resources = [
-  { href: '/faq', label: 'FAQ' },
-  { href: '/who-its-for', label: "Who It's For" },
+  { href: '/panama-qualified-investor-visa-faq', label: 'FAQ' },
+  { href: '/who-is-the-panama-qualified-investor-visa-for', label: "Who It's For" },
   { href: '/#why', label: 'About Panama' },
   { href: '/#book', label: 'Speak to an Advisor' },
 ];
 const company = [
-  { href: '#', label: 'About' },
-  { href: '#', label: 'Contact' },
-  { href: '#', label: 'Privacy Policy' },
+  { href: '/#book', label: 'Contact', advisor: true },
+  { href: '/privacy', label: 'Privacy Policy' },
 ];
 ---
 
+<PreferredSourcesCTA />
 <footer class="footer">
   <div class="wrap">
     <div class="top">
@@ -43,13 +45,24 @@ const company = [
       </div>
       <div class="col">
         <p class="heading">Company</p>
-        {company.map((item) => <a href={item.href}>{item.label}</a>)}
+        <span class="placeholder">About (page forthcoming)</span>
+        {
+          company.map((item) =>
+            item.advisor ? (
+              <a href={item.href} data-advisor-open>
+                {item.label}
+              </a>
+            ) : (
+              <a href={item.href}>{item.label}</a>
+            )
+          )
+        }
       </div>
     </div>
 
     <div class="bottom">
       <p>© {year} Panama Qualified Investor. All rights reserved.</p>
-      <a href="#">Privacy Policy</a>
+      <a href="/privacy">Privacy Policy</a>
     </div>
   </div>
 </footer>
@@ -110,12 +123,17 @@ const company = [
     margin: 0 0 1.5rem;
   }
 
-  .col a {
+  .col a,
+  .placeholder {
     font-family: var(--font-sans);
     font-size: var(--text-small);
     color: var(--color-on-navy-dim);
     padding-block: 0.35rem;
     transition: color 150ms ease-out;
+  }
+
+  .placeholder {
+    cursor: default;
   }
 
   .col a:hover {

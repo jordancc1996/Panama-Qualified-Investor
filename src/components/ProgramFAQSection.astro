@@ -1,0 +1,48 @@
+---
+import FAQAccordion from './FAQAccordion.astro';
+import { programFaqItems } from '../data/program-faq';
+
+/** Visible only. FAQPage JSON-LD for these eight questions lives solely on /panama-qualified-investor-visa-faq. */
+
+interface Props {
+  id?: string;
+  background?: 'paper' | 'cream';
+  omitQuestions?: string[];
+  /** `start` matches Eligibility.astro: measure-width column, left-aligned in `.wrap`. Default stays centered. */
+  align?: 'center' | 'start';
+}
+
+const {
+  id = 'about-the-program',
+  background = 'paper',
+  omitQuestions = [],
+  align = 'center',
+} = Astro.props;
+
+const items = programFaqItems(omitQuestions);
+const sectionClass = background === 'paper' ? 'section paper' : 'section bg-cream-tint';
+const columnClass = align === 'start' ? 'faq-column faq-column--start' : 'faq-column faq-column--center';
+---
+
+<section class={sectionClass} id={id}>
+  <div class="wrap">
+    <div class={columnClass}>
+      <div class="sec-head left scroll-reveal">
+        <p class="eyebrow">The program</p>
+        <h2>About the Program</h2>
+      </div>
+      <FAQAccordion items={items} idPrefix={id} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .sec-head.left {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  .sec-head h2 {
+    text-wrap: wrap;
+  }
+</style>

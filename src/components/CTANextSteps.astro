@@ -1,11 +1,11 @@
 ---
 import { FORMCARRY_ACTION } from '../lib/forms';
 
-const bg = 'https://images.unsplash.com/photo-1524544187526-2b2855b65f16?w=1920&q=80&auto=format&fit=crop';
+const bg = '/images/Panama-Qualified-Investor-Visa8.webp';
 
 const stats = [
-  { n: '60 days', t: 'Average time from first call to provisional permit' },
-  { n: '$300k', t: 'Minimum qualifying investment, returned at end of deposit term' },
+  { n: '30–90 days', t: 'From document submission to provisional permit' },
+  { n: '$300k', t: 'Current real estate minimum; scheduled to increase to $500,000 on October 15, 2026' },
   { n: '0%', t: "Tax on foreign-sourced income under Panama's territorial system" },
 ];
 
@@ -18,15 +18,16 @@ const expect = [
 ---
 
 <section class="cta" id="book">
-  <img class="bg" src={bg} alt="Panama City skyline at sunset" width="1920" height="1080" loading="lazy" />
+  <img class="bg" src={bg} alt="Panama City skyline beyond a neighborhood of low-rise rooftops and trees" width="1920" height="800" loading="lazy" />
   <div class="wrap content">
     <div class="form-col">
-      <h2>Book your <em>free assessment</em></h2>
+      <h2>Arrange your <em>advisory meeting</em></h2>
       <p class="sub">
         15 minutes with an advisor who specializes in your situation. No obligation, no pressure, just clarity on whether the QIV is right for you.
       </p>
       <form class="form" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
-        <input type="hidden" name="_subject" value="Free assessment request" />
+        <input type="hidden" name="_subject" value="Private advisory meeting request" />
+        <input type="hidden" name="source" value="homepage_book_form" />
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
         <label class="sr-only" for="book_first_name">First name</label>
         <input id="book_first_name" name="first_name" type="text" required placeholder="Enter your first name" />
@@ -255,25 +256,34 @@ const expect = [
     justify-content: center;
   }
 
+  .stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lede);
+  }
+
   .stat {
     display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    padding-block: 0.85rem;
+    align-items: flex-start;
+    gap: var(--space-eyebrow);
+    padding-block: var(--space-lede);
     border-top: 1px solid var(--color-line-dark);
   }
 
   .stat:first-child {
     border-top: 0;
+    padding-top: 0;
   }
 
   .n {
     font-family: var(--font-display);
     font-size: clamp(1.5rem, 4vw, 1.85rem);
     color: #ffffff;
-    line-height: 1;
+    line-height: var(--leading-heading);
     min-width: 4rem;
     margin: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .stat p:last-child {

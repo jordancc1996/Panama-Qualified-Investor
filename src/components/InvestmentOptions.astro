@@ -5,10 +5,9 @@ const routes = [
     title: 'Real estate',
     kicker: 'Most used route',
     body: 'Purchase Panamanian property free of liens on the qualifying amount. Title may sit in the applicant’s name, a Panama corporation, or a private interest foundation where the applicant is the ultimate beneficiary. Pre-construction is permitted through a licensed trust or a developer bank guarantee.',
-    note: 'Published real estate minimum through 15 October 2026. Confirm the prevailing threshold with counsel before committing capital.',
-    image:
-      'https://images.unsplash.com/photo-1637971405797-ccf327195cb1?w=800&q=80&auto=format&fit=crop',
-    alt: 'Modern high-rise buildings in Panama City',
+    note: 'The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. Confirm the prevailing threshold with counsel before committing capital.',
+    image: '/images/Panama-Qualified-Investor-Visa-1.webp',
+    alt: 'Low-angle view of teal and gold Panama City skyscrapers against a pale sky',
   },
   {
     amount: '$500,000',
@@ -16,9 +15,8 @@ const routes = [
     kicker: 'Market route',
     body: 'Place $500,000 in securities listed on the Bolsa de Valores de Panamá through a brokerage licensed by the Superintendencia del Mercado de Valores. The book must be held for five years.',
     note: 'Suits investors who prefer a financial asset over property administration.',
-    image:
-      'https://images.unsplash.com/photo-1540610410855-b4c8877b761c?w=800&q=80&auto=format&fit=crop',
-    alt: 'Panama City financial district at night',
+    image: '/images/Panama-Qualified-Invesotr-Visa6.webp',
+    alt: 'White colonial building with balconies, iron railings, and potted greenery',
   },
   {
     amount: '$750,000',
@@ -26,9 +24,8 @@ const routes = [
     kicker: 'Deposit route',
     body: 'Hold $750,000 in a fixed-term deposit of at least five years at a bank with a general license authorized to operate in Panama, under supervision of the Superintendencia de Bancos.',
     note: 'Capital remains in the banking system for the statutory term.',
-    image:
-      'https://images.unsplash.com/photo-1582059983736-eedd5df2212b?w=800&q=80&auto=format&fit=crop',
-    alt: 'Panama City skyline during daytime',
+    image: '/images/Panama-Qualified-Investor-Visa4.webp',
+    alt: 'Panamanian flag on a silver pole, framed by palm fronds against an overcast sky',
   },
 ];
 ---
@@ -46,7 +43,7 @@ const routes = [
       {
         routes.map((route, i) => (
           <article class="pcard">
-            <img src={route.image} alt={route.alt} width="800" height="600" loading="lazy" />
+            <img src={route.image} alt={route.alt} width="800" height="1000" loading="lazy" />
             <div class="pcard-body">
               <p class="eyebrow">{route.kicker}</p>
               <p class="amount">{route.amount}</p>

@@ -1,0 +1,330 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
+import CtaBand from '../components/CtaBand.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+
+const pageFaqs = [
+  {
+    q: 'What is the application fee?',
+    a: "A $5,000 application fee is paid to Panama's National Treasury. This is a government processing charge, not part of the qualifying investment.",
+  },
+  {
+    q: 'What is the repatriation deposit?',
+    a: 'A $5,000 repatriation deposit is paid to the National Immigration Service. This is a government-side amount, separate from the investment itself.',
+  },
+  {
+    q: 'How much is the fee for an adult dependent?',
+    a: 'An additional $2,000 per adult dependent included in the application, split between the National Treasury and the Immigration Service.',
+  },
+  {
+    q: 'Are legal fees included in the government charges?',
+    a: 'No. These are government-side fees. They do not include legal or attorney fees. Attorney fees vary by firm and scope. Get a clear, itemized fee quote in writing before engaging counsel. This page does not state a dollar range for legal work because that figure is not a fixed government amount.',
+  },
+];
+
+const govFees = [
+  {
+    title: '$5,000 application fee',
+    body: 'Paid to Panama\'s National Treasury. This is a government processing charge, not part of the qualifying investment.',
+  },
+  {
+    title: '$5,000 repatriation deposit',
+    body: 'Paid to the National Immigration Service. This is a government-side amount, separate from the investment itself.',
+  },
+  {
+    title: '$2,000 per adult dependent',
+    body: 'An additional $2,000 per adult dependent included in the application, split between the National Treasury and the Immigration Service.',
+  },
+];
+
+const heroImage = '/images/hero-visa.webp';
+const heroWidth = 1024;
+const heroHeight = 585;
+
+const title = 'Panama Qualified Investor Visa Cost';
+const description =
+  'Panama Qualified Investor Visa Cost covers the $300,000 real estate minimum, rising to $500,000 on October 15, 2026, plus $5,000 application and $5,000 repatriation fees.';
+---
+
+<BaseLayout title={title} description={description} ogDescription={description} path="/panama-qualified-investor-visa-cost">
+  <Navbar />
+  <main id="main">
+    <section class="page-hero">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="Panamanian flag waving against a bright sky"
+        width={heroWidth}
+        height={heroHeight}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">Cost</p>
+        <h1>Panama Qualified Investor Visa Cost</h1>
+        <p class="subtext">
+          The qualifying investment and the government fees charged on top of it, in one place.
+        </p>
+      </div>
+    </section>
+    <MonthlyUpdates />
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Overview</p>
+            <h2>Two parts, not one number.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Panama Qualified Investor Visa Cost has two parts: the qualifying investment itself, and separate government processing fees paid on top of it. Both are covered here. Legal and professional fees are a third line, and they vary by firm.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">The qualifying investment</p>
+            <h2>Capital you place, not a government charge.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              The investment is the amount required to qualify. Route amounts and lock-in rules are on the visa page, not restated here. See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>.
+            </p>
+            <p>
+              The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026.
+            </p>
+          </div>
+          <InvestmentDeadlineNote />
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="sec-head scroll-reveal">
+          <p class="eyebrow">Government fees</p>
+          <h2>Paid on top of the investment.</h2>
+        </div>
+        <div class="three-grid scroll-reveal" data-reveal="stagger">
+          {
+            govFees.map((item) => (
+              <article class="spec-card">
+                <p class="title">{item.title}</p>
+                <p>{item.body}</p>
+              </article>
+            ))
+          }
+        </div>
+        <p class="fee-note">
+          These are government-side fees. They do not include legal or attorney fees.
+        </p>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Legal and professional fees</p>
+            <h2>This line varies by firm and scope.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Attorney fees are the one cost component that genuinely varies. Some firms charge a flat fee for the full application process. Others bill differently depending on the route, the number of dependents, and how much document work is included.
+            </p>
+            <p>
+              Get a clear, itemized fee quote in writing before engaging counsel. This page does not state a dollar range for legal work because that figure is not a fixed government amount.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="sec-head scroll-reveal">
+          <p class="eyebrow">Total</p>
+          <h2>How the pieces add up.</h2>
+        </div>
+        <div class="table-wrap scroll-reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Amount</th>
+                <th>Nature</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="route">Qualifying investment</td>
+                <td>Varies by route. See the <a href="/panama-qualified-investor-visa-2026#investment-routes">three routes</a>.</td>
+                <td>Asset you hold. Not a spent government fee. Subject to the program's hold period, then yours to exit.</td>
+              </tr>
+              <tr>
+                <td class="route">Application fee</td>
+                <td>$5,000</td>
+                <td>Paid to Panama's National Treasury</td>
+              </tr>
+              <tr>
+                <td class="route">Repatriation deposit</td>
+                <td>$5,000</td>
+                <td>Paid to the National Immigration Service</td>
+              </tr>
+              <tr>
+                <td class="route">Adult dependent</td>
+                <td>$2,000 each, if applicable</td>
+                <td>Split between the National Treasury and the Immigration Service</td>
+              </tr>
+              <tr>
+                <td class="route">Legal and professional fees</td>
+                <td>Varies. Get a written quote.</td>
+                <td>Not a government fee</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fee-note">
+          The investment remains an asset under the program's hold rules. The $5,000 application fee, the $5,000 repatriation deposit, and the $2,000 per adult dependent are government charges on top of that capital.
+        </p>
+      </div>
+    </section>
+
+    <FAQSection
+      items={pageFaqs}
+      eyebrow="Common questions"
+      heading="Fees charged on top of the investment."
+      id="page-faq"
+      background="cream"
+    />
+    <ProgramFAQSection background="paper" />
+    <CtaBand />
+    <TopCTA />
+  </main>
+  <FaqJsonLd items={pageFaqs} />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    overflow: hidden;
+    isolation: isolate;
+    background: none;
+    min-height: 70vh;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 42% 40%;
+  }
+
+  .page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+
+  .three-grid {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .fee-note {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    color: var(--color-muted);
+    line-height: var(--leading-body);
+    max-width: var(--measure);
+    margin: 1.5rem 0 0;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 4px;
+    border: 1px solid var(--color-line);
+    margin-top: 1.5rem;
+  }
+
+  table {
+    width: 100%;
+    min-width: 34rem;
+    border-collapse: collapse;
+  }
+
+  th {
+    background: var(--color-navy-900);
+    color: var(--color-on-navy-dim);
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0.7rem 1rem;
+  }
+
+  td {
+    padding: 0.7rem 1rem;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-ink-soft);
+    font-size: var(--text-small);
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(even) td {
+    background: color-mix(in oklab, var(--color-cream) 32%, var(--color-paper));
+  }
+
+  .route {
+    font-weight: var(--weight-bold);
+    color: var(--color-ink);
+  }
+
+  @media (min-width: 1024px) {
+    .three-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>

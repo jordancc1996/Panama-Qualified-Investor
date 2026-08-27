@@ -1,0 +1,260 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
+import CtaBand from '../components/CtaBand.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+import { faqBank } from '../data/faq-bank';
+
+const pageFaqs = faqBank.applicationAndLegalProcess.filter(
+  (item) => item.q !== 'How much are the government fees?',
+);
+
+const requirements = [
+  {
+    title: 'Minimum Investment',
+    body: 'Titled real estate from $300,000, listed securities from $500,000, or a fixed-term bank deposit from $750,000. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. The investment must be in your name. Government fees sit on top of this amount; see <a href="/panama-qualified-investor-visa-cost">Panama Qualified Investor Visa Cost</a>.',
+  },
+  {
+    title: 'Clean Criminal Background',
+    body: 'You must pass standard background check requirements. Serious criminal convictions disqualify applicants.',
+  },
+  {
+    title: 'Proof of Legitimate Funds',
+    body: 'You must demonstrate the source of your investment capital: employment income, business profits, investment returns, inheritance, or asset sales.',
+  },
+  {
+    title: 'Valid Passport',
+    body: 'From any country. At least 6 months remaining validity.',
+  },
+  {
+    title: 'Health Certificate',
+    body: 'A basic medical exam confirming you are free of communicable diseases.',
+  },
+  {
+    title: 'No Panamanian Criminal Record',
+    body: 'Applicants with existing legal issues in Panama are not eligible.',
+  },
+];
+
+const notRequired = [
+  {
+    title: 'No Language Test',
+    body: 'Unlike Portugal, France, or Germany, Panama does not require a Spanish exam for residency.',
+  },
+  {
+    title: 'No Age Limit',
+    body: 'The program is open to applicants of any age. There is no minimum or maximum.',
+  },
+  {
+    title: 'No Interview',
+    body: 'There is no immigration interview, no case officer meeting, and no panel review.',
+  },
+  {
+    title: 'No Nationality Quotas',
+    body: 'Every country is treated equally. <a href="/h1b">No per-country caps</a>, no priority dates, no backlogs.',
+  },
+  {
+    title: 'No Minimum Stay',
+    body: 'You do not need to live in Panama full-time. Panama does not enforce a strict minimum stay requirement, though maintaining some periodic presence is recommended.',
+  },
+  {
+    title: 'No Business Plan',
+    body: 'Unlike investor visas in the US (E-2/EB-5) or UK, you do not need to create jobs or submit a business plan.',
+  },
+];
+
+const heroImage = '/images/hero-eligibility.webp';
+const heroWidth = 1024;
+const heroHeight = 682;
+
+const title = 'Panama Qualified Investor Visa Eligibility';
+const description =
+  "Who qualifies for Panama's QIV? Open to all nationalities, no age limit, no language test. $300,000 real estate minimum, rising to $500,000 on October 15, 2026.";
+---
+
+<BaseLayout title={title} description={description} ogDescription={description} path="/panama-qualified-investor-visa-eligibility">
+  <Navbar />
+  <main id="main">
+    <section class="page-hero">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="A Panamanian flag flying over a green field of smaller flags under an overcast sky"
+        width={heroWidth}
+        height={heroHeight}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">Eligibility</p>
+        <h1>Panama Qualified Investor Visa Eligibility</h1>
+        <p class="subtext">
+          The QIV is designed to be accessible, but there are clear eligibility requirements. Here's the full picture.
+        </p>
+      </div>
+    </section>
+    <MonthlyUpdates />
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="sec-head scroll-reveal">
+          <p class="eyebrow">Requirements</p>
+          <h2>What you must have.</h2>
+        </div>
+        <InvestmentDeadlineNote />
+        <div class="two-grid scroll-reveal" data-reveal="stagger">
+          {
+            requirements.map((item, i) => (
+              <article class="spec-card">
+                <p class="title">{item.title}</p>
+                <p set:html={item.body} />
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="sec-head scroll-reveal">
+          <p class="eyebrow">What you don't need</p>
+          <h2>Barriers that don't exist here.</h2>
+        </div>
+        <div class="three-grid scroll-reveal" data-reveal="stagger">
+          {
+            notRequired.map((item, i) => (
+              <article class="spec-card">
+                <p class="title">{item.title}</p>
+                <p set:html={item.body} />
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Family</p>
+            <h2>Who can be included.</h2>
+          </div>
+          <div class="prose">
+            <p>Your application can include the following dependents at no additional investment requirement:</p>
+            <p>
+              Your legal spouse, married or common-law, depending on applicable law. Dependent children, biological or legally adopted. Qualifying parents of you or your spouse. Exact dependent eligibility should be confirmed with an attorney.
+            </p>
+            <p>
+              Each dependent receives their own permanent residency card with <a href="/panama-qualified-investor-visa-benefits">full rights to live and work</a> in Panama. Dependent documents (passport, background check, health certificate) must be submitted alongside yours. There is no limit on the number of qualifying dependents. Adult dependents incur a separate government fee, listed on the <a href="/panama-qualified-investor-visa-cost">cost</a> page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Disqualifiers</p>
+            <h2>Who does not qualify.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              The following will disqualify an application: a serious criminal conviction (felony-level offenses, fraud, money laundering, drug trafficking, terrorism); inability to demonstrate a legitimate source of funds; failing required background checks; existing legal proceedings in Panama; or providing false or forged documents.
+            </p>
+            <p>
+              Minor infractions (traffic violations, misdemeanors) generally do not disqualify applicants, but each case is assessed individually. If you have concerns about your background, raise them during the <a href="/panama-qualified-investor-visa-process-2026">initial consultation</a>, before investing time or money in the process.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FAQSection
+      items={pageFaqs}
+      eyebrow="Common questions"
+      heading="Application follow-up."
+      id="page-faq"
+      background="paper"
+    />
+    <ProgramFAQSection background="cream" />
+    <CtaBand />
+    <TopCTA />
+  </main>
+  <FaqJsonLd items={pageFaqs} />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    overflow: hidden;
+    isolation: isolate;
+    background: none;
+    min-height: 70vh;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 46% 40%;
+  }
+
+  .page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+
+  .two-grid,
+  .three-grid {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .two-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .three-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>

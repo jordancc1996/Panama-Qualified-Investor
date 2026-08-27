@@ -3,8 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
-import PreferredSourcesCTA from '../components/PreferredSourcesCTA.astro';
 import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
 
 const heroImage = '/images/hero-h1b.webp';
 const heroWidth = 682;
@@ -13,15 +16,15 @@ const heroHeight = 1024;
 const benefits = [
   {
     title: 'No Country Quotas',
-    body: 'Unlike the <a href="/papers">US green card system</a>, Panama\'s QIV has no per-country limits. Indian, Chinese, and all other nationals are processed identically on the same timeline.',
+    body: 'Unlike the US green card system, Panama\'s QIV has no per-country limits. Indian, Chinese, and all other nationals are processed identically on the same timeline.',
   },
   {
     title: 'No Employer Dependency',
     body: 'Your Panamanian residency belongs to you, not your employer. If you change jobs, get laid off, or start a company, your Panama status is unaffected.',
   },
   {
-    title: '30–60 Day Processing',
-    body: 'Not 10 years. Not 5 years. The entire process from document submission to provisional permit takes 30 to 60 days.',
+    title: 'Independent of the US backlog',
+    body: 'Processing is 30 to 90 days from document submission to provisional permit.',
   },
   {
     title: 'H-1B Status Unaffected',
@@ -29,29 +32,11 @@ const benefits = [
   },
   {
     title: 'A Home You Actually Own',
-    body: 'After years of temporary status in the US, Panama gives you something permanent. <a href="/benefits">Legal residency that doesn\'t expire</a>, doesn\'t require renewal, and leads to citizenship in 5 years.',
+    body: 'After years of temporary status in the US, Panama gives you something permanent. <a href="/panama-qualified-investor-visa-benefits">Legal residency that doesn\'t expire</a>, doesn\'t require renewal, and leads to citizenship in 5 years.',
   },
   {
     title: 'Family Coverage',
     body: 'Your spouse and dependent children are included in the same application. Your spouse receives their own residency permit with full work authorization in Panama: no EAD drama.',
-  },
-];
-
-const routes = [
-  {
-    n: '01',
-    title: 'Titled Real Estate',
-    body: 'Purchase titled property valued at $300,000 or more. Residential, commercial, or land registered in your name.',
-  },
-  {
-    n: '02',
-    title: 'Stocks <span class="amp">&amp;</span> Securities',
-    body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange through a licensed local brokerage.',
-  },
-  {
-    n: '03',
-    title: 'Fixed-Term Bank Deposit',
-    body: 'Place $300,000 in a three-year fixed-term deposit at a licensed Panamanian bank. Funds are returned at term end.',
   },
 ];
 
@@ -62,7 +47,7 @@ const faqs = [
   },
   {
     q: 'Can I do this while I\'m still in the US on an H-1B?',
-    a: 'Yes. Most of the process can be done remotely: document preparation, background checks, and investment setup. You will need to travel to Panama for the biometrics appointment and to finalize the application, which typically requires a 3–5 day trip.',
+    a: 'Yes. Most of the process can be done remotely: document preparation, background checks, and investment setup. You will need a short trip to Panama, typically just a day or two, to complete biometrics and finalize the application.',
   },
   {
     q: 'What if I get my green card later? Do I lose the Panama residency?',
@@ -70,7 +55,7 @@ const faqs = [
   },
   {
     q: 'Is $300,000 realistic on an H-1B salary?',
-    a: 'It depends on your specific situation. Many H-1B holders in tech, finance, and healthcare have savings, vested equity, or investment portfolios that meet the threshold. The bank deposit route means the money is not spent. It\'s held in a fixed-term deposit and returned to you after three years.',
+    a: 'It depends on your specific situation. Many H-1B holders in tech, finance, and healthcare have savings, vested equity, or investment portfolios that meet the real estate threshold. The $300,000 real estate investment minimum is scheduled to rise to $500,000 on October 15, 2026. The bank deposit route ($750,000) means the money is not spent. It\'s held in a fixed-term deposit and returned to you after five years.',
   },
   {
     q: 'My spouse is on H-4 and can\'t work. Does Panama help?',
@@ -81,8 +66,8 @@ const faqs = [
 
 <BaseLayout
   title="Panama Qualified Investor Visa for H-1B Holders | Backup Residency Plan"
-  description="H-1B holders can skip the green card backlog. Panama's QIV grants permanent residency in 30–60 days. No country quotas, no employer dependency. $300,000."
-  ogDescription="H-1B holders can skip the green card backlog. Panama's QIV grants permanent residency in 30–60 days. No country quotas, no employer dependency. $300,000."
+  description="H-1B holders can skip the green card backlog. Panama QIV processing is 30 to 90 days from document submission to provisional permit. Real estate from $300,000, rising October 15, 2026."
+  ogDescription="H-1B holders can skip the green card backlog. Panama QIV processing is 30 to 90 days from document submission to provisional permit. Real estate from $300,000, rising October 15, 2026."
   path="/h1b"
 >
   <Navbar />
@@ -104,7 +89,7 @@ const faqs = [
           The Panama Qualified Investor Visa for H-1B holders: a permanent residency that doesn't depend on a queue, a sponsor, or a lottery.
         </h1>
         <p class="subtext">
-          How H-1B holders, especially those facing decade-long green card backlogs, are using the <a href="/visa">Panama Qualified Investor Visa</a> as a parallel path to permanent legal status outside the US.
+          How H-1B holders, especially those facing decade-long green card backlogs, are using the <a href="/panama-qualified-investor-visa-2026">Panama Qualified Investor Visa</a> as a parallel path to permanent legal status outside the US.
         </p>
         <div class="actions">
           <a class="btn btn--gold" href="/#book">
@@ -118,13 +103,13 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left">
+          <div class="sec-head left scroll-reveal">
             <p class="eyebrow">The reality</p>
             <h2>The green card backlog is a structural problem, not a temporary one.</h2>
           </div>
           <div class="prose">
             <p>
-              If you're on an H-1B visa, you already know the numbers. The employment-based green card backlog for Indian nationals is estimated at 100+ years at current processing rates. For Chinese nationals, it's 10–15 years. <a href="/who-its-for">Even for other nationalities</a>, EB-2 and EB-3 wait times have stretched beyond what most professionals planned for when they first came to the US.
+              If you're on an H-1B visa, you already know the wait. Employment-based green card processing for some nationalities can stretch for many years. Confirm current wait times with your US immigration counsel. <a href="/who-is-the-panama-qualified-investor-visa-for">Even for other nationalities</a>, EB-2 and EB-3 wait times have stretched beyond what most professionals planned for when they first came to the US.
             </p>
             <p>
               During that wait, your status is tied to your employer. You can't freely change jobs without restarting parts of the process. You can't start your own company in any practical way. Your spouse may or may not have work authorization depending on the current EAD policy. And if you're laid off, you have 60 days to find a new sponsor or leave the country.
@@ -133,21 +118,20 @@ const faqs = [
               This isn't a system that's going to be fixed quickly. Immigration reform has been promised for decades and delivered in fragments. The rational response is not to wait. It's to build a backup.
             </p>
             <p>
-              Panama's Qualified Investor Visa has nothing to do with the US immigration system. There's <a href="/eligibility">no country-specific quota</a>, no employer sponsorship, no lottery, and no queue. You invest $300,000, submit your documents, and receive a provisional permit in 30 to 60 days. Your H-1B status is completely unaffected.
+              Panama's Qualified Investor Visa has nothing to do with the US immigration system. There's <a href="/panama-qualified-investor-visa-eligibility">no country-specific quota</a>, no employer sponsorship, no lottery, and no queue. You make a qualifying investment. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. You submit your documents and receive a provisional permit. Processing is 30 to 90 days from document submission to provisional permit. Your H-1B status is completely unaffected.
             </p>
           </div>
         </div>
       </div>
     </section>
-    <PreferredSourcesCTA />
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head scroll-reveal">
           <p class="eyebrow">Why Panama works for H-1B holders</p>
           <h2>Independence from a broken queue.</h2>
         </div>
-        <div class="cards cta-cards">
+        <div class="cards cta-cards scroll-reveal" data-reveal="stagger">
           {
             benefits.map((item, i) => (
               <article class="card">
@@ -163,67 +147,52 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left">
+          <div class="sec-head left scroll-reveal">
             <p class="eyebrow">How the visa works</p>
             <h2>Three routes to the same residency.</h2>
           </div>
-          <ol class="routes">
-            {
-              routes.map((route, i) => (
-                <li>
-                  <p class="n">{route.n}</p>
-                  <div>
-                    <p class="route-title" set:html={route.title} />
-                    <p>{route.body}</p>
-                  </div>
-                </li>
-              ))
-            }
-          </ol>
+          <InvestmentDeadlineNote />
+          <p class="route-pointer">
+            The Qualified Investor Visa has three paths: real estate, listed securities from $500,000, or a $750,000 fixed-term deposit. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>.
+          </p>
           <p class="note">
-            All routes require a minimum $300,000 investment. <a href="/process">Processing takes 30–60 days</a>.
+            Processing is 30 to 90 days from document submission to provisional permit. See the <a href="/panama-qualified-investor-visa-process-2026">process</a>.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section bg-cream-tint">
-      <div class="wrap">
-        <div class="narrow">
-          <div class="sec-head left">
-            <p class="eyebrow">Common questions</p>
-            <h2>Questions H-1B holders ask most.</h2>
-          </div>
-          <div class="faq">
-            {
-              faqs.map((item) => (
-                <details>
-                  <summary>{item.q}</summary>
-                  <p>{item.a}</p>
-                </details>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <FAQSection
+      items={faqs}
+      eyebrow="Common questions"
+      heading="Questions H-1B holders ask most."
+      id="page-faq"
+      background="cream"
+    />
+    <ProgramFAQSection background="paper" />
     <section class="cta-band">
       <div class="wrap">
         <div class="cta-inner">
           <h2>Ready to explore your options?</h2>
           <p>15 minutes with an advisor who specializes in immigration backup plans for H-1B holders.</p>
-          <a class="btn btn--gold" href="/#book">
+          <button
+            class="btn btn--gold"
+            type="button"
+            data-advisor-contact-open
+            aria-haspopup="dialog"
+            aria-controls="advisor-contact-modal"
+          >
             Speak with an Advisor
-          </a>
+          </button>
           <p class="cta-mail">
             Or email us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>
           </p>
         </div>
       </div>
     </section>
-    <TopCTA showPreferredSources={false} />
+    <TopCTA />
   </main>
+  <FaqJsonLd items={faqs} />
   <Footer />
 </BaseLayout>
 
@@ -356,42 +325,12 @@ const faqs = [
     line-height: var(--leading-body);
   }
 
-  .routes {
-    list-style: none;
-    margin: 2rem 0 0;
-    padding: 0;
-  }
-
-  .routes li {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    padding: 1.35rem 0;
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  .n {
-    font-family: var(--font-display);
-    font-size: var(--text-h3);
-    color: var(--color-navy-600);
-    line-height: 1;
-    min-width: 2.4rem;
-    margin: 0;
-  }
-
-  .route-title {
+  .route-pointer {
     font-family: var(--font-sans);
-    font-weight: var(--weight-semibold);
     font-size: var(--text-body);
-    color: var(--color-ink);
-    margin: 0 0 0.25rem;
-  }
-
-  .routes li p:last-child {
-    margin: 0;
     color: var(--color-ink-soft);
-    font-size: var(--text-body);
     line-height: var(--leading-body);
+    margin: 1.5rem 0 0;
   }
 
   .note {
@@ -401,10 +340,6 @@ const faqs = [
     margin: 1.5rem 0 0;
     text-align: center;
     line-height: var(--leading-body);
-  }
-
-  .faq {
-    margin-top: 2.5rem;
   }
 
   .cta-band {

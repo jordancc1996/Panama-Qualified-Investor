@@ -3,7 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
+import CtaBand from '../components/CtaBand.astro';
 import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import { COSTS_BEYOND_INVESTMENT, PROCESSING_TIME, REAL_ESTATE_THRESHOLD_NOTE } from '../data/program-faq';
+import FAQSection from '../components/FAQSection.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+import { faqBank } from '../data/faq-bank';
+
+const pageFaqs = faqBank.applicationAndLegalProcess.filter(
+  (item) => item.q !== 'How much are the government fees?',
+);
 
 const steps = [
   {
@@ -12,11 +22,11 @@ const steps = [
   },
   {
     title: 'Document Collection (Weeks 1–3)',
-    body: "You'll provide: a valid passport, a <a href=\"/eligibility\">police background check</a> from your country of residence (apostilled), a personal reference letter from your bank, proof of income or net worth, a health certificate from a licensed physician, and four passport-style photos. If you're including dependents, their documents are collected in parallel. We provide a detailed checklist and review every document before submission.",
+    body: "You'll provide: a valid passport, a <a href=\"/panama-qualified-investor-visa-eligibility\">police background check</a> from your country of residence (apostilled), a personal reference letter from your bank, proof of income or net worth, a health certificate from a licensed physician, and four passport-style photos. If you're including dependents, their documents are collected in parallel. We provide a detailed checklist and review every document before submission.",
   },
   {
     title: 'Investment Execution (Weeks 2–4)',
-    body: 'Once your documents are in progress, you execute the <a href="/visa">qualifying investment</a>. For real estate: you select and purchase a property with our vetted partners, and the title is registered in your name. For securities: we connect you with a licensed Panamanian brokerage to open an account and purchase qualifying instruments. For bank deposit: we introduce you to licensed banks offering fixed-term CDs. We coordinate with the relevant institution to ensure the investment meets immigration requirements.',
+    body: 'Once your documents are in progress, you execute the <a href="/panama-qualified-investor-visa-2026">qualifying investment</a>. For real estate: you select and purchase a property with our vetted partners, and the title is registered in your name. For securities: we connect you with a licensed Panamanian brokerage to open an account and purchase qualifying instruments. For bank deposit: we introduce you to licensed banks offering fixed-term CDs. We coordinate with the relevant institution to ensure the investment meets immigration requirements.',
   },
   {
     title: 'Application Filing (Week 4)',
@@ -24,11 +34,11 @@ const steps = [
   },
   {
     title: 'Biometrics <span class="amp">&amp;</span> Provisional Permit (Weeks 4–6)',
-    body: 'You travel to Panama for a biometrics appointment (fingerprints, photograph) at the immigration office. This visit typically takes one business day. Within 30 days of filing, you receive a provisional residency permit (permiso provisional) that gives you full legal residency status while your permanent card is manufactured.',
+    body: 'You travel to Panama for a short trip, typically just a day or two, to complete a biometrics appointment (fingerprints, photograph) at the immigration office. Many applicants receive a provisional residency permit (permiso provisional) during this stage. Timing varies by case. The permit gives you full legal residency status while your permanent card is manufactured.',
   },
   {
     title: 'Permanent Residency Card (Weeks 6–10)',
-    body: 'Your permanent residency card (carné de residente permanente) is produced and issued. This is your long-term residency document. With this card, you can open bank accounts, sign contracts, purchase property, and enjoy all the <a href="/benefits">rights of a permanent resident</a>. The card is valid indefinitely. There is no renewal requirement.',
+    body: 'Your permanent residency card (carné de residente permanente) is produced and issued. This is your long-term residency document. With this card, you can open bank accounts, sign contracts, purchase property, and enjoy all the <a href="/panama-qualified-investor-visa-benefits">rights of a permanent resident</a>. The card is valid indefinitely. There is no renewal requirement.',
   },
 ];
 
@@ -67,20 +77,34 @@ const docs = [
   },
 ];
 
-const title = 'QIV Application Process | Step-by-Step Guide';
+const heroImage = '/images/hero-process.webp';
+const heroWidth = 682;
+const heroHeight = 1024;
+
+const title = 'Panama Qualified Investor Visa process 2026 - From inquiry to residency card | Panama Qualified Investor';
 const description =
-  "From first consultation to permanent residency card in 30–60 days. The complete step-by-step application process for Panama's Qualified Investor Visa.";
+  'Panama Qualified Investor Visa process 2026 covers each step from first consultation to residency card. Processing is 30 to 90 days from document submission to provisional permit.';
 ---
 
-<BaseLayout title={title} description={description} ogDescription={description} path="/process">
+<BaseLayout title={title} description={description} ogDescription={description} path="/panama-qualified-investor-visa-process-2026">
   <Navbar />
   <main id="main">
     <section class="page-hero">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="A receding row of Panamanian flags against a clear blue sky"
+        width={heroWidth}
+        height={heroHeight}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">The process</p>
-        <h1>The Panama Qualified Investor Visa process: from first inquiry to residency card.</h1>
+        <h1>Panama Qualified Investor Visa process 2026: from first inquiry to residency card.</h1>
         <p class="subtext">
-          A transparent, step-by-step breakdown of the Qualified Investor Visa process: what happens, when, and what you need to prepare.
+          Panama Qualified Investor Visa process 2026 covers each step from first inquiry to residency card.
         </p>
       </div>
     </section>
@@ -89,11 +113,14 @@ const description =
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left">
+          <div class="sec-head left scroll-reveal">
             <p class="eyebrow">Timeline</p>
             <h2>What to expect, week by week.</h2>
           </div>
-          <ol class="steps">
+          <p>
+            The sequence below is a typical path. Processing takes {PROCESSING_TIME}.
+          </p>
+          <ol class="steps scroll-reveal" data-reveal="stagger">
             {
               steps.map((step, i) => (
                 <li>
@@ -109,11 +136,11 @@ const description =
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head scroll-reveal">
           <p class="eyebrow">Documents required</p>
           <h2>What you need to prepare.</h2>
         </div>
-        <div class="doc-grid">
+        <div class="doc-grid scroll-reveal" data-reveal="stagger">
           {
             docs.map((item, i) => (
               <article class="spec-card">
@@ -129,16 +156,16 @@ const description =
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left">
+          <div class="sec-head left scroll-reveal">
             <p class="eyebrow">Costs</p>
             <h2>What it costs beyond the investment.</h2>
           </div>
           <div class="prose">
             <p>
-              The $300,000 is your investment. It's not a fee. You own the asset (property, securities, or deposit) and it remains yours. Separately, there are processing costs that cover government fees, legal representation, and document preparation.
+              The qualifying investment is yours; it is not a fee. You own the asset (property, securities, or deposit). {REAL_ESTATE_THRESHOLD_NOTE} Separately, there are processing costs that cover government fees, legal representation, and document preparation.
             </p>
             <p>
-              Government filing fees typically total $2,000–$3,000 for a primary applicant, with additional fees per dependent. Legal fees vary by firm and complexity but generally range from $5,000–$15,000 for full-service representation. Document authentication (apostille) costs depend on your home country.
+              {COSTS_BEYOND_INVESTMENT}
             </p>
             <p>We provide a complete, itemized fee breakdown during your initial consultation: no hidden costs.</p>
           </div>
@@ -146,20 +173,58 @@ const description =
       </div>
     </section>
 
-    <section class="cta-band">
-      <div class="wrap cta-band-inner">
-        <h2>Ready to take the next step?</h2>
-        <a class="btn btn--gold" href="/#book">
-          Speak with an Advisor
-        </a>
-      </div>
-    </section>
+    <FAQSection
+      items={pageFaqs}
+      eyebrow="Common questions"
+      heading="Filing and travel."
+      id="page-faq"
+      background="cream"
+    />
+    <ProgramFAQSection background="paper" />
+    <CtaBand />
     <TopCTA />
   </main>
+  <FaqJsonLd items={pageFaqs} />
   <Footer />
 </BaseLayout>
 
 <style>
+  .page-hero {
+    overflow: hidden;
+    isolation: isolate;
+    background: none;
+    min-height: 70vh;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 82%;
+  }
+
+  .page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
   .narrow {
     max-width: var(--measure);
     margin-inline: auto;

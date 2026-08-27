@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
+import CtaBand from '../components/CtaBand.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import InvestmentTable from '../components/InvestmentTable.astro';
+import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+import { faqBank } from '../data/faq-bank';
+import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program-faq';
+
+const pageFaqs = [
+  {
+    q: 'What investment options are available under the QIV?',
+    a: `Three routes: titled real estate, listed securities, or a <a href="#investment-routes">fixed-term bank deposit</a>. Real estate must be valued at $300,000 or more and registered in your name. ${REAL_ESTATE_THRESHOLD_NOTE} Listed securities start at $500,000 on the Panama Stock Exchange (Bolsa de Valores de Panamá), purchased through a licensed local brokerage. A fixed-term bank deposit starts at $750,000 in a five-year certificate of deposit at a licensed Panamanian bank. The securities and deposit routes are not affected by the scheduled real estate threshold change.`,
+  },
+  {
+    q: 'Who issues the Qualified Investor Visa?',
+    a: "Panama's National Immigration Service (Servicio Nacional de Migración) issues it as a permanent residency permit.",
+  },
+  {
+    q: 'Are there nationality-based quotas?',
+    a: 'No. The program is open to citizens of any country. There are no nationality-based quotas. The primary requirement is the investment itself, along with standard documentation and a <a href="/panama-qualified-investor-visa-eligibility">clean background check</a>.',
+  },
+  ...faqBank.taxesBankingAndBusiness.filter((item) => item.q === 'Does Panama have an inheritance or estate tax?'),
+];
+
+const routes = [
+  {
+    n: '01',
+    title: 'Titled Real Estate',
+    body: 'Purchase residential, commercial, or undeveloped land in Panama with clear title. The property must be valued at $300,000 or more and registered in your name. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. You own the asset outright and can sell it after maintaining it for the required period. Rental income from the property is subject to Panamanian income tax, but appreciation and foreign income are not.',
+  },
+  {
+    n: '02',
+    title: 'Stocks <span class="amp">&amp;</span> Securities',
+    body: 'Invest $500,000 or more in securities listed on the Panama Stock Exchange (Bolsa de Valores de Panamá) through a licensed local brokerage. Eligible instruments include equities, corporate bonds, government bonds, and investment funds. The investment must be maintained for the duration of your residency. Dividends and capital gains from the securities may be subject to Panamanian tax depending on the instrument. This route is not affected by the scheduled real estate threshold change.',
+  },
+  {
+    n: '03',
+    title: 'Fixed-Term Bank Deposit',
+    body: 'Deposit $750,000 or more in a five-year fixed-term certificate of deposit (CD) at a licensed Panamanian bank. The deposit earns interest at the prevailing rate and the principal is returned to you at the end of the term. This is the most straightforward route: no property management, no brokerage selection, just a bank deposit. This route is not affected by the scheduled real estate threshold change.',
+  },
+];
+
+const heroImage = '/images/hero-visa.webp';
+const heroWidth = 1024;
+const heroHeight = 585;
+
+const title = 'Panama Qualified Investor Visa 2026 | Complete Overview';
+const description =
+  "How the Panama Qualified Investor Visa works. Three investment routes, processing that varies by case, permanent residency, and a path to citizenship.";
+---
+
+<BaseLayout title={title} description={description} ogDescription={description} path="/panama-qualified-investor-visa-2026">
+  <Navbar />
+  <main id="main">
+    <section class="page-hero">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="Panamanian flag waving against a bright sky"
+        width={heroWidth}
+        height={heroHeight}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">The visa</p>
+        <h1>Panama Qualified Investor Visa 2026</h1>
+        <p class="subtext">
+          A complete breakdown of how the Panama Qualified Investor Visa works, its three investment routes, and what permanent residency in Panama actually means in practice.
+        </p>
+      </div>
+    </section>
+    <MonthlyUpdates />
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Overview</p>
+            <h2>What is the Qualified Investor Visa?</h2>
+          </div>
+          <div class="prose">
+            <p>
+              The Qualified Investor Visa (Visa de Inversionista Calificado) is a permanent residency permit issued by Panama's National Immigration Service (Servicio Nacional de Migración). It was established to attract foreign investment into Panama's economy by offering a <a href="/panama-qualified-investor-visa-process-2026">direct path to permanent residency</a> for individuals who make a qualifying investment in titled real estate, listed securities, or a fixed-term bank deposit.
+            </p>
+            <p>
+              Unlike temporary visas or tourist permits, the QIV grants permanent legal status from day one. Holders can live, work, start a business, open bank accounts, and access Panama's <a href="/panama-qualified-investor-visa-benefits">healthcare and education systems</a>. After five years of residency, QIV holders become eligible to apply for Panamanian citizenship and a passport.
+            </p>
+            <p>
+              The program is open to citizens of any country. There are no nationality-based quotas, no language requirements, no cultural integration exams, and no interview. The primary requirement is the investment itself, along with standard documentation and a <a href="/panama-qualified-investor-visa-eligibility">clean background check</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint" id="investment-routes">
+      <div class="wrap">
+        <div class="sec-head scroll-reveal">
+          <p class="eyebrow">Investment routes</p>
+          <h2>Three ways to qualify.</h2>
+        </div>
+        <InvestmentDeadlineNote />
+        <div class="route-grid scroll-reveal" data-reveal="stagger">
+          {
+            routes.map((item, i) => (
+              <article class="spec-card">
+                <p class="n">{item.n}</p>
+                <p class="title" set:html={item.title} />
+                <p>{item.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="sec-head scroll-reveal">
+          <p class="eyebrow">Side by side</p>
+          <h2>Comparing the three routes.</h2>
+        </div>
+        <InvestmentTable embedded showManagement />
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Beyond residency</p>
+            <h2>From permanent resident to citizen.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              After holding permanent residency for five consecutive years, you become eligible to apply for Panamanian citizenship through naturalization. The process requires demonstrating ties to the country, which can include property ownership, economic activity, or family connections, and passing a basic exam on Panamanian history and civics conducted in Spanish.
+            </p>
+            <p>
+              Panamanian citizenship grants you a passport with strong global mobility, voting rights, and the ability to pass citizenship to future children born in Panama. Panama allows dual citizenship, so you are not required to renounce your existing nationality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FAQSection
+      items={pageFaqs}
+      eyebrow="Common questions"
+      heading="Routes, nationality, and tax."
+      id="page-faq"
+      background="paper"
+    />
+    <ProgramFAQSection background="cream" />
+    <CtaBand />
+    <TopCTA />
+  </main>
+  <FaqJsonLd items={pageFaqs} />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    overflow: hidden;
+    isolation: isolate;
+    background: none;
+    min-height: 70vh;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 42% 40%;
+  }
+
+  .page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head {
+    margin-bottom: 2.5rem;
+  }
+
+  #investment-routes {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+
+  .route-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .route-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>

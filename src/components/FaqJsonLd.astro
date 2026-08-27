@@ -1,0 +1,16 @@
+---
+import type { FaqItem } from '../data/program-faq';
+import { faqPageJsonLd } from '../lib/faq-jsonld';
+
+interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <script type="application/ld+json" set:html={JSON.stringify(faqPageJsonLd(items))} />
+  )
+}

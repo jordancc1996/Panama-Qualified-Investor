@@ -3,8 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import TopCTA from '../components/TopCTA.astro';
-import PreferredSourcesCTA from '../components/PreferredSourcesCTA.astro';
 import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
 
 const heroImage = '/images/hero-tech-founders.webp';
 const heroWidth = 682;
@@ -21,7 +24,7 @@ const benefits = [
   },
   {
     title: 'No Minimum Stay',
-    body: 'Fly in for a week, fly out for a month. Panama doesn\'t require 183 days. Maintain your residency with a visit once every two years.',
+    body: 'Fly in for a week, fly out for a month. Panama does not enforce a strict minimum stay requirement, though maintaining some periodic presence is recommended.',
   },
   {
     title: 'Crypto-Friendly Banking',
@@ -34,24 +37,6 @@ const benefits = [
   {
     title: 'Cost of Living Advantage',
     body: 'A one-bedroom in Panama City\'s best neighborhoods runs $1,200–$1,800/month. A comparable apartment in San Francisco or New York costs 3–4x more. Coworking spaces start at $150/month.',
-  },
-];
-
-const routes = [
-  {
-    n: '01',
-    title: 'Titled Real Estate',
-    body: 'Purchase titled property valued at $300,000 or more. Residential, commercial, or land registered in your name.',
-  },
-  {
-    n: '02',
-    title: 'Stocks <span class="amp">&amp;</span> Securities',
-    body: 'Invest $300,000 or more in securities listed on the Panama Stock Exchange through a licensed local brokerage.',
-  },
-  {
-    n: '03',
-    title: 'Fixed-Term Bank Deposit',
-    body: 'Place $300,000 in a three-year fixed-term deposit at a licensed Panamanian bank. Funds are returned at term end.',
   },
 ];
 
@@ -81,8 +66,8 @@ const faqs = [
 
 <BaseLayout
   title="Panama Qualified Investor Visa for Tech Founders | Strategic Residency"
-  description="How remote-first founders use the Panama QIV as a strategic home base. Zero tax on foreign income, Americas time zone, crypto-friendly. From $300,000."
-  ogDescription="How remote-first founders use the Panama QIV as a strategic home base. Zero tax on foreign income, Americas time zone, crypto-friendly. From $300,000."
+  description="How remote-first founders use the Panama QIV as a strategic home base. Zero tax on foreign income. Current real estate minimum $300,000, rising to $500,000 on October 15, 2026."
+  ogDescription="How remote-first founders use the Panama QIV as a strategic home base. Zero tax on foreign income. Current real estate minimum $300,000, rising to $500,000 on October 15, 2026."
   path="/tech-founders"
 >
   <Navbar />
@@ -104,7 +89,7 @@ const faqs = [
           The Panama Qualified Investor Visa for tech founders: base your life somewhere that matches how you build.
         </h1>
         <p class="subtext">
-          How remote-first founders, startup CEOs, and Web3 builders are using the <a href="/visa">Panama Qualified Investor Visa</a> to establish a strategic home base, with zero tax on foreign income and direct flights to both US coasts.
+          How remote-first founders, startup CEOs, and Web3 builders are using the <a href="/panama-qualified-investor-visa-2026">Panama Qualified Investor Visa</a> to establish a strategic home base, with zero tax on foreign income and direct flights to both US coasts.
         </p>
         <div class="actions">
           <a class="btn btn--gold" href="/#book">
@@ -118,7 +103,7 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left">
+          <div class="sec-head left scroll-reveal">
             <p class="eyebrow">The reality</p>
             <h2>When your company is everywhere, your residency still has to be somewhere.</h2>
           </div>
@@ -133,21 +118,20 @@ const faqs = [
               Some founders have moved to Dubai, Lisbon, or Singapore. But each comes with trade-offs. Dubai has no income tax but limited banking for crypto. Portugal keeps restructuring its NHR regime. Singapore is expensive and requires physical presence.
             </p>
             <p>
-              Panama sits in the sweet spot. It's in the Americas. It's dollarized. It has <a href="/benefits">territorial taxation</a>. It has modern financial infrastructure. And it doesn't ask you to spend 183 days a year proving you live there.
+              Panama sits in the sweet spot. It's in the Americas. It's dollarized. It has <a href="/panama-qualified-investor-visa-benefits">territorial taxation</a>. It has modern financial infrastructure. And it doesn't ask you to spend 183 days a year proving you live there.
             </p>
           </div>
         </div>
       </div>
     </section>
-    <PreferredSourcesCTA />
 
     <section class="section bg-cream-tint">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head scroll-reveal">
           <p class="eyebrow">Why Panama works for founders</p>
           <h2>Designed for how you already operate.</h2>
         </div>
-        <div class="cards cta-cards">
+        <div class="cards cta-cards scroll-reveal" data-reveal="stagger">
           {
             benefits.map((item, i) => (
               <article class="card">
@@ -163,67 +147,52 @@ const faqs = [
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
-          <div class="sec-head left">
+          <div class="sec-head left scroll-reveal">
             <p class="eyebrow">How the visa works</p>
             <h2>Three routes to the same residency.</h2>
           </div>
-          <ol class="routes">
-            {
-              routes.map((route, i) => (
-                <li>
-                  <p class="n">{route.n}</p>
-                  <div>
-                    <p class="route-title" set:html={route.title} />
-                    <p>{route.body}</p>
-                  </div>
-                </li>
-              ))
-            }
-          </ol>
+          <InvestmentDeadlineNote />
+          <p class="route-pointer">
+            The Qualified Investor Visa has three paths: real estate, listed securities from $500,000, or a $750,000 fixed-term deposit. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>.
+          </p>
           <p class="note">
-            All routes require a minimum $300,000 investment. <a href="/process">Processing takes 30–60 days</a>.
+            Processing is 30 to 90 days from document submission to provisional permit. See the <a href="/panama-qualified-investor-visa-process-2026">process</a>.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section bg-cream-tint">
-      <div class="wrap">
-        <div class="narrow">
-          <div class="sec-head left">
-            <p class="eyebrow">Common questions</p>
-            <h2>Questions founders ask most.</h2>
-          </div>
-          <div class="faq">
-            {
-              faqs.map((item) => (
-                <details>
-                  <summary>{item.q}</summary>
-                  <p>{item.a}</p>
-                </details>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <FAQSection
+      items={faqs}
+      eyebrow="Common questions"
+      heading="Questions founders ask most."
+      id="page-faq"
+      background="cream"
+    />
+    <ProgramFAQSection background="paper" />
     <section class="cta-band">
       <div class="wrap">
         <div class="cta-inner">
           <h2>Ready to explore your options?</h2>
           <p>15 minutes with an advisor who works specifically with tech founders and remote CEOs.</p>
-          <a class="btn btn--gold" href="/#book">
+          <button
+            class="btn btn--gold"
+            type="button"
+            data-advisor-contact-open
+            aria-haspopup="dialog"
+            aria-controls="advisor-contact-modal"
+          >
             Speak with an Advisor
-          </a>
+          </button>
           <p class="cta-mail">
             Or email us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>
           </p>
         </div>
       </div>
     </section>
-    <TopCTA showPreferredSources={false} />
+    <TopCTA />
   </main>
+  <FaqJsonLd items={faqs} />
   <Footer />
 </BaseLayout>
 
@@ -356,42 +325,12 @@ const faqs = [
     line-height: var(--leading-body);
   }
 
-  .routes {
-    list-style: none;
-    margin: 2rem 0 0;
-    padding: 0;
-  }
-
-  .routes li {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    padding: 1.35rem 0;
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  .n {
-    font-family: var(--font-display);
-    font-size: var(--text-h3);
-    color: var(--color-navy-600);
-    line-height: 1;
-    min-width: 2.4rem;
-    margin: 0;
-  }
-
-  .route-title {
+  .route-pointer {
     font-family: var(--font-sans);
-    font-weight: var(--weight-semibold);
     font-size: var(--text-body);
-    color: var(--color-ink);
-    margin: 0 0 0.25rem;
-  }
-
-  .routes li p:last-child {
-    margin: 0;
     color: var(--color-ink-soft);
-    font-size: var(--text-body);
     line-height: var(--leading-body);
+    margin: 1.5rem 0 0;
   }
 
   .note {
@@ -401,10 +340,6 @@ const faqs = [
     margin: 1.5rem 0 0;
     text-align: center;
     line-height: var(--leading-body);
-  }
-
-  .faq {
-    margin-top: 2.5rem;
   }
 
   .cta-band {

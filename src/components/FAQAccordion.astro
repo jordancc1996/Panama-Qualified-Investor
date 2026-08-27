@@ -1,0 +1,37 @@
+---
+import type { FaqItem } from '../data/program-faq';
+
+interface Props {
+  items: FaqItem[];
+  idPrefix: string;
+}
+
+const { items, idPrefix } = Astro.props;
+
+function slug(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+---
+
+<div class="faq">
+  {
+    items.map((item) => {
+      const itemId = `${idPrefix}-${slug(item.q)}`;
+      const summaryId = `${itemId}-summary`;
+      const panelId = `${itemId}-panel`;
+      return (
+        <details id={itemId}>
+          <summary id={summaryId} aria-controls={panelId}>
+            {item.q}
+          </summary>
+          <div class="faq-panel" id={panelId} role="region" aria-labelledby={summaryId}>
+            <p set:html={item.a} />
+          </div>
+        </details>
+      );
+    })
+  }
+</div>

@@ -1,17 +1,19 @@
 ---
 import Logo from './Logo.astro';
 import AdvisorModal from './AdvisorModal.astro';
+import AdvisorContactModal from './AdvisorContactModal.astro';
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const links = [
-  { href: '/visa', label: 'The Visa' },
-  { href: '/benefits', label: 'Benefits' },
-  { href: '/who-its-for', label: "Who It's For" },
-  { href: '/process', label: 'Process' },
-  { href: '/eligibility', label: 'Eligibility' },
-  { href: '/faq', label: 'FAQ' },
-  { href: '/papers', label: 'Papers' },
+  { href: '/panama-qualified-investor-visa-2026', label: 'The Visa' },
+  { href: '/panama-qualified-investor-visa-benefits', label: 'Benefits' },
+  { href: '/who-is-the-panama-qualified-investor-visa-for', label: "Who It's For" },
+  { href: '/panama-qualified-investor-visa-process-2026', label: 'Process' },
+  { href: '/panama-qualified-investor-visa-eligibility', label: 'Eligibility' },
+  { href: '/panama-qualified-investor-visa-cost', label: 'Cost' },
+  { href: '/panama-qualified-investor-visa-faq', label: 'FAQ' },
+  { href: '/panama-qualified-investor-visa-research-papers', label: 'Papers' },
 ];
 ---
 
@@ -357,3 +359,4 @@ const links = [
 </script>
 
 <AdvisorModal />
+<AdvisorContactModal />

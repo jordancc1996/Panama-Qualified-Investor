@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import TopCTA from '../components/TopCTA.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
+
+const title = 'Privacy Policy - Panama Qualified Investor | Panama Qualified Investor';
+const description =
+  'Privacy Policy for Panama Qualified Investor explains how this site may collect, use, and store inquiry details. Draft pending legal review before launch.';
+---
+
+<BaseLayout title={title} description={description} ogDescription={description} path="/privacy">
+  <Navbar />
+  <main id="main">
+    <section class="page-hero">
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">Legal</p>
+        <h1>Privacy Policy</h1>
+        <p class="subtext">
+          Draft for review. This page is not a final legal document and must be reviewed by counsel before launch.
+        </p>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="prose">
+            <p>
+              This Privacy Policy draft describes how Panama Qualified Investor ("we," "us") may collect and use information submitted through panamaqualifiedinvestor.com. It is a working draft only. It has not been reviewed by an attorney and should not be relied on as a finished privacy notice.
+            </p>
+            <p>
+              <strong>Last updated:</strong> August 26, 2026 (draft).
+            </p>
+            <h2>Who this covers</h2>
+            <p>
+              This draft applies to visitors who browse this website or submit an inquiry, newsletter signup, or assessment request through forms on the site.
+            </p>
+            <h2>Information we may collect</h2>
+            <p>
+              When you use a form, we may collect the details you provide, such as name, email address, phone number, and information about your situation or investment timeline. Server logs may also record technical data such as IP address, browser type, and pages requested.
+            </p>
+            <h2>How we may use information</h2>
+            <p>
+              We intend to use submitted information to respond to inquiries, schedule consultations, send requested updates if you opted in, and operate and improve the website. We do not sell personal information.
+            </p>
+            <h2>Form processing</h2>
+            <p>
+              Form submissions are sent to a third-party form processor (FormCarry) so we can receive and manage inquiries. That processor's own terms and privacy practices also apply to data they handle.
+            </p>
+            <h2>Cookies and analytics</h2>
+            <p>
+              This draft does not yet document specific analytics or advertising cookies. Before launch, counsel should confirm whether any tracking tools are in use and update this section accordingly.
+            </p>
+            <h2>Retention and security</h2>
+            <p>
+              We intend to keep inquiry records only as long as needed to respond and to meet legal or operational requirements. No website transmission is perfectly secure.
+            </p>
+            <h2>Your requests</h2>
+            <p>
+              Depending on applicable law, you may have rights to access, correct, or delete personal information we hold. Contact us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a> to make a request. Legal entity details, a physical address, and a designated privacy contact still need to be supplied before this policy can be finalized.
+            </p>
+            <h2>Changes</h2>
+            <p>
+              When this policy is finalized, we will post the effective date here and update the page when the notice changes in a material way.
+            </p>
+            <p>
+              Questions about this draft: <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <ProgramFAQSection background="cream" />
+    <TopCTA />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .prose h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: 400;
+    color: var(--color-ink);
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  .prose h2:first-of-type {
+    margin-top: 0;
+  }
+</style>

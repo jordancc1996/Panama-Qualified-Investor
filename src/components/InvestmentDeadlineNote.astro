@@ -1,0 +1,57 @@
+---
+import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program-faq';
+
+interface Props {
+  variant?: 'on-navy' | 'on-paper';
+}
+
+const { variant = 'on-paper' } = Astro.props;
+---
+
+<aside class:list={['deadline', variant === 'on-navy' && 'deadline--on-navy']} role="note">
+  <p class="label">Real estate threshold</p>
+  <p>{REAL_ESTATE_THRESHOLD_NOTE}</p>
+</aside>
+
+<style>
+  .deadline {
+    border: 1px solid var(--color-navy-900);
+    background: var(--color-paper);
+    padding: 1.15rem 1.25rem;
+    margin: 1.5rem 0 0;
+    text-align: left;
+    max-width: 42rem;
+  }
+
+  .deadline--on-navy {
+    border-color: rgba(197, 160, 89, 0.55);
+    background: transparent;
+    margin: 1.75rem 0 0;
+  }
+
+  .label {
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: var(--weight-ui);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-navy-900);
+    margin: 0 0 0.45rem;
+  }
+
+  .deadline--on-navy .label {
+    color: #c5a059;
+  }
+
+  .deadline p:last-child {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    line-height: var(--leading-body);
+    color: var(--color-ink);
+  }
+
+  .deadline--on-navy p:last-child {
+    color: var(--color-on-navy);
+  }
+</style>
