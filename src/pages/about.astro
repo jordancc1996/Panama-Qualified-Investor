@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import TopCTA from '../components/TopCTA.astro';
+import CtaBand from '../components/CtaBand.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+
+const heroImage = '/images/hero-benefits.webp';
+const heroWidth = 1024;
+const heroHeight = 682;
+
+const title = 'About Panama Qualified Investor';
+const description =
+  'About Panama Qualified Investor focuses on the Panama Qualified Investor Visa, with over a decade of investment migration experience. Updated for 2026.';
+---
+
+<BaseLayout title={title} description={description} ogDescription={description} path="/about">
+  <Navbar />
+  <main id="main">
+    <section class="page-hero">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="Panamanian flags flying in a row under an overcast sky, one flag sharp in the foreground"
+        width={heroWidth}
+        height={heroHeight}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">Company</p>
+        <h1>About Panama Qualified Investor</h1>
+        <p class="subtext">
+          About Panama Qualified Investor is a site focused on the Panama Qualified Investor Visa, with over a decade of investment migration experience.
+        </p>
+      </div>
+    </section>
+    <MonthlyUpdates />
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">The site</p>
+            <h2>Information on one visa program.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              The team behind this site has over a decade of investment migration experience. The site provides well-researched information specifically on the Panama Qualified Investor Visa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Partnerships</p>
+            <h2>Work with investment migration firms.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Panama Qualified Investor is partnered with some of the leading investment migration companies.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Research</p>
+            <h2>Well-researched information on this visa.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              The site is committed to well-researched, accurate information specifically on the Panama Qualified Investor Visa. Published research on the <a href="/panama-qualified-investor-visa-research-papers">research papers</a> page is one example of that work.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CtaBand />
+    <TopCTA />
+  </main>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    overflow: hidden;
+    isolation: isolate;
+    background: none;
+    min-height: 70vh;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 58% 40%;
+  }
+
+  .page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+</style>

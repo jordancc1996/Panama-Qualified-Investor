@@ -10,6 +10,16 @@ const heroImage = '/images/hero-papers.webp';
 const heroWidth = 682;
 const heroHeight = 1024;
 
+const papers = [
+  {
+    title: "Panama's Investment Outlook: Why the Qualified Investor Visa Appeals to Global Investors",
+    author: 'Panama Qualified Investor Research Team',
+    description:
+      "This in-house paper covers Panama's investment outlook and why the Qualified Investor Visa may be attractive to investors considering residency through a qualifying investment.",
+    href: '/documents/panama-investment-outlook-qiv.pdf',
+  },
+];
+
 const title = 'Panama Qualified Investor Visa Research Papers';
 const description =
   "Panama Qualified Investor Visa research papers on territorial taxation, investment migration, and residency planning by economists. Updated for 2026 investors.";
@@ -41,7 +51,20 @@ const description =
 
     <section class="section paper">
       <div class="wrap list">
-        <p class="empty">Research papers are being added. Check back soon.</p>
+        {
+          papers.map((item) => (
+            <article class="paper-item">
+              <div class="info">
+                <h2 class="title">{item.title}</h2>
+                <p class="author">{item.author}</p>
+                <p class="desc">{item.description}</p>
+              </div>
+              <a class="pdf" href={item.href} download>
+                PDF
+              </a>
+            </article>
+          ))
+        }
       </div>
     </section>
 
@@ -112,6 +135,90 @@ const description =
   .list {
     max-width: 42rem;
     margin-inline: auto;
+  }
+
+  .paper-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .paper-item:first-child {
+    padding-top: 0;
+  }
+
+  .paper-item:last-child {
+    border-bottom: none;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-ink);
+    line-height: 1.3;
+    letter-spacing: var(--tracking-heading);
+    margin: 0;
+  }
+
+  .author {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: var(--weight-ui);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin: 0.4rem 0 0;
+    line-height: 1.45;
+  }
+
+  .desc {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: var(--weight-body);
+    color: var(--color-ink-soft);
+    line-height: 1.55;
+    margin: 0.5rem 0 0;
+  }
+
+  .pdf {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-cream);
+    border-radius: 8px;
+    padding: 0.45rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition:
+      background-color 150ms ease-out,
+      color 150ms ease-out;
+  }
+
+  .pdf:hover {
+    background: var(--color-navy-900);
+    color: #fff;
+  }
+
+  @media (max-width: 639px) {
+    .paper-item {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pdf {
+      margin-top: 0.75rem;
+      align-self: flex-start;
+    }
   }
 
   .empty {

@@ -18,6 +18,7 @@ const resources = [
   { href: '/#book', label: 'Speak to an Advisor' },
 ];
 const company = [
+  { href: '/about', label: 'About' },
   { href: '/#book', label: 'Contact', advisor: true },
   { href: '/privacy', label: 'Privacy Policy' },
 ];
@@ -45,7 +46,6 @@ const company = [
       </div>
       <div class="col">
         <p class="heading">Company</p>
-        <span class="placeholder">About (page forthcoming)</span>
         {
           company.map((item) =>
             item.advisor ? (

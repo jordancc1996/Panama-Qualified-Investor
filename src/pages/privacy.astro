@@ -17,7 +17,7 @@ const description =
         <p class="eyebrow eyebrow--on-navy">Legal</p>
         <h1>Privacy Policy</h1>
         <p class="subtext">
-          Draft for review. This page is not a final legal document and must be reviewed by counsel before launch.
+          Privacy Policy: draft for review. This page is not a final legal document and must be reviewed by counsel before launch.
         </p>
       </div>
     </section>
@@ -27,18 +27,35 @@ const description =
         <div class="narrow">
           <div class="prose">
             <p>
-              This Privacy Policy draft describes how Panama Qualified Investor ("we," "us") may collect and use information submitted through panamaqualifiedinvestor.com. It is a working draft only. It has not been reviewed by an attorney and should not be relied on as a finished privacy notice.
+              This Privacy Policy draft describes how Panama Qualified Investor ("we," "us") may collect and use information submitted through panamaqualifiedinvestor.com. It is a working draft only. It has not been reviewed by an attorney and should not be relied on as a finished privacy notice. Nothing on this page is a finished privacy notice or a substitute for counsel's review before publication.
             </p>
             <p>
-              <strong>Last updated:</strong> August 26, 2026 (draft).
+              <strong>Last updated:</strong> August 31, 2026 (draft). <strong>Effective date:</strong> [EFFECTIVE DATE TO BE DETERMINED]. This page is not in force until counsel approves it and an effective date is set.
             </p>
             <h2>Who this covers</h2>
             <p>
-              This draft applies to visitors who browse this website or submit an inquiry, newsletter signup, or assessment request through forms on the site.
+              This draft applies to visitors who browse this website or submit an inquiry, newsletter signup, or assessment request through forms on the site. The site is written for readers in the United States, Canada, and other countries. This draft does not yet state which country's law governs or where submitted data is stored. [APPLICABLE LAW AND DATA LOCATION TO BE DETERMINED].
+            </p>
+            <h2>Who operates this site</h2>
+            <p>
+              The site is published under the name Panama Qualified Investor, at panamaqualifiedinvestor.com. Contact for this draft: <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a>.
+            </p>
+            <p>
+              [DRAFT PLACEHOLDER] Legal entity name, registration details, and a physical mailing address have not been supplied in the site files. [LEGAL ENTITY NAME TO BE DETERMINED]. [REGISTERED ADDRESS TO BE DETERMINED]. [DESIGNATED PRIVACY CONTACT NAME/ROLE TO BE DETERMINED].
             </p>
             <h2>Information we may collect</h2>
             <p>
-              When you use a form, we may collect the details you provide, such as name, email address, phone number, and information about your situation or investment timeline. Server logs may also record technical data such as IP address, browser type, and pages requested.
+              Forms on this site post to a FormCarry endpoint. Fields actually present in the current codebase are:
+            </p>
+            <ul>
+              <li>Advisor modal (nav): name, email, phone, and a selected investment amount range (real estate, securities, bank deposit, or not sure).</li>
+              <li>Advisor contact modal: first name, last name, email, phone (optional), message (optional), and a required privacy-policy checkbox. Hidden fields record a subject line and a source value of advisor_contact_modal.</li>
+              <li>Homepage advisory-meeting form: first name, last name, email, phone (optional), situation (American, Canadian, tech founder, H-1B, or other), and investment timeline. Hidden fields record a subject line and a source value of homepage_book_form.</li>
+              <li>Newsletter and papers notify forms: email; some also collect first name, last name, and phone.</li>
+              <li>Technical form fields: a hidden subject line and a honeypot field named _gotcha, which is not intended for people to fill in.</li>
+            </ul>
+            <p>
+              Server logs may also record technical data such as IP address, browser type, and pages requested. The hosting setup for those logs is not documented in this repository. [HOSTING AND SERVER-LOG DETAILS TO BE DETERMINED].
             </p>
             <h2>How we may use information</h2>
             <p>
@@ -46,19 +63,26 @@ const description =
             </p>
             <h2>Form processing</h2>
             <p>
-              Form submissions are sent to a third-party form processor (FormCarry) so we can receive and manage inquiries. That processor's own terms and privacy practices also apply to data they handle.
+              Form submissions are sent by HTTP POST to FormCarry (formcarry.com) so we can receive and manage inquiries. That processor's own terms and privacy practices also apply to data they handle.
+            </p>
+            <h2>Sharing with advisors or other parties</h2>
+            <p>
+              [DRAFT PLACEHOLDER] The site asks visitors to speak with an advisor. The codebase does not show a separate CRM or an automated forward to a named law firm or consultancy. Whether FormCarry submissions are read only by the site operator, forwarded by email to an external advisor, or both, is not recorded in the code. [WHETHER INQUIRIES ARE FORWARDED TO EXTERNAL ADVISORS TO BE DETERMINED]. If counsel confirms that leads are shared with a consultant or attorney, that party should be named here before publication.
             </p>
             <h2>Cookies and analytics</h2>
             <p>
-              This draft does not yet document specific analytics or advertising cookies. Before launch, counsel should confirm whether any tracking tools are in use and update this section accordingly.
+              As of this draft, the site source does not include Google Analytics, Google Tag Manager, a Google Search Console verification meta tag, Meta Pixel, or similar advertising pixels. There is no first-party cookie-setting code (no document.cookie usage) in the project source.
+            </p>
+            <p>
+              The layout does load third-party scripts and assets: Google Fonts (fonts.googleapis.com and fonts.gstatic.com) and Google's Preferred Sources script (news.google.com/swg/js/v1/publisher.js) for the Follow control. Those third parties may set their own cookies or process technical data under their own policies. Counsel should confirm that list against the live site before publication.
             </p>
             <h2>Retention and security</h2>
             <p>
-              We intend to keep inquiry records only as long as needed to respond and to meet legal or operational requirements. No website transmission is perfectly secure.
+              We intend to keep inquiry records only as long as needed to respond and to meet legal or operational requirements. [RETENTION PERIOD TO BE DETERMINED]. No website transmission is perfectly secure. FormCarry's retention of copies is governed by FormCarry, not by a period set in this repository.
             </p>
             <h2>Your requests</h2>
             <p>
-              Depending on applicable law, you may have rights to access, correct, or delete personal information we hold. Contact us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a> to make a request. Legal entity details, a physical address, and a designated privacy contact still need to be supplied before this policy can be finalized.
+              Depending on applicable law, you may have rights to access, correct, or delete personal information we hold, or to ask us to stop using it for a stated purpose. Contact us at <a href="mailto:info@panamaqualifiedinvestor.com">info@panamaqualifiedinvestor.com</a> to make a request. This draft does not yet describe response times, identity checks, or jurisdiction-specific rights (for example under US state law or Canadian privacy law). [REQUEST PROCESS AND RESPONSE TIMELINE TO BE DETERMINED].
             </p>
             <h2>Changes</h2>
             <p>
@@ -92,5 +116,18 @@ const description =
 
   .prose h2:first-of-type {
     margin-top: 0;
+  }
+
+  .prose ul {
+    margin: 0.75rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .prose li {
+    font-family: var(--font-sans);
+    font-size: var(--text-body, 1rem);
+    line-height: 1.6;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
   }
 </style>
