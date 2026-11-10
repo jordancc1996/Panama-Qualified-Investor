@@ -1,5 +1,6 @@
 ---
 import { FORMCARRY_ACTION } from '../lib/forms';
+import LinkedInField from './LinkedInField.astro';
 
 const tiers = [
   { value: '300000-500000-real-estate', label: '$300,000 – $500,000 (Real Estate; $500,000 from Oct 15, 2026)' },
@@ -46,6 +47,8 @@ const tiers = [
         <input id="advisor-phone" name="phone" type="tel" autocomplete="tel" required />
         <p class="err" id="advisor-phone-error" hidden></p>
       </div>
+
+      <LinkedInField id="advisor-linkedin" />
 
       <div class="field">
         <label for="advisor-amount">Ideal investment amount</label>
@@ -169,8 +172,42 @@ const tiers = [
   }
 
   .field input[aria-invalid='true'],
-  .field select[aria-invalid='true'] {
+  .field select[aria-invalid='true'],
+  .form :global(.linkedin-field input[aria-invalid='true']) {
     border-color: #c0392b;
+  }
+
+  .form :global(.linkedin-field label) {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .form :global(.linkedin-field input) {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    font-family: var(--font-sans);
+    font-size: var(--text-input);
+    color: var(--color-ink);
+    outline: none;
+  }
+
+  .form :global(.linkedin-field input:focus) {
+    border-color: var(--color-navy-900);
+  }
+
+  .form :global(.linkedin-field .err) {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    line-height: 1.4;
+    color: #c0392b;
+    margin: 0.35rem 0 0;
   }
 
   .field select {
@@ -224,6 +261,8 @@ const tiers = [
 </style>
 
 <script>
+  import { linkedinFieldError, normalizeLinkedInUrl } from '../lib/linkedin';
+
   const FOCUSABLE =
     'a[href], button:not([disabled]), input:not([disabled]):not([tabindex="-1"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -256,6 +295,11 @@ const tiers = [
         el: document.getElementById('advisor-phone') as HTMLInputElement,
         err: document.getElementById('advisor-phone-error'),
         check: (el: HTMLInputElement) => (el.value.trim() ? '' : 'Enter your phone number.'),
+      },
+      {
+        el: document.getElementById('advisor-linkedin') as HTMLInputElement,
+        err: document.getElementById('advisor-linkedin-error'),
+        check: (el: HTMLInputElement) => linkedinFieldError(el.value),
       },
       {
         el: document.getElementById('advisor-amount') as HTMLSelectElement,
@@ -369,6 +413,12 @@ const tiers = [
       if (firstInvalid) {
         firstInvalid.focus();
         return;
+      }
+
+      const linkedin = document.getElementById('advisor-linkedin') as HTMLInputElement | null;
+      if (linkedin) {
+        const normalized = normalizeLinkedInUrl(linkedin.value);
+        if (normalized.ok) linkedin.value = normalized.value;
       }
 
       const data = new FormData(form);

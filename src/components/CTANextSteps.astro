@@ -1,5 +1,6 @@
 ---
 import { FORMCARRY_ACTION } from '../lib/forms';
+import LinkedInField from './LinkedInField.astro';
 
 const bg = '/images/Panama-Qualified-Investor-Visa8.webp';
 
@@ -25,7 +26,7 @@ const expect = [
       <p class="sub">
         15 minutes with an advisor who specializes in your situation. No obligation, no pressure, just clarity on whether the QIV is right for you.
       </p>
-      <form class="form" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
+      <form class="form" id="book-form" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
         <input type="hidden" name="_subject" value="Private advisory meeting request" />
         <input type="hidden" name="source" value="homepage_book_form" />
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
@@ -37,6 +38,7 @@ const expect = [
         <input id="book-email" name="email" type="email" autocomplete="email" required placeholder="Enter your email" />
         <label class="sr-only" for="book-phone">Phone / WhatsApp</label>
         <input id="book-phone" name="phone" type="tel" autocomplete="tel" placeholder="Enter your phone number" />
+        <LinkedInField id="book-linkedin" labeled={false} />
         <label class="sr-only" for="situation">I am a...</label>
         <select id="situation" name="situation" required>
           <option value="" disabled selected>Select your situation</option>
@@ -205,9 +207,39 @@ const expect = [
   }
 
   .form input:focus,
-  .form select:focus {
+  .form select:focus,
+  .form :global(.linkedin-field input:focus) {
     border-color: var(--color-navy-900);
     box-shadow: none;
+  }
+
+  .form :global(.linkedin-field input) {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    color: var(--color-on-navy);
+    font-family: var(--font-sans);
+    font-size: var(--text-input);
+    outline: none;
+  }
+
+  .form :global(.linkedin-field input::placeholder) {
+    color: var(--color-on-navy);
+    opacity: 1;
+  }
+
+  .form :global(.linkedin-field input[aria-invalid='true']) {
+    border-color: #c0392b;
+  }
+
+  .form :global(.linkedin-field .err) {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    line-height: 1.4;
+    color: #c0392b;
+    margin: 0.35rem 0 0;
   }
 
   .form input:focus {
@@ -375,3 +407,46 @@ const expect = [
     }
   }
 </style>
+
+<script>
+  import { linkedinFieldError, normalizeLinkedInUrl } from '../lib/linkedin';
+
+  const form = document.getElementById('book-form') as HTMLFormElement | null;
+  const input = document.getElementById('book-linkedin') as HTMLInputElement | null;
+  const err = document.getElementById('book-linkedin-error');
+
+  const setLinkedInError = (message: string) => {
+    if (!input || !err) return;
+    const invalid = Boolean(message);
+    input.setAttribute('aria-invalid', String(invalid));
+    if (invalid) {
+      err.hidden = false;
+      err.textContent = message;
+      input.setAttribute('aria-describedby', err.id);
+    } else {
+      err.hidden = true;
+      err.textContent = '';
+      input.removeAttribute('aria-describedby');
+    }
+  };
+
+  if (form && input) {
+    input.addEventListener('input', () => {
+      if (input.getAttribute('aria-invalid') === 'true') {
+        setLinkedInError(linkedinFieldError(input.value));
+      }
+    });
+    input.addEventListener('blur', () => setLinkedInError(linkedinFieldError(input.value)));
+    form.addEventListener('submit', (event) => {
+      const message = linkedinFieldError(input.value);
+      setLinkedInError(message);
+      if (message) {
+        event.preventDefault();
+        input.focus();
+        return;
+      }
+      const normalized = normalizeLinkedInUrl(input.value);
+      if (normalized.ok) input.value = normalized.value;
+    });
+  }
+</script>

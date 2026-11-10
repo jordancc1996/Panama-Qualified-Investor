@@ -1,0 +1,36 @@
+---
+interface Props {
+  id: string;
+  labeled?: boolean;
+}
+
+const { id, labeled = true } = Astro.props;
+const errorId = `${id}-error`;
+---
+
+<div class="field linkedin-field">
+  <label for={id} class:list={[!labeled && 'sr-only']}>LinkedIn profile (optional)</label>
+  <input
+    id={id}
+    name="linkedin_url"
+    type="text"
+    inputmode="url"
+    autocomplete="url"
+    placeholder="linkedin.com/in/yourname"
+  />
+  <p class="err" id={errorId} hidden></p>
+</div>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

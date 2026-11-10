@@ -1,6 +1,6 @@
 ---
 import { FORMCARRY_ACTION } from '../lib/forms';
-
+import LinkedInField from './LinkedInField.astro';
 ---
 
 <section class="top-cta">
@@ -9,7 +9,7 @@ import { FORMCARRY_ACTION } from '../lib/forms';
       <p class="kicker">Panama Qualified Investor Newsletter</p>
       <h2>Never miss an update. Subscribe for the latest on Panama's investor residency program.</h2>
       <p class="sub">Program status, regulatory developments, and residency updates, delivered by email.</p>
-      <form class="form" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
+      <form class="form" id="top-cta-form" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
         <input type="hidden" name="_subject" value="Panama Qualified Investor newsletter" />
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
         <div class="row">
@@ -54,6 +54,7 @@ import { FORMCARRY_ACTION } from '../lib/forms';
             required
           />
         </div>
+        <LinkedInField id="top-cta-linkedin" />
         <button class="submit" type="submit">Subscribe</button>
       </form>
       <p class="disclaimer">
@@ -148,10 +149,48 @@ import { FORMCARRY_ACTION } from '../lib/forms';
     color: var(--color-muted);
   }
 
-  .form input:focus {
+  .form input:focus,
+  .form :global(.linkedin-field input:focus) {
     border-color: var(--color-navy-900);
     outline: none;
     box-shadow: none;
+  }
+
+  .form :global(.linkedin-field label) {
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  .form :global(.linkedin-field input) {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    font-family: var(--font-sans);
+    font-size: var(--text-input);
+    color: var(--color-ink);
+    outline: none;
+  }
+
+  .form :global(.linkedin-field input::placeholder) {
+    color: var(--color-muted);
+  }
+
+  .form :global(.linkedin-field input[aria-invalid='true']) {
+    border-color: #c0392b;
+  }
+
+  .form :global(.linkedin-field .err) {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    line-height: 1.4;
+    color: #c0392b;
+    margin: 0.35rem 0 0;
   }
 
   .submit {
@@ -188,3 +227,46 @@ import { FORMCARRY_ACTION } from '../lib/forms';
     }
   }
 </style>
+
+<script>
+  import { linkedinFieldError, normalizeLinkedInUrl } from '../lib/linkedin';
+
+  const form = document.getElementById('top-cta-form') as HTMLFormElement | null;
+  const input = document.getElementById('top-cta-linkedin') as HTMLInputElement | null;
+  const err = document.getElementById('top-cta-linkedin-error');
+
+  const setLinkedInError = (message: string) => {
+    if (!input || !err) return;
+    const invalid = Boolean(message);
+    input.setAttribute('aria-invalid', String(invalid));
+    if (invalid) {
+      err.hidden = false;
+      err.textContent = message;
+      input.setAttribute('aria-describedby', err.id);
+    } else {
+      err.hidden = true;
+      err.textContent = '';
+      input.removeAttribute('aria-describedby');
+    }
+  };
+
+  if (form && input) {
+    input.addEventListener('input', () => {
+      if (input.getAttribute('aria-invalid') === 'true') {
+        setLinkedInError(linkedinFieldError(input.value));
+      }
+    });
+    input.addEventListener('blur', () => setLinkedInError(linkedinFieldError(input.value)));
+    form.addEventListener('submit', (event) => {
+      const message = linkedinFieldError(input.value);
+      setLinkedInError(message);
+      if (message) {
+        event.preventDefault();
+        input.focus();
+        return;
+      }
+      const normalized = normalizeLinkedInUrl(input.value);
+      if (normalized.ok) input.value = normalized.value;
+    });
+  }
+</script>

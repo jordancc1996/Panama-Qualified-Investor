@@ -1,5 +1,6 @@
 ---
 import { FORMCARRY_ACTION } from '../lib/forms';
+import LinkedInField from './LinkedInField.astro';
 ---
 
 <div class="shell" id="advisor-contact-shell" aria-hidden="true" inert>
@@ -62,6 +63,8 @@ import { FORMCARRY_ACTION } from '../lib/forms';
           <p class="err" id="advisor-contact-phone-error" hidden></p>
         </div>
       </div>
+
+      <LinkedInField id="advisor-contact-linkedin" />
 
       <div class="field">
         <label for="advisor-contact-message">Message</label>
@@ -229,14 +232,49 @@ import { FORMCARRY_ACTION } from '../lib/forms';
   }
 
   .field input:focus,
-  .field textarea:focus {
+  .field textarea:focus,
+  .form :global(.linkedin-field input:focus) {
     border-color: var(--color-navy-900);
     box-shadow: none;
   }
 
   .field input[aria-invalid='true'],
-  .field textarea[aria-invalid='true'] {
+  .field textarea[aria-invalid='true'],
+  .form :global(.linkedin-field input[aria-invalid='true']) {
     border-color: #c0392b;
+  }
+
+  .form :global(.linkedin-field label) {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .form :global(.linkedin-field input) {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    font-family: var(--font-sans);
+    font-size: var(--text-input);
+    color: var(--color-ink);
+    outline: none;
+  }
+
+  .form :global(.linkedin-field input::placeholder) {
+    color: var(--color-muted);
+  }
+
+  .form :global(.linkedin-field .err) {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    line-height: 1.4;
+    color: #c0392b;
+    margin: 0.35rem 0 0;
   }
 
   .consent {
@@ -322,6 +360,8 @@ import { FORMCARRY_ACTION } from '../lib/forms';
 </style>
 
 <script>
+  import { linkedinFieldError, normalizeLinkedInUrl } from '../lib/linkedin';
+
   const FOCUSABLE =
     'a[href], button:not([disabled]), input:not([disabled]):not([tabindex="-1"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -358,6 +398,11 @@ import { FORMCARRY_ACTION } from '../lib/forms';
           if (!el.checkValidity()) return 'Enter a valid email address.';
           return '';
         },
+      },
+      {
+        el: document.getElementById('advisor-contact-linkedin') as HTMLInputElement,
+        err: document.getElementById('advisor-contact-linkedin-error'),
+        check: (el) => linkedinFieldError(el.value),
       },
     ];
 
@@ -489,6 +534,11 @@ import { FORMCARRY_ACTION } from '../lib/forms';
       }
 
       try {
+        const linkedin = document.getElementById('advisor-contact-linkedin') as HTMLInputElement | null;
+        if (linkedin) {
+          const normalized = normalizeLinkedInUrl(linkedin.value);
+          if (normalized.ok) linkedin.value = normalized.value;
+        }
         const res = await fetch(form.action, {
           method: 'POST',
           body: new FormData(form),
