@@ -154,7 +154,8 @@ const tiers = [
   }
 
   .field input,
-  .field select {
+  .field select,
+  .form :global(.field-control) {
     width: 100%;
     background: #fff;
     border: 1px solid var(--color-line);
@@ -162,18 +163,21 @@ const tiers = [
     padding: 0.7rem 0.85rem;
     font-family: var(--font-sans);
     font-size: var(--text-input);
+    line-height: var(--leading-ui);
+    box-sizing: border-box;
     color: var(--color-ink);
     outline: none;
   }
 
   .field input:focus,
-  .field select:focus {
+  .field select:focus,
+  .form :global(.field-control:focus) {
     border-color: var(--color-navy-900);
   }
 
   .field input[aria-invalid='true'],
   .field select[aria-invalid='true'],
-  .form :global(.linkedin-field input[aria-invalid='true']) {
+  .form :global(.field-control[aria-invalid='true']) {
     border-color: #c0392b;
   }
 
@@ -184,22 +188,6 @@ const tiers = [
     font-weight: 600;
     color: var(--color-ink);
     margin-bottom: 0.3rem;
-  }
-
-  .form :global(.linkedin-field input) {
-    width: 100%;
-    background: #fff;
-    border: 1px solid var(--color-line);
-    border-radius: 4px;
-    padding: 0.7rem 0.85rem;
-    font-family: var(--font-sans);
-    font-size: var(--text-input);
-    color: var(--color-ink);
-    outline: none;
-  }
-
-  .form :global(.linkedin-field input:focus) {
-    border-color: var(--color-navy-900);
   }
 
   .form :global(.linkedin-field .err) {

@@ -8,9 +8,10 @@ const { id, labeled = true } = Astro.props;
 const errorId = `${id}-error`;
 ---
 
-<div class="field linkedin-field">
+<div class:list={['linkedin-field', labeled && 'field']}>
   <label for={id} class:list={[!labeled && 'sr-only']}>LinkedIn profile (optional)</label>
   <input
+    class="field-control"
     id={id}
     name="linkedin_url"
     type="text"

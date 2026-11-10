@@ -181,7 +181,8 @@ const expect = [
   }
 
   .form input,
-  .form select {
+  .form select,
+  .form :global(.field-control) {
     width: 100%;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid var(--color-line);
@@ -190,44 +191,31 @@ const expect = [
     color: var(--color-on-navy);
     font-family: var(--font-sans);
     font-size: var(--text-input);
+    line-height: inherit;
+    box-sizing: border-box;
     outline: none;
   }
 
   /* Inputs sit on a dark photo; --color-muted (#5c5e62) is for light surfaces
      and disappears here. Match the select’s on-navy white and add a slightly
      more opaque fill so type stays readable over any part of the image. */
-  .form input {
+  .form input,
+  .form :global(.field-control) {
     background: rgba(255, 255, 255, 0.16);
     color: var(--color-on-navy);
   }
 
-  .form input::placeholder {
+  .form input::placeholder,
+  .form :global(.field-control)::placeholder {
     color: var(--color-on-navy);
     opacity: 1;
   }
 
   .form input:focus,
   .form select:focus,
-  .form :global(.linkedin-field input:focus) {
+  .form :global(.field-control:focus) {
     border-color: var(--color-navy-900);
     box-shadow: none;
-  }
-
-  .form :global(.linkedin-field input) {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.16);
-    border: 1px solid var(--color-line);
-    border-radius: 4px;
-    padding: 0.7rem 0.85rem;
-    color: var(--color-on-navy);
-    font-family: var(--font-sans);
-    font-size: var(--text-input);
-    outline: none;
-  }
-
-  .form :global(.linkedin-field input::placeholder) {
-    color: var(--color-on-navy);
-    opacity: 1;
   }
 
   .form :global(.linkedin-field input[aria-invalid='true']) {
@@ -242,11 +230,13 @@ const expect = [
     margin: 0.35rem 0 0;
   }
 
-  .form input:focus {
+  .form input:focus,
+  .form :global(.field-control:focus) {
     color: var(--color-on-navy);
   }
 
-  .form input:focus::placeholder {
+  .form input:focus::placeholder,
+  .form :global(.field-control:focus)::placeholder {
     color: var(--color-on-navy);
     opacity: 1;
   }

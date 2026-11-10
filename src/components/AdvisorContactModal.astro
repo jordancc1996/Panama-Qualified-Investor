@@ -208,7 +208,8 @@ import LinkedInField from './LinkedInField.astro';
   }
 
   .field input,
-  .field textarea {
+  .field textarea,
+  .form :global(.field-control) {
     width: 100%;
     background: #fff;
     border: 1px solid var(--color-line);
@@ -216,6 +217,8 @@ import LinkedInField from './LinkedInField.astro';
     padding: 0.7rem 0.85rem;
     font-family: var(--font-sans);
     font-size: var(--text-input);
+    line-height: var(--leading-ui);
+    box-sizing: border-box;
     color: var(--color-ink);
     outline: none;
   }
@@ -226,21 +229,16 @@ import LinkedInField from './LinkedInField.astro';
     line-height: var(--leading-body);
   }
 
-  .field input::placeholder,
-  .field textarea::placeholder {
-    color: var(--color-muted);
-  }
-
   .field input:focus,
   .field textarea:focus,
-  .form :global(.linkedin-field input:focus) {
+  .form :global(.field-control:focus) {
     border-color: var(--color-navy-900);
     box-shadow: none;
   }
 
   .field input[aria-invalid='true'],
   .field textarea[aria-invalid='true'],
-  .form :global(.linkedin-field input[aria-invalid='true']) {
+  .form :global(.field-control[aria-invalid='true']) {
     border-color: #c0392b;
   }
 
@@ -253,19 +251,9 @@ import LinkedInField from './LinkedInField.astro';
     margin-bottom: 0.3rem;
   }
 
-  .form :global(.linkedin-field input) {
-    width: 100%;
-    background: #fff;
-    border: 1px solid var(--color-line);
-    border-radius: 4px;
-    padding: 0.7rem 0.85rem;
-    font-family: var(--font-sans);
-    font-size: var(--text-input);
-    color: var(--color-ink);
-    outline: none;
-  }
-
-  .form :global(.linkedin-field input::placeholder) {
+  .field input::placeholder,
+  .field textarea::placeholder,
+  .form :global(.field-control)::placeholder {
     color: var(--color-muted);
   }
 
