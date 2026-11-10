@@ -6,7 +6,7 @@ import { faqGroups } from '../data/full-faq';
 const otherGroups = faqGroups.filter((group) => group.id !== 'faq-general');
 ---
 
-<ProgramFAQSection id="faq-general" background="cream" align="start" />
+<ProgramFAQSection id="faq-general" background="cream" align="center" />
 {
   otherGroups.map((group) => (
     <FAQSection
@@ -15,7 +15,7 @@ const otherGroups = faqGroups.filter((group) => group.id !== 'faq-general');
       eyebrow={group.eyebrow}
       heading={group.heading}
       background={group.background}
-      align="start"
+      align="center"
     />
   ))
 }

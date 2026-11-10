@@ -69,15 +69,10 @@
   --color-gold-600: #405363;
 
   /* Layout */
-  --header-h: 84px;
+  --header-h: 80px;
   --wrap-max: 1280px;
   --section-pad: clamp(4.5rem, 8vw, 8rem);
-}
-
-@media (min-width: 1024px) {
-  :root {
-    --header-h: 96px;
-  }
+  --radius: 4px;
 }
 
 @media (max-width: 639px) {
@@ -169,7 +164,7 @@ section[id],
 img {
   max-width: 100%;
   height: auto;
-  border-radius: 4px;
+  border-radius: var(--radius);
 }
 
 .hero-bg,
@@ -257,8 +252,21 @@ h3 {
   padding-inline: clamp(1.35rem, 4vw, 3rem);
 }
 
+.measure {
+  max-width: var(--measure);
+  width: 100%;
+  margin-inline: auto;
+}
+
 .section {
   padding-block: var(--section-pad);
+}
+
+.section--text .sec-head,
+.section--text .section-more {
+  max-width: var(--measure);
+  width: 100%;
+  margin-inline: auto;
 }
 
 .eyebrow {
@@ -385,7 +393,7 @@ h3 em {
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  border-radius: 4px;
+  border-radius: var(--radius);
   padding: 0.75rem 1.5rem;
   min-height: 48px;
   text-transform: none;
@@ -603,13 +611,8 @@ h3 em {
 .spec-card {
   background: var(--cream-tint);
   border: 1px solid var(--color-line);
-  border-radius: 6px;
+  border-radius: var(--radius);
   padding: 1.5rem;
-  transition: box-shadow 150ms ease-out;
-}
-
-.spec-card:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .bg-cream-tint .spec-card {
@@ -645,22 +648,17 @@ h3 em {
 
 /* Cards */
 .bcard,
-.acard {
+.acard,
+.card {
   border: 1px solid var(--color-line);
-  border-radius: 6px;
+  border-radius: var(--radius);
   background: var(--color-paper);
   padding: 1.5rem;
-  transition: box-shadow 150ms ease-out;
-}
-
-.bcard:hover,
-.acard:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .pcard {
   position: relative;
-  border-radius: 6px;
+  border-radius: var(--radius);
   overflow: hidden;
   min-height: 420px;
   color: var(--color-on-navy);
@@ -668,11 +666,6 @@ h3 em {
   flex-direction: column;
   isolation: isolate;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: box-shadow 150ms ease-out;
-}
-
-.pcard:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .pcard img {
@@ -755,7 +748,7 @@ h3 em {
 .marquee-dot {
   width: 4px;
   height: 4px;
-  border-radius: 6px;
+  border-radius: var(--radius);
   background: var(--color-gold-400);
   flex-shrink: 0;
 }
@@ -795,7 +788,8 @@ h3 em {
   color: var(--color-ink);
   background: #fff;
   border: 1px solid var(--color-line);
-  border-radius: 4px;
+  border-radius: var(--radius);
+  min-height: 48px;
   padding: 0.7rem 0.85rem;
   outline: none;
   transition: border-color 150ms ease-out;
@@ -880,7 +874,7 @@ h3 em {
 .table-scroll {
   overflow-x: auto;
   border: 1px solid var(--color-line);
-  border-radius: 4px;
+  border-radius: var(--radius);
 }
 
 .compare-table {
@@ -1010,12 +1004,3 @@ h3 em {
   color: rgba(255, 255, 255, 0.25);
 }
 
-@media (max-width: 768px) {
-  .audience-grid,
-  .pcard-grid,
-  .spec-grid,
-  .cta-cards {
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-  }
-}
