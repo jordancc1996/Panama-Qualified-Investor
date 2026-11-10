@@ -145,7 +145,7 @@ const links = [
     font-weight: var(--weight-ui);
     color: var(--color-link);
     text-transform: none;
-    letter-spacing: 0.03em;
+    letter-spacing: 0;
     padding: 0 0.7rem;
     height: 80px;
     display: inline-flex;
@@ -198,8 +198,8 @@ const links = [
     margin-bottom: 0;
     padding: 0.5rem 1.1rem;
     font-family: var(--font-sans);
-    font-size: 0.78rem;
-    font-weight: 600;
+    font-size: var(--text-ui);
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-ink);
@@ -219,19 +219,12 @@ const links = [
 
   @media (max-width: 1280px) {
     .links a:not(.emphasis) {
-      font-size: 0.95rem;
       padding: 0 0.5rem;
     }
 
     .links a:not(.emphasis)::after {
       left: 0.4rem;
       right: 0.4rem;
-    }
-
-    .links a.emphasis,
-    .links button.emphasis {
-      font-size: 0.78rem;
-      padding: 0.5rem 1.1rem;
     }
   }
 

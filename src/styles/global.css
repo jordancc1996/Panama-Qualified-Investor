@@ -1,42 +1,55 @@
 @import "tailwindcss";
+@import "./fonts.css";
 
 :root {
-  /* Fonts: Helvetica Neue primary; Playfair Display reserved for headings */
-  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-display: "Playfair Display Variable", "Playfair Display", Georgia, "Times New Roman", serif;
-  --font-mono: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "EB Garamond", "EB Garamond Fallback", Georgia, serif;
+  --font-sans: "Roboto", "Roboto Fallback", Arial, system-ui, sans-serif;
+  --font-mono: "Roboto", "Roboto Fallback", Arial, system-ui, sans-serif;
 
-  /* Type scale */
-  --text-body: 1rem;
-  --text-small: 0.9375rem; /* 15px */
-  --text-caption: 0.8125rem; /* 13px */
-  --text-label: 0.75rem; /* 12px */
-  --text-ui: 0.9rem;
-  --text-h1: clamp(2.2rem, 5vw, 3.5rem);
-  --text-h2: clamp(1.8rem, 3.8vw, 2.6rem);
-  --text-h3: clamp(1.3rem, 2.4vw, 1.7rem);
+  /* Type scale: desktop / mobile via clamp. Never smaller than the live site. */
+  --text-body: clamp(1.125rem, 0.35vw + 1.05rem, 1.25rem);
+  --text-small: 0.9375rem;
+  --text-caption: 0.875rem;
+  --text-label: 0.875rem;
+  --text-ui: 1rem;
+  --text-input: 1.0625rem;
+  --text-table: clamp(1rem, 0.2vw + 0.96rem, 1.0625rem);
+  --text-h1: clamp(2.375rem, 4.2vw, 3.75rem);
+  --text-h1-hero: clamp(2.75rem, 6vw, 5rem);
+  --text-h2: clamp(2rem, 3.2vw, 2.75rem);
+  --text-h2-sm: clamp(1.625rem, 2vw, 1.875rem);
+  --text-h3: clamp(1.5rem, 2vw, 1.875rem);
+  --text-h4: clamp(1.1875rem, 1.2vw, 1.3125rem);
+  --text-lede: clamp(1.375rem, 1.4vw, 1.625rem);
+  --text-stat: clamp(1.75rem, 2.2vw, 2.125rem);
 
   --weight-body: 400;
   --weight-ui: 500;
   --weight-semibold: 600;
-  --weight-bold: 700;
+  --weight-bold: 600;
 
   --leading-body: 1.7;
-  --leading-heading: 1.22;
-  --leading-display: 1.18;
-  --leading-tight: 1.15;
-  --leading-ui: 1.25;
+  --leading-heading: 1.15;
+  --leading-display: 1.1;
+  --leading-hero: 1.05;
+  --leading-h3: 1.2;
+  --leading-h4: 1.35;
+  --leading-lede: 1.4;
+  --leading-tight: 1.1;
+  --leading-ui: 1.5;
+  --leading-label: 1.4;
+  --leading-footer: 1.55;
 
   --tracking-body: 0;
-  --tracking-heading: -0.014em;
-  --tracking-ui: 0.06em;
+  --tracking-heading: -0.01em;
+  --tracking-ui: 0;
   --tracking-label: 0.1em;
   --tracking-button: 0;
 
   --space-paragraph: 1.25em;
   --space-eyebrow: 0.9rem;
   --space-lede: 1.15rem;
-  --measure: 68ch;
+  --measure: 45rem;
 
   /* PRIMARY BRAND: steel blue (replaces deep navy) */
   --color-navy-950: #2d3d4d;
@@ -218,8 +231,6 @@ h2,
 h3 {
   font-family: var(--font-display);
   font-kerning: normal;
-  line-height: var(--leading-heading);
-  letter-spacing: var(--tracking-heading);
   color: var(--color-ink);
   margin: 0;
   overflow-wrap: break-word;
@@ -228,25 +239,40 @@ h3 {
 
 h1 {
   font-size: var(--text-h1);
-  font-weight: var(--weight-bold);
+  font-weight: 500;
   line-height: var(--leading-display);
+  letter-spacing: var(--tracking-heading);
   text-wrap: pretty;
 }
 
 h2 {
   font-size: var(--text-h2);
-  font-weight: var(--weight-bold);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
   text-wrap: balance;
 }
 
 h3 {
   font-size: var(--text-h3);
-  font-weight: var(--weight-semibold);
+  font-weight: 600;
+  line-height: var(--leading-h3);
+  letter-spacing: 0;
   text-wrap: balance;
 }
 
+h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h4);
+  font-weight: 500;
+  line-height: var(--leading-h4);
+  letter-spacing: 0;
+  color: var(--color-ink);
+  margin: 0;
+}
+
 .amp {
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
 }
@@ -261,6 +287,13 @@ h3 {
   padding-block: var(--section-pad);
 }
 
+.section--text .sec-head,
+.section--text .section-more {
+  max-width: var(--measure);
+  width: 100%;
+  margin-inline: auto;
+}
+
 .eyebrow {
   font-family: var(--font-sans);
   font-size: var(--text-label);
@@ -268,7 +301,7 @@ h3 {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #405363;
-  line-height: var(--leading-ui);
+  line-height: var(--leading-label);
   margin: 0;
 }
 
@@ -284,18 +317,20 @@ h3 {
 .kicker {
   font-family: var(--font-sans);
   font-size: var(--text-label);
-  font-weight: var(--weight-ui);
+  font-weight: var(--weight-semibold);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-muted);
-  line-height: var(--leading-ui);
+  line-height: var(--leading-label);
 }
 
-.lede {
-  font-size: 1.05rem;
-  font-weight: var(--weight-body);
-  line-height: 1.7;
-  letter-spacing: var(--tracking-body);
+.lede,
+.page-hero .subtext {
+  font-family: var(--font-display);
+  font-size: var(--text-lede);
+  font-weight: 500;
+  line-height: var(--leading-lede);
+  letter-spacing: 0;
   max-width: var(--measure);
 }
 
@@ -352,12 +387,9 @@ h3 em {
   width: 100%;
 }
 
-.faq-column--center {
-  margin-inline: auto;
-}
-
+.faq-column--center,
 .faq-column--start {
-  margin-inline: 0 auto;
+  margin-inline: auto;
 }
 
 .section--navy {
@@ -390,7 +422,7 @@ h3 em {
   min-height: 48px;
   text-transform: none;
   letter-spacing: 0;
-  font-size: 0.9rem;
+  font-size: var(--text-ui);
   font-weight: 500;
   font-family: var(--font-sans);
   line-height: var(--leading-ui);
@@ -473,7 +505,7 @@ h3 em {
 
 .btn--sm {
   padding: 0.75rem 1.5rem;
-  font-size: 0.9rem;
+  font-size: var(--text-ui);
   min-height: 48px;
 }
 
@@ -483,7 +515,7 @@ h3 em {
   display: inline-flex;
   align-items: center;
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: var(--text-ui);
   font-weight: 500;
   letter-spacing: 0;
   text-transform: none;
@@ -519,7 +551,7 @@ h3 em {
 
 .section-more .cta-link {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: var(--text-ui);
   letter-spacing: 0;
   margin-top: 0;
 }
@@ -554,10 +586,6 @@ h3 em {
 }
 
 .page-hero .subtext {
-  font-family: var(--font-sans);
-  font-size: var(--text-body);
-  font-weight: var(--weight-body);
-  line-height: var(--leading-body);
   color: var(--color-on-navy-dim);
   margin: 1.5rem auto 0;
 }
@@ -576,10 +604,11 @@ h3 em {
 
 .cta-band h2 {
   font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: var(--weight-bold);
+  font-size: var(--text-h2-sm);
+  font-weight: 600;
   color: var(--color-on-navy);
-  line-height: var(--leading-heading);
+  line-height: var(--leading-h3);
+  letter-spacing: 0;
 }
 
 .cta-band .btn {
@@ -618,9 +647,10 @@ h3 em {
 
 .spec-card .n {
   font-family: var(--font-display);
-  font-size: 2.1rem;
+  font-size: max(2.1rem, var(--text-stat));
+  font-weight: 500;
   color: var(--color-navy-600);
-  line-height: 1;
+  line-height: var(--leading-tight);
   margin: 0 0 0.65rem;
 }
 
@@ -779,17 +809,18 @@ h3 em {
 .field label {
   font-family: var(--font-sans);
   font-size: var(--text-label);
-  font-weight: var(--weight-ui);
+  font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-gold-300);
+  line-height: var(--leading-label);
 }
 
 .field input,
 .field select,
 .field textarea {
   font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-size: var(--text-input);
   font-weight: var(--weight-body);
   line-height: var(--leading-ui);
   color: var(--color-ink);
@@ -838,6 +869,18 @@ h3 em {
 
 .faq details {
   border-bottom: 1px solid var(--color-line);
+}
+
+.faq summary {
+  position: relative;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+  cursor: pointer;
+  list-style: none;
+  padding: 1.15rem 2rem 1.15rem 0;
 }
 
 .faq summary:focus-visible {
@@ -895,20 +938,22 @@ h3 em {
   text-align: left;
   border-bottom: 1px solid var(--color-line);
   vertical-align: top;
+  font-family: var(--font-sans);
+  font-size: var(--text-table);
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .compare-table th {
-  font-family: var(--font-sans);
-  font-size: var(--text-label);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
   background: var(--color-cream);
   color: var(--color-ink);
 }
 
 .compare-table td:first-child {
-  font-weight: var(--weight-semibold);
+  font-weight: 500;
   color: var(--color-ink);
   width: 18%;
 }
@@ -998,7 +1043,7 @@ h3 em {
 
 .continue-cue-text {
   font-family: var(--font-sans);
-  font-size: 0.62rem;
+  font-size: var(--text-label);
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;

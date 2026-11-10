@@ -156,18 +156,18 @@ const description =
 
   .title {
     font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: var(--weight-semibold);
+    font-size: var(--text-h3);
+    font-weight: 600;
     color: var(--color-ink);
-    line-height: 1.3;
+    line-height: var(--leading-h3);
     letter-spacing: var(--tracking-heading);
     margin: 0;
   }
 
   .author {
     font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: var(--weight-ui);
+    font-size: var(--text-label);
+    font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-muted);
@@ -177,10 +177,10 @@ const description =
 
   .desc {
     font-family: var(--font-sans);
-    font-size: 0.88rem;
+    font-size: var(--text-body);
     font-weight: var(--weight-body);
     color: var(--color-ink-soft);
-    line-height: 1.55;
+    line-height: var(--leading-body);
     margin: 0.5rem 0 0;
   }
 
@@ -192,7 +192,7 @@ const description =
     border-radius: 8px;
     padding: 0.45rem 0.85rem;
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: var(--text-label);
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -223,7 +223,7 @@ const description =
 
   .empty {
     font-family: var(--font-sans);
-    font-size: 1.05rem;
+    font-size: var(--text-body);
     font-weight: var(--weight-body);
     color: var(--color-ink-soft);
     line-height: var(--leading-body);
@@ -238,7 +238,7 @@ const description =
 
   .prompt {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: var(--text-body);
     font-weight: var(--weight-body);
     color: var(--color-ink-soft);
     margin: 0;
@@ -261,7 +261,7 @@ const description =
     border-radius: 4px;
     padding: 0.7rem 0.85rem;
     font-family: var(--font-sans);
-    font-size: 0.88rem;
+    font-size: var(--text-input);
     color: var(--color-ink);
     outline: none;
     transition: border-color 150ms ease-out;
@@ -277,13 +277,13 @@ const description =
 
   .nl .btn {
     padding: 0.75rem 1.3rem;
-    font-size: 0.72rem;
+    font-size: var(--text-ui);
     min-height: 48px;
   }
 
   .note {
     font-family: var(--font-mono);
-    font-size: 0.55rem;
+    font-size: var(--text-label);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-muted);

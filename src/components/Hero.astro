@@ -91,11 +91,11 @@ const heroImage = '/images/hero-papers.webp';
 
   h1 {
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
-    font-size: clamp(3rem, 7vw, 5rem);
-    line-height: 1.1;
-    letter-spacing: -0.015em;
+    font-size: var(--text-h1-hero);
+    line-height: var(--leading-hero);
+    letter-spacing: var(--tracking-heading);
     color: #fff;
     max-width: 780px;
     text-wrap: balance;
@@ -103,12 +103,12 @@ const heroImage = '/images/hero-papers.webp';
   }
 
   .subtext {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 0.82rem;
-    line-height: 1.55;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-lede);
+    line-height: var(--leading-lede);
     color: rgba(255, 255, 255, 0.6);
-    max-width: 540px;
+    max-width: var(--measure);
     margin: 0.9rem 0 0;
   }
 
@@ -131,10 +131,10 @@ const heroImage = '/images/hero-papers.webp';
     background: #f5f0eb;
     color: #1a1a1a;
     font-family: var(--font-sans);
-    font-size: 0.65rem;
-    font-weight: 600;
+    font-size: var(--text-ui);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0;
     padding: 0.7rem 1.4rem;
     border-radius: 999px;
     border: none;

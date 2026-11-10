@@ -41,11 +41,8 @@ const stats = [
   }
 
   .lede {
-    font-size: 1.05rem;
     color: var(--color-ink-soft);
-    max-width: var(--measure);
     margin: var(--space-lede) 0 0;
-    line-height: 1.7;
   }
 
   .stats {
@@ -69,8 +66,9 @@ const stats = [
 
   .value {
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 4vw, 1.85rem);
-    line-height: 1;
+    font-size: var(--text-stat);
+    font-weight: 500;
+    line-height: var(--leading-tight);
     color: var(--color-ink);
     margin: 0;
   }

@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+import garamond500 from '@fontsource/eb-garamond/files/eb-garamond-latin-500-normal.woff2?url';
+import roboto400 from '@fontsource/roboto/files/roboto-latin-400-normal.woff2?url';
 
 interface Props {
   title?: string;
@@ -19,8 +21,6 @@ const {
 const canonical = `https://panamaqualifiedinvestor.com${path}`;
 const isHome = !path || path === '/';
 const ogImage = 'https://panamaqualifiedinvestor.com/images/Panama-Qualified-Invesotr-Visa3.webp';
-const fontHref =
-  'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap';
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -69,12 +69,10 @@ const structuredData = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content={ogImage} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://news.google.com" crossorigin />
     <link rel="preload" as="image" href="/logo.webp" type="image/webp" fetchpriority="high" />
-    <link rel="preload" as="style" href={fontHref} />
-    <link href={fontHref} rel="stylesheet" />
+    <link rel="preload" href={garamond500} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={roboto400} as="font" type="font/woff2" crossorigin />
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <!-- Preferred Sources: Google identifies the site by domain. No publication ID in the current spec. -->
     <script is:inline async src="https://news.google.com/swg/js/v1/publisher.js"></script>

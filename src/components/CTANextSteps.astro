@@ -152,7 +152,7 @@ const expect = [
   h2 {
     font-family: var(--font-display);
     font-size: var(--text-h2);
-    font-weight: var(--weight-bold);
+    font-weight: 600;
     color: var(--color-on-navy);
     margin: 0;
     text-align: left;
@@ -187,7 +187,7 @@ const expect = [
     padding: 0.7rem 0.85rem;
     color: var(--color-on-navy);
     font-family: var(--font-sans);
-    font-size: 0.88rem;
+    font-size: var(--text-input);
     outline: none;
   }
 
@@ -277,9 +277,10 @@ const expect = [
 
   .n {
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 4vw, 1.85rem);
+    font-size: var(--text-stat);
+    font-weight: 500;
     color: #ffffff;
-    line-height: var(--leading-heading);
+    line-height: var(--leading-tight);
     min-width: 4rem;
     margin: 0;
     white-space: nowrap;
