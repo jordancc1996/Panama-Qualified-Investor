@@ -1,0 +1,306 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import TopCTA from '../components/TopCTA.astro';
+import CtaBand from '../components/CtaBand.astro';
+import MonthlyUpdates from '../components/MonthlyUpdates.astro';
+import FAQSection from '../components/FAQSection.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
+import {
+  BEFORE_DECREE_17,
+  DECREE,
+  FUNDS_RULE,
+  HOLD_PERIOD,
+  REAL_ESTATE_THRESHOLD_NOTE,
+  TRANSITION_NOTE,
+} from '../data/program';
+
+const pageFaqs = [
+  {
+    q: 'When did Decree 17 take effect?',
+    a: `${DECREE.name} was issued on ${DECREE.issued}, published in the Gaceta Oficial on ${DECREE.published}, and has been in force since ${DECREE.inForce}. It replaces ${DECREE.replaces}.`,
+  },
+  {
+    q: 'What are the investment minima under Decree 17?',
+    a: REAL_ESTATE_THRESHOLD_NOTE,
+  },
+  {
+    q: 'How long must the investment be held?',
+    a: `The investment must be held for ${HOLD_PERIOD}.`,
+  },
+  {
+    q: 'What source-of-funds rule applies?',
+    a: FUNDS_RULE,
+  },
+  {
+    q: 'What if I invested or filed before September 16, 2026?',
+    a: TRANSITION_NOTE,
+  },
+];
+
+const beforeAfterRows = [
+  {
+    route: 'Real estate',
+    before: BEFORE_DECREE_17.realEstate,
+    after: 'US$300,000 first sale / US$500,000 resale',
+  },
+  {
+    route: 'Securities',
+    before: BEFORE_DECREE_17.securities,
+    after: 'US$500,000',
+  },
+  {
+    route: 'Bank deposit',
+    before: BEFORE_DECREE_17.bankDeposit,
+    after: 'US$500,000 state bank / US$750,000 private bank',
+  },
+];
+
+const heroImage = '/images/hero-visa.webp';
+const heroWidth = 1024;
+const heroHeight = 585;
+
+const title = 'Panama Qualified Investor Visa Changes - Decree 17';
+const description =
+  'Panama Qualified Investor Visa Changes under Decree 17 (16 Sep 2026): first-sale real estate from US$300,000; resale and state-bank deposits from US$500,000.';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogDescription={description}
+  path="/panama-qualified-investor-visa-changes"
+  noindex={true}
+>
+  <Navbar />
+  <main id="main">
+    <section class="page-hero">
+      <img
+        class="hero-bg"
+        src={heroImage}
+        alt="Panamanian flag waving against a bright sky"
+        width={heroWidth}
+        height={heroHeight}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="content">
+        <p class="eyebrow eyebrow--on-navy">Decree 17</p>
+        <h1>Panama Qualified Investor Visa Changes - Decree 17</h1>
+        <p class="subtext">
+          What Executive Decree No. 17 of 2026 changed for investment minima, source of funds, and hold periods.
+        </p>
+      </div>
+    </section>
+    <MonthlyUpdates />
+
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">At a glance</p>
+            <h2>What changed at a glance</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Panama Qualified Investor Visa Changes took effect on September 16, 2026, when Executive Decree No. 17 replaced Decrees 722/2020 and 193/2024. The program is sometimes called the Panama Golden Visa in informal discussion. Property minima are now split into first-sale real estate from US$300,000 and resale from US$500,000. A new state-bank fixed-term deposit route starts at US$500,000, private-bank deposits remain at US$750,000, and source-of-funds rules are stricter under the confirmed funds rule.
+            </p>
+            <p>{FUNDS_RULE}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint" id="before-and-after">
+      <div class="wrap">
+        <div class="sec-head scroll-reveal">
+          <p class="eyebrow">Comparison</p>
+          <h2>Before and after</h2>
+        </div>
+        <div class="table-scroll scroll-reveal">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Route</th>
+                <th>Before Decree 17</th>
+                <th class="is-featured">Under Decree 17</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                beforeAfterRows.map((row) => (
+                  <tr>
+                    <td>{row.route}</td>
+                    <td>{row.before}</td>
+                    <td class="is-featured">{row.after}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper" id="first-sale">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Real estate</p>
+            <h2>What counts as a first-sale property</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Decree 17 sets a US$300,000 minimum for first-sale (new) property and US$500,000 for resale or secondary-market property. The precise legal definition of a first-sale property, including whether off-plan purchases qualify, is pending counsel confirmation and is not stated here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint" id="source-of-funds">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Funds and valuation</p>
+            <h2>Source of funds and how investments are valued</h2>
+          </div>
+          <div class="prose">
+            <p>
+              {FUNDS_RULE} How each route is valued against the minimum (purchase price, appraisal, or another measure), and any rule that a bank deposit must be held directly and solely for the applicant, is pending counsel confirmation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper" id="transition">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Transition</p>
+            <h2>If you invested or applied before September 16, 2026</h2>
+          </div>
+          <div class="prose">
+            <p>
+              {TRANSITION_NOTE} Further transition mechanics (filings in process, proof deadlines, and edge cases) are pending counsel confirmation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-cream-tint" id="after-residency">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Hold period</p>
+            <h2>After residency: the 5-year hold and annual verification</h2>
+          </div>
+          <div class="prose">
+            <p>
+              The investment must be held for {HOLD_PERIOD}. The form of annual proof, enforcement details, and any citizenship path after five years of residency are pending counsel confirmation for this page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FAQSection
+      items={pageFaqs}
+      eyebrow="Common questions"
+      heading="Decree 17 changes FAQ"
+      id="page-faq"
+      background="paper"
+    />
+
+    <section class="section bg-cream-tint" id="sources">
+      <div class="wrap">
+        <div class="narrow">
+          <div class="sec-head left scroll-reveal">
+            <p class="eyebrow">Sources</p>
+            <h2>Sources</h2>
+          </div>
+          <div class="prose">
+            {
+              DECREE.sourceUrl ? (
+                <p>
+                  Primary source: <a href={DECREE.sourceUrl}>{DECREE.name}</a> (Gaceta Oficial / MICI).
+                </p>
+              ) : (
+                <p>
+                  Primary source: {DECREE.name}, issued {DECREE.issued}, published and in force since {DECREE.published}. Official Gaceta Oficial or MICI URL: TODO (pending counsel).
+                </p>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CtaBand />
+    <TopCTA />
+  </main>
+  <FaqJsonLd items={pageFaqs} />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    overflow: hidden;
+    isolation: isolate;
+    background: none;
+    min-height: 70vh;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 42% 40%;
+  }
+
+  .page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(45, 61, 77, 0.96) 16%,
+      rgba(45, 61, 77, 0.72) 50%,
+      rgba(45, 61, 77, 0.38)
+    );
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .narrow {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .sec-head {
+    margin-bottom: 2.5rem;
+  }
+
+  .sec-head.left {
+    text-align: left;
+  }
+
+  #before-and-after,
+  #first-sale,
+  #source-of-funds,
+  #transition,
+  #after-residency,
+  #sources {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+</style>

@@ -115,3 +115,28 @@ export const ROUTES_SUMMARY =
 
 /** Do not render until counsel supplies the date and reviewer. */
 export const REVIEW_LINE_TEXT = `Updated for ${DECREE.name} · Last reviewed ${LAST_REVIEWED} by ${REVIEWER}`;
+
+/**
+ * Facts needed for /panama-qualified-investor-visa-changes that are not yet
+ * confirmed in the counsel FACTS list. Do not render the PENDING_* strings in
+ * HTML; use human-readable "pending counsel" copy and list each item in the
+ * staging report until counsel supplies final language.
+ */
+// COUNSEL TO CONFIRM
+export const COUNSEL_TO_CONFIRM = {
+  firstSaleDefinition:
+    'PENDING_COUNSEL_FIRST_SALE_DEFINITION',
+  offPlanRules: 'PENDING_COUNSEL_OFF_PLAN_RULES',
+  valuationRule: 'PENDING_COUNSEL_VALUATION_RULE',
+  depositDirectlyAndSolely: 'PENDING_COUNSEL_DEPOSIT_DIRECTLY_AND_SOLELY',
+  annualVerificationDetails: 'PENDING_COUNSEL_ANNUAL_VERIFICATION_DETAILS',
+  citizenshipAfterFiveYears: 'PENDING_COUNSEL_CITIZENSHIP_AFTER_FIVE_YEARS',
+  transitionDetailsBeyondNote: 'PENDING_COUNSEL_TRANSITION_DETAILS',
+} as const;
+
+/** Pre-Decree 17 minima for the before/after comparison table (TASK-specified). */
+export const BEFORE_DECREE_17 = {
+  realEstate: 'US$300,000 (any titled property)',
+  securities: 'US$500,000',
+  bankDeposit: 'US$750,000',
+} as const;

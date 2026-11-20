@@ -13,6 +13,10 @@ export default defineConfig({
   integrations: [
     sitemap({
       customPages: ['https://www.panamaqualifiedinvestor.com/documents/panama-investment-outlook-qiv.pdf'],
+      filter(page) {
+        // Counsel-pending Decree 17 changes page stays out of the sitemap until confirmed.
+        return !page.includes('/panama-qualified-investor-visa-changes');
+      },
       serialize(item) {
         if (item.url.endsWith('/') && item.url !== 'https://www.panamaqualifiedinvestor.com/') {
           item.url = item.url.slice(0, -1);

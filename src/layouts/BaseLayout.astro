@@ -10,6 +10,8 @@ interface Props {
   description?: string;
   ogDescription?: string;
   path?: string;
+  /** When true, emit meta robots noindex. Defaults false so other pages are unchanged. */
+  noindex?: boolean;
 }
 
 const {
@@ -17,6 +19,7 @@ const {
   description = 'Panama Residency By Investment | Check Your Eligibility | Panama Qualified Investor',
   ogDescription = 'Panama Residency By Investment | Check Your Eligibility | Panama Qualified Investor',
   path = '',
+  noindex = false,
 } = Astro.props;
 
 const canonical = `${SITE_URL}${path}`;
@@ -58,6 +61,7 @@ const structuredData = {
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href={canonical} />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <meta name="generator" content={Astro.generator} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={ogDescription} />
