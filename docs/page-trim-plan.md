@@ -1,10 +1,10 @@
 # Page trim plan (report only)
 
-**Repo tip measured:** `origin/main` @ `ec5edce` (post styling release)  
+**Repo tip measured:** `origin/main` @ `3d120e7` (post motion merge; heights originally at `ec5edce`)  
 **Viewport:** 1440×900, Chromium headless against local `astro dev`  
 **Heights:** section `getBoundingClientRect().height` (FAQ accordions collapsed, as first paint)  
 **Scope:** all 16 site pages except `/privacy` (15 pages)  
-**Hard rules:** no fact/figure/Decree 17/disclaimer changes; cut or relocate only; new copy limited to 1–2 sentence summaries built from existing wording plus link text; keep H1/title/description/opening keyword paragraph and all unique content; keep URLs and linked anchors; ≥3 inbound internal links per page; FAQPage JSON-LD lists only questions visible on that page.  
+**Hard rules:** no fact/figure/Decree 17/disclaimer changes; cut or relocate only; new copy limited to 1–2 sentence summaries built from existing wording plus link text; keep H1/title/description/opening keyword paragraph and all unique content; keep URLs and linked anchors; body-content interlinking minima in **section E** (do not count nav/footer); ≥3 inbound internal links per page as a floor; FAQPage JSON-LD lists only questions visible on that page.  
 **Publish note:** Plan file lives at `docs/page-trim-plan.md` on branch `docs/trim-plan`. No site code in this commit. Await approval before any cuts.
 
 ### Home-page map (canonical “full home” for a topic)
@@ -174,6 +174,146 @@ Rule: visible FAQ questions on a page and that page’s `FaqJsonLd` / FAQPage sc
 **Not required as preserved content anchors** (UI chrome only, but do not break if referenced): modal/form control ids, `#navbar`, `#mobile-nav`, `#mobile-cta-bar`, `#monthly-email`, top-cta field ids, `#advisor-*` / `#book-*` form fields.
 
 URLs: **no slug changes**.
+
+---
+
+## E. INTERLINKING (5B)
+
+Body-content inbound links only. Nav and footer do not count.
+
+### Rules
+
+1. **Minima (distinct linking pages, after trim):**  
+   `/panama-qualified-investor-visa-cost` ≥ 8; `/panama-qualified-investor-visa-faq` ≥ 8; `/who-is-the-panama-qualified-investor-visa-for` ≥ 6; `/panama-qualified-investor-visa-research-papers` ≥ 3; each audience page (`/americans`, `/canadians`, `/h1b`, `/tech-founders`, `/crypto-investors`) ≥ 5; homepage `/` ≥ 6.  
+   **Floor rule:** AFTER count for each page = `max(minimum, BEFORE)`. Do not reduce any page that is already above its minimum.
+2. **Placement:** natural prose only (summary sentences, “see the full…” lines, FAQ answers that mention costs, timelines, or eligibility). One link per destination per section. No link lists or footer-style blocks inside `<main>`.
+3. **Anchor text:** describe the destination (e.g. “full cost breakdown”, “Panama Qualified Investor Visa FAQ”). Vary wording across pages. Never “click here” or a bare URL.
+4. **Trim interaction:** when `ProgramFAQSection` is REMOVEd from non-FAQ pages, some answer-links disappear. Replacement body links in section E must land before merge so key pages still meet floors. Links that survive only inside the FAQ home (`/panama-qualified-investor-visa-faq`) still count from that one page only.
+
+### Methodology (BEFORE measure)
+
+- **Source:** `origin/main` @ `3d120e7` static build (`dist/**/index.html`).
+- **Scope:** 15 content pages (exclude `/privacy` from the graph).
+- **Count:** for each target path, number of **distinct other pages** that contain ≥1 `<a href>` to that path (hash/query stripped) inside `<main>`.
+- **Excluded:** `<nav>`, `<footer>`, and any nested `nav`/`footer` inside `<main>`; self-links; chrome-only links outside `<main>`.
+- **Not counted toward minima:** Navbar/Footer program columns (those remain for UX but are out of scope for 5B).
+
+### Before → after (body-content inbound, distinct linking pages)
+
+| Page | BEFORE | Minimum | AFTER (plan) | Delta |
+| --- | ---: | ---: | ---: | ---: |
+| `/panama-qualified-investor-visa-cost` | 2 | 8 | **8** | +6 |
+| `/panama-qualified-investor-visa-faq` | 0 | 8 | **8** | +8 |
+| `/who-is-the-panama-qualified-investor-visa-for` | 3 | 6 | **6** | +3 |
+| `/panama-qualified-investor-visa-research-papers` | 1 | 3 | **3** | +2 |
+| `/` (homepage) | 6 | 6 | **6** | 0 (keep) |
+| `/americans` | 6 | 5 | **6** | 0 (keep) |
+| `/canadians` | 5 | 5 | **5** | 0 (keep) |
+| `/h1b` | 5 | 5 | **5** | 0 (keep) |
+| `/tech-founders` | 5 | 5 | **5** | 0 (keep) |
+| `/crypto-investors` | 5 | 5 | **5** | 0 (keep) |
+| `/panama-qualified-investor-visa-2026` | 13 | — | **≥13** | 0+ (replace any ProgramFAQ-only inbound if needed) |
+| `/panama-qualified-investor-visa-benefits` | 10 | — | **≥10** | 0 |
+| `/panama-qualified-investor-visa-eligibility` | 13 | — | **≥13** | replace ProgramFAQ-only inbound (see note) |
+| `/panama-qualified-investor-visa-process-2026` | 13 | — | **≥13** | replace ProgramFAQ-only inbound (see note) |
+| `/about` | 0 | — | **≥1** | +1 (optional body mention from FAQ or research cross-link; not a key minimum) |
+
+**ProgramFAQ remove note:** Simulating removal of `<section id="about-the-program">` on non-FAQ pages drops eligibility inbound 13→8 and process inbound 13→9 (visa page 13→11). Planned summary / FAQ-closer links below restore those pages to ≥ BEFORE so the floor rule holds site-wide, not only for key URLs.
+
+**BEFORE linkers (key pages):**
+
+| Target | Distinct body linkers today |
+| --- | --- |
+| cost | benefits, eligibility |
+| faq | *(none)* |
+| who-is-for | `/`, americans, h1b |
+| research papers | about |
+| homepage | americans, canadians, crypto-investors, h1b, tech-founders, who-is-for |
+| americans | `/`, benefits, eligibility, faq, tech-founders, who-is-for |
+| canadians | `/`, benefits, cost, faq, who-is-for |
+| h1b | `/`, visa-2026, eligibility, process, who-is-for |
+| tech-founders | `/`, visa-2026, benefits, eligibility, who-is-for |
+| crypto-investors | `/`, cost, faq, process, who-is-for |
+
+### Proposed new link placements
+
+Add only where the destination is not already linked from that page’s body. One destination per section. Sample anchors follow existing “See the full…” / descriptive style.
+
+#### Toward `/panama-qualified-investor-visa-cost` (need +6 → AFTER 8)
+
+| # | From page | Section | Sample anchor text |
+| ---: | --- | --- | --- |
+| 1 | `/` | Merged Program / Investment summary | “full cost breakdown” |
+| 2 | `/panama-qualified-investor-visa-2026` | Overview or routes closer (fees on top of investment) | “Panama Qualified Investor Visa Cost” |
+| 3 | `/panama-qualified-investor-visa-process-2026` | “What it costs beyond the investment” (SUMMARIZE) | “itemized government fees” |
+| 4 | `/panama-qualified-investor-visa-faq` | Financial FAQ answer that mentions fees / $5,000 | “full cost breakdown” |
+| 5 | `/americans` | Routes summary (after SUMMARIZE) or $300,000 FAQ answer | “government fees on top of the investment” |
+| 6 | `/h1b` | Routes summary or “Is $300,000 realistic…” FAQ answer | “Panama Qualified Investor Visa Cost” |
+
+Keep existing: benefits → cost; eligibility → cost.
+
+#### Toward `/panama-qualified-investor-visa-faq` (need +8 → AFTER 8)
+
+| # | From page | Section | Sample anchor text |
+| ---: | --- | --- | --- |
+| 1 | `/` | Trimmed FAQ closer (`#faq-general`) | “Panama Qualified Investor Visa FAQ” |
+| 2 | `/panama-qualified-investor-visa-2026` | `#page-faq` closer after the 3 kept questions | “see the full FAQ” |
+| 3 | `/panama-qualified-investor-visa-cost` | `#page-faq` closer | “Panama Qualified Investor Visa FAQ” |
+| 4 | `/panama-qualified-investor-visa-process-2026` | `#page-faq` closer | “more process questions in the FAQ” |
+| 5 | `/panama-qualified-investor-visa-benefits` | `#page-faq` closer | “tax and banking answers in the FAQ” |
+| 6 | `/panama-qualified-investor-visa-eligibility` | Dependents / disqualifiers summary (after page-FAQ REMOVE) | “eligibility questions in the FAQ” |
+| 7 | `/americans` | `#page-faq` closer | “Panama Qualified Investor Visa FAQ” |
+| 8 | `/canadians` | `#page-faq` closer | “full program FAQ” |
+
+#### Toward `/who-is-the-panama-qualified-investor-visa-for` (need +3 → AFTER 6)
+
+| # | From page | Section | Sample anchor text |
+| ---: | --- | --- | --- |
+| 1 | `/canadians` | “The reality” (audience index pointer) | “who the visa is for” |
+| 2 | `/tech-founders` | “The reality” | “audience guides” |
+| 3 | `/crypto-investors` | “The reality” | “who the Panama Qualified Investor Visa is for” |
+
+Keep existing: `/` → who-is-for (“Find your path”); americans; h1b.
+
+#### Toward `/panama-qualified-investor-visa-research-papers` (need +2 → AFTER 3)
+
+| # | From page | Section | Sample anchor text |
+| ---: | --- | --- | --- |
+| 1 | `/panama-qualified-investor-visa-2026` | Overview closer (Decree / program research) | “research papers” |
+| 2 | `/panama-qualified-investor-visa-faq` | Practical or general answer that mentions sources / further reading | “published research papers” |
+
+Keep existing: about → research papers.
+
+#### Keep floors (no new links required if trim preserves current body links)
+
+| Page | AFTER | Notes |
+| --- | ---: | --- |
+| `/` | 6 | Keep five audience hero CTAs → `/#book` and who-is-for → `/#book` (already body links). Do not drop them. |
+| `/americans` | 6 | Keep homepage, benefits, eligibility, faq, tech-founders, who-is-for body links. |
+| `/canadians` | 5 | Keep homepage, benefits, cost, faq, who-is-for. |
+| `/h1b` | 5 | Keep homepage, visa-2026, eligibility, process, who-is-for. |
+| `/tech-founders` | 5 | Keep homepage, visa-2026, benefits, eligibility, who-is-for. |
+| `/crypto-investors` | 5 | Keep homepage, cost, faq, process, who-is-for. |
+
+#### Restore AFTER ProgramFAQ REMOVE (eligibility / process / visa ≥ BEFORE)
+
+| From page | Section | Destination | Sample anchor text |
+| --- | --- | --- | --- |
+| `/americans` | Routes summary (SUMMARIZE) | `/panama-qualified-investor-visa-eligibility` | “dependent children” (keep if already present outside ProgramFAQ; else restore here) |
+| `/canadians` | Routes summary | `/panama-qualified-investor-visa-eligibility` | “dependent eligibility” |
+| `/tech-founders` | Routes summary | `/panama-qualified-investor-visa-eligibility` | “who can apply” |
+| `/panama-qualified-investor-visa-cost` | Investment vs fees prose | `/panama-qualified-investor-visa-eligibility` | “dependent children” |
+| `/who-is-the-panama-qualified-investor-visa-for` | Open-to-all prose | `/panama-qualified-investor-visa-process-2026` | “30 to 90 days from document submission” (keep outside ProgramFAQ) |
+| `/panama-qualified-investor-visa-benefits` | Timeline / residency card prose | `/panama-qualified-investor-visa-process-2026` | “processing timeline” |
+| `/panama-qualified-investor-visa-cost` | Fee table note | `/panama-qualified-investor-visa-process-2026` | “when fees are paid in the process” |
+| `/panama-qualified-investor-visa-eligibility` | Investment requirement card | `/panama-qualified-investor-visa-2026` | “qualifying investment” (keep outside ProgramFAQ) |
+| `/panama-qualified-investor-visa-research-papers` | Intro prose | `/panama-qualified-investor-visa-2026` + process | “qualifying investment” / “processing timeline” (keep or restore after ProgramFAQ REMOVE) |
+
+### Implementation checklist (when coding, not this commit)
+
+1. Implement placements above during trim; do not ship ProgramFAQ REMOVE without the FAQ/cost/who-is/research inbound adds.
+2. Re-run the same `<main>` distinct-linker count on the trimmed build; paste an updated before→after table into the PR notes.
+3. Confirm no section has two links to the same destination; confirm no “click here” / bare-URL anchors.
 
 ---
 
@@ -496,9 +636,10 @@ No page currently mounts two TopCTAs or two Preferred Sources blocks.
 
 ## SEO inbound check (post-trim)
 
-All program pages stay linked from global **Navbar** + **Footer** program/resources columns → well above 3 inbound.  
+All program pages stay linked from global **Navbar** + **Footer** program/resources columns → well above 3 inbound (chrome only; **not** counted for section E).  
+**Body-content floors:** follow **section E** minima and the `max(minimum, BEFORE)` rule.  
 Audience pages: keep homepage `#audiences` links, who-is-for cards, and existing cross-links from visa/eligibility/benefits/cost/process.  
-After removing Program FAQ answer-links from non-FAQ pages, re-run `seo-check` inbound rule before merge.
+After removing Program FAQ answer-links from non-FAQ pages, re-run the section E `<main>` distinct-linker count and `seo-check` before merge.
 
 ---
 
