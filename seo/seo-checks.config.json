@@ -1,0 +1,11 @@
+{
+  "forbiddenTextAllowlist": [
+    {
+      "path": "/privacy",
+      "rules": [10],
+      "reason": "Live /privacy page still contains draft placeholder text until counsel publishes the final policy.",
+      "remove_when": "final privacy policy is published"
+    }
+  ],
+  "noindexAllowlist": ["/panama-qualified-investor-visa-changes"]
+}
