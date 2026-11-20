@@ -31,11 +31,6 @@ const heroImage = '/images/hero-papers.webp';
     >
       Speak with an Advisor<span>→</span>
     </button>
-    <div class="scroll-hint" aria-hidden="true">
-      <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
-        <path d="M1 1L10 10L19 1" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"></path>
-      </svg>
-    </div>
   </div>
 </section>
 
@@ -164,17 +159,3 @@ const heroImage = '/images/hero-papers.webp';
   }
 
 </style>
-
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const hint = document.querySelector('.scroll-hint');
-    const hero = document.querySelector('.hero');
-    if (hint && hero) {
-      const obs = new IntersectionObserver(([e]) => {
-        hint.style.opacity = e.isIntersecting ? '1' : '0';
-        hint.style.transition = 'opacity 0.3s';
-      }, { threshold: 0.5 });
-      obs.observe(hero);
-    }
-  });
-</script>

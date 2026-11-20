@@ -252,7 +252,8 @@ h3 {
   padding-inline: clamp(1.35rem, 4vw, 3rem);
 }
 
-.measure {
+.measure,
+.narrow {
   max-width: var(--measure);
   width: 100%;
   margin-inline: auto;
@@ -267,6 +268,23 @@ h3 {
   max-width: var(--measure);
   width: 100%;
   margin-inline: auto;
+}
+
+.split {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  .split--7-5 {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
 }
 
 .eyebrow {
@@ -938,32 +956,6 @@ h3 em {
   background: var(--color-navy-900);
   z-index: 100;
   transition: width 0.1s linear;
-}
-
-.scroll-hint {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: softBounce 2.5s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 2;
-}
-
-@keyframes softBounce {
-  0%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(6px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .scroll-hint {
-    animation: none;
-  }
 }
 
 .section-divider {

@@ -4,15 +4,17 @@ import { FORMCARRY_ACTION } from '../lib/forms';
 
 <section class="monthly">
   <div class="wrap">
-    <p class="nl-kicker">Monthly updates</p>
-    <form class="nl" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
-      <input type="hidden" name="_subject" value="Newsletter signup" />
-      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-      <label class="sr-only" for="monthly-email">Email</label>
-      <input id="monthly-email" name="email" type="email" autocomplete="email" required placeholder="Enter your email" />
-      <button type="submit" aria-label="Subscribe">→</button>
-    </form>
-    <p class="nl-note">No spam. Unsubscribe anytime.</p>
+    <div class="monthly-inner">
+      <p class="nl-kicker">Monthly updates</p>
+      <form class="nl" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
+        <input type="hidden" name="_subject" value="Newsletter signup" />
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <label class="sr-only" for="monthly-email">Email</label>
+        <input id="monthly-email" name="email" type="email" autocomplete="email" required placeholder="Enter your email" />
+        <button type="submit" aria-label="Subscribe">→</button>
+      </form>
+      <p class="nl-note">No spam. Unsubscribe anytime.</p>
+    </div>
   </div>
 </section>
 
@@ -21,6 +23,13 @@ import { FORMCARRY_ACTION } from '../lib/forms';
     background: linear-gradient(200deg, #4e6478 0%, #405363 55%, #2d3d4d 100%);
     color: var(--color-on-navy-dim);
     padding: 2.25rem 0;
+  }
+
+  .monthly-inner {
+    max-width: var(--measure);
+    width: 100%;
+    margin-inline: auto;
+    text-align: left;
   }
 
   .nl-kicker {
@@ -41,7 +50,7 @@ import { FORMCARRY_ACTION } from '../lib/forms';
   .nl input {
     background: rgba(255, 255, 255, 0.16);
     border: 1px solid var(--color-line);
-    border-radius: 4px;
+    border-radius: var(--radius);
     padding: 0.7rem 0.85rem;
     font-size: 0.88rem;
     color: var(--color-on-navy);
@@ -69,7 +78,7 @@ import { FORMCARRY_ACTION } from '../lib/forms';
   .nl button {
     background: #fff;
     color: #405363;
-    border-radius: 4px;
+    border-radius: var(--radius);
     width: 2rem;
     height: 2rem;
     display: grid;
