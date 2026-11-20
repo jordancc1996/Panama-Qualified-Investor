@@ -87,7 +87,7 @@ Estimated visible words after (collapsed FAQ), from the page table below: none u
 - Reality: “Panama offers a cleaner path. A first-sale real estate investment from US$300,000 under Executive Decree 17 of 2026. Processing is 30 to 90 days from document submission to provisional permit. There is no language requirement, and a territorial tax system that doesn't tax income earned outside the country. For Canadians earning from global investments, remote consulting, or Canadian-registered businesses, this matters.”
 - Cards: Territorial tax for Canadians; USD economy for CAD investors; faster than Europe (30–90 days); lower entry vs Portugal/Malta/Greece/UK; no physical presence trap; familiar banking / correspondent relationships.
 - FAQs in full: Canadian taxes interaction; keep RRSP and TFSA; Panama politically stable; healthcare.
-- CTA: advisor line specific to Canadian clients (parallel audience CTA pattern).
+- CTA: “15 minutes with an advisor who works specifically with Canadian investors.”
 
 ### `/h1b` — after ≈ **~950 words** (OK, ≥600)
 
@@ -96,7 +96,7 @@ Estimated visible words after (collapsed FAQ), from the page table below: none u
 - Reality: green card backlog as structural problem; employer-tied status / 60-day layoff window; “The rational response is not to wait. It's to build a backup.”; Panama QIV independent of USCIS with no country quota / employer / lottery / queue; H-1B unaffected.
 - Cards: No country quotas; no employer dependency; independent of US backlog; H-1B status unaffected; a home you actually own; family coverage / H-4 EAD contrast.
 - FAQs in full: affect H-1B or green card; do this while still on H-1B; green card later / keep Panama; $300,000 realistic on H-1B salary; H-4 spouse work authorization in Panama.
-- CTA: advisor line specific to H-1B clients.
+- CTA: “15 minutes with an advisor who specializes in immigration backup plans for H-1B holders.”
 
 ### `/tech-founders` — after ≈ **~920 words** (OK, ≥600)
 
@@ -105,7 +105,7 @@ Estimated visible words after (collapsed FAQ), from the page table below: none u
 - Reality: company everywhere / residency somewhere; US tax resident friction for Delaware/Cayman/Singapore income; Dubai/Lisbon/Singapore trade-offs; “Panama sits in the sweet spot…” (Americas, dollarized, territorial tax, modern finance, no 183-day proof).
 - Cards: territorial tax / foreign income untaxed; Americas time zone; no minimum stay; crypto-friendly banking; SAS formation available; cost of living vs SF/NY.
 - FAQs in full: run company from Panama; US company tax treatment; internet for remote work; bring team or hire locally; social scene for founders.
-- CTA: advisor line specific to founder clients.
+- CTA: “15 minutes with an advisor who works specifically with tech founders and remote CEOs.”
 
 ### `/crypto-investors` — after ≈ **~930 words** (OK, ≥600)
 
@@ -114,7 +114,7 @@ Estimated visible words after (collapsed FAQ), from the page table below: none u
 - Reality: crypto position is not by itself a residency application; source-of-funds same as other lawful sources; starting point of capital changes, not the visa; territorial tax reason crypto investors look here.
 - Cards: crypto-derived capital; same source-of-funds standard; territorial taxation; dollar-denominated; three investment routes (threshold note); no language test.
 - FAQs in full: crypto gains as source of funds; convert before apply; will Panama tax crypto; manage wallets/exchanges outside Panama; refundability after placing into qualifying asset.
-- CTA: advisor line specific to crypto clients.
+- CTA: “15 minutes with an advisor who works specifically with crypto investors.”
 
 **Flag:** No audience page is projected under 600 words after the cut.
 
