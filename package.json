@@ -10,7 +10,8 @@
     "build": "astro build",
     "test": "node --experimental-strip-types --test src/lib/linkedin.test.ts",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:balance": "playwright test tests/balance.spec.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -20,5 +21,8 @@
     "astro": "^7.2.4",
     "gsap": "^3.15.0",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0"
   }
 }
