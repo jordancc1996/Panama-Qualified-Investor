@@ -15,13 +15,13 @@ const heroImage = '/images/hero-papers.webp';
     fetchpriority="high"
     decoding="async"
   />
-  <div class="content">
+  <div class="panel">
     <h1>Permanent residency in Panama from $300,000.</h1>
     <p class="subtext">
       The Panama Qualified Investor Visa grants indefinite residency through titled real estate, listed securities, or a bank deposit.{' '}
       <a href="/panama-qualified-investor-visa-2026">See the full visa breakdown</a>.
     </p>
-    <InvestmentDeadlineNote variant="on-navy" />
+    <InvestmentDeadlineNote variant="plain-on-dark" />
     <button
       class="hero-cta"
       type="button"
@@ -37,37 +37,24 @@ const heroImage = '/images/hero-papers.webp';
 <style>
   .hero {
     position: relative;
-    min-height: calc(100dvh - var(--header-h));
-    overflow: visible;
+    display: flex;
+    flex-direction: column;
     margin-top: var(--header-h);
     isolation: isolate;
     scroll-margin-top: calc(var(--header-h) + 1rem);
+    overflow: hidden;
   }
 
   .hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
+    display: block;
     width: 100%;
-    height: 100%;
+    height: 45vh;
     object-fit: cover;
+    object-position: center 35%;
+    flex-shrink: 0;
   }
 
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(
-      to top right,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0.5) 35%,
-      rgba(0, 0, 0, 0.1) 100%
-    );
-    pointer-events: none;
-  }
-
-  .content {
+  .panel {
     position: relative;
     z-index: 1;
     display: flex;
@@ -75,12 +62,12 @@ const heroImage = '/images/hero-papers.webp';
     justify-content: flex-end;
     align-items: flex-start;
     text-align: left;
-    min-height: calc(100dvh - var(--header-h));
+    background: #405363;
     width: 100%;
-    max-width: var(--wrap-max);
-    margin: 0;
+    flex: 1 1 auto;
     padding-inline: clamp(1.35rem, 4vw, 3rem);
-    padding-bottom: clamp(5rem, 10vw, 8rem);
+    padding-top: clamp(2.5rem, 6vw, 4rem);
+    padding-bottom: clamp(2.5rem, 6vw, 4rem);
     box-sizing: border-box;
   }
 
@@ -102,12 +89,14 @@ const heroImage = '/images/hero-papers.webp';
     font-weight: 400;
     font-size: var(--text-lede);
     line-height: var(--leading-lede);
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.85);
     max-width: var(--measure);
     margin: 0.9rem 0 0;
   }
 
-  .subtext a {
+  /* Beat global main p a link color on the slate panel */
+  .panel .subtext a,
+  :global(main) .panel .subtext a {
     color: #fff;
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -119,11 +108,18 @@ const heroImage = '/images/hero-papers.webp';
     color: #fff;
   }
 
-  .subtext a:hover {
+  .panel .subtext a:hover,
+  :global(main) .panel .subtext a:hover {
     color: #fff;
     opacity: 0.85;
   }
 
+  .panel .subtext a:visited,
+  :global(main) .panel .subtext a:visited {
+    color: #fff;
+  }
+
+  /* On-dark CTA (hero-local; do not depend on PR #18) */
   .hero-cta {
     display: inline-flex;
     align-items: center;
@@ -158,13 +154,34 @@ const heroImage = '/images/hero-papers.webp';
   }
 
   @media (max-width: 767px) {
-    .content {
-      padding-bottom: 3rem;
-    }
-
     .subtext {
       max-width: 100%;
     }
   }
 
+  /* Desktop: photo as full-bleed background; solid slate panel left */
+  @media (min-width: 1024px) {
+    .hero {
+      flex-direction: row;
+      min-height: calc(100dvh - var(--header-h));
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .panel {
+      width: 42%;
+      max-width: 42%;
+      min-height: calc(100dvh - var(--header-h));
+      padding-bottom: clamp(5rem, 10vw, 8rem);
+      padding-top: clamp(3rem, 6vw, 5rem);
+    }
+  }
 </style>
