@@ -6,44 +6,44 @@
   --font-sans: "Roboto", "Roboto Fallback", Arial, system-ui, sans-serif;
   --font-mono: "Roboto", "Roboto Fallback", Arial, system-ui, sans-serif;
 
-  /* Type scale: desktop / mobile via clamp. Never smaller than the live site. */
-  --text-body: clamp(1.125rem, 0.35vw + 1.05rem, 1.25rem);
+  /* Type scale: desktop / mobile via clamp. Body never below 16px; labels never below 12px. */
+  --text-body: clamp(1rem, 0.2vw + 0.95rem, 1.0625rem);
   --text-small: 0.9375rem;
   --text-caption: 0.875rem;
-  --text-label: 0.875rem;
+  --text-label: 0.75rem;
   --text-ui: 1rem;
   --text-input: 1.0625rem;
   --text-table: clamp(1rem, 0.2vw + 0.96rem, 1.0625rem);
-  --text-h1: clamp(2.375rem, 4.2vw, 3.75rem);
-  --text-h1-hero: clamp(2.75rem, 6vw, 5rem);
-  --text-h2: clamp(2rem, 3.2vw, 2.75rem);
-  --text-h2-sm: clamp(1.625rem, 2vw, 1.875rem);
-  --text-h3: clamp(1.5rem, 2vw, 1.875rem);
-  --text-h4: clamp(1.1875rem, 1.2vw, 1.3125rem);
-  --text-lede: clamp(1.375rem, 1.4vw, 1.625rem);
-  --text-stat: clamp(1.75rem, 2.2vw, 2.125rem);
+  --text-h1: clamp(2rem, 3vw, 2.75rem);
+  --text-h1-hero: clamp(2.25rem, 3.8vw, 3.25rem);
+  --text-h2: clamp(1.75rem, 2.4vw, 2.25rem);
+  --text-h2-sm: clamp(1.5rem, 1.8vw, 1.75rem);
+  --text-h3: clamp(1.25rem, 1.6vw, 1.5rem);
+  --text-h4: clamp(1.0625rem, 1vw, 1.1875rem);
+  --text-lede: clamp(1.1875rem, 1.2vw, 1.375rem);
+  --text-stat: clamp(1.5rem, 1.8vw, 1.875rem);
 
   --weight-body: 400;
-  --weight-ui: 500;
-  --weight-semibold: 600;
-  --weight-bold: 600;
+  --weight-ui: 400;
+  --weight-semibold: 500;
+  --weight-bold: 500;
 
-  --leading-body: 1.7;
-  --leading-heading: 1.15;
-  --leading-display: 1.1;
-  --leading-hero: 1.05;
-  --leading-h3: 1.2;
-  --leading-h4: 1.35;
+  --leading-body: 1.65;
+  --leading-heading: 1.2;
+  --leading-display: 1.2;
+  --leading-hero: 1.15;
+  --leading-h3: 1.25;
+  --leading-h4: 1.25;
   --leading-lede: 1.4;
-  --leading-tight: 1.1;
+  --leading-tight: 1.2;
   --leading-ui: 1.5;
   --leading-label: 1.4;
   --leading-footer: 1.55;
 
   --tracking-body: 0;
-  --tracking-heading: -0.01em;
+  --tracking-heading: 0;
   --tracking-ui: 0;
-  --tracking-label: 0.1em;
+  --tracking-label: 0.12em;
   --tracking-button: 0;
 
   --space-paragraph: 1.25em;
@@ -239,7 +239,7 @@ h3 {
 
 h1 {
   font-size: var(--text-h1);
-  font-weight: 500;
+  font-weight: 400;
   line-height: var(--leading-display);
   letter-spacing: var(--tracking-heading);
   text-wrap: pretty;
@@ -247,7 +247,7 @@ h1 {
 
 h2 {
   font-size: var(--text-h2);
-  font-weight: 600;
+  font-weight: 400;
   line-height: var(--leading-heading);
   letter-spacing: var(--tracking-heading);
   text-wrap: balance;
@@ -255,7 +255,7 @@ h2 {
 
 h3 {
   font-size: var(--text-h3);
-  font-weight: 600;
+  font-weight: 400;
   line-height: var(--leading-h3);
   letter-spacing: 0;
   text-wrap: balance;
@@ -264,7 +264,7 @@ h3 {
 h4 {
   font-family: var(--font-sans);
   font-size: var(--text-h4);
-  font-weight: 500;
+  font-weight: 400;
   line-height: var(--leading-h4);
   letter-spacing: 0;
   color: var(--color-ink);
@@ -320,8 +320,8 @@ h4 {
 .eyebrow {
   font-family: var(--font-sans);
   font-size: var(--text-label);
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.1em;
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: #405363;
   line-height: var(--leading-label);
@@ -340,8 +340,8 @@ h4 {
 .kicker {
   font-family: var(--font-sans);
   font-size: var(--text-label);
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-muted);
   line-height: var(--leading-label);
@@ -351,7 +351,7 @@ h4 {
 .page-hero .subtext {
   font-family: var(--font-display);
   font-size: var(--text-lede);
-  font-weight: 500;
+  font-weight: 400;
   line-height: var(--leading-lede);
   letter-spacing: 0;
   max-width: var(--measure);
@@ -360,6 +360,20 @@ h4 {
 .reading,
 .prose {
   max-width: var(--measure);
+}
+
+p,
+li {
+  font-weight: var(--weight-body);
+}
+
+p strong,
+p b,
+li strong,
+li b,
+.prose strong,
+.prose b {
+  font-weight: var(--weight-bold);
 }
 
 .prose p {
@@ -628,7 +642,7 @@ h3 em {
 .cta-band h2 {
   font-family: var(--font-display);
   font-size: var(--text-h2-sm);
-  font-weight: 600;
+  font-weight: 400;
   color: var(--color-on-navy);
   line-height: var(--leading-h3);
   letter-spacing: 0;
@@ -665,8 +679,8 @@ h3 em {
 
 .spec-card .n {
   font-family: var(--font-display);
-  font-size: max(2.1rem, var(--text-stat));
-  font-weight: 500;
+  font-size: var(--text-stat);
+  font-weight: 400;
   color: var(--color-navy-600);
   line-height: var(--leading-tight);
   margin: 0 0 0.65rem;
@@ -817,7 +831,7 @@ h3 em {
 .field label {
   font-family: var(--font-sans);
   font-size: var(--text-label);
-  font-weight: var(--weight-semibold);
+  font-weight: 500;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-gold-300);
@@ -1027,7 +1041,7 @@ h3 em {
   font-family: var(--font-sans);
   font-size: var(--text-label);
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.25);
 }
