@@ -4,9 +4,11 @@ import Navbar from '../components/Navbar.astro';
 import TopCTA from '../components/TopCTA.astro';
 import CtaBand from '../components/CtaBand.astro';
 import MonthlyUpdates from '../components/MonthlyUpdates.astro';
-import { COSTS_BEYOND_INVESTMENT, PROCESSING_TIME, REAL_ESTATE_THRESHOLD_NOTE } from '../data/program-faq';
+import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
+import { COSTS_BEYOND_INVESTMENT, PROCESSING_TIME } from '../data/program-faq';
 import FAQSection from '../components/FAQSection.astro';
 import ProgramFAQSection from '../components/ProgramFAQSection.astro';
+import DecreeReviewLine from '../components/DecreeReviewLine.astro';
 import FaqJsonLd from '../components/FaqJsonLd.astro';
 import { faqBank } from '../data/faq-bank';
 
@@ -102,6 +104,7 @@ const description =
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">The process</p>
         <h1>Panama Qualified Investor Visa process 2026: from first inquiry to residency card.</h1>
+        <DecreeReviewLine />
         <p class="subtext">
           Panama Qualified Investor Visa process 2026 covers each step from first inquiry to residency card.
         </p>

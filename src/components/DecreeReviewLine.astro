@@ -1,0 +1,58 @@
+---
+import { DECREE, LAST_REVIEWED, REVIEWER } from '../data/program';
+
+interface Props {
+  variant?: 'on-navy' | 'on-paper';
+}
+
+const { variant = 'on-navy' } = Astro.props;
+const href = DECREE.sourceUrl;
+---
+
+<p class:list={['decree-review', variant === 'on-paper' && 'decree-review--paper']}>
+  Updated for{' '}
+  {
+    href ? (
+      <a href={href} rel="noopener noreferrer">
+        {DECREE.name}
+      </a>
+    ) : (
+      <span>{DECREE.name}</span>
+    )
+  }
+  {' '}· Last reviewed {LAST_REVIEWED} by {REVIEWER}
+</p>
+
+<style>
+  .decree-review {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    line-height: var(--leading-body);
+    color: var(--color-on-navy-dim);
+    margin: 0.75rem 0 0;
+    max-width: 42rem;
+  }
+
+  .decree-review a,
+  .decree-review span {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .decree-review a {
+    transition: color 150ms ease-out;
+  }
+
+  .decree-review a:hover {
+    color: var(--color-on-navy);
+  }
+
+  .decree-review--paper {
+    color: var(--color-muted);
+  }
+
+  .decree-review--paper a:hover {
+    color: var(--color-ink);
+  }
+</style>

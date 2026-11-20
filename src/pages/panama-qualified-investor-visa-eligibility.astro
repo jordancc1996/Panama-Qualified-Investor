@@ -5,10 +5,12 @@ import TopCTA from '../components/TopCTA.astro';
 import CtaBand from '../components/CtaBand.astro';
 import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
+import DecreeReviewLine from '../components/DecreeReviewLine.astro';
 import FAQSection from '../components/FAQSection.astro';
 import ProgramFAQSection from '../components/ProgramFAQSection.astro';
 import FaqJsonLd from '../components/FaqJsonLd.astro';
 import { faqBank } from '../data/faq-bank';
+import { FUNDS_RULE, REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
 
 const pageFaqs = faqBank.applicationAndLegalProcess.filter(
   (item) => item.q !== 'How much are the government fees?',
@@ -17,7 +19,7 @@ const pageFaqs = faqBank.applicationAndLegalProcess.filter(
 const requirements = [
   {
     title: 'Minimum Investment',
-    body: 'Titled real estate from $300,000, listed securities from $500,000, or a fixed-term bank deposit from $750,000. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. The investment must be in your name. Government fees sit on top of this amount; see <a href="/panama-qualified-investor-visa-cost">Panama Qualified Investor Visa Cost</a>.',
+    body: `${REAL_ESTATE_THRESHOLD_NOTE} The investment must be in your name. Government fees sit on top of this amount; see <a href="/panama-qualified-investor-visa-cost">Panama Qualified Investor Visa Cost</a>.`,
   },
   {
     title: 'Clean Criminal Background',
@@ -25,7 +27,7 @@ const requirements = [
   },
   {
     title: 'Proof of Legitimate Funds',
-    body: 'You must demonstrate the source of your investment capital: employment income, business profits, investment returns, inheritance, or asset sales.',
+    body: FUNDS_RULE,
   },
   {
     title: 'Valid Passport',
@@ -74,7 +76,7 @@ const heroHeight = 682;
 
 const title = 'Panama Qualified Investor Visa Eligibility';
 const description =
-  "Panama Qualified Investor Visa Eligibility: who qualifies? Open to all nationalities, no age or language test. $300,000 real estate, rising October 15, 2026.";
+  'Panama Qualified Investor Visa Eligibility covers who qualifies under Decree 17 of 2026. Open to all nationalities; first-sale real estate from US$300,000.';
 ---
 
 <BaseLayout title={title} description={description} ogDescription={description} path="/panama-qualified-investor-visa-eligibility">
@@ -94,6 +96,7 @@ const description =
       <div class="content">
         <p class="eyebrow eyebrow--on-navy">Eligibility</p>
         <h1>Panama Qualified Investor Visa Eligibility</h1>
+        <DecreeReviewLine />
         <p class="subtext">
           The Panama Qualified Investor Visa Eligibility requirements are designed to be accessible, but there are clear eligibility requirements. Here's the full picture.
         </p>

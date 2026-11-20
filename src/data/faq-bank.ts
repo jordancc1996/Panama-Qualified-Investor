@@ -1,4 +1,5 @@
-import { COSTS_BEYOND_INVESTMENT, REAL_ESTATE_THRESHOLD_NOTE, type FaqItem } from './program-faq';
+import { HOLD_PERIOD_SHORT, REAL_ESTATE_THRESHOLD_NOTE } from './program';
+import { COSTS_BEYOND_INVESTMENT, type FaqItem } from './program-faq';
 
 export type FaqBankTopic =
   | 'investmentRequirements'
@@ -16,26 +17,26 @@ export type FaqBank = Record<FaqBankTopic, FaqItem[]>;
  * investmentRequirements and propertyOwnershipAndRentalIncome describe the
  * REAL ESTATE route. Use them only on real-estate or property-focused pages.
  * Do not present them as the only qualifying option on general program pages.
- * The program also has listed securities ($500,000) and a fixed-term bank
- * deposit ($750,000).
+ * The program also has listed securities (US$500,000) and fixed-term bank
+ * deposits (US$500,000 state bank; US$750,000 private bank).
  */
 export const faqBank: FaqBank = {
   investmentRequirements: [
     {
       q: 'What is the minimum investment?',
-      a: `The program has three routes: titled real estate, listed securities from $500,000, and a fixed-term bank deposit from $750,000. ${REAL_ESTATE_THRESHOLD_NOTE}`,
+      a: `Under Executive Decree 17 of 2026, ${REAL_ESTATE_THRESHOLD_NOTE}`,
     },
     {
       q: 'Can I use more than one property to meet the minimum?',
-      a: `Yes. Multiple properties may be combined if their total registered value meets or exceeds US$300,000. ${REAL_ESTATE_THRESHOLD_NOTE}`,
+      a: `Yes. Multiple properties may be combined if their total registered value meets or exceeds the applicable real estate minimum for the transaction type. ${REAL_ESTATE_THRESHOLD_NOTE}`,
     },
     {
       q: 'Can I finance part of the investment with a mortgage?',
-      a: `Financing may be permitted if at least US$300,000 of the applicant's own funds is registered in the purchase. ${REAL_ESTATE_THRESHOLD_NOTE} Applicants should confirm the structure with their attorney before entering into a transaction.`,
+      a: `Financing may be permitted if the applicant's own funds registered in the purchase meet the applicable minimum for that property type. ${REAL_ESTATE_THRESHOLD_NOTE} Applicants should confirm the structure with their attorney before entering into a transaction.`,
     },
     {
       q: 'What types of properties qualify?',
-      a: `Qualifying properties may include city, beach, island, and golf developments priced at US$300,000 or more, provided they meet the program's legal requirements (referred to in source material as GLP properties). ${REAL_ESTATE_THRESHOLD_NOTE}`,
+      a: `Qualifying properties may include city, beach, island, and golf developments that meet the program's legal requirements and the applicable Decree 17 minimum for first-sale or resale property (referred to in source material as GLP properties). ${REAL_ESTATE_THRESHOLD_NOTE}`,
     },
     {
       q: 'Are pre-construction properties eligible?',
@@ -101,7 +102,7 @@ export const faqBank: FaqBank = {
     },
     {
       q: 'Can I sell the property and keep my residency?',
-      a: 'The qualifying investment should be maintained for the required minimum period. After that period, the property may be sold without affecting residency, subject to applicable rules at the time of sale. Confirm the required holding period with an attorney.',
+      a: `The qualifying investment should be maintained for ${HOLD_PERIOD_SHORT}, with proof provided annually. After that period, the property may be sold without affecting residency, subject to applicable rules at the time of sale. Confirm the required holding period with an attorney.`,
     },
     {
       q: 'Can I purchase the property through a corporation or trust?',
