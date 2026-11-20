@@ -7,6 +7,7 @@ import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
 import FaqJsonLd from '../components/FaqJsonLd.astro';
 import FAQSection from '../components/FAQSection.astro';
 import ProgramFAQSection from '../components/ProgramFAQSection.astro';
+import { REAL_ESTATE_THRESHOLD_NOTE, ROUTES_SUMMARY } from '../data/program';
 
 const heroImage = '/images/hero-canadians.webp';
 const heroWidth = 682;
@@ -27,7 +28,7 @@ const benefits = [
   },
   {
     title: 'Lower Entry Point',
-    body: 'At the current $300,000 real estate minimum, Panama\'s threshold is lower than Portugal, Malta, Greece, or the UK. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. And the investment is yours, not a donation or government fee.',
+    body: `At the US$300,000 first-sale real estate minimum under Decree 17, Panama's threshold is lower than Portugal, Malta, Greece, or the UK. ${REAL_ESTATE_THRESHOLD_NOTE} And the investment is yours, not a donation or government fee.`,
   },
   {
     title: 'No Physical Presence Trap',
@@ -61,8 +62,8 @@ const faqs = [
 
 <BaseLayout
   title="Panama Qualified Investor Visa for Canadians | Residency by Investment"
-  description="How Canadian investors use the Panama Qualified Investor Visa for permanent residency. Territorial taxation. Real estate from $300,000, rising October 15, 2026."
-  ogDescription="How Canadian investors use the Panama Qualified Investor Visa for permanent residency. Territorial taxation. Real estate from $300,000, rising October 15, 2026."
+  description="How Canadian investors use the Panama Qualified Investor Visa for permanent residency under Decree 17 of 2026. First-sale real estate starts at US$300,000."
+  ogDescription="How Canadian investors use the Panama Qualified Investor Visa for permanent residency under Decree 17 of 2026. First-sale real estate starts at US$300,000."
   path="/canadians"
 >
   <Navbar />
@@ -104,7 +105,7 @@ const faqs = [
           </div>
           <div class="prose">
             <p>
-              Canada's economic landscape is shifting. Capital gains inclusion rate changes, rising housing costs in major cities, and an increasingly complex tax code are prompting more Canadians to think internationally.
+              Canada's economic landscape is shifting. Capital gains inclusion rate changes, higher housing costs in major cities, and an increasingly complex tax code are prompting more Canadians to think internationally.
             </p>
             <p>
               For investors and business owners, the math has changed. Higher capital gains taxes reduce the net return on exits, real estate, and portfolio gains. Meanwhile, the cost of living in Vancouver and Toronto now rivals London and New York, without the same access to global financial infrastructure.
@@ -113,7 +114,7 @@ const faqs = [
               <a href="/panama-qualified-investor-visa-benefits">European golden visas</a> are the traditional alternative, but they come with friction. Portugal's program has been restructured repeatedly. Greece requires physical presence. Malta has a lengthy due diligence process and a price tag well above $300,000. Processing times are measured in months or years, not weeks.
             </p>
             <p>
-              Panama offers a cleaner path. A real estate investment of $300,000. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. <a href="/panama-qualified-investor-visa-process-2026">Processing is 30 to 90 days from document submission to provisional permit</a>. There is no language requirement, and a territorial tax system that doesn't tax income earned outside the country. For Canadians earning from global investments, remote consulting, or Canadian-registered businesses, this matters.
+              Panama offers a cleaner path. A first-sale real estate investment from US$300,000 under Executive Decree 17 of 2026. <a href="/panama-qualified-investor-visa-process-2026">Processing is 30 to 90 days from document submission to provisional permit</a>. There is no language requirement, and a territorial tax system that doesn't tax income earned outside the country. For Canadians earning from global investments, remote consulting, or Canadian-registered businesses, this matters.
             </p>
           </div>
         </div>
@@ -148,7 +149,7 @@ const faqs = [
           </div>
           <InvestmentDeadlineNote />
           <p class="route-pointer">
-            The Qualified Investor Visa has three paths: real estate, listed securities from $500,000, or a $750,000 fixed-term deposit. The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>.
+            {ROUTES_SUMMARY} See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>.
           </p>
           <p class="note">
             Processing is 30 to 90 days from document submission to provisional permit. See the <a href="/panama-qualified-investor-visa-process-2026">process</a>.

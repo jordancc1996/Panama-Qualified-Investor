@@ -1,11 +1,13 @@
 ---
+import { HOLD_PERIOD_SHORT, REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
+
 const routes = [
   {
-    amount: '$300,000',
+    amount: 'From $300,000',
     title: 'Real estate',
     kicker: 'Most used route',
-    body: 'Purchase Panamanian property free of liens on the qualifying amount. Title may sit in the applicant’s name, a Panama corporation, or a private interest foundation where the applicant is the ultimate beneficiary. Pre-construction is permitted through a licensed trust or a developer bank guarantee.',
-    note: 'The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026. Confirm the prevailing threshold with counsel before committing capital.',
+    body: 'Purchase Panamanian property free of liens on the qualifying amount. First-sale (new) property starts at US$300,000. Resale or secondary-market property starts at US$500,000. Title may sit in the applicant’s name, a Panama corporation, or a private interest foundation where the applicant is the ultimate beneficiary. Pre-construction is permitted through a licensed trust or a developer bank guarantee.',
+    note: `${REAL_ESTATE_THRESHOLD_NOTE} Confirm the prevailing threshold with counsel before committing capital.`,
     image: '/images/Panama-Qualified-Investor-Visa-1.webp',
     alt: 'Low-angle view of teal and gold Panama City skyscrapers against a pale sky',
   },
@@ -13,17 +15,17 @@ const routes = [
     amount: '$500,000',
     title: 'Listed securities',
     kicker: 'Market route',
-    body: 'Place $500,000 in securities listed on the Bolsa de Valores de Panamá through a brokerage licensed by the Superintendencia del Mercado de Valores. The book must be held for five years.',
+    body: 'Place US$500,000 in securities listed on the Bolsa de Valores de Panamá through a brokerage licensed by the Superintendencia del Mercado de Valores. The book must be held for the statutory hold period.',
     note: 'Suits investors who prefer a financial asset over property administration.',
     image: '/images/Panama-Qualified-Invesotr-Visa6.webp',
     alt: 'White colonial building with balconies, iron railings, and potted greenery',
   },
   {
-    amount: '$750,000',
+    amount: 'From $500,000',
     title: 'Bank time deposit',
     kicker: 'Deposit route',
-    body: 'Hold $750,000 in a fixed-term deposit of at least five years at a bank with a general license authorized to operate in Panama, under supervision of the Superintendencia de Bancos.',
-    note: 'Capital remains in the banking system for the statutory term.',
+    body: 'Hold a fixed-term deposit for the statutory hold period: US$500,000 at a state bank (Banco Nacional de Panamá or Caja de Ahorros), or US$750,000 at a private bank with a general license under supervision of the Superintendencia de Bancos.',
+    note: `Capital remains in the banking system for ${HOLD_PERIOD_SHORT}.`,
     image: '/images/Panama-Qualified-Investor-Visa4.webp',
     alt: 'Panamanian flag on a silver pole, framed by palm fronds against an overcast sky',
   },
@@ -36,12 +38,12 @@ const routes = [
       <p class="eyebrow">Capital</p>
       <h2>Three qualifying investment routes</h2>
       <p>
-        Each route grants the same immigration result: permanent residency. Choose the asset that matches liquidity, yield, and administration. The investment must be held for five years.
+        Each route grants the same immigration result: permanent residency. Choose the asset that matches liquidity, yield, and administration. The investment must be held for {HOLD_PERIOD_SHORT}, with proof provided annually.
       </p>
     </div>
     <div class="routes">
       {
-        routes.map((route, i) => (
+        routes.map((route) => (
           <article class="pcard">
             <img src={route.image} alt={route.alt} width="800" height="1000" loading="lazy" />
             <div class="pcard-body">

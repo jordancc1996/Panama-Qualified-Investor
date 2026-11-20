@@ -1,4 +1,5 @@
-import { COSTS_BEYOND_INVESTMENT, REAL_ESTATE_THRESHOLD_NOTE, programFaq, type FaqItem } from './program-faq';
+import { HOLD_PERIOD_SHORT, REAL_ESTATE_THRESHOLD_NOTE } from './program';
+import { COSTS_BEYOND_INVESTMENT, programFaq, type FaqItem } from './program-faq';
 
 export const financialFaq: FaqItem[] = [
   {
@@ -7,7 +8,7 @@ export const financialFaq: FaqItem[] = [
   },
   {
     q: 'Is the $300,000 a fee or an investment?',
-    a: `An investment. You own the asset. Real estate is yours to sell. Bank deposits are returned after 5 years. Securities stay in your brokerage account. ${REAL_ESTATE_THRESHOLD_NOTE}`,
+    a: `An investment. You own the asset. Real estate is yours to sell. Bank deposits are returned after the hold period. Securities stay in your brokerage account. ${REAL_ESTATE_THRESHOLD_NOTE}`,
   },
   {
     q: 'What are the total costs beyond the investment?',
@@ -15,7 +16,7 @@ export const financialFaq: FaqItem[] = [
   },
   {
     q: 'Can I use a mortgage for the real estate route?',
-    a: `${REAL_ESTATE_THRESHOLD_NOTE} That amount must be a direct investment. Mortgaged properties may qualify if your equity meets the threshold, but this varies. Confirm with your attorney.`,
+    a: `${REAL_ESTATE_THRESHOLD_NOTE} That amount must be a direct investment of the applicant's own funds. Mortgaged properties may qualify if your equity meets the applicable threshold, but this varies. Confirm with your attorney.`,
   },
   {
     q: 'What about US taxes? Do I still pay the IRS?',
@@ -23,7 +24,7 @@ export const financialFaq: FaqItem[] = [
   },
   {
     q: 'Are there ongoing costs to maintain residency?',
-    a: 'No government renewal fees. You maintain your qualifying investment.',
+    a: `No government renewal fees. You maintain your qualifying investment for ${HOLD_PERIOD_SHORT}, with proof provided annually.`,
   },
 ];
 

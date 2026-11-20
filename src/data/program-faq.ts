@@ -1,19 +1,23 @@
+import {
+  FEES,
+  REAL_ESTATE_THRESHOLD_NOTE as THRESHOLD_NOTE,
+} from './program';
+
 export type FaqItem = {
   q: string;
   a: string;
 };
 
-/** Canonical real estate threshold note. Use wherever $300,000 is stated as the current real estate minimum. */
-export const REAL_ESTATE_THRESHOLD_NOTE =
-  'The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026.';
+/** Re-export so existing imports from this module keep working. */
+export const REAL_ESTATE_THRESHOLD_NOTE = THRESHOLD_NOTE;
 
-/** Canonical processing time. */
+/** Canonical processing time. Counsel: confirm under Decree 17. */
 export const PROCESSING_TIME =
   '30 to 90 days from document submission to provisional permit';
 
 /** Canonical costs beyond the qualifying investment. Source: /panama-qualified-investor-visa-cost. */
 export const COSTS_BEYOND_INVESTMENT =
-  "A $5,000 application fee paid to Panama's National Treasury, a $5,000 repatriation deposit paid to the National Immigration Service, and $2,000 per adult dependent if applicable, split between the National Treasury and the Immigration Service. Legal and professional fees vary by firm and scope. Get a written quote. This site does not state a dollar range for legal work because that figure is not a fixed government amount.";
+  `A $${FEES.treasury.toLocaleString('en-US')} application fee paid to Panama's National Treasury, a $${FEES.immigration.toLocaleString('en-US')} repatriation deposit paid to the National Immigration Service, and $${FEES.perDependentTotal.toLocaleString('en-US')} per adult dependent if applicable, split between the National Treasury and the Immigration Service ($${FEES.perDependentEachAgency.toLocaleString('en-US')} each). Legal and professional fees vary by firm and scope. Get a written quote. This site does not state a dollar range for legal work because that figure is not a fixed government amount.`;
 
 /**
  * Fixed "About the Program" FAQs.
