@@ -2,13 +2,20 @@
 import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program-faq';
 
 interface Props {
-  variant?: 'on-navy' | 'on-paper';
+  variant?: 'on-navy' | 'on-paper' | 'plain-on-dark';
 }
 
 const { variant = 'on-paper' } = Astro.props;
 ---
 
-<aside class:list={['deadline', variant === 'on-navy' && 'deadline--on-navy']} role="note">
+<aside
+  class:list={[
+    'deadline',
+    variant === 'on-navy' && 'deadline--on-navy',
+    variant === 'plain-on-dark' && 'deadline--plain-on-dark',
+  ]}
+  role="note"
+>
   <p class="label">Investment thresholds</p>
   <p>{REAL_ESTATE_THRESHOLD_NOTE}</p>
 </aside>
@@ -29,6 +36,14 @@ const { variant = 'on-paper' } = Astro.props;
     border-color: rgba(255, 255, 255, 0.28);
     background: rgba(255, 255, 255, 0.08);
     margin: 1.75rem 0 0;
+  }
+
+  /* Homepage hero: plain text on slate, no box/border */
+  .deadline--plain-on-dark {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 1.5rem 0 0;
   }
 
   .label {
@@ -52,6 +67,11 @@ const { variant = 'on-paper' } = Astro.props;
     background: rgba(255, 255, 255, 0.12);
   }
 
+  .deadline--plain-on-dark .label {
+    color: #fff;
+    font-size: 0.75rem;
+  }
+
   .deadline p:last-child {
     margin: 0;
     font-family: var(--font-sans);
@@ -62,5 +82,9 @@ const { variant = 'on-paper' } = Astro.props;
 
   .deadline--on-navy p:last-child {
     color: var(--color-on-navy);
+  }
+
+  .deadline--plain-on-dark p:last-child {
+    color: rgba(255, 255, 255, 0.85);
   }
 </style>
