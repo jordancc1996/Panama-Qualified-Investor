@@ -3,9 +3,10 @@ import { FORMCARRY_ACTION } from '../lib/forms';
 import LinkedInField from './LinkedInField.astro';
 
 const tiers = [
-  { value: '300000-500000-real-estate', label: '$300,000 – $500,000 (Real Estate; $500,000 from Oct 15, 2026)' },
-  { value: '500000-750000-stock-market', label: '$500,000 – $750,000 (Stock Market)' },
-  { value: '750000-fixed-term-deposit', label: '$750,000+ (Fixed-Term Deposit)' },
+  // Keep option values stable for existing form submissions.
+  { value: '300000-500000-real-estate', label: 'US$300,000 first-sale / US$500,000 resale (Real Estate)' },
+  { value: '500000-750000-stock-market', label: 'US$500,000 (Panama Stock Exchange securities)' },
+  { value: '750000-fixed-term-deposit', label: 'US$500,000 state-bank or US$750,000 private-bank deposit' },
   { value: 'not-sure', label: 'Not sure yet' },
 ];
 ---

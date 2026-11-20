@@ -8,6 +8,7 @@ import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
 import FAQSection from '../components/FAQSection.astro';
 import ProgramFAQSection from '../components/ProgramFAQSection.astro';
 import FaqJsonLd from '../components/FaqJsonLd.astro';
+import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
 
 const pageFaqs = [
   {
@@ -49,7 +50,7 @@ const heroHeight = 585;
 
 const title = 'Panama Qualified Investor Visa Cost';
 const description =
-  'Panama Qualified Investor Visa Cost covers the $300,000 real estate minimum, rising to $500,000 on October 15, 2026, plus $5,000 application and $5,000 repatriation fees.';
+  'Panama Qualified Investor Visa Cost covers Decree 17 investment minima from US$300,000 plus US$5,000 National Treasury and US$5,000 immigration fees in 2026.';
 ---
 
 <BaseLayout title={title} description={description} ogDescription={description} path="/panama-qualified-investor-visa-cost">
@@ -85,7 +86,7 @@ const description =
           </div>
           <div class="prose">
             <p>
-              Panama Qualified Investor Visa Cost has two parts: the qualifying investment itself, and separate government processing fees paid on top of it. Both are covered here. Legal and professional fees are a third line, and they vary by firm.
+              Panama Qualified Investor Visa Cost has two parts: the qualifying investment itself, and separate government processing fees paid on top of it. Both are covered here. Legal and professional fees are a third line, and they vary by firm. Government fee amounts are the same for every nationality, including <a href="/canadians">Canadian</a> applicants.
             </p>
           </div>
         </div>
@@ -101,10 +102,10 @@ const description =
           </div>
           <div class="prose">
             <p>
-              The investment is the amount required to qualify. Route amounts and lock-in rules are on the visa page, not restated here. See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>.
+              The investment is the amount required to qualify. Route amounts and lock-in rules are on the visa page, not restated here. See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>. Documented gains can qualify as source of funds, including for <a href="/crypto-investors">crypto investors</a>.
             </p>
             <p>
-              The current real estate minimum is $300,000; this is scheduled to increase to $500,000 on October 15, 2026.
+              {REAL_ESTATE_THRESHOLD_NOTE}
             </p>
           </div>
           <InvestmentDeadlineNote />
