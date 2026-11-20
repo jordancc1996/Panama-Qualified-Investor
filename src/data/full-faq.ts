@@ -4,7 +4,7 @@ import { COSTS_BEYOND_INVESTMENT, programFaq, type FaqItem } from './program-faq
 export const financialFaq: FaqItem[] = [
   {
     q: "What does Panama's territorial tax system mean for me?",
-    a: 'Panama generally uses a territorial tax system. Income earned within Panama is generally taxed there. <a href="/panama-qualified-investor-visa-benefits">Foreign-sourced income</a>, including investments, remote salaries, and overseas business profits, generally is not. Confirm how this applies to your situation with a qualified tax professional.',
+    a: 'Panama generally uses a territorial tax system. Income earned within Panama is generally taxed there. <a href="/panama-qualified-investor-visa-benefits">Foreign-sourced income</a>, including investments, remote salaries, and overseas business profits, generally is not. That structure is often relevant for <a href="/canadians">Canadians</a> earning abroad. Confirm how this applies to your situation with a qualified tax professional.',
   },
   {
     q: 'Is the $300,000 a fee or an investment?',
@@ -16,7 +16,7 @@ export const financialFaq: FaqItem[] = [
   },
   {
     q: 'Can I use a mortgage for the real estate route?',
-    a: `${REAL_ESTATE_THRESHOLD_NOTE} That amount must be a direct investment of the applicant's own funds. Mortgaged properties may qualify if your equity meets the applicable threshold, but this varies. Confirm with your attorney.`,
+    a: `${REAL_ESTATE_THRESHOLD_NOTE} That amount must be a direct investment of the applicant's own funds. Documented digital-asset gains can qualify; see <a href="/crypto-investors">crypto investors</a>. Mortgaged properties may qualify if your equity meets the applicable threshold, but this varies. Confirm with your attorney.`,
   },
   {
     q: 'What about US taxes? Do I still pay the IRS?',
