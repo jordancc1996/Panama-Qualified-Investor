@@ -19,9 +19,9 @@
 ### New
 
 - `src/data/program.ts` — typed constants: `DECREE`, `ROUTES`, `FEES`, `HOLD_PERIOD`, `TRANSITION_NOTE`, `LAST_REVIEWED`, `REVIEWER`, threshold / routes summary strings
-- `src/components/DecreeReviewLine.astro` — review line under program-page H1s
 - `seo/scripts/audit_html.py` — meta description length audit for `dist`
 - `seo/reports/02-decree-17.md` — this report
+- ~~`src/components/DecreeReviewLine.astro`~~ — removed in follow-up (see below)
 
 ### Updated (components)
 
@@ -43,11 +43,11 @@
 
 ### Updated (pages)
 
-- `src/pages/panama-qualified-investor-visa-2026.astro` — routes, FAQ, review line, “What changed in September 2026”
-- `src/pages/panama-qualified-investor-visa-cost.astro` — thresholds, meta, review line
-- `src/pages/panama-qualified-investor-visa-eligibility.astro` — investment + funds rule, meta, review line
-- `src/pages/panama-qualified-investor-visa-faq.astro` — meta, review line
-- `src/pages/panama-qualified-investor-visa-process-2026.astro` — review line (threshold via constant)
+- `src/pages/panama-qualified-investor-visa-2026.astro` — routes, FAQ, “What changed in September 2026”
+- `src/pages/panama-qualified-investor-visa-cost.astro` — thresholds, meta
+- `src/pages/panama-qualified-investor-visa-eligibility.astro` — investment + funds rule, meta
+- `src/pages/panama-qualified-investor-visa-faq.astro` — meta
+- `src/pages/panama-qualified-investor-visa-process-2026.astro` — threshold via constant
 - `src/pages/americans.astro`, `canadians.astro`, `crypto-investors.astro`, `h1b.astro`, `tech-founders.astro` — body + meta
 - `src/pages/who-is-the-panama-qualified-investor-visa-for.astro` — Canadians card body
 
@@ -68,8 +68,8 @@
 
 ## Counsel open items
 
-1. **`LAST_REVIEWED` / `REVIEWER`** — still `PENDING_COUNSEL_DATE` / `PENDING_COUNSEL_REVIEWER` in `src/data/program.ts` (visible on program-page review lines).
-2. **`DECREE.sourceUrl`** — `null`. No Gaceta Oficial / MICI URL was present in the repo; review line shows decree name as plain text (not linked).
+1. **`LAST_REVIEWED` / `REVIEWER`** — still `PENDING_COUNSEL_DATE` / `PENDING_COUNSEL_REVIEWER` in `src/data/program.ts`. **Not rendered** (DecreeReviewLine removed until counsel confirms).
+2. **`DECREE.sourceUrl`** — `null`. No Gaceta Oficial / MICI URL was present in the repo.
 3. **Processing time** — site still says “30 to 90 days from document submission to provisional permit” (`PROCESSING_TIME`). Brief marked this for counsel confirm; left unchanged.
 4. **Dependent fee scope** — amounts match FACTS (US$1,000 to each agency / US$2,000 total). Copy still says “adult dependent” as before. Confirm whether fees apply to all dependents or only adults (`FEES.dependentScopeNote`).
 5. **Tax / territorial claims** — left unchanged (not in FACTS). Appear on hero CTA stats, Comparison, audience pages, benefits, etc.
@@ -81,3 +81,34 @@
 - Three-card investment layout kept; five Decree 17 routes are grouped (real estate / securities / bank deposit with sub-amounts).
 - Advisor modal option values kept stable for FormCarry submissions.
 - Site-separation: no links or shared branding with other Panama domains.
+
+## Follow-up: remove DecreeReviewLine (2026-11-20)
+
+**Commit on `content/decree-17`:** `88802bb` — *Remove unreviewed Decree 17 review line until counsel confirms.*  
+**Also:** rebased `cursor/audience-links-7d2f` onto updated `content/decree-17` and `--force-with-lease` pushed (`7f8e1ab`).
+
+### Changes
+
+- Removed `<DecreeReviewLine />` + import from:
+  - `panama-qualified-investor-visa-2026.astro`
+  - `panama-qualified-investor-visa-cost.astro`
+  - `panama-qualified-investor-visa-eligibility.astro`
+  - `panama-qualified-investor-visa-faq.astro`
+  - `panama-qualified-investor-visa-process-2026.astro`
+- Deleted `src/components/DecreeReviewLine.astro`
+- Kept `LAST_REVIEWED`, `REVIEWER`, `REVIEW_LINE_TEXT` in `src/data/program.ts` with comment: *Do not render until counsel supplies the date and reviewer.*
+
+### Verify
+
+| Check | Result |
+| --- | --- |
+| `npm run build` | Pass |
+| `rg DecreeReviewLine src` | No matches |
+| `PENDING_COUNSEL` / `Last reviewed` / `DecreeReviewLine` in program-page `dist` HTML | No matches |
+| `rg "October 15\|Oct 15\|rising" src` | No matches |
+| `python3 seo/scripts/audit_html.py dist` | Pass: 16 pages, bad=0, missing=0 |
+
+### Pushes
+
+- `content/decree-17` → origin (updates PR #3)
+- `cursor/audience-links-7d2f` → origin `--force-with-lease` (updates PR #5)
