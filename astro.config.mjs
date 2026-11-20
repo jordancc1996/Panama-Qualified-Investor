@@ -6,10 +6,19 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://panamaqualifiedinvestor.com',
+  site: 'https://www.panamaqualifiedinvestor.com',
+  // Lets @astrojs/sitemap write homepage <loc> without a trailing slash
+  // (sitemap package otherwise normalizes the root to host/).
+  trailingSlash: 'never',
   integrations: [
     sitemap({
-      customPages: ['https://panamaqualifiedinvestor.com/documents/panama-investment-outlook-qiv.pdf'],
+      customPages: ['https://www.panamaqualifiedinvestor.com/documents/panama-investment-outlook-qiv.pdf'],
+      serialize(item) {
+        if (item.url.endsWith('/') && item.url !== 'https://www.panamaqualifiedinvestor.com/') {
+          item.url = item.url.slice(0, -1);
+        }
+        return item;
+      },
     }),
   ],
   vite: {
