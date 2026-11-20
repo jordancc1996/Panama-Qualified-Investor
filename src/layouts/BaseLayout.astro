@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+import { SITE_URL } from '../lib/site';
 import garamond500 from '@fontsource/eb-garamond/files/eb-garamond-latin-500-normal.woff2?url';
 import roboto400 from '@fontsource/roboto/files/roboto-latin-400-normal.woff2?url';
 
@@ -18,27 +19,27 @@ const {
   path = '',
 } = Astro.props;
 
-const canonical = `https://panamaqualifiedinvestor.com${path}`;
+const canonical = `${SITE_URL}${path}`;
 const isHome = !path || path === '/';
-const ogImage = 'https://panamaqualifiedinvestor.com/images/Panama-Qualified-Invesotr-Visa3.webp';
+const ogImage = `${SITE_URL}/images/Panama-Qualified-Invesotr-Visa3.webp`;
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': 'https://panamaqualifiedinvestor.com/#organization',
+      '@id': `${SITE_URL}/#organization`,
       name: 'Panama Qualified Investor',
-      url: 'https://panamaqualifiedinvestor.com',
-      logo: 'https://panamaqualifiedinvestor.com/logo.webp',
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo.webp`,
       email: 'info@panamaqualifiedinvestor.com',
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://panamaqualifiedinvestor.com/#website',
+      '@id': `${SITE_URL}/#website`,
       name: 'Panama Qualified Investor',
-      url: 'https://panamaqualifiedinvestor.com',
-      publisher: { '@id': 'https://panamaqualifiedinvestor.com/#organization' },
+      url: SITE_URL,
+      publisher: { '@id': `${SITE_URL}/#organization` },
     },
   ],
 };
