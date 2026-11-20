@@ -66,7 +66,8 @@
   --color-paper: #fff;
   --color-ink: #405363;
   --color-ink-soft: #4b4b4b;
-  --color-muted: #5c5e62;
+  --color-muted: #75767a;
+  --color-muted-on-cream: #5c5e62;
   --color-link: #2d3d4d;
   --color-link-hover: #1c2833;
   --color-line: #c1c5c8;
@@ -74,6 +75,7 @@
   /* ON-DARK TEXT */
   --color-on-navy: #ffffff;
   --color-on-navy-dim: rgba(255, 255, 255, 0.80);
+  --color-on-navy-label: rgba(255, 255, 255, 0.75);
   --color-line-dark: rgba(255, 255, 255, 0.14);
 
   /* ACCENT: same steel blue family, NO bright color */
@@ -222,6 +224,23 @@ main p a:not(.btn):not(.cta-link):not(.text-link):hover,
   color: var(--color-link-hover);
 }
 
+/* Dark surfaces: white underlined links (must beat main p a:not(...) specificity). */
+main .hero p.subtext a:not(.btn):not(.cta-link):not(.text-link),
+main .hero p.subtext a:not(.btn):not(.cta-link):not(.text-link):visited,
+main .hero p.subtext a:not(.btn):not(.cta-link):not(.text-link):hover,
+main .page-hero p.subtext a:not(.btn):not(.cta-link):not(.text-link),
+main .page-hero p.subtext a:not(.btn):not(.cta-link):not(.text-link):visited,
+main .page-hero p.subtext a:not(.btn):not(.cta-link):not(.text-link):hover,
+main .section--navy .prose a:not(.btn):not(.cta-link):not(.text-link),
+main .section--navy .prose a:not(.btn):not(.cta-link):not(.text-link):visited,
+main .section--navy .prose a:not(.btn):not(.cta-link):not(.text-link):hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  font-weight: var(--weight-ui);
+}
+
 p + p {
   margin-top: var(--space-paragraph);
 }
@@ -323,18 +342,18 @@ h4 {
   font-weight: 500;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: #405363;
+  color: var(--color-muted);
   line-height: var(--leading-label);
   margin: 0;
 }
 
 .section--navy .eyebrow,
 .pcard .eyebrow {
-  color: #fff;
+  color: var(--color-on-navy-label);
 }
 
 .eyebrow--on-navy {
-  color: #fff;
+  color: var(--color-on-navy-label);
 }
 
 .kicker {
@@ -418,6 +437,12 @@ h3 em {
   background: var(--color-cream-tint);
 }
 
+/* #75767a fails 4.5:1 on #f7f7f7 (~4.24). Keep the prior muted on cream. */
+.section--cream,
+.bg-cream-tint {
+  --color-muted: var(--color-muted-on-cream);
+}
+
 /* FAQ measure column. Lives in global CSS so it cannot drift from stale per-component Vite HMR. */
 .faq-column {
   max-width: var(--measure);
@@ -454,15 +479,15 @@ h3 em {
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  border-radius: 4px;
-  padding: 0.75rem 1.5rem;
-  min-height: 48px;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: var(--text-ui);
+  border-radius: 2px;
+  padding: 14px 28px;
+  min-height: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
   font-weight: 500;
   font-family: var(--font-sans);
-  line-height: var(--leading-ui);
+  line-height: 1.2;
   border: 1px solid transparent;
   cursor: pointer;
   transition:
@@ -482,15 +507,15 @@ h3 em {
 
 .btn--gold,
 .btn--navy {
-  background: var(--color-navy-900);
+  background: #405363;
   color: #fff;
-  border-color: var(--color-navy-900);
+  border-color: #405363;
 }
 
 .btn--gold:hover,
 .btn--navy:hover {
-  background: var(--color-navy-800);
-  border-color: var(--color-navy-800);
+  background: #2d3d4d;
+  border-color: #2d3d4d;
   color: #fff;
 }
 
@@ -498,9 +523,12 @@ h3 em {
 .cta .btn--gold,
 .cta-band .btn--gold,
 .page-hero .btn--gold,
-.start .btn--gold {
-  background: #fff;
-  color: var(--color-navy-900);
+.start .btn--gold,
+.section--navy .btn--gold,
+.section--navy .btn--navy,
+.marquee .btn--gold {
+  background: transparent;
+  color: #fff;
   border-color: #fff;
 }
 
@@ -508,42 +536,45 @@ h3 em {
 .cta .btn--gold:hover,
 .cta-band .btn--gold:hover,
 .page-hero .btn--gold:hover,
-.start .btn--gold:hover {
-  background: var(--color-cream);
-  border-color: var(--color-cream);
-  color: var(--color-navy-900);
+.start .btn--gold:hover,
+.section--navy .btn--gold:hover,
+.section--navy .btn--navy:hover,
+.marquee .btn--gold:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #405363;
 }
 
 .btn--outline-navy,
 .btn--outline {
   background: transparent;
-  border: 1px solid var(--color-line);
-  color: var(--color-ink);
+  border: 1px solid #405363;
+  color: #405363;
 }
 
 .btn--outline-navy:hover,
 .btn--outline:hover {
-  background: transparent;
-  border-color: var(--color-navy-900);
-  color: var(--color-ink);
+  background: #405363;
+  border-color: #405363;
+  color: #fff;
 }
 
 .btn--outline-cream {
   background: transparent;
-  border: 1px solid var(--color-line);
+  border: 1px solid #fff;
   color: #fff;
 }
 
 .btn--outline-cream:hover {
-  background: transparent;
+  background: #fff;
   border-color: #fff;
-  color: #fff;
+  color: #405363;
 }
 
 .btn--sm {
-  padding: 0.75rem 1.5rem;
-  font-size: var(--text-ui);
-  min-height: 48px;
+  padding: 14px 28px;
+  font-size: 0.75rem;
+  min-height: 0;
 }
 
 .cta-link,
@@ -567,13 +598,19 @@ h3 em {
 }
 
 .cta-link--cream,
-.pcard .cta-link {
+.pcard .cta-link,
+.section--navy .cta-link {
   color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
 }
 
 .cta-link--cream:hover,
-.pcard .cta-link:hover {
-  color: var(--color-cream);
+.pcard .cta-link:hover,
+.section--navy .cta-link:hover {
+  color: #fff;
+  opacity: 0.85;
 }
 
 .cta-link--ink {
@@ -602,12 +639,7 @@ h3 em {
   margin-top: var(--header-h);
   padding: 4rem 0;
   text-align: center;
-  background-image: linear-gradient(
-    200deg,
-    color-mix(in oklab, #4e6478 55%, #405363) 0%,
-    #405363 55%,
-    color-mix(in oklab, #2d3d4d 60%, #405363) 100%
-  );
+  background: #405363;
 }
 
 .page-hero .content {
@@ -628,7 +660,7 @@ h3 em {
 }
 
 .cta-band {
-  background: linear-gradient(200deg, #4e6478 0%, #405363 55%, #2d3d4d 100%);
+  background: #405363;
   padding-block: 3rem;
 }
 
@@ -834,7 +866,7 @@ h3 em {
   font-weight: 500;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: var(--color-gold-300);
+  color: var(--color-muted);
   line-height: var(--leading-label);
 }
 

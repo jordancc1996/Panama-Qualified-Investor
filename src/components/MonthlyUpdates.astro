@@ -20,7 +20,7 @@ import { FORMCARRY_ACTION } from '../lib/forms';
 
 <style>
   .monthly {
-    background: linear-gradient(200deg, #4e6478 0%, #405363 55%, #2d3d4d 100%);
+    background: #405363;
     color: var(--color-on-navy-dim);
     padding: 2.25rem 0;
   }
@@ -77,21 +77,28 @@ import { FORMCARRY_ACTION } from '../lib/forms';
   }
 
   .nl button {
-    background: #fff;
-    color: #405363;
-    border-radius: 4px;
+    background: transparent;
+    color: #fff;
+    border-radius: 2px;
     width: 2rem;
     height: 2rem;
     display: grid;
     place-items: center;
-    font-size: 0.82rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     cursor: pointer;
-    border: none;
+    border: 1px solid #fff;
     flex-shrink: 0;
+    transition:
+      background-color 150ms ease-out,
+      color 150ms ease-out;
   }
 
   .nl button:hover {
-    background: #f7f7f7;
+    background: #fff;
+    color: #405363;
   }
 
   .nl-note {

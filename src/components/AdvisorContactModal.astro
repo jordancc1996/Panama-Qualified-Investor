@@ -306,19 +306,26 @@ import LinkedInField from './LinkedInField.astro';
     gap: 0.5rem;
     width: 100%;
     margin-top: 0.35rem;
-    background: var(--color-navy-900);
+    background: #405363;
     color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 0.75rem 1.5rem;
+    border: 1px solid #405363;
+    border-radius: 2px;
+    padding: 14px 28px;
     font-family: var(--font-sans);
-    font-size: var(--text-ui);
+    font-size: 0.75rem;
     font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     cursor: pointer;
+    transition:
+      background-color 150ms ease-out,
+      border-color 150ms ease-out,
+      color 150ms ease-out;
   }
 
   .submit:hover:not(:disabled) {
-    background: var(--color-navy-800);
+    background: #2d3d4d;
+    border-color: #2d3d4d;
   }
 
   .submit:disabled {

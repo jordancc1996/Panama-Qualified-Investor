@@ -15,8 +15,10 @@ const { variant = 'on-paper' } = Astro.props;
 
 <style>
   .deadline {
-    border: 1px solid var(--color-navy-900);
-    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    background: var(--color-cream);
+    border-radius: 2px;
+    box-shadow: none;
     padding: 1.15rem 1.25rem;
     margin: 1.5rem 0 0;
     text-align: left;
@@ -24,23 +26,30 @@ const { variant = 'on-paper' } = Astro.props;
   }
 
   .deadline--on-navy {
-    border-color: rgba(197, 160, 89, 0.55);
-    background: transparent;
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.08);
     margin: 1.75rem 0 0;
   }
 
   .label {
+    display: inline-block;
     font-family: var(--font-sans);
     font-size: var(--text-label);
     font-weight: var(--weight-ui);
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
-    color: var(--color-navy-900);
-    margin: 0 0 0.45rem;
+    /* Chip sits on cream; #75767a fails on the tinted fill. Keep old muted. */
+    color: #5c5e62;
+    background: rgba(64, 83, 99, 0.08);
+    border-radius: 2px;
+    box-shadow: none;
+    padding: 0.35em 0.75em;
+    margin: 0 0 0.55rem;
   }
 
   .deadline--on-navy .label {
-    color: #c5a059;
+    color: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.12);
   }
 
   .deadline p:last-child {

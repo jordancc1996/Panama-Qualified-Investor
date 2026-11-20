@@ -177,23 +177,30 @@ import LinkedInField from './LinkedInField.astro';
   }
 
   .submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     margin-top: 0.85rem;
-    background: var(--color-navy-900);
+    background: #405363;
     color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 0.75rem 1.5rem;
+    border: 1px solid #405363;
+    border-radius: 2px;
+    padding: 14px 28px;
     font-family: var(--font-sans);
-    font-size: var(--text-ui);
+    font-size: 0.75rem;
     font-weight: 500;
-    text-transform: none;
-    letter-spacing: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     cursor: pointer;
+    transition:
+      background-color 150ms ease-out,
+      border-color 150ms ease-out;
   }
 
   .submit:hover {
-    background: var(--color-navy-800);
+    background: #2d3d4d;
+    border-color: #2d3d4d;
   }
 
   .disclaimer {
