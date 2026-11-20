@@ -90,10 +90,16 @@ export const FUNDS_RULE =
 export const TRANSITION_NOTE =
   'Investments or filings made before September 16, 2026 have 6 months to qualify under the previous rules.';
 
-/** Counsel: replace with review date (ISO or display string). */
+/**
+ * Counsel: replace with review date (ISO or display string).
+ * Do not render until counsel supplies the date and reviewer.
+ */
 export const LAST_REVIEWED = 'PENDING_COUNSEL_DATE';
 
-/** Counsel: replace with reviewer name and credential. */
+/**
+ * Counsel: replace with reviewer name and credential.
+ * Do not render until counsel supplies the date and reviewer.
+ */
 export const REVIEWER = 'PENDING_COUNSEL_REVIEWER';
 
 /**
@@ -107,4 +113,5 @@ export const REAL_ESTATE_THRESHOLD_NOTE =
 export const ROUTES_SUMMARY =
   'The Qualified Investor Visa has three paths under Executive Decree 17 of 2026: real estate (from US$300,000 for a first-sale property; US$500,000 for resale), listed securities from US$500,000, or a fixed-term deposit (US$500,000 at a state bank; US$750,000 at a private bank).';
 
+/** Do not render until counsel supplies the date and reviewer. */
 export const REVIEW_LINE_TEXT = `Updated for ${DECREE.name} · Last reviewed ${LAST_REVIEWED} by ${REVIEWER}`;
