@@ -110,12 +110,18 @@ const heroImage = '/images/hero-papers.webp';
   .subtext a {
     color: #fff;
     text-decoration: underline;
+    text-decoration-thickness: 1px;
     text-underline-offset: 0.18em;
-    transition: color 150ms ease-out;
+    transition: color 150ms ease-out, opacity 150ms ease-out;
+  }
+
+  .subtext a:visited {
+    color: #fff;
   }
 
   .subtext a:hover {
-    color: #f5f0eb;
+    color: #fff;
+    opacity: 0.85;
   }
 
   .hero-cta {
@@ -123,19 +129,22 @@ const heroImage = '/images/hero-papers.webp';
     align-items: center;
     gap: 0.5rem;
     appearance: none;
-    background: #f5f0eb;
-    color: #1a1a1a;
+    background: transparent;
+    color: #fff;
     font-family: var(--font-sans);
-    font-size: var(--text-ui);
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0;
-    padding: 0.7rem 1.4rem;
-    border-radius: 999px;
-    border: none;
+    letter-spacing: 0.12em;
+    padding: 14px 28px;
+    border-radius: 2px;
+    border: 1px solid #fff;
     cursor: pointer;
     margin-top: 1.75rem;
-    transition: background-color 150ms ease-out;
+    transition:
+      background-color 150ms ease-out,
+      color 150ms ease-out,
+      border-color 150ms ease-out;
   }
 
   .hero-cta span {
@@ -144,7 +153,8 @@ const heroImage = '/images/hero-papers.webp';
 
   .hero-cta:hover {
     background: #fff;
-    color: #1a1a1a;
+    color: #405363;
+    border-color: #fff;
   }
 
   @media (max-width: 767px) {

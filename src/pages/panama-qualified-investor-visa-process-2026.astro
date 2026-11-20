@@ -258,17 +258,21 @@ const description =
     position: absolute;
     left: -0.95rem;
     top: -0.15rem;
-    width: 1.9rem;
+    min-width: 1.9rem;
     height: 1.9rem;
+    padding: 0.35em 0.75em;
+    box-sizing: border-box;
     display: grid;
     place-items: center;
-    border-radius: 6px;
-    background: var(--color-navy-900);
-    color: var(--color-gold-300);
+    border-radius: 2px;
+    box-shadow: none;
+    background: #405363;
+    color: #fff;
     font-family: var(--font-sans);
     font-weight: 500;
     font-size: var(--text-label);
     letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
   }
 
   .steps strong {

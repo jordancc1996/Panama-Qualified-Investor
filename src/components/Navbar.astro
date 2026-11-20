@@ -196,25 +196,29 @@ const links = [
     height: auto;
     margin-left: 0.5rem;
     margin-bottom: 0;
-    padding: 0.5rem 1.1rem;
+    padding: 14px 28px;
     font-family: var(--font-sans);
-    font-size: var(--text-ui);
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-ink);
-    border: 1.5px solid var(--color-ink);
-    border-radius: 4px;
-    background: transparent;
+    letter-spacing: 0.12em;
+    color: #fff;
+    border: 1px solid #405363;
+    border-radius: 2px;
+    background: #405363;
     cursor: pointer;
+    transition:
+      background-color 150ms ease-out,
+      border-color 150ms ease-out,
+      color 150ms ease-out;
   }
 
   .links a.emphasis:hover,
   .links a.emphasis.is-active,
   .links button.emphasis:hover {
-    background: var(--color-ink);
+    background: #2d3d4d;
     color: #fff;
-    border-color: var(--color-ink);
+    border-color: #2d3d4d;
   }
 
   @media (max-width: 1280px) {
