@@ -1,15 +1,19 @@
+---
+import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
+---
+
 <section class="section section--text" id="program">
   <div class="wrap">
-    <div class="sec-head scroll-reveal">
+    <div class="sec-head scroll-reveal" id="investment">
       <p class="eyebrow eyebrow--on-navy">The program</p>
       <h2>Three routes to Panamanian residency.</h2>
       <p class="lede">
-        A qualifying investment under Executive Decree 17 of 2026: titled real estate from US$300,000 (first sale) or US$500,000 (resale), listed securities from US$500,000, or a fixed-term bank deposit from US$500,000 (state bank) or US$750,000 (private bank). Route-by-route requirements and ownership rules are on the visa page.
+        Real estate is the lowest cash outlay under Decree 17. {REAL_ESTATE_THRESHOLD_NOTE} A qualifying investment under Executive Decree 17 of 2026 covers titled real estate, listed securities, or a fixed-term bank deposit. Route-by-route requirements and ownership rules are on the visa page. Government fees sit on top of the investment; see the <a class="inline-link" href="/panama-qualified-investor-visa-cost">full cost breakdown</a>.
       </p>
     </div>
     <p class="section-more">
-      <a class="cta-link cta-link--cream" href="/panama-qualified-investor-visa-2026">
-        View full program details
+      <a class="cta-link cta-link--cream" href="/panama-qualified-investor-visa-2026#investment-routes">
+        Compare the three routes
       </a>
     </p>
   </div>
@@ -21,6 +25,10 @@
     scroll-margin-top: calc(var(--header-h) + 1rem);
   }
 
+  .sec-head {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+
   .sec-head h2 {
     color: var(--color-on-navy);
   }
@@ -28,5 +36,11 @@
   .lede {
     color: var(--color-on-navy-dim);
     margin: var(--space-lede) 0 0;
+  }
+
+  .inline-link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
   }
 </style>

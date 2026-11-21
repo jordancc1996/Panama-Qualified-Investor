@@ -4,9 +4,17 @@
       <p class="eyebrow">The process</p>
       <h2>From first inquiry to residency card.</h2>
       <p class="lede">
-        Applications are filed with Panama's National Immigration Service. Processing is 30 to 90 days from document submission to provisional permit. A short in-country trip is typically required for biometrics. The step-by-step sequence and document list are on the process page.
+        Applications are filed with Panama's National Immigration Service. Processing is 30 to 90 days from document submission to provisional permit. A short in-country trip is typically required for biometrics.
       </p>
     </div>
+    <ol class="home-steps scroll-reveal" data-reveal="stagger">
+      <li>Consultation: a 15-minute assessment call to confirm eligibility and preferred route.</li>
+      <li>Documents: passport, apostilled background check, bank reference, solvency proof, health certificate, and photos.</li>
+      <li>Investment: execute the qualifying real estate, securities, or bank-deposit route.</li>
+      <li>Filing: the complete package is filed with Servicio Nacional de Migración.</li>
+      <li>Biometrics: a short Panama trip for fingerprints and a provisional permit.</li>
+      <li>Card: the permanent residency card is issued; there is no renewal requirement.</li>
+    </ol>
     <p class="section-more">
       <a class="cta-link cta-link--ink" href="/panama-qualified-investor-visa-process-2026">
         See the full process
@@ -23,5 +31,34 @@
   .lede {
     color: var(--color-ink-soft);
     margin: var(--space-lede) 0 0;
+  }
+
+  .home-steps {
+    list-style: none;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    max-width: var(--measure);
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .home-steps li {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--weight-body);
+    line-height: var(--leading-body);
+    color: var(--color-ink-soft);
+    padding-left: 1.1rem;
+    position: relative;
+  }
+
+  .home-steps li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 0.35rem;
+    height: 0.35rem;
+    background: var(--color-ink);
   }
 </style>

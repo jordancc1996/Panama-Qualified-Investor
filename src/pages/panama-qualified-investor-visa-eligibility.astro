@@ -3,22 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import TopCTA from '../components/TopCTA.astro';
 import CtaBand from '../components/CtaBand.astro';
-import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
-import FAQSection from '../components/FAQSection.astro';
-import ProgramFAQSection from '../components/ProgramFAQSection.astro';
-import FaqJsonLd from '../components/FaqJsonLd.astro';
-import { faqBank } from '../data/faq-bank';
 import { FUNDS_RULE, REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
-
-const pageFaqs = faqBank.applicationAndLegalProcess.filter(
-  (item) => item.q !== 'How much are the government fees?',
-);
 
 const requirements = [
   {
     title: 'Minimum Investment',
-    body: `${REAL_ESTATE_THRESHOLD_NOTE} The investment must be in your name. Government fees sit on top of this amount; see <a href="/panama-qualified-investor-visa-cost">Panama Qualified Investor Visa Cost</a>.`,
+    body: `${REAL_ESTATE_THRESHOLD_NOTE} The investment must be in your name. See the <a href="/panama-qualified-investor-visa-2026">qualifying investment</a> routes. Government fees sit on top of this amount; see <a href="/panama-qualified-investor-visa-cost">Panama Qualified Investor Visa Cost</a>.`,
   },
   {
     title: 'Clean Criminal Background',
@@ -100,7 +91,6 @@ const description =
         </p>
       </div>
     </section>
-    <MonthlyUpdates />
 
     <section class="section paper">
       <div class="wrap">
@@ -154,7 +144,7 @@ const description =
               Your legal spouse, married or common-law, depending on applicable law. Dependent children, biological or legally adopted. Qualifying parents of you or your spouse. Exact dependent eligibility should be confirmed with an attorney.
             </p>
             <p>
-              Each dependent receives their own permanent residency card with <a href="/panama-qualified-investor-visa-benefits">full rights to live and work</a> in Panama. Dependent documents (passport, background check, health certificate) must be submitted alongside yours. There is no limit on the number of qualifying dependents. Adult dependents incur a separate government fee, listed on the <a href="/panama-qualified-investor-visa-cost">cost</a> page.
+              Each dependent receives their own permanent residency card with <a href="/panama-qualified-investor-visa-benefits">full rights to live and work</a> in Panama. Dependent documents (passport, background check, health certificate) must be submitted alongside yours. There is no limit on the number of qualifying dependents. Adult dependents incur a separate government fee, listed on the <a href="/panama-qualified-investor-visa-cost">cost</a> page. More <a href="/panama-qualified-investor-visa-faq">eligibility questions in the FAQ</a>.
             </p>
           </div>
         </div>
@@ -180,18 +170,9 @@ const description =
       </div>
     </section>
 
-    <FAQSection
-      items={pageFaqs}
-      eyebrow="Common questions"
-      heading="Application follow-up."
-      id="page-faq"
-      background="paper"
-    />
-    <ProgramFAQSection background="cream" />
     <CtaBand />
     <TopCTA />
   </main>
-  <FaqJsonLd items={pageFaqs} />
 </BaseLayout>
 
 <style>

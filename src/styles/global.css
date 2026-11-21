@@ -86,7 +86,7 @@
   /* Layout */
   --header-h: 84px;
   --wrap-max: 1280px;
-  --section-pad: clamp(4.5rem, 8vw, 8rem);
+  --section-pad: clamp(3rem, 5vw, 5rem);
 }
 
 @media (min-width: 1024px) {
@@ -97,7 +97,7 @@
 
 @media (max-width: 639px) {
   :root {
-    --section-pad: 4rem;
+    --section-pad: 3rem;
   }
 
   h1 {

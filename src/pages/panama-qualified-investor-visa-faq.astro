@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import TopCTA from '../components/TopCTA.astro';
 import CtaBand from '../components/CtaBand.astro';
-import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 import FaqJsonLd from '../components/FaqJsonLd.astro';
 import FAQSection from '../components/FAQSection.astro';
 import ProgramFAQSection from '../components/ProgramFAQSection.astro';
@@ -38,7 +37,6 @@ const description =
         <p class="subtext">Panama Qualified Investor Visa FAQ answers questions on taxes, family, costs, and citizenship.</p>
       </div>
     </section>
-    <MonthlyUpdates />
 
     <ProgramFAQSection id="faq-general" background="cream" align="start" />
 
@@ -57,6 +55,7 @@ const description =
       heading="Living in Panama."
       background="cream"
       align="start"
+      closerHtml='Further reading is available in the <a href="/panama-qualified-investor-visa-research-papers">published research papers</a>.'
     />
 
     <CtaBand />

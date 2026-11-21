@@ -12,7 +12,7 @@ export const financialFaq: FaqItem[] = [
   },
   {
     q: 'What are the total costs beyond the investment?',
-    a: COSTS_BEYOND_INVESTMENT,
+    a: `${COSTS_BEYOND_INVESTMENT} See the <a href="/panama-qualified-investor-visa-cost">full cost breakdown</a>.`,
   },
   {
     q: 'Can I use a mortgage for the real estate route?',

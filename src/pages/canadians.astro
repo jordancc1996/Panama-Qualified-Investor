@@ -2,12 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import TopCTA from '../components/TopCTA.astro';
-import MonthlyUpdates from '../components/MonthlyUpdates.astro';
-import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
 import FaqJsonLd from '../components/FaqJsonLd.astro';
 import FAQSection from '../components/FAQSection.astro';
-import ProgramFAQSection from '../components/ProgramFAQSection.astro';
-import { REAL_ESTATE_THRESHOLD_NOTE, ROUTES_SUMMARY } from '../data/program';
+import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
 
 const heroImage = '/images/hero-canadians.webp';
 const heroWidth = 682;
@@ -94,8 +91,6 @@ const faqs = [
         </div>
       </div>
     </section>
-    <MonthlyUpdates />
-
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
@@ -105,7 +100,7 @@ const faqs = [
           </div>
           <div class="prose">
             <p>
-              Canada's economic landscape is shifting. Capital gains inclusion rate changes, higher housing costs in major cities, and an increasingly complex tax code are prompting more Canadians to think internationally.
+              Canada's economic landscape is shifting. Capital gains inclusion rate changes, higher housing costs in major cities, and an increasingly complex tax code are prompting more Canadians to think internationally. Related <a href="/who-is-the-panama-qualified-investor-visa-for">who the visa is for</a> guides cover other audiences.
             </p>
             <p>
               For investors and business owners, the math has changed. Higher capital gains taxes reduce the net return on exits, real estate, and portfolio gains. Meanwhile, the cost of living in Vancouver and Toronto now rivals London and New York, without the same access to global financial infrastructure.
@@ -147,9 +142,8 @@ const faqs = [
             <p class="eyebrow">How the visa works</p>
             <h2>Three routes to the same residency.</h2>
           </div>
-          <InvestmentDeadlineNote />
           <p class="route-pointer">
-            {ROUTES_SUMMARY} See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>.
+            The Qualified Investor Visa has three paths under Executive Decree 17 of 2026. {REAL_ESTATE_THRESHOLD_NOTE} See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>. Confirm <a href="/panama-qualified-investor-visa-eligibility">dependent eligibility</a> before you file.
           </p>
           <p class="note">
             Processing is 30 to 90 days from document submission to provisional permit. See the <a href="/panama-qualified-investor-visa-process-2026">process</a>.
@@ -164,8 +158,8 @@ const faqs = [
       heading="Questions Canadians ask most."
       id="page-faq"
       background="cream"
+      closerHtml='See the <a href="/panama-qualified-investor-visa-faq">full program FAQ</a> for general program answers.'
     />
-    <ProgramFAQSection background="paper" />
     <section class="cta-band">
       <div class="wrap">
         <div class="cta-inner">

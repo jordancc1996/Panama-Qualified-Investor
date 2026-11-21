@@ -7,6 +7,8 @@ interface Props {
   heading?: string;
   eyebrow?: string;
   lede?: string;
+  /** Optional HTML after the accordion (e.g. link to the full FAQ). */
+  closerHtml?: string;
   id?: string;
   background?: 'paper' | 'cream';
   /** `start` matches ProgramFAQSection/Eligibility: measure-width column, left-aligned in `.wrap`. */
@@ -18,6 +20,7 @@ const {
   heading = 'Common questions',
   eyebrow = 'FAQ',
   lede,
+  closerHtml,
   id = 'page-faq',
   background = 'cream',
   align = 'center',
@@ -36,6 +39,7 @@ const columnClass = align === 'start' ? 'faq-column faq-column--start' : 'faq-co
         {lede && <p class="lede">{lede}</p>}
       </div>
       <FAQAccordion items={items} idPrefix={id} />
+      {closerHtml && <p class="faq-closer" set:html={closerHtml} />}
     </div>
   </div>
 </section>
@@ -53,5 +57,14 @@ const columnClass = align === 'start' ? 'faq-column faq-column--start' : 'faq-co
   .lede {
     color: var(--color-ink-soft);
     margin: var(--space-lede) 0 0;
+  }
+
+  .faq-closer {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--weight-body);
+    line-height: var(--leading-body);
+    color: var(--color-ink-soft);
+    margin: 1.5rem 0 0;
   }
 </style>

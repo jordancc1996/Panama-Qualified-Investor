@@ -2,12 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import TopCTA from '../components/TopCTA.astro';
-import MonthlyUpdates from '../components/MonthlyUpdates.astro';
-import InvestmentDeadlineNote from '../components/InvestmentDeadlineNote.astro';
 import FaqJsonLd from '../components/FaqJsonLd.astro';
 import FAQSection from '../components/FAQSection.astro';
-import ProgramFAQSection from '../components/ProgramFAQSection.astro';
-import { ROUTES_SUMMARY } from '../data/program';
+import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
 
 const heroImage = '/images/hero-tech-founders.webp';
 const heroWidth = 682;
@@ -98,8 +95,6 @@ const faqs = [
         </div>
       </div>
     </section>
-    <MonthlyUpdates />
-
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
@@ -118,7 +113,7 @@ const faqs = [
               Some founders have moved to Dubai, Lisbon, or Singapore. But each comes with trade-offs. Dubai has no income tax but limited banking for crypto. Portugal keeps restructuring its NHR regime. Singapore is expensive and requires physical presence.
             </p>
             <p>
-              Panama sits in the sweet spot. It's in the Americas. It's dollarized. It has <a href="/panama-qualified-investor-visa-benefits">territorial taxation</a>. It has modern financial infrastructure. And it doesn't ask you to spend 183 days a year proving you live there.
+              Panama sits in the sweet spot. It's in the Americas. It's dollarized. It has <a href="/panama-qualified-investor-visa-benefits">territorial taxation</a>. It has modern financial infrastructure. And it doesn't ask you to spend 183 days a year proving you live there. Other <a href="/who-is-the-panama-qualified-investor-visa-for">audience guides</a> cover related situations.
             </p>
           </div>
         </div>
@@ -151,9 +146,8 @@ const faqs = [
             <p class="eyebrow">How the visa works</p>
             <h2>Three routes to the same residency.</h2>
           </div>
-          <InvestmentDeadlineNote />
           <p class="route-pointer">
-            {ROUTES_SUMMARY} See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>.
+            The Qualified Investor Visa has three paths under Executive Decree 17 of 2026. {REAL_ESTATE_THRESHOLD_NOTE} See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>. Confirm <a href="/panama-qualified-investor-visa-eligibility">who can apply</a> before you start.
           </p>
           <p class="note">
             Processing is 30 to 90 days from document submission to provisional permit. See the <a href="/panama-qualified-investor-visa-process-2026">process</a>.
@@ -168,8 +162,8 @@ const faqs = [
       heading="Questions founders ask most."
       id="page-faq"
       background="cream"
+      closerHtml='More general answers are in the <a href="/panama-qualified-investor-visa-faq">full FAQ</a>.'
     />
-    <ProgramFAQSection background="paper" />
     <section class="cta-band">
       <div class="wrap">
         <div class="cta-inner">
