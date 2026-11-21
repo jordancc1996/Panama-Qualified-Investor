@@ -12,9 +12,7 @@ import FAQSection from '../components/FAQSection.astro';
 import FaqJsonLd from '../components/FaqJsonLd.astro';
 import CTANextSteps from '../components/CTANextSteps.astro';
 import TopCTA from '../components/TopCTA.astro';
-import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 import MobileCTABar from '../components/MobileCTABar.astro';
-import SectionDivider from '../components/SectionDivider.astro';
 import { programFaq } from '../data/program-faq';
 import { financialFaq } from '../data/full-faq';
 
@@ -42,16 +40,12 @@ const homeFaqs = [
   <Navbar />
   <main id="main">
     <Hero />
-    <MonthlyUpdates />
     <WhyPanama />
-    <SectionDivider />
     <Audiences />
     <Benefits />
     <ProgramOverview />
-    <SectionDivider />
     <ProcessSteps />
     <Eligibility />
-    <SectionDivider />
     <FAQSection
       id="faq-general"
       items={homeFaqs}

@@ -2,9 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import TopCTA from '../components/TopCTA.astro';
-import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 import FaqJsonLd from '../components/FaqJsonLd.astro';
 import FAQSection from '../components/FAQSection.astro';
+import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
 
 const heroImage = '/images/hero-americans.webp';
 const heroWidth = 1024;
@@ -95,8 +95,6 @@ const faqs = [
         </div>
       </div>
     </section>
-    <MonthlyUpdates />
-
     <section class="section paper">
       <div class="wrap">
         <div class="narrow">
@@ -149,7 +147,7 @@ const faqs = [
             <h2>Three routes to the same residency.</h2>
           </div>
           <p class="route-pointer">
-            The Qualified Investor Visa has three paths under Executive Decree 17 of 2026. See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>. Exact <a href="/panama-qualified-investor-visa-eligibility">dependent children</a> rules sit on the eligibility page.
+            The Qualified Investor Visa has three paths under Executive Decree 17 of 2026. {REAL_ESTATE_THRESHOLD_NOTE} See the <a href="/panama-qualified-investor-visa-2026#investment-routes">full breakdown of all three routes</a>. Exact <a href="/panama-qualified-investor-visa-eligibility">dependent children</a> rules sit on the eligibility page.
           </p>
           <p class="note">
             Processing is 30 to 90 days from document submission to provisional permit. See the <a href="/panama-qualified-investor-visa-process-2026">process</a>.
