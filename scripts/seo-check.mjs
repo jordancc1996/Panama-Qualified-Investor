@@ -228,6 +228,54 @@ function allowRule10(config, pagePath) {
   );
 }
 
+function splitFrontmatter(raw) {
+  if (!raw.startsWith('---')) return { fm: '', body: raw };
+  const end = raw.indexOf('\n---', 3);
+  if (end === -1) return { fm: '', body: raw };
+  return {
+    fm: raw.slice(3, end).trim(),
+    body: raw.slice(end + 4).trim(),
+  };
+}
+
+function researchBodyWordCount(body) {
+  let text = body
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, ' ')
+    .replace(/^import\s.+$/gm, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\{[^}]*\}/g, ' ');
+  return text
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
+
+/** Rule 13: published research items need ≥ minBodyWords in the source body. */
+function checkPublishedResearchWordCounts(config) {
+  const researchDir = path.join(ROOT, 'src', 'content', 'research');
+  if (!fs.existsSync(researchDir)) return;
+  const minWords =
+    (config.research && Number(config.research.minBodyWords)) || 300;
+  for (const name of fs.readdirSync(researchDir)) {
+    if (!/\.(md|mdx)$/i.test(name)) continue;
+    const full = path.join(researchDir, name);
+    const raw = fs.readFileSync(full, 'utf8');
+    const { fm, body } = splitFrontmatter(raw);
+    if (/^draft:\s*true\s*$/m.test(fm)) continue;
+    const slugMatch = fm.match(/^slug:\s*["']?([^"'\n]+)["']?\s*$/m);
+    const slug = slugMatch ? slugMatch[1].trim() : name.replace(/\.(md|mdx)$/i, '');
+    const words = researchBodyWordCount(body);
+    if (words < minWords) {
+      error(
+        `/research/${slug}`,
+        13,
+        `published research body has ${words} words (need ≥${minWords})`,
+      );
+    }
+  }
+}
+
 function main() {
   const started = Date.now();
   if (!fs.existsSync(distRoot)) {
@@ -498,14 +546,26 @@ function main() {
     );
   }
 
-  const draftSlugProbe = path.join(distRoot, 'research', 'panama-qualified-investor-visa-routes-compared', 'index.html');
-  if (fs.existsSync(draftSlugProbe)) {
-    error(
-      '/research/panama-qualified-investor-visa-routes-compared',
-      5,
-      'draft research item must not be built',
-    );
+  // Draft research entries (draft: true in source) must not appear in dist
+  const researchDir = path.join(ROOT, 'src', 'content', 'research');
+  if (fs.existsSync(researchDir)) {
+    for (const name of fs.readdirSync(researchDir)) {
+      if (!/\.(md|mdx)$/i.test(name)) continue;
+      const raw = fs.readFileSync(path.join(researchDir, name), 'utf8');
+      const { fm } = splitFrontmatter(raw);
+      if (!/^draft:\s*true\s*$/m.test(fm)) continue;
+      const slugMatch = fm.match(/^slug:\s*["']?([^"'\n]+)["']?\s*$/m);
+      const slug = slugMatch
+        ? slugMatch[1].trim()
+        : name.replace(/\.(md|mdx)$/i, '');
+      const built = path.join(distRoot, 'research', slug, 'index.html');
+      if (fs.existsSync(built)) {
+        error(`/research/${slug}`, 5, 'draft research item must not be built');
+      }
+    }
   }
+
+  checkPublishedResearchWordCounts(config);
 
   // print
   for (const w of warnings) {

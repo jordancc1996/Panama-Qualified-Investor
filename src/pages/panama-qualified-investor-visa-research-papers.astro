@@ -12,6 +12,8 @@ import {
 } from '../lib/research';
 
 const items = await getPublishedResearch();
+const reportCount = items.filter((item) => item.data.type === 'report').length;
+const briefCount = items.filter((item) => item.data.type === 'brief').length;
 
 const coverImage = '/images/panama-investment-outlook-cover.webp';
 const coverWidth = 720;
@@ -111,6 +113,16 @@ const tabs = [
                 )}
               </article>
             ))
+          )
+        }
+        {
+          briefCount === 0 && (
+            <p class="empty empty--for-briefs">The first research briefs are in preparation.</p>
+          )
+        }
+        {
+          reportCount === 0 && items.length > 0 && (
+            <p class="empty empty--for-reports">The first research reports are in preparation.</p>
           )
         }
       </div>
@@ -419,6 +431,18 @@ const tabs = [
     line-height: var(--leading-body);
     margin: 0;
     max-width: var(--measure);
+  }
+
+  .empty--for-briefs,
+  .empty--for-reports {
+    display: none;
+    margin-top: 0.25rem;
+    color: var(--color-muted);
+  }
+
+  :global(body:has(#filter-briefs:target)) .empty--for-briefs,
+  :global(body:has(#filter-reports:target)) .empty--for-reports {
+    display: block;
   }
 
   .notify {
