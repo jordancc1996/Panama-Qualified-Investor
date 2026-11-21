@@ -6,67 +6,73 @@ import LinkedInField from './LinkedInField.astro';
 <section class="top-cta">
   <div class="wrap">
     <div class="cta-card">
-      <p class="kicker">Panama Qualified Investor Newsletter</p>
-      <h2>Never miss an update. Subscribe for the latest on Panama's investor residency program.</h2>
-      <p class="sub">Program status, regulatory developments, and residency updates, delivered by email.</p>
-      <form class="form" id="top-cta-form" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
-        <input type="hidden" name="_subject" value="Panama Qualified Investor newsletter" />
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-        <div class="row">
-          <div class="field">
-            <label for="first_name">
-              First name<span style="color: #c0392b; margin-left: 0.15rem">*</span>
-            </label>
-            <input
-              id="first_name"
-              type="text"
-              name="first_name"
-              placeholder="Enter your first name"
-              required
-            />
+      <div class="cta-copy">
+        <p class="kicker">Panama Qualified Investor Newsletter</p>
+        <h2>Never miss an update. Subscribe for the latest on Panama's investor residency program.</h2>
+        <p class="sub">Program status, regulatory developments, and residency updates, delivered by email.</p>
+      </div>
+      <div class="cta-form-col">
+        <form class="form" id="top-cta-form" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
+          <input type="hidden" name="_subject" value="Panama Qualified Investor newsletter" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          <div class="row">
+            <div class="field">
+              <label for="first_name">
+                First name<span style="color: #c0392b; margin-left: 0.15rem">*</span>
+              </label>
+              <input
+                id="first_name"
+                type="text"
+                name="first_name"
+                placeholder="Enter your first name"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="last_name">
+                Last name<span style="color: #c0392b; margin-left: 0.15rem">*</span>
+              </label>
+              <input
+                id="last_name"
+                type="text"
+                name="last_name"
+                placeholder="Enter your last name"
+                required
+              />
+            </div>
           </div>
-          <div class="field">
-            <label for="last_name">
-              Last name<span style="color: #c0392b; margin-left: 0.15rem">*</span>
-            </label>
-            <input
-              id="last_name"
-              type="text"
-              name="last_name"
-              placeholder="Enter your last name"
-              required
-            />
+          <div class="row">
+            <div class="field">
+              <label for="email">
+                Email<span style="color: #c0392b; margin-left: 0.15rem">*</span>
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" name="phone" placeholder="Enter your phone number" />
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label for="phone">Phone</label>
-          <input id="phone" type="tel" name="phone" placeholder="Enter your phone number" />
-        </div>
-        <div class="field">
-          <label for="email">
-            Email<span style="color: #c0392b; margin-left: 0.15rem">*</span>
-          </label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-        <LinkedInField id="top-cta-linkedin" />
-        <button class="submit" type="submit">Subscribe</button>
-      </form>
-      <p class="disclaimer">
-        By submitting this form, you agree to receive email updates from Panama Qualified Investor. You may unsubscribe at any time. Read the <a href="/privacy" style="color: var(--color-ink); text-decoration: underline;">Privacy Policy</a>.
-      </p>
+          <LinkedInField id="top-cta-linkedin" />
+          <button class="submit" type="submit">Subscribe</button>
+        </form>
+        <p class="disclaimer">
+          By submitting this form, you agree to receive email updates from Panama Qualified Investor. You may unsubscribe at any time. Read the <a href="/privacy" style="color: var(--color-ink); text-decoration: underline;">Privacy Policy</a>.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .top-cta {
-    padding: 3rem 0;
+    padding: 2rem 0;
     background: transparent;
   }
 
@@ -75,8 +81,12 @@ import LinkedInField from './LinkedInField.astro';
     margin-inline: auto;
     border: 1px solid var(--color-line);
     border-radius: 6px;
-    padding: 1.5rem;
+    padding: 1.25rem;
     background: #fff;
+  }
+
+  .cta-copy {
+    margin: 0;
   }
 
   .kicker {
@@ -86,7 +96,7 @@ import LinkedInField from './LinkedInField.astro';
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
     color: var(--color-navy-900);
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.4rem;
   }
 
   h2 {
@@ -95,7 +105,7 @@ import LinkedInField from './LinkedInField.astro';
     font-weight: 400;
     line-height: var(--leading-h3);
     color: var(--color-ink);
-    margin: 0 0 0.85rem;
+    margin: 0 0 0.5rem;
     letter-spacing: 0;
   }
 
@@ -104,19 +114,19 @@ import LinkedInField from './LinkedInField.astro';
     font-size: var(--text-body);
     line-height: var(--leading-body);
     color: var(--color-muted);
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
   }
 
   .form {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.65rem;
   }
 
   .row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
+    gap: 0.65rem;
   }
 
   .field label {
@@ -124,7 +134,7 @@ import LinkedInField from './LinkedInField.astro';
     font-size: var(--text-label);
     font-weight: 500;
     color: var(--color-ink);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.25rem;
     display: block;
   }
 
@@ -134,7 +144,7 @@ import LinkedInField from './LinkedInField.astro';
     background: #fff;
     border: 1px solid var(--color-line);
     border-radius: 4px;
-    padding: 0.7rem 0.85rem;
+    padding: 0.55rem 0.75rem;
     font-family: var(--font-sans);
     font-size: var(--text-input);
     line-height: var(--leading-ui);
@@ -160,7 +170,7 @@ import LinkedInField from './LinkedInField.astro';
     font-size: var(--text-label);
     font-weight: 500;
     color: var(--color-ink);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.25rem;
     display: block;
   }
 
@@ -180,13 +190,14 @@ import LinkedInField from './LinkedInField.astro';
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin-top: 0.85rem;
+    width: auto;
+    align-self: flex-start;
+    margin-top: 0.35rem;
     background: #405363;
     color: #fff;
     border: 1px solid #405363;
     border-radius: 2px;
-    padding: 14px 28px;
+    padding: 12px 24px;
     font-family: var(--font-sans);
     font-size: 0.75rem;
     font-weight: 500;
@@ -204,7 +215,7 @@ import LinkedInField from './LinkedInField.astro';
   }
 
   .disclaimer {
-    margin-top: 1rem;
+    margin-top: 0.75rem;
     font-family: var(--font-sans);
     font-size: var(--text-caption);
     line-height: var(--leading-footer);
@@ -214,6 +225,55 @@ import LinkedInField from './LinkedInField.astro';
   @media (max-width: 639px) {
     .row {
       grid-template-columns: 1fr;
+    }
+
+    .submit {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .top-cta {
+      padding: 1.75rem 0;
+    }
+
+    .cta-card {
+      max-width: none;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 1.5rem 2rem;
+      align-items: start;
+      padding: 1.35rem 1.5rem;
+    }
+
+    .sub {
+      margin: 0;
+    }
+
+    .cta-form-col {
+      min-width: 0;
+    }
+
+    .form {
+      gap: 0.55rem;
+    }
+
+    .row {
+      gap: 0.55rem;
+    }
+
+    .form input,
+    .form :global(.field-control) {
+      padding: 0.5rem 0.7rem;
+    }
+
+    .submit {
+      margin-top: 0.2rem;
+      padding: 11px 22px;
+    }
+
+    .disclaimer {
+      margin-top: 0.6rem;
     }
   }
 </style>
