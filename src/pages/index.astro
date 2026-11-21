@@ -6,15 +6,32 @@ import WhyPanama from '../components/WhyPanama.astro';
 import Audiences from '../components/Audiences.astro';
 import Benefits from '../components/Benefits.astro';
 import ProgramOverview from '../components/ProgramOverview.astro';
-import InvestmentTable from '../components/InvestmentTable.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import Eligibility from '../components/Eligibility.astro';
-import CategorizedSiteFaq from '../components/CategorizedSiteFaq.astro';
+import FAQSection from '../components/FAQSection.astro';
+import FaqJsonLd from '../components/FaqJsonLd.astro';
 import CTANextSteps from '../components/CTANextSteps.astro';
 import TopCTA from '../components/TopCTA.astro';
 import MonthlyUpdates from '../components/MonthlyUpdates.astro';
 import MobileCTABar from '../components/MobileCTABar.astro';
 import SectionDivider from '../components/SectionDivider.astro';
+import { programFaq } from '../data/program-faq';
+import { financialFaq } from '../data/full-faq';
+
+const homeFaqQuestions = [
+  'What is the Panama Qualified Investor Visa?',
+  'How long does the process take?',
+  'Can I include my family?',
+  'Do I need to live in Panama full-time?',
+  'Is the $300,000 a fee or an investment?',
+];
+
+const homeFaqs = [
+  ...programFaq.filter((item) => homeFaqQuestions.includes(item.q)),
+  ...financialFaq.filter((item) => item.q === 'Is the $300,000 a fee or an investment?'),
+].sort(
+  (a, b) => homeFaqQuestions.indexOf(a.q) - homeFaqQuestions.indexOf(b.q),
+);
 ---
 
 <BaseLayout
@@ -31,14 +48,22 @@ import SectionDivider from '../components/SectionDivider.astro';
     <Audiences />
     <Benefits />
     <ProgramOverview />
-    <InvestmentTable />
     <SectionDivider />
     <ProcessSteps />
     <Eligibility />
     <SectionDivider />
-    <CategorizedSiteFaq />
+    <FAQSection
+      id="faq-general"
+      items={homeFaqs}
+      eyebrow="FAQ"
+      heading="Common questions."
+      background="cream"
+      align="start"
+      closerHtml='More answers are in the <a href="/panama-qualified-investor-visa-faq">Panama Qualified Investor Visa FAQ</a>.'
+    />
     <CTANextSteps />
     <TopCTA />
   </main>
   <MobileCTABar />
+  <FaqJsonLd items={homeFaqs} />
 </BaseLayout>

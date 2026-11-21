@@ -4,10 +4,8 @@ import Navbar from '../components/Navbar.astro';
 import TopCTA from '../components/TopCTA.astro';
 import CtaBand from '../components/CtaBand.astro';
 import MonthlyUpdates from '../components/MonthlyUpdates.astro';
-import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
-import { COSTS_BEYOND_INVESTMENT, PROCESSING_TIME } from '../data/program-faq';
+import { PROCESSING_TIME } from '../data/program-faq';
 import FAQSection from '../components/FAQSection.astro';
-import ProgramFAQSection from '../components/ProgramFAQSection.astro';
 import FaqJsonLd from '../components/FaqJsonLd.astro';
 import { faqBank } from '../data/faq-bank';
 
@@ -162,10 +160,7 @@ const description =
           </div>
           <div class="prose">
             <p>
-              The qualifying investment is yours; it is not a fee. You own the asset (property, securities, or deposit). {REAL_ESTATE_THRESHOLD_NOTE} Separately, there are processing costs that cover government fees, legal representation, and document preparation.
-            </p>
-            <p>
-              {COSTS_BEYOND_INVESTMENT}
+              The qualifying investment is yours; it is not a fee. You own the asset (property, securities, or deposit). Separately, the application fee, repatriation deposit, and dependent fee are itemized on the page for <a href="/panama-qualified-investor-visa-cost">itemized government fees</a>.
             </p>
             <p>We provide a complete, itemized fee breakdown during your initial consultation: no hidden costs.</p>
           </div>
@@ -179,8 +174,8 @@ const description =
       heading="Filing and travel."
       id="page-faq"
       background="cream"
+      closerHtml='See <a href="/panama-qualified-investor-visa-faq">more process questions in the FAQ</a>.'
     />
-    <ProgramFAQSection background="paper" />
     <CtaBand />
     <TopCTA />
   </main>
