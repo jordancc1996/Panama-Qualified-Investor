@@ -8,6 +8,8 @@ import { SITE_URL } from '../../lib/site';
 import {
   formatResearchDate,
   getPublishedResearch,
+  hasOutlookStatusNote,
+  OUTLOOK_STATUS_NOTE,
   typeLabel,
   type ResearchEntry,
 } from '../../lib/research';
@@ -88,6 +90,16 @@ const articleLd = {
           <div class="prose reading-body">
             <Content />
           </div>
+
+          {
+            hasOutlookStatusNote(data.slug) && (
+              <p class="status-note">
+                {OUTLOOK_STATUS_NOTE.before}
+                <a href={OUTLOOK_STATUS_NOTE.linkHref}>{OUTLOOK_STATUS_NOTE.linkText}</a>
+                {OUTLOOK_STATUS_NOTE.after}
+              </p>
+            )
+          }
 
           {
             data.pdf && (
@@ -180,8 +192,29 @@ const articleLd = {
     margin-top: 2rem;
   }
 
+  .status-note {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    font-weight: var(--weight-body);
+    color: var(--color-muted);
+    line-height: var(--leading-body);
+    margin: 2rem 0 0;
+    max-width: var(--measure);
+  }
+
+  .status-note a {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    transition: color 150ms ease-out;
+  }
+
+  .status-note a:hover {
+    color: var(--color-link-hover);
+  }
+
   .pdf-cta {
-    margin: 2.5rem 0 0;
+    margin: 1.25rem 0 0;
   }
 
   .related {

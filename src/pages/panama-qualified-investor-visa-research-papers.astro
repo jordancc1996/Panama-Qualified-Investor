@@ -7,6 +7,8 @@ import { FORMCARRY_ACTION } from '../lib/forms';
 import {
   formatResearchDate,
   getPublishedResearch,
+  hasOutlookStatusNote,
+  OUTLOOK_STATUS_NOTE,
   researchHref,
   typeLabel,
 } from '../lib/research';
@@ -105,6 +107,15 @@ const tabs = [
                       {formatResearchDate(item.data.published)}
                     </time>
                   </p>
+                  {
+                    hasOutlookStatusNote(item.data.slug) && (
+                      <p class="status-note">
+                        {OUTLOOK_STATUS_NOTE.before}
+                        <a href={OUTLOOK_STATUS_NOTE.linkHref}>{OUTLOOK_STATUS_NOTE.linkText}</a>
+                        {OUTLOOK_STATUS_NOTE.after}
+                      </p>
+                    )
+                  }
                 </div>
                 {item.data.pdf && (
                   <a class="pdf" href={item.data.pdf} download>
@@ -384,6 +395,26 @@ const tabs = [
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
+  }
+
+  .status-note {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    font-weight: var(--weight-body);
+    color: var(--color-muted);
+    line-height: var(--leading-body);
+    margin: 0.55rem 0 0;
+  }
+
+  .status-note a {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    transition: color 150ms ease-out;
+  }
+
+  .status-note a:hover {
+    color: var(--color-link-hover);
   }
 
   .pdf {

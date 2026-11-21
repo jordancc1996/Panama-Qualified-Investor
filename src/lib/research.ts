@@ -29,3 +29,17 @@ export function formatResearchDate(date: Date): string {
     timeZone: 'UTC',
   });
 }
+
+/** Visible Decree 17 caveat for the Outlook report (predates the decree). */
+export const OUTLOOK_STATUS_NOTE = {
+  slug: 'panama-investment-outlook',
+  before:
+    'Research cutoff: August 31, 2026. This report predates Executive Decree 17 of 2026, which replaced Decree 193. For current investment minimums and rules, see the ',
+  linkText: 'Qualified Investor Visa 2026 overview',
+  linkHref: '/panama-qualified-investor-visa-2026',
+  after: '.',
+} as const;
+
+export function hasOutlookStatusNote(slug: string): boolean {
+  return slug === OUTLOOK_STATUS_NOTE.slug;
+}
