@@ -2,78 +2,129 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import TopCTA from '../components/TopCTA.astro';
+import ProgramFAQSection from '../components/ProgramFAQSection.astro';
 import { FORMCARRY_ACTION } from '../lib/forms';
+import {
+  formatResearchDate,
+  getPublishedResearch,
+  researchHref,
+  typeLabel,
+} from '../lib/research';
 
-const heroImage = '/images/hero-papers.webp';
-const heroWidth = 682;
-const heroHeight = 1024;
+const items = await getPublishedResearch();
 
-const papers = [
-  {
-    title: "Panama's Investment Outlook: Why the Qualified Investor Visa Appeals to Global Investors",
-    author: 'Panama Qualified Investor Research Team',
-    description:
-      "This in-house paper covers Panama's investment outlook and why the Qualified Investor Visa may be attractive to investors considering residency through a qualifying investment.",
-    href: '/documents/panama-investment-outlook-qiv.pdf',
-  },
-];
+const coverImage = '/images/panama-investment-outlook-cover.webp';
+const coverWidth = 720;
+const coverHeight = 932;
 
-const title = 'Panama Qualified Investor Visa Research Papers';
+const title = 'Panama Qualified Investor Visa Research';
 const description =
-  "Panama Qualified Investor Visa research papers on territorial taxation, investment migration, and residency planning by economists. Updated for 2026 investors.";
+  'Panama Qualified Investor Visa research reports and shorter briefs on Decree 17 of 2026, with downloadable PDFs and practical guidance.';
+
+const tabs = [
+  { id: 'filter-all', href: '?type=all#filter-all', label: 'All', type: 'all' as const },
+  { id: 'filter-reports', href: '?type=reports#filter-reports', label: 'Reports', type: 'reports' as const },
+  { id: 'filter-briefs', href: '?type=briefs#filter-briefs', label: 'Briefs', type: 'briefs' as const },
+];
 ---
 
-<BaseLayout title={title} description={description} ogDescription={description} path="/panama-qualified-investor-visa-research-papers">
+<BaseLayout
+  title={title}
+  description={description}
+  ogDescription={description}
+  path="/panama-qualified-investor-visa-research-papers"
+  preloadImages={[{ href: coverImage, type: 'image/webp', fetchpriority: 'high' }]}
+>
   <Navbar />
   <main id="main">
-    <section class="page-hero">
-      <img
-        class="hero-bg"
-        src={heroImage}
-        alt="The F&F Tower in Panama City, a teal glass spiral skyscraper against a clear sky"
-        width={heroWidth}
-        height={heroHeight}
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-      <div class="content">
-        <p class="eyebrow eyebrow--on-navy">Research</p>
-        <h1>Panama Qualified Investor Visa research papers <span class="amp">&amp;</span> reports.</h1>
-        <p class="subtext">
-          Panama Qualified Investor Visa research from economists, immigration attorneys, and policy advisors on investment migration, territorial taxation, and Panama's residency framework. Start with the <a href="/panama-qualified-investor-visa-2026">qualifying investment</a> overview, the <a href="/panama-qualified-investor-visa-process-2026">processing timeline</a>, and <a href="/panama-qualified-investor-visa-eligibility">who can apply</a>. The team behind this work is described on the <a href="/about">about</a> page.
-        </p>
+    <span id="filter-all" class="filter-anchor" tabindex="-1"></span>
+    <span id="filter-reports" class="filter-anchor" tabindex="-1"></span>
+    <span id="filter-briefs" class="filter-anchor" tabindex="-1"></span>
+
+    <section class="research-open">
+      <div class="open-grid">
+        <div class="open-copy">
+          <p class="eyebrow">Research</p>
+          <h1>Panama Qualified Investor Visa Research and Reports</h1>
+          <p class="intro">
+            Panama Qualified Investor publishes in-depth research reports and shorter research briefs on the Qualified Investor Visa under Executive Decree 17 of 2026. Reports cover the market and the program in depth, with a downloadable PDF. Briefs answer one practical question, from choosing an investment route to preparing source-of-funds documents.
+          </p>
+        </div>
+        <div class="open-cover" aria-hidden="false">
+          <div class="cover-panel">
+            <img
+              class="cover-img"
+              src={coverImage}
+              alt="Cover of the Panama Investment Outlook research report"
+              width={coverWidth}
+              height={coverHeight}
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section paper">
+    <nav class="filter-band" aria-label="Filter research by type">
+      <div class="wrap filter-inner">
+        {
+          tabs.map((tab, i) => (
+            <>
+              {i > 0 && <span class="rule" aria-hidden="true" />}
+              <a class={`tab tab--${tab.type}`} href={tab.href}>
+                {tab.label}
+              </a>
+            </>
+          ))
+        }
+      </div>
+    </nav>
+
+    <section class="section paper research-list-section">
       <div class="wrap list">
         {
-          papers.map((item) => (
-            <article class="paper-item">
-              <div class="info">
-                <h2 class="title">{item.title}</h2>
-                <p class="author">{item.author}</p>
-                <p class="desc">{item.description}</p>
-              </div>
-              <a class="pdf" href={item.href} download>
-                PDF
-              </a>
-            </article>
-          ))
+          items.length === 0 ? (
+            <p class="empty">No research is published yet.</p>
+          ) : (
+            items.map((item) => (
+              <article class="entry" data-type={item.data.type}>
+                <div class="info">
+                  <p class="label">{typeLabel(item.data.type)}</p>
+                  <h2 class="title">
+                    <a href={researchHref(item)}>{item.data.title}</a>
+                  </h2>
+                  <p class="desc">{item.data.description}</p>
+                  <p class="meta">
+                    <span>{item.data.topic}</span>
+                    <span aria-hidden="true">·</span>
+                    <time datetime={item.data.published.toISOString().slice(0, 10)}>
+                      {formatResearchDate(item.data.published)}
+                    </time>
+                  </p>
+                </div>
+                {item.data.pdf && (
+                  <a class="pdf" href={item.data.pdf} download>
+                    PDF
+                  </a>
+                )}
+              </article>
+            ))
+          )
         }
       </div>
     </section>
 
     <section class="section bg-cream-tint notify">
       <div class="wrap list">
-        <p class="prompt">New papers are added as they're published. Subscribe to get notified.</p>
+        <p class="prompt">New research is added as it is published. Subscribe to get notified.</p>
         <form class="nl" action={FORMCARRY_ACTION} method="POST" accept-charset="UTF-8">
-          <input type="hidden" name="_subject" value="Papers newsletter signup" />
+          <input type="hidden" name="_subject" value="Research newsletter signup" />
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-          <label class="sr-only" for="papers-email">Email</label>
+          <label class="sr-only" for="research-email">Email</label>
           <input
-            id="papers-email"
+            id="research-email"
             name="email"
             type="email"
             autocomplete="email"
@@ -84,55 +135,163 @@ const description =
             Notify Me
           </button>
         </form>
-        <p class="note">No spam. Just papers.</p>
+        <p class="note">No spam. Just research.</p>
       </div>
     </section>
-    <section class="section paper">
-      <div class="wrap list">
-        <p class="faq-pointer">
-          For costs, timelines, and eligibility, see the <a href="/panama-qualified-investor-visa-faq">program FAQ</a>.
-        </p>
-      </div>
-    </section>
+    <ProgramFAQSection background="paper" />
     <TopCTA />
   </main>
 </BaseLayout>
 
 <style>
-  .page-hero {
+  .filter-anchor {
+    position: absolute;
+    width: 1px;
+    height: 1px;
     overflow: hidden;
-    isolation: isolate;
-    background: none;
-    min-height: 70vh;
+    clip: rect(0 0 0 0);
   }
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
+  .research-open {
+    margin-top: var(--header-h);
+    background: var(--color-paper);
+  }
+
+  .open-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .open-copy {
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.35rem, 4vw, 3rem);
+    max-width: 40rem;
+  }
+
+  .open-copy h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-h1);
+    font-weight: 400;
+    color: var(--color-ink);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+    margin: var(--space-eyebrow) 0 0;
+  }
+
+  .intro {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--weight-body);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-body);
+    margin: 1.25rem 0 0;
+    max-width: var(--measure);
+  }
+
+  .open-cover {
+    background: #f7f7f7;
+    min-height: 16rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .cover-panel {
+    width: min(100%, 18rem);
+  }
+
+  .cover-img {
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 42% 22%;
+    height: auto;
+    transform: rotate(3deg);
+    box-shadow: 0 18px 40px rgba(45, 61, 77, 0.18);
+    background: #fff;
   }
 
-  .page-hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(
-      to top,
-      rgba(45, 61, 77, 0.96) 16%,
-      rgba(45, 61, 77, 0.72) 50%,
-      rgba(45, 61, 77, 0.38)
-    );
-    pointer-events: none;
+  @media (min-width: 900px) {
+    .open-grid {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      align-items: stretch;
+    }
+
+    .open-copy {
+      padding-right: clamp(1.5rem, 4vw, 3rem);
+      padding-left: clamp(1.35rem, 4vw, 3rem);
+      margin-left: max(0px, calc((100vw - var(--wrap-max)) / 2));
+    }
+
+    .open-cover {
+      justify-content: flex-end;
+      padding: 3.5rem clamp(2rem, 5vw, 4rem) 3.5rem 2rem;
+      /* Flush to the right edge of the viewport */
+      width: 100%;
+    }
+
+    .cover-panel {
+      width: min(100%, 20rem);
+      margin-right: 0;
+    }
   }
 
-  .content {
-    position: relative;
-    z-index: 1;
+  .filter-band {
+    background: #f7f7f7;
+    border-block: 1px solid var(--color-line);
+  }
+
+  .filter-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding-block: 1rem;
+  }
+
+  .tab {
+    font-family: var(--font-sans);
+    font-size: var(--text-ui);
+    font-weight: var(--weight-ui);
+    color: var(--color-ink);
+    padding: 0.35rem 1rem;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition:
+      color 150ms ease-out,
+      border-color 150ms ease-out;
+  }
+
+  .tab:hover {
+    color: var(--color-link-hover);
+  }
+
+  .rule {
+    width: 1px;
+    height: 1.1rem;
+    background: var(--color-line);
+    flex-shrink: 0;
+  }
+
+  /* Default active: All. CSS :target filters without JavaScript. */
+  .tab--all {
+    border-bottom-color: #405363;
+  }
+
+  :global(body:has(#filter-reports:target)) .tab--all,
+  :global(body:has(#filter-briefs:target)) .tab--all {
+    border-bottom-color: transparent;
+  }
+
+  :global(body:has(#filter-reports:target)) .tab--reports,
+  :global(body:has(#filter-briefs:target)) .tab--briefs,
+  :global(body:has(#filter-all:target)) .tab--all {
+    border-bottom-color: #405363;
+  }
+
+  :global(body:has(#filter-reports:target)) .entry:not([data-type='report']),
+  :global(body:has(#filter-briefs:target)) .entry:not([data-type='brief']) {
+    display: none;
   }
 
   .list {
@@ -140,7 +299,11 @@ const description =
     margin-inline: auto;
   }
 
-  .paper-item {
+  .research-list-section {
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .entry {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -149,12 +312,23 @@ const description =
     border-bottom: 1px solid var(--color-line);
   }
 
-  .paper-item:first-child {
+  .entry:first-child {
     padding-top: 0;
   }
 
-  .paper-item:last-child {
+  .entry:last-child {
     border-bottom: none;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin: 0;
+    line-height: 1.45;
   }
 
   .title {
@@ -164,18 +338,17 @@ const description =
     color: var(--color-ink);
     line-height: var(--leading-h3);
     letter-spacing: var(--tracking-heading);
-    margin: 0;
+    margin: 0.35rem 0 0;
   }
 
-  .author {
-    font-family: var(--font-mono);
-    font-size: var(--text-label);
-    font-weight: 500;
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-    color: var(--color-muted);
-    margin: 0.4rem 0 0;
-    line-height: 1.45;
+  .title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 150ms ease-out;
+  }
+
+  .title a:hover {
+    color: var(--color-link-hover);
   }
 
   .desc {
@@ -185,6 +358,20 @@ const description =
     color: var(--color-ink-soft);
     line-height: var(--leading-body);
     margin: 0.5rem 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .meta {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    color: var(--color-muted);
+    margin: 0.65rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
 
   .pdf {
@@ -213,7 +400,7 @@ const description =
   }
 
   @media (max-width: 639px) {
-    .paper-item {
+    .entry {
       flex-direction: column;
       gap: 0;
     }
@@ -289,15 +476,6 @@ const description =
     text-transform: uppercase;
     color: var(--color-muted);
     margin: 0.75rem 0 0;
-  }
-
-  .faq-pointer {
-    font-family: var(--font-sans);
-    font-size: var(--text-body);
-    font-weight: var(--weight-body);
-    line-height: var(--leading-body);
-    color: var(--color-ink-soft);
-    margin: 0;
   }
 
   .sr-only {

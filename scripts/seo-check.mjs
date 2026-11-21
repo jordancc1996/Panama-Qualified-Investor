@@ -57,6 +57,14 @@ function pagePathFromFile(file) {
   return '/' + rel.replace(/\.html$/, '');
 }
 
+/** Astro static redirects emit a tiny HTML shim; skip them in page rules. */
+function isRedirectHtml(html) {
+  return (
+    /http-equiv\s*=\s*["']refresh["']/i.test(html) ||
+    /<title[^>]*>\s*Redirecting to:/i.test(html)
+  );
+}
+
 function expectedCanonical(pagePath) {
   return pagePath === '/' ? ORIGIN : ORIGIN + pagePath;
 }
@@ -138,6 +146,18 @@ function jsonLdBlocks(html) {
   while ((m = re.exec(html))) blocks.push(m[1]);
   // also type before other attrs order variants already covered; handle type at end
   return blocks;
+}
+
+function collectByType(node, typeName, out) {
+  if (!node || typeof node !== 'object') return;
+  if (Array.isArray(node)) {
+    for (const item of node) collectByType(item, typeName, out);
+    return;
+  }
+  const t = node['@type'];
+  const types = Array.isArray(t) ? t : t ? [t] : [];
+  if (types.includes(typeName)) out.push(node);
+  if (node['@graph']) collectByType(node['@graph'], typeName, out);
 }
 
 function imgTags(html) {
@@ -243,8 +263,12 @@ function main() {
 
   for (const file of files) {
     const pagePath = pagePathFromFile(file);
-    inbound.set(pagePath, inbound.get(pagePath) || 0);
     const html = fs.readFileSync(file, 'utf8');
+    if (isRedirectHtml(html)) {
+      // Keep redirect shims out of title/canonical/sitemap page rules.
+      continue;
+    }
+    inbound.set(pagePath, inbound.get(pagePath) || 0);
     pages.push({ file, pagePath, html });
   }
 
@@ -330,11 +354,41 @@ function main() {
     }
 
     // 6. JSON-LD
+    const parsedLd = [];
     for (const block of jsonLdBlocks(html)) {
       try {
-        JSON.parse(block.trim());
+        parsedLd.push(JSON.parse(block.trim()));
       } catch (e) {
         error(pagePath, 6, `JSON-LD parse failed: ${e.message}`);
+      }
+    }
+
+    // Research item pages: require Article JSON-LD with org author/publisher refs
+    if (pagePath.startsWith('/research/')) {
+      const articles = [];
+      for (const node of parsedLd) {
+        collectByType(node, 'Article', articles);
+      }
+      if (!articles.length) {
+        error(pagePath, 6, 'research item page missing Article JSON-LD');
+      } else {
+        for (const article of articles) {
+          for (const field of ['headline', 'datePublished', 'dateModified']) {
+            if (!article[field]) {
+              error(pagePath, 6, `Article JSON-LD missing ${field}`);
+            }
+          }
+          const orgRef = `${ORIGIN}/#organization`;
+          const authorId = article.author && (article.author['@id'] || article.author);
+          const publisherId =
+            article.publisher && (article.publisher['@id'] || article.publisher);
+          if (authorId !== orgRef) {
+            error(pagePath, 6, `Article author must be ${orgRef}`);
+          }
+          if (publisherId !== orgRef) {
+            error(pagePath, 6, `Article publisher must be ${orgRef}`);
+          }
+        }
       }
     }
 
@@ -430,6 +484,27 @@ function main() {
     if (count < 3) {
       warn(p, `fewer than 3 internal links point here (${count})`);
     }
+  }
+
+  // Research hub must remain reachable (≥3 inbound) and draft research must not ship
+  const hubPath = '/panama-qualified-investor-visa-research-papers';
+  if (!inbound.has(hubPath)) {
+    error(hubPath, 8, 'research hub page missing from build');
+  } else if ((inbound.get(hubPath) || 0) < 3) {
+    error(
+      hubPath,
+      8,
+      `research hub needs ≥3 inbound internal links (found ${inbound.get(hubPath) || 0})`,
+    );
+  }
+
+  const draftSlugProbe = path.join(distRoot, 'research', 'panama-qualified-investor-visa-routes-compared', 'index.html');
+  if (fs.existsSync(draftSlugProbe)) {
+    error(
+      '/research/panama-qualified-investor-visa-routes-compared',
+      5,
+      'draft research item must not be built',
+    );
   }
 
   // print

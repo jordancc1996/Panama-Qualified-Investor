@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/research",
+      "destination": "/panama-qualified-investor-visa-research-papers",
+      "statusCode": 308
+    }
+  ]
+}
