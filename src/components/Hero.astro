@@ -2,12 +2,21 @@
 import InvestmentDeadlineNote from './InvestmentDeadlineNote.astro';
 
 const heroImage = '/images/hero-papers.webp';
+const heroSrcset = [
+  '/images/hero-papers-412w.webp 412w',
+  '/images/hero-papers-682w.webp 682w',
+  '/images/hero-papers-1024w.webp 1024w',
+].join(', ');
+/* Mobile: full width. Desktop: image is full-bleed under a 42% panel; visible photo ≈ 58vw. */
+const heroSizes = '(min-width: 1024px) 58vw, 100vw';
 ---
 
 <section class="hero" id="top">
   <img
     class="hero-bg"
     src={heroImage}
+    srcset={heroSrcset}
+    sizes={heroSizes}
     alt="The F&F Tower in Panama City, a teal glass spiral skyscraper against a clear sky"
     width="682"
     height="1024"

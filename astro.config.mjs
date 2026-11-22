@@ -35,6 +35,10 @@ export default defineConfig({
     }),
   ],
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+    // Merge CSS into a single render-blocking stylesheet (homepage previously loaded two).
+    build: {
+      cssCodeSplit: false,
+    },
+  },
 });

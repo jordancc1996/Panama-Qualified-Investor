@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import { SITE_URL } from '../lib/site';
-import garamond500 from '@fontsource/eb-garamond/files/eb-garamond-latin-500-normal.woff2?url';
+import garamond400 from '@fontsource/eb-garamond/files/eb-garamond-latin-400-normal.woff2?url';
 import roboto400 from '@fontsource/roboto/files/roboto-latin-400-normal.woff2?url';
 
 interface Props {
@@ -80,7 +80,6 @@ const structuredData = {
     <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content={ogImage} />
     <link rel="preconnect" href="https://news.google.com" crossorigin />
-    <link rel="preload" as="image" href="/logo.webp" type="image/webp" fetchpriority="high" />
     {
       preloadImages.map((img) => (
         <link
@@ -92,10 +91,11 @@ const structuredData = {
         />
       ))
     }
-    <link rel="preload" href={garamond500} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={garamond400} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={roboto400} as="font" type="font/woff2" crossorigin />
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <!-- Preferred Sources: Google identifies the site by domain. No publication ID in the current spec. -->
+    <!-- Preferred Sources: Google identifies the site by domain. No publication ID in the current spec.
+         Part 1 (prod): publisher.js ~143KB transfer, ~5–10ms main-thread; below 50ms defer threshold. Left as async. -->
     <script is:inline async src="https://news.google.com/swg/js/v1/publisher.js"></script>
     <title>{title}</title>
   </head>
