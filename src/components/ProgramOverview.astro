@@ -39,8 +39,13 @@ import { REAL_ESTATE_THRESHOLD_NOTE } from '../data/program';
   }
 
   .inline-link {
-    color: inherit;
+    color: #fff;
     text-decoration: underline;
     text-underline-offset: 0.18em;
+    transition: color 150ms ease-out;
+  }
+
+  .inline-link:hover {
+    color: rgba(255, 255, 255, 0.85);
   }
 </style>

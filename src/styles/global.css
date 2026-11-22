@@ -214,21 +214,37 @@ main p a:not(.btn):not(.cta-link):not(.text-link):hover,
   color: var(--color-link-hover);
 }
 
-/* Dark surfaces: white underlined links (must beat main p a:not(...) specificity). */
+/* Dark surfaces: white underlined links (must beat main p a:not(...) specificity).
+   Approved on-dark link: #fff + underline; hover rgba(255,255,255,.85). */
 main .hero p.subtext a:not(.btn):not(.cta-link):not(.text-link),
 main .hero p.subtext a:not(.btn):not(.cta-link):not(.text-link):visited,
-main .hero p.subtext a:not(.btn):not(.cta-link):not(.text-link):hover,
 main .page-hero p.subtext a:not(.btn):not(.cta-link):not(.text-link),
 main .page-hero p.subtext a:not(.btn):not(.cta-link):not(.text-link):visited,
-main .page-hero p.subtext a:not(.btn):not(.cta-link):not(.text-link):hover,
 main .section--navy .prose a:not(.btn):not(.cta-link):not(.text-link),
 main .section--navy .prose a:not(.btn):not(.cta-link):not(.text-link):visited,
-main .section--navy .prose a:not(.btn):not(.cta-link):not(.text-link):hover {
+main .section--navy .lede a:not(.btn):not(.cta-link):not(.text-link),
+main .section--navy .lede a:not(.btn):not(.cta-link):not(.text-link):visited,
+main .cta-band p.cta-mail a:not(.btn):not(.cta-link):not(.text-link),
+main .cta-band p.cta-mail a:not(.btn):not(.cta-link):not(.text-link):visited,
+main #program .lede a:not(.btn):not(.cta-link):not(.text-link),
+main #program .lede a:not(.btn):not(.cta-link):not(.text-link):visited,
+main #program a.inline-link:not(.btn):not(.cta-link):not(.text-link),
+main #program a.inline-link:not(.btn):not(.cta-link):not(.text-link):visited {
   color: #fff;
   text-decoration: underline;
   text-underline-offset: 0.18em;
   text-decoration-thickness: 1px;
   font-weight: var(--weight-ui);
+}
+
+main .hero p.subtext a:not(.btn):not(.cta-link):not(.text-link):hover,
+main .page-hero p.subtext a:not(.btn):not(.cta-link):not(.text-link):hover,
+main .section--navy .prose a:not(.btn):not(.cta-link):not(.text-link):hover,
+main .section--navy .lede a:not(.btn):not(.cta-link):not(.text-link):hover,
+main .cta-band p.cta-mail a:not(.btn):not(.cta-link):not(.text-link):hover,
+main #program .lede a:not(.btn):not(.cta-link):not(.text-link):hover,
+main #program a.inline-link:not(.btn):not(.cta-link):not(.text-link):hover {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 p + p {
@@ -599,8 +615,8 @@ h3 em {
 .cta-link--cream:hover,
 .pcard .cta-link:hover,
 .section--navy .cta-link:hover {
-  color: #fff;
-  opacity: 0.85;
+  color: rgba(255, 255, 255, 0.85);
+  opacity: 1;
 }
 
 .cta-link--ink {

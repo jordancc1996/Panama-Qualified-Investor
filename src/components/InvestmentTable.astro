@@ -39,7 +39,12 @@ const rows = [
 
 {
   embedded ? (
-    <div class="table-wrap scroll-reveal">
+    <div
+      class="table-wrap scroll-reveal"
+      tabindex="0"
+      role="region"
+      aria-label="Investment routes comparison"
+    >
       <table class:list={[showManagement && 'wide']}>
         <thead>
           <tr>

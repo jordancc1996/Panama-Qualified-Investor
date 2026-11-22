@@ -94,7 +94,7 @@ const description =
             audiences.map((item, i) => (
               <a href={item.href} class="bcard card">
                 <p class="kicker" set:html={item.kicker} />
-                <h3>{item.title}</h3>
+                <h2 class="bcard-title">{item.title}</h2>
                 <p class="body" set:html={item.body} />
                 <span class="cta-link cta-link--ink card-link">
                   {item.cta.replace(' →', '')}
@@ -204,7 +204,7 @@ const description =
     margin: 0;
   }
 
-  h3 {
+  .bcard-title {
     font-family: var(--font-display);
     font-size: var(--text-h3);
     font-weight: 400;
