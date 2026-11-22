@@ -34,11 +34,13 @@ export default defineConfig({
       },
     }),
   ],
+  // Homepage previously loaded two render-blocking stylesheets. Inline all page CSS
+  // into <style> so there is no external CSS round-trip / FOUC, without shipping a
+  // site-wide CSS bundle to every route.
+  build: {
+    inlineStylesheets: 'always',
+  },
   vite: {
     plugins: [tailwindcss()],
-    // Merge CSS into a single render-blocking stylesheet (homepage previously loaded two).
-    build: {
-      cssCodeSplit: false,
-    },
   },
 });

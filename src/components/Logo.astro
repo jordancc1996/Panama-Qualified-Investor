@@ -16,7 +16,7 @@ const src = variant === 'on-dark' ? '/logo-on-dark.webp' : '/logo.webp';
   height="42"
   decoding={priority ? 'sync' : 'async'}
   loading={priority ? 'eager' : 'lazy'}
-  fetchpriority={priority ? 'high' : 'auto'}
+  fetchpriority="auto"
 />
 
 <style>
