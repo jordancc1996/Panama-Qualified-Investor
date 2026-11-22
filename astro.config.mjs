@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
 import tailwindcss from '@tailwindcss/vite';
+import { lastmodForUrl } from './scripts/sitemap-lastmod.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,12 +24,22 @@ export default defineConfig({
       customPages: ['https://www.panamaqualifiedinvestor.com/documents/panama-investment-outlook-qiv.pdf'],
       filter(page) {
         // /research is a 308 shim to the indexed hub; keep only the hub + item pages.
+        // 404 is noindex and must not appear in the sitemap.
         const normalized = page.replace(/\/$/, '');
-        return normalized !== 'https://www.panamaqualifiedinvestor.com/research';
+        if (normalized === 'https://www.panamaqualifiedinvestor.com/research') return false;
+        if (normalized === 'https://www.panamaqualifiedinvestor.com/404') return false;
+        if (normalized.endsWith('/404.html')) return false;
+        return true;
       },
       serialize(item) {
         if (item.url.endsWith('/') && item.url !== 'https://www.panamaqualifiedinvestor.com/') {
           item.url = item.url.slice(0, -1);
+        }
+        const lastmod = lastmodForUrl(item.url);
+        if (lastmod) {
+          item.lastmod = lastmod;
+        } else {
+          delete item.lastmod;
         }
         return item;
       },
