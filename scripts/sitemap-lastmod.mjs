@@ -66,7 +66,7 @@ async function githubLastmod(relPath) {
   if (token) headers.Authorization = `Bearer ${token}`;
 
   try {
-    const res = await fetch(url, { headers });
+    const res = await fetch(url, { headers, signal: AbortSignal.timeout(5000) });
     if (!res.ok) {
       console.warn(`sitemap-lastmod: GitHub API ${res.status} for ${relPath}`);
       return undefined;
