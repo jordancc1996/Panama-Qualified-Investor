@@ -1,0 +1,225 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import TopCTA from '../../components/TopCTA.astro';
+import { SITE_URL } from '../../lib/site';
+import {
+  formatResearchDate,
+  getPublishedResearch,
+  hasOutlookStatusNote,
+  OUTLOOK_STATUS_NOTE,
+  typeLabel,
+  type ResearchEntry,
+} from '../../lib/research';
+
+export async function getStaticPaths() {
+  const entries = await getPublishedResearch();
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: ResearchEntry;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const data = entry.data;
+const path = `/research/${data.slug}`;
+const label = typeLabel(data.type);
+const publishedLabel = formatResearchDate(data.published);
+const updatedLabel = data.updated ? formatResearchDate(data.updated) : null;
+const reviewedBy = data.reviewedBy?.trim() || '';
+
+const relatedLabels: Record<string, string> = {
+  '/panama-qualified-investor-visa-2026': 'Qualified Investor Visa 2026 overview',
+  '/panama-qualified-investor-visa-cost': 'Cost breakdown',
+  '/panama-qualified-investor-visa-process-2026': 'Process guide',
+  '/panama-qualified-investor-visa-research-papers': 'Research hub',
+  '/panama-qualified-investor-visa-benefits': 'Benefits',
+  '/panama-qualified-investor-visa-eligibility': 'Eligibility',
+};
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: data.title,
+  description: data.description,
+  datePublished: data.published.toISOString().slice(0, 10),
+  dateModified: (data.updated ?? data.published).toISOString().slice(0, 10),
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}${path}`,
+  },
+  author: { '@id': `${SITE_URL}/#organization` },
+  publisher: { '@id': `${SITE_URL}/#organization` },
+};
+---
+
+<BaseLayout title={data.metaTitle} description={data.description} ogDescription={data.description} path={path}>
+  <Navbar />
+  <main id="main">
+    <article class="section paper research-article">
+      <div class="wrap">
+        <div class="narrow">
+          <p class="eyebrow">{label}</p>
+          <h1>{data.title}</h1>
+          <p class="date-line">
+            Published {publishedLabel}
+            {updatedLabel && <> · Updated {updatedLabel}</>}
+          </p>
+          {reviewedBy && <p class="reviewed">Reviewed by {reviewedBy}</p>}
+
+          {
+            data.keyFindings && data.keyFindings.length > 0 && (
+              <section class="findings" aria-labelledby="key-findings-heading">
+                <h2 id="key-findings-heading">Key findings</h2>
+                <ul>
+                  {data.keyFindings.map((finding) => (
+                    <li>{finding}</li>
+                  ))}
+                </ul>
+              </section>
+            )
+          }
+
+          <div class="prose reading-body">
+            <Content />
+          </div>
+
+          {
+            hasOutlookStatusNote(data.slug) && (
+              <p class="status-note">
+                {OUTLOOK_STATUS_NOTE.before}
+                <a href={OUTLOOK_STATUS_NOTE.linkHref}>{OUTLOOK_STATUS_NOTE.linkText}</a>
+                {OUTLOOK_STATUS_NOTE.after}
+              </p>
+            )
+          }
+
+          {
+            data.pdf && (
+              <p class="pdf-cta">
+                <a class="btn btn--navy" href={data.pdf} download>
+                  Download the full report (PDF)
+                </a>
+              </p>
+            )
+          }
+
+          {
+            data.related.length > 0 && (
+              <section class="related" aria-labelledby="related-heading">
+                <h2 id="related-heading">Related</h2>
+                <ul>
+                  {data.related.map((href) => (
+                    <li>
+                      <a href={href}>{relatedLabels[href] || href}</a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )
+          }
+        </div>
+      </div>
+    </article>
+
+    <CtaBand />
+    <TopCTA />
+  </main>
+  <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+</BaseLayout>
+
+<style>
+  .research-article {
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+
+  .research-article h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-h1);
+    font-weight: 400;
+    color: var(--color-ink);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+    margin: var(--space-eyebrow) 0 0;
+    max-width: 22ch;
+  }
+
+  .date-line,
+  .reviewed {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    color: var(--color-muted);
+    margin: 1rem 0 0;
+    line-height: var(--leading-ui);
+  }
+
+  .findings {
+    margin-top: 2.5rem;
+  }
+
+  .findings h2,
+  .related h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: 400;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+
+  .findings ul,
+  .related ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .findings li,
+  .related li {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-body);
+    margin: 0 0 0.75rem;
+  }
+
+  .reading-body {
+    margin-top: 2rem;
+  }
+
+  .status-note {
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    font-weight: var(--weight-body);
+    color: var(--color-muted);
+    line-height: var(--leading-body);
+    margin: 2rem 0 0;
+    max-width: var(--measure);
+  }
+
+  .status-note a {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    transition: color 150ms ease-out;
+  }
+
+  .status-note a:hover {
+    color: var(--color-link-hover);
+  }
+
+  .pdf-cta {
+    margin: 1.25rem 0 0;
+  }
+
+  .related {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-line);
+  }
+</style>

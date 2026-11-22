@@ -7,5 +7,14 @@
       "remove_when": "final privacy policy is published"
     }
   ],
-  "noindexAllowlist": ["/panama-qualified-investor-visa-changes"]
+  "noindexAllowlist": ["/panama-qualified-investor-visa-changes"],
+  "research": {
+    "hubPath": "/panama-qualified-investor-visa-research-papers",
+    "itemPathPrefix": "/research/",
+    "requireArticleJsonLd": true,
+    "minInboundToHub": 3,
+    "minBodyWords": 300,
+    "knownDraftSlugs": ["panama-qualified-investor-visa-routes-compared"],
+    "notes": "Hub and every built /research/<slug> page use the same seo-check rules as the rest of the site. Draft collection entries must not appear in dist. Rule 13 fails published (draft: false) items whose source body is under minBodyWords."
+  }
 }

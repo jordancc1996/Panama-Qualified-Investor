@@ -1,0 +1,17 @@
+---
+import { ROUTES } from '../data/program';
+
+interface Props {
+  route: string;
+  /** When true, render only the minimumLabel (e.g. US$300,000). */
+  labelOnly?: boolean;
+}
+
+const { route, labelOnly = true } = Astro.props;
+const match = ROUTES.find((r) => r.id === route);
+if (!match) {
+  throw new Error(`Unknown investment route id: ${route}`);
+}
+---
+
+{labelOnly ? match.minimumLabel : `${match.label}: ${match.minimumLabel}`}
