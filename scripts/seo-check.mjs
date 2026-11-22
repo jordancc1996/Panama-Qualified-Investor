@@ -283,11 +283,15 @@ function main() {
     process.exit(2);
   }
   const config = loadConfig();
-  const files = walkIndexHtml(distRoot).sort();
+  const files = walkIndexHtml(distRoot);
+  const notFoundHtml = path.join(distRoot, '404.html');
+  if (fs.existsSync(notFoundHtml)) files.push(notFoundHtml);
+  files.sort();
   if (!files.length) {
     console.error(`ERROR: no index.html under ${distRoot}`);
     process.exit(2);
   }
+  const sitemapExclude = new Set(config.sitemapExclude || []);
 
   for (const entry of config.forbiddenTextAllowlist || []) {
     if ((entry.rules || []).includes(10)) {
@@ -393,10 +397,11 @@ function main() {
     // 5. sitemap membership
     if (sitemapLocs) {
       const inSm = can ? sitemapSet.has(can) : false;
-      if (!noindex && can && !inSm) {
+      const excludedFromSitemap = sitemapExclude.has(pagePath);
+      if (!noindex && can && !inSm && !excludedFromSitemap) {
         error(pagePath, 5, `indexable page missing from sitemap: ${can}`);
       }
-      if (noindex && can && inSm) {
+      if ((noindex || excludedFromSitemap) && can && inSm) {
         error(pagePath, 5, `noindex page must not appear in sitemap: ${can}`);
       }
     }

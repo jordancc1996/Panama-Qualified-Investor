@@ -7,7 +7,8 @@
       "remove_when": "final privacy policy is published"
     }
   ],
-  "noindexAllowlist": ["/panama-qualified-investor-visa-changes"],
+  "noindexAllowlist": ["/panama-qualified-investor-visa-changes", "/404"],
+  "sitemapExclude": ["/404"],
   "research": {
     "hubPath": "/panama-qualified-investor-visa-research-papers",
     "itemPathPrefix": "/research/",

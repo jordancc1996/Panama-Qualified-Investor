@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const title = 'Page Not Found | Panama Qualified Investor';
+const description =
+  'Page Not Found on Panama Qualified Investor. The page you want has moved or does not exist. Open the Qualified Investor Visa guides from the links below.';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogDescription={description}
+  path="/404"
+  noindex={true}
+>
+  <Navbar />
+  <main id="main">
+    <section class="section paper">
+      <div class="wrap">
+        <div class="narrow">
+          <p class="eyebrow">ERROR 404</p>
+          <h1>Page not found</h1>
+          <p class="lede">
+            The page you're looking for has moved or doesn't exist.
+          </p>
+          <ul class="links">
+            <li><a href="/">Homepage</a></li>
+            <li>
+              <a href="/panama-qualified-investor-visa-2026"
+                >Qualified Investor Visa 2026 overview</a
+              >
+            </li>
+            <li><a href="/panama-qualified-investor-visa-cost">Cost</a></li>
+            <li><a href="/panama-qualified-investor-visa-faq">FAQ</a></li>
+            <li><a href="/panama-qualified-investor-visa-research-papers">Research</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <CtaBand />
+  </main>
+</BaseLayout>
+
+<style>
+  .lede {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-body);
+    margin: 1.25rem 0 0;
+    max-width: var(--measure);
+  }
+
+  .links {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+  }
+
+  .links li {
+    margin: 0 0 0.75rem;
+  }
+
+  .links a {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    transition: color 150ms ease-out;
+  }
+
+  .links a:hover {
+    color: var(--color-link-hover);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-h1);
+    font-weight: 400;
+    color: var(--color-ink);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+    margin: var(--space-eyebrow) 0 0;
+  }
+</style>

@@ -44,12 +44,17 @@ const relatedLabels: Record<string, string> = {
   '/panama-qualified-investor-visa-eligibility': 'Eligibility',
 };
 
+const publishedIso = data.published.toISOString().slice(0, 10);
+const modifiedIso = data.updated
+  ? data.updated.toISOString().slice(0, 10)
+  : undefined;
+
 const articleLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: data.title,
   description: data.description,
-  datePublished: data.published.toISOString().slice(0, 10),
+  datePublished: publishedIso,
   dateModified: (data.updated ?? data.published).toISOString().slice(0, 10),
   mainEntityOfPage: {
     '@type': 'WebPage',
@@ -60,7 +65,15 @@ const articleLd = {
 };
 ---
 
-<BaseLayout title={data.metaTitle} description={data.description} ogDescription={data.description} path={path}>
+<BaseLayout
+  title={data.metaTitle}
+  description={data.description}
+  ogDescription={data.description}
+  path={path}
+  ogType="article"
+  articlePublishedTime={publishedIso}
+  articleModifiedTime={modifiedIso}
+>
   <Navbar />
   <main id="main">
     <article class="section paper research-article">
