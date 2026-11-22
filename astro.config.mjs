@@ -31,11 +31,11 @@ export default defineConfig({
         if (normalized.endsWith('/404.html')) return false;
         return true;
       },
-      serialize(item) {
+      async serialize(item) {
         if (item.url.endsWith('/') && item.url !== 'https://www.panamaqualifiedinvestor.com/') {
           item.url = item.url.slice(0, -1);
         }
-        const lastmod = lastmodForUrl(item.url);
+        const lastmod = await lastmodForUrl(item.url);
         if (lastmod) {
           item.lastmod = lastmod;
         } else {

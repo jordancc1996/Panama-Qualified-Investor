@@ -1,7 +1,9 @@
 /**
  * Map sitemap URLs to source files and read lastmod from git
- * (`git log -1 --format=%cs`). Returns undefined when history is
- * unavailable so callers can omit lastmod (never use build time).
+ * (`git log -1 --format=%cs`). Falls back to the GitHub Commits API
+ * when the clone is shallow (Vercel default) so graft commits cannot
+ * invent wrong dates. Returns undefined when history is unavailable
+ * so callers can omit lastmod (never use build time).
  */
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -10,30 +12,33 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ORIGIN = 'https://www.panamaqualifiedinvestor.com';
+const GITHUB_REPO = 'jordancc1996/Panama-Qualified-Investor';
+
+/** @type {boolean | null} */
+let shallowCache = null;
+/** @type {Map<string, string | undefined>} */
+const lastmodCache = new Map();
 
 function isShallowRepo() {
+  if (shallowCache != null) return shallowCache;
   try {
     const out = execFileSync('git', ['rev-parse', '--is-shallow-repository'], {
       cwd: ROOT,
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'ignore'],
     }).trim();
-    return out === 'true';
+    shallowCache = out === 'true';
   } catch {
-    return true;
+    shallowCache = true;
   }
+  return shallowCache;
 }
 
 /**
  * @param {string} relPath repo-relative path
- * @returns {string | undefined} YYYY-MM-DD or undefined
+ * @returns {string | undefined} YYYY-MM-DD
  */
-export function gitLastmod(relPath) {
-  const abs = path.join(ROOT, relPath);
-  if (!fs.existsSync(abs)) return undefined;
-  // Shallow history attributes graft/boundary commits to untouched files.
-  // Omit lastmod rather than publish a wrong date.
-  if (isShallowRepo()) return undefined;
+function gitLastmodTrusted(relPath) {
   try {
     const out = execFileSync('git', ['log', '-1', '--format=%cs', '--', relPath], {
       cwd: ROOT,
@@ -45,6 +50,79 @@ export function gitLastmod(relPath) {
     /* no git */
   }
   return undefined;
+}
+
+/**
+ * @param {string} relPath repo-relative path
+ * @returns {Promise<string | undefined>}
+ */
+async function githubLastmod(relPath) {
+  const url = `https://api.github.com/repos/${GITHUB_REPO}/commits?path=${encodeURIComponent(relPath)}&per_page=1`;
+  const headers = {
+    Accept: 'application/vnd.github+json',
+    'User-Agent': 'panama-qualified-investor-sitemap-lastmod',
+  };
+  const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  if (token) headers.Authorization = `Bearer ${token}`;
+
+  try {
+    const res = await fetch(url, { headers });
+    if (!res.ok) {
+      console.warn(`sitemap-lastmod: GitHub API ${res.status} for ${relPath}`);
+      return undefined;
+    }
+    const data = await res.json();
+    const iso = data?.[0]?.commit?.committer?.date || data?.[0]?.commit?.author?.date;
+    if (!iso || typeof iso !== 'string') return undefined;
+    const day = iso.slice(0, 10);
+    return /^\d{4}-\d{2}-\d{2}$/.test(day) ? day : undefined;
+  } catch (err) {
+    const msg = err && err.message ? err.message : String(err);
+    console.warn(`sitemap-lastmod: GitHub fetch failed for ${relPath} (${msg})`);
+    return undefined;
+  }
+}
+
+/**
+ * @param {string} relPath repo-relative path
+ * @returns {string | undefined | Promise<string | undefined>} YYYY-MM-DD or undefined
+ */
+export function gitLastmod(relPath) {
+  const abs = path.join(ROOT, relPath);
+  if (!fs.existsSync(abs)) return undefined;
+  if (lastmodCache.has(relPath)) return lastmodCache.get(relPath);
+
+  // Full history: trust local git.
+  if (!isShallowRepo()) {
+    const day = gitLastmodTrusted(relPath);
+    lastmodCache.set(relPath, day);
+    return day;
+  }
+
+  // Shallow: do not use local git (graft commits invent wrong dates).
+  // Resolve via GitHub and cache synchronously after await in lastmodForUrl.
+  return undefined;
+}
+
+/**
+ * Async variant used by serialize (Astro accepts async serialize).
+ * @param {string} relPath
+ * @returns {Promise<string | undefined>}
+ */
+export async function gitLastmodAsync(relPath) {
+  const abs = path.join(ROOT, relPath);
+  if (!fs.existsSync(abs)) return undefined;
+  if (lastmodCache.has(relPath)) return lastmodCache.get(relPath);
+
+  if (!isShallowRepo()) {
+    const day = gitLastmodTrusted(relPath);
+    lastmodCache.set(relPath, day);
+    return day;
+  }
+
+  const day = await githubLastmod(relPath);
+  lastmodCache.set(relPath, day);
+  return day;
 }
 
 /**
@@ -85,10 +163,10 @@ export function sourceFileForUrl(url) {
 
 /**
  * @param {string} url absolute sitemap loc
- * @returns {string | undefined} YYYY-MM-DD
+ * @returns {Promise<string | undefined>} YYYY-MM-DD
  */
-export function lastmodForUrl(url) {
+export async function lastmodForUrl(url) {
   const file = sourceFileForUrl(url);
   if (!file) return undefined;
-  return gitLastmod(file);
+  return gitLastmodAsync(file);
 }
