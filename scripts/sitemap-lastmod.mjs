@@ -11,6 +11,19 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ORIGIN = 'https://www.panamaqualifiedinvestor.com';
 
+function isShallowRepo() {
+  try {
+    const out = execFileSync('git', ['rev-parse', '--is-shallow-repository'], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    return out === 'true';
+  } catch {
+    return true;
+  }
+}
+
 /**
  * @param {string} relPath repo-relative path
  * @returns {string | undefined} YYYY-MM-DD or undefined
@@ -18,6 +31,9 @@ const ORIGIN = 'https://www.panamaqualifiedinvestor.com';
 export function gitLastmod(relPath) {
   const abs = path.join(ROOT, relPath);
   if (!fs.existsSync(abs)) return undefined;
+  // Shallow history attributes graft/boundary commits to untouched files.
+  // Omit lastmod rather than publish a wrong date.
+  if (isShallowRepo()) return undefined;
   try {
     const out = execFileSync('git', ['log', '-1', '--format=%cs', '--', relPath], {
       cwd: ROOT,
@@ -26,7 +42,7 @@ export function gitLastmod(relPath) {
     }).trim();
     if (/^\d{4}-\d{2}-\d{2}$/.test(out)) return out;
   } catch {
-    /* shallow clone / no git */
+    /* no git */
   }
   return undefined;
 }
