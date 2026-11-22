@@ -366,9 +366,14 @@ const faqs = [
   }
 
   .cta-mail a {
-    color: inherit;
+    color: #fff;
     text-decoration: underline;
     text-underline-offset: 0.18em;
+    transition: color 150ms ease-out;
+  }
+
+  .cta-mail a:hover {
+    color: rgba(255, 255, 255, 0.85);
   }
 
   @media (min-width: 1024px) {
